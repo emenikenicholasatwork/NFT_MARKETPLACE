@@ -7,9 +7,9 @@ const Login = () => {
     const connect_wallet= async (account)=>{
         try{
             let provider;
-            if(window.ethereum){
-                await window.ethereum.request({method: 'eth_accounts'})
-            }
+            // if(window.ethereum){
+            //     await window.ethereum.request({method: 'eth_accounts'})
+            // }
             // if(account === 'metamask'){
             //     provider = await window.ethereum.request({method: 'eth_requestAccounts'})
             // }else if(selectedWallet === 'phantom'){
@@ -25,19 +25,8 @@ const Login = () => {
             console.log('Error connecting to wallet: ', error.message)
         }
     }
-    // useEffect(()=>{
-    //     const checkProvider = async ()=>{
-    //         const metamaskProvider = await detectEthereumProvider();
-    //         if(metamaskProvider){
-    //             setWalletType('metamask');
-    //         }else if(window.solana){
-    //             setWalletType('phantom')
-    //         }
-    //     };
-    //     checkProvider();
-    // }, []);
   return (
-    <div className='h-full w-full fixed flex items-center justify-center bg-blurBackground font-bold'>
+    <div className='z-20 h-full w-full fixed flex items-center justify-center bg-blurBackground font-bold'>
         <div className={`h-[550px] mb-32 w-[400px] ${isNightMode ? 'bg-[#645e5e88] text-white' : 'bg-white text-black'} pt-10 rounded-lg shadow-md flex flex-col  relative px-2`}>
         <i className='bi bi-x-lg absolute right-7 top-7 text-lg font-extrabold cursor-pointer' onClick={setLogin}></i>
             <div className='flex flex-col items-center font-bold gap-2 mt-5'>

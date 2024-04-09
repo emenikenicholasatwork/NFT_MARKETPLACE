@@ -1,10 +1,10 @@
 "use client"
 import Image from 'next/image';
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 
 const TrendingAndTop = () => {
     const [isImageHovering, setIsImageHovering] = useState(false)
-
+    let timeout;
     const nfts = [
         {
           id: 1,
@@ -212,7 +212,7 @@ const TrendingAndTop = () => {
             ]
           },
       ];
-      // Split the products array into two separate arrays
+      // Split the nft array into two separate arrays
   const firstHalf = nfts.slice(0, Math.ceil(nfts.length / 2));
   const secondHalf = nfts.slice(Math.ceil(nfts.length / 2));
   return (
@@ -262,12 +262,16 @@ const TrendingAndTop = () => {
                             </div>
                             <div className='flex flex-row items-center gap-6 flex-[3]'>
                                 {isImageHovering === nft.id && (
-                                    <div className='rounded-lg absolute flex flex-row overflow-hidden'>
+                                    <div className='rounded-lg absolute z-10 bottom-[90px] flex flex-row gap-1 overflow-hidden' onMouseEnter={()=>clearTimeout(timeout)} onMouseLeave={()=>{
+                                        timeout = setTimeout(()=>{
+                                            setIsImageHovering(false)
+                                        },200)
+                                    }}>
                                         {nft.collection.map((col, index) => (
                                             <div key={index}>
                                                 <Image
                                                     src={col.image}
-                                                    width={70} 
+                                                    width={90} 
                                                     height={70} 
                                                     alt='Nft collections'
                                                 />
@@ -275,9 +279,15 @@ const TrendingAndTop = () => {
                                         ))}
                                     </div>
                                 )}
-                            <Image src={nft.image} className='rounded-lg z-10 relative' width={70} height={20} alt="nft image"
-                                        onMouseEnter={() => setIsImageHovering(nft.id)}
-                                        onMouseLeave={() => setIsImageHovering(null)}
+                            <Image src={nft.image} className='rounded-lg z-10' width={70} height={20} alt="nft image"
+                                        onMouseEnter={() => {setIsImageHovering(nft.id)
+                                            clearTimeout(timeout)
+                                        }}
+                                        onMouseLeave={() => {
+                                            timeout = setTimeout(() => {
+                                                setIsImageHovering(null)
+                                            }, 200);
+                                        }}
                                     />
                                 <span>{nft.name}</span>
                             </div>
@@ -308,32 +318,43 @@ const TrendingAndTop = () => {
                 </div>
             </div>
             <hr className='border-1 border-gray-500'/>
+            <hr className='border-1 border-gray-500'/>
             <div className='mt-3'>
-            {
+                {
                     secondHalf.map(nft => (
-                        <div key={nft.id} className='flex-row flex items-center cursor-pointer hover:bg-[#9e8c8c25] p-2 rounded-lg'>
+                        <div key={nft.id} className='flex-row flex items-center cursor-pointer hover:bg-[#9e8c8c25] p-2 rounded-lg relative'>
                             <div className=' me-[60px]'>
                                 <span>{nft.id}</span>
                             </div>
-                            <div className='flex flex-row items-center gap-6 flex-[3] relative'>
+                            <div className='flex flex-row items-center gap-6 flex-[3]'>
+                                {isImageHovering === nft.id && (
+                                    <div className='rounded-lg absolute bottom-[90px] z-10 flex flex-row gap-1 overflow-hidden' onMouseEnter={()=>clearTimeout(timeout)} onMouseLeave={()=>{
+                                        timeout = setTimeout(()=>{
+                                            setIsImageHovering(false)
+                                        },200)
+                                    }}>
+                                        {nft.collection.map((col, index) => (
+                                            <div key={index}>
+                                                <Image
+                                                    src={col.image}
+                                                    width={90} 
+                                                    height={70} 
+                                                    alt='Nft collections'
+                                                />
+                                            </div>
+                                        ))}
+                                    </div>
+                                )}
                             <Image src={nft.image} className='rounded-lg z-10' width={70} height={20} alt="nft image"
-                                        onMouseEnter={() => setIsImageHovering(nft.id)}
-                                        onMouseLeave={() => setIsImageHovering(null)}
+                                        onMouseEnter={() => {setIsImageHovering(nft.id)
+                                            clearTimeout(timeout)
+                                        }}
+                                        onMouseLeave={() => {
+                                            timeout = setTimeout(() => {
+                                                setIsImageHovering(null)
+                                            }, 200);
+                                        }}
                                     />
-                                    {isImageHovering === nft.id && (
-                                        <div className='rounded-lg absolute flex flex-row'>
-                                            {nft.collection.map((col, index) => (
-                                                <div key={index}>
-                                                    <Image
-                                                        src={col.image}
-                                                        width={70} 
-                                                        height={70} 
-                                                        alt='Nft collections'
-                                                    />
-                                                </div>
-                                            ))}
-                                        </div>
-                                    )}
                                 <span>{nft.name}</span>
                             </div>
                             <div className='flex-[.9]'>
@@ -347,40 +368,6 @@ const TrendingAndTop = () => {
                 }
             </div>
         </div>
-        {/* <div className='w-full flex-1'>
-            <div className='flex flex-row'>
-                <div className='flex-1'>
-                    <span>Rank</span>
-                </div>
-                <div className='flex-1'>
-                    <span>Collection</span>
-                </div>
-                <div className='flex-1'>
-                    <span>Floor Price</span>
-                </div>
-                <div className='flex-1'>
-                    <span>Volume</span>
-                </div>
-            </div>
-            <hr className='border-1 border-gray-500'/>
-            <div>
-                <div className='flex-row flex items-center'>
-                    <div>
-                        <span>1</span>
-                    </div>
-                    <div className='flex flex-row items-center'>
-                        <img src="/images/ape1.jpg" width={30} height={20} alt="nft image" />
-                        <span>Just for the apes</span>
-                    </div>
-                    <div>
-                        <span>0.004 ETH</span>
-                    </div>
-                    <div>
-                        <span>234.5 ETH</span>
-                    </div>
-                </div>
-            </div>
-        </div> */}
       </div>
     </div>
   )

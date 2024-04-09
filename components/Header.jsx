@@ -16,7 +16,7 @@ const Header = () => {
       };
 
   return (
-    <header className={`${isNightMode ? 'bg-[#252927]  text-white' : 'bg-white text-black'} w-full h-20 fixed flex justify-between items-center p-5 px-24 `}>
+    <header className={`${isNightMode ? 'bg-[#252927]  text-white' : 'bg-white text-black'} w-full h-20 fixed flex justify-between items-center p-5 px-24 z-10`}>
         <div className="flex flex-row items-center gap-1">
             <i className="bi bi-currency-bitcoin text-3xl bg-green-500 p-2 rounded-md"></i>
             <p className="text-2xl font-bold font-serif">Crypto~Art</p>
@@ -49,7 +49,7 @@ const Header = () => {
             }
             >
                 {isDropdownOpen && (
-                    <div className="absolute top-full right-0 mt-2 w-60 p-3 bg-[#9e8c8c75] rounded shadow-lg transition-all duration-300 delay-100" onMouseEnter={()=>clearTimeout(timeout)}>
+                    <div className={`absolute top-full right-0 mt-2 w-60 p-3 rounded shadow-2xl transition-all duration-300 delay-100 ${isNightMode ? 'bg-black' : 'bg-white'} `} onMouseEnter={()=>clearTimeout(timeout)}>
                     <ul className=''>
                         <li className="py-2 px-4 hover:bg-[#9e8c8c] cursor-pointer flex flex-row items-center gap-3 font-bold rounded-md ">
                             <i className='bi bi-person font-bold text-xl'></i>
@@ -68,7 +68,16 @@ const Header = () => {
                             <i className='bi bi-moon font-bold text-xl'></i>
                             <p>Night Mode</p>
                             <i className={`bi ${isNightMode ? 'bi-toggle-on' : 'bi-toggle-off'} font-bold text-3xl text-blue-500 ms-3 hover:text-blue-700`} onClick={()=>setNightMode()}></i>
-                        </li>                        
+                        </li>
+                        <hr className='my-2' />
+                        <li className="py-2 px-4 hover:bg-[#9e8c8c] cursor-pointer flex flex-row items-center gap-3 font-bold rounded-md ">
+                            <i className='bi bi-journals font-bold text-xl'></i>
+                            <p>Learn</p>
+                        </li>   
+                         <li className="py-2 px-4 hover:bg-[#9e8c8c] cursor-pointer flex flex-row items-center gap-3 font-bold rounded-md ">
+                            <i className='bi bi-question-circle font-bold text-xl'></i>
+                            <p>Help center</p>
+                        </li>                   
                     </ul>
                     </div>
                 )}
