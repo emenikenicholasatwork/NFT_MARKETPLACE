@@ -9,7 +9,11 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@metamask/detect-provider": "^2.0.0",
     "axios": "^1.6.8",
+    "bootstrap": "^5.3.3",
+    "bootstrap-icons": "^1.11.3",
+    "ethers": "^6.11.1",
     "express": "^4.19.2",
     "mongoose": "^8.3.0",
     "mongoosh": "^0.0.7",
