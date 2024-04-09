@@ -2,7 +2,7 @@
 import 'bootstrap-icons/font/bootstrap-icons.css';
 import "./globals.css";
 import Header from "@/components/Header";
-import { GlobalProvider, useGlobal } from "@/global/GlobalContext";
+import { GlobalProvider } from "@/global/GlobalContext";
 
 
 

@@ -1,8 +1,8 @@
 import { useGlobal } from '@/global/GlobalContext';
-import React,{useState, useEffect} from 'react'
+import React,{useState} from 'react'
 
 const Header = () => {
-    const {setNightMode, isNightMode, setLogin} = useGlobal()
+    const {setNightMode, isNightMode, setLogin, isShowLogin} = useGlobal()
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
     const [isSearchFocus, setIsSearchFocus] = useState(false)
     const [inputValue, setInputValue] = useState('');
@@ -16,7 +16,7 @@ const Header = () => {
       };
 
   return (
-    <header className={`${isNightMode ? 'bg-[#252927]  text-white' : 'bg-white text-black'} w-full h-20 fixed flex justify-between items-center p-5 px-24 z-10`}>
+    <header className={`${isNightMode ? 'bg-[#252927]  text-white' : 'bg-white text-black'} w-full h-20 fixed flex justify-between items-center p-5 px-24 ${isShowLogin ? '' : 'z-10'}`}>
         <div className="flex flex-row items-center gap-1">
             <i className="bi bi-currency-bitcoin text-3xl bg-green-500 p-2 rounded-md"></i>
             <p className="text-2xl font-bold font-serif">Crypto~Art</p>

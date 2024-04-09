@@ -279,7 +279,7 @@ const TrendingAndTop = () => {
                                         ))}
                                     </div>
                                 )}
-                            <Image src={nft.image} className='rounded-lg z-10' width={70} height={20} alt="nft image"
+                            <Image src={nft.image} className='rounded-lg' width={70} height={20} alt="nft image"
                                         onMouseEnter={() => {setIsImageHovering(nft.id)
                                             clearTimeout(timeout)
                                         }}
@@ -345,7 +345,7 @@ const TrendingAndTop = () => {
                                         ))}
                                     </div>
                                 )}
-                            <Image src={nft.image} className='rounded-lg z-10' width={70} height={20} alt="nft image"
+                            <Image src={nft.image} className='rounded-lg' width={70} height={20} alt="nft image"
                                         onMouseEnter={() => {setIsImageHovering(nft.id)
                                             clearTimeout(timeout)
                                         }}

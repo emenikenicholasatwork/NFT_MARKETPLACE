@@ -7,7 +7,7 @@ import { useGlobal } from "@/global/GlobalContext";
 export default function Home() {
   const {isNightMode, isShowLogin} = useGlobal()
   return (
-    <main className={`min-h-screen px-16 pt-28 flex flex-col justify-betwee ${isNightMode ? 'bg-[#252927]  text-white' : 'bg-white text-black'} `}>
+    <main className={`min-h-screen px-16 pt-28  ${isNightMode ? 'bg-[#252927]  text-white' : 'bg-white text-black'} `}>
       {isShowLogin && <Login/>}
       <TrendingAndTop/>
     </main>
