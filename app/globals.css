@@ -19,3 +19,39 @@
 body {
 
 }
+
+
+@layer base {
+  /* Scrollbar styles */
+  /* Thin scrollbar */
+  ::-webkit-scrollbar {
+    width: 0px;
+    height: 0px;
+  }
+
+  /* Scrollbar thumb */
+  ::-webkit-scrollbar-thumb {
+    background-color: rgba(var(--foreground-rgb), 0.5); /* Color of the thumb */
+    border-radius: 3px;
+  }
+
+  /* Scrollbar track */
+  ::-webkit-scrollbar-track {
+    background-color: rgba(var(--background-start-rgb), 0.1); /* Color of the track */
+  }
+
+  /* Thin scrollbar Firefox */
+  .scrollbar-thin {
+    scrollbar-width: thin;
+  }
+
+  /* Scrollbar thumb color Firefox */
+  .scrollbar-thumb-gray-300 {
+    scrollbar-color: rgba(var(--foreground-rgb), 0.5) rgba(var(--background-start-rgb), 0.1);
+  }
+
+  /* Scrollbar track color Firefox */
+  .scrollbar-track-gray-100 {
+    scrollbar-color: rgba(var(--background-start-rgb), 0.1) rgba(var(--background-start-rgb), 0.1);
+  }
+}

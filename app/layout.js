@@ -3,6 +3,7 @@ import 'bootstrap-icons/font/bootstrap-icons.css';
 import "./globals.css";
 import Header from "@/components/Header";
 import { GlobalProvider } from "@/global/GlobalContext";
+import Footer from '@/components/Footer';
 
 
 
@@ -11,8 +12,9 @@ export default function RootLayout({ children }) {
     <html lang="en">
         <GlobalProvider>
           <body>
-                <Header/>
+              <Header/>
               <main>{children}</main>
+              <Footer/>
               </body>
       </GlobalProvider>
       </html>
