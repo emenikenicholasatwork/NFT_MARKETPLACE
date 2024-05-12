@@ -1,4 +1,4 @@
-import { useGlobal } from '@/global/GlobalContext';
+import { useGlobal } from '@/context/GlobalContext';
 import React,{useState} from 'react'
 
 const Header = () => {
