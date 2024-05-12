@@ -1,7 +1,5 @@
 const mongoose = require("mongoose");
 const bcrypt = require("bcryptjs");
-const { unique } = require("next/dist/build/utils");
-const { validate } = require("./nftModel");
 
 const userSchema = new mongoose.Schema({
   name: {

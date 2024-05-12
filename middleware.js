@@ -1,8 +1,8 @@
 const express = require("express");
 const cors = require("cors");
 
-const nftRouter = require("./app/api/routes/nftRouter");
-const userRouter = require("./app/api/routes/userRouter");
+const nftRouter = require("./routes/nftRouter");
+const userRouter = require("./routes/userRouter");
 const app = express();
 app.use(cors());
 app.use(""), cors();

@@ -1,5 +1,5 @@
 const express = require("express");
-const nftController = require("../controllers/nftController");
+const nftController = require("../app/api/controllers/nftController");
 const router = express.Router();
 
 router.route("/").get(nftController.getAllNfts).post(nftController.createNft);
