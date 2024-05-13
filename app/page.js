@@ -9,7 +9,7 @@ import NotableCollections from "@/components/NotableCollections";
 import SearchBar from "@/components/SearchBar";
 import TrendingAndTop from "@/components/TrendingAndTop";
 import TrendingInArtCollections from "@/components/TrendingInArtCollections";
-import { useGlobal } from "@/global/GlobalContext";
+import { useGlobal } from "@/context/GlobalContext";
 
 
 export default function Home() {

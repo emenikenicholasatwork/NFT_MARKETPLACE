@@ -1,5 +1,5 @@
 "use client"
-import { useGlobal } from '@/global/GlobalContext'
+import { useGlobal } from '@/context/GlobalContext'
 import React from 'react'
 
 const Login = () => {
