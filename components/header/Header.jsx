@@ -1,10 +1,10 @@
 import { useGlobal } from '@/context/GlobalContext';
 import React,{useState} from 'react'
+import styles from './header.css';
 
 const Header = () => {
     const {setNightMode, isNightMode, isLoggedIn, cartlenght ,changeSearchState , setLogin, isShowLogin, setShowCart} = useGlobal()
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-    const [isSearchFocus, setIsSearchFocus] = useState(false)
     const [inputValue, setInputValue] = useState('');
     let timeout
     const handleInputChange = (e) => {
@@ -16,26 +16,26 @@ const Header = () => {
       };
 
   return (
-    <header className={`${isNightMode ? 'bg-[#252927]  text-white' : 'bg-white text-black'} w-full h-20 fixed flex justify-between items-center p-5 ${isShowLogin ? '' : 'z-10'}`}>
-        <div className="flex flex-row items-center gap-1">
-            <i className="bi bi-currency-bitcoin text-3xl bg-green-500 p-2 rounded-md"></i>
-            <p className="text-2xl font-bold font-serif hidden md:block">Crypto~Art</p>
+    <header className="">
+        <div className="logo_div">
+            <i className="bi bi-currency-bitcoin"></i>
+            <p>Crypto~Art</p>
         </div>
-        <div className={`${isSearchFocus && 'border-2 border-white'} lg:flex flex-row  items-center hidden justify-center bg-[#9e8c8c25] duration-200 hover:bg-[#9e8c8c75] p-2 w-96 overflow-hidden rounded-md`}>
+        <div className='search_div'>
             <i className="bi bi-search"></i>
-            <input className="outline-none p-2 bg-transparent w-80" onChange={handleInputChange} value={inputValue} type="text" onFocus={()=>setIsSearchFocus(true)} onBlur={() => setIsSearchFocus(false)} placeholder="Search"/>
+            <input onChange={handleInputChange} value={inputValue} type="text" placeholder="Search"/>
             {inputValue ? 
-            <i className=" rounded-md bg-[#cfc3c322] text-lg px-2 shadow-lg cursor-pointer bi bi-x" onClick={clearInput}></i>
+            <i className="search_input_icon_1 bi bi-x" onClick={clearInput}></i>
             :
-            <i className=" rounded-md bg-[#cfc3c322] text-lg px-2 shadow-lg">/</i>
+            <i className="search_input_icon_2">/</i>
             }
         </div>
-        <div className="flex flex-row items-center gap-2">
-            <div className="flex flex-row p-2 px-3 gap-1 bg-[#9e8c8c25] duration-200 hover:bg-[#9e8c8c75] rounded-md font-bold cursor-pointer" onClick={setLogin}>
+        <div className="login_menu_div">
+            <div className="login_div" onClick={setLogin}>
                 <i className="bi bi-wallet text-lg"></i>
                 <p className="text-lg">Login</p>
             </div>
-            <div className="p-2 bg-[#9e8c8c25] duration-200 hover:bg-[#9e8c8c75] rounded-md px-3 cursor-pointer relative hidden lg:flex focus:outline-none"
+            <div className="user_dropdown_div"
             onMouseEnter={() => {
                 clearTimeout(timeout)
                 setIsDropdownOpen(true)
@@ -48,7 +48,7 @@ const Header = () => {
             }
             }
             >
-                <i className="bi bi-person-circle text-lg"></i>
+                <i className="bi bi-person-circle"></i>
             </div>
             {isDropdownOpen && (
                     <div className={`absolute top-16 right-3 mt-2 w-60 p-3 rounded shadow-2xl transition-all duration-300 delay-100 ${isNightMode ? 'bg-black' : 'bg-white'} `} onMouseEnter={()=>clearTimeout(timeout)} onMouseLeave={()=>{timeout = setTimeout(() => {

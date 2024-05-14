@@ -1,7 +1,7 @@
 "use client"
 import 'bootstrap-icons/font/bootstrap-icons.css';
 import "./globals.css";
-import Header from "@/components/Header";
+import Header from "@/components/header/Header";
 import { GlobalProvider } from "@/context/GlobalContext";
 import Footer from '@/components/Footer';
 
