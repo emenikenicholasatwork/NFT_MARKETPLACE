@@ -78,54 +78,132 @@ header .night_mode {
   padding-right: 8px;
   box-shadow: 5px 5px 20px rgb(0, 0, 0, 0.3);
 }
-.login_menu_div{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    gap: 8px;
+.login_menu_div {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 8px;
 }
-.login_div{
-    display: flex;
-    flex-direction: row;
-    padding: 8px;
-    padding-left: 12px;
-    padding-right: 12px;
-    gap: 4px;
-    background-color: #9e8c8c25;
-    transition-duration: 200ms;
-    border-radius: 6px;
-    font-weight: 700;
-    cursor: pointer;
+.login_div {
+  display: flex;
+  flex-direction: row;
+  padding: 8px;
+  padding-left: 12px;
+  padding-right: 12px;
+  gap: 4px;
+  background-color: #9e8c8c25;
+  transition-duration: 200ms;
+  border-radius: 6px;
+  font-weight: 700;
+  cursor: pointer;
 }
-.login_div:hover{
-    background-color: #9e8c8c75;
+.login_div:hover {
+  background-color: #9e8c8c75;
 }
-.user_dropdown_div{
-    padding: 8px;
-    background-color: #9e8c8c25;
-    transition-duration: 200ms;
-    border-radius: 6px;
-    padding-left: 12px;
-    padding-right: 12px;
-    cursor: pointer;
-    position: relative;
-    display: none;
+.user_dropdown_div {
+  padding: 8px;
+  background-color: #9e8c8c25;
+  transition-duration: 200ms;
+  border-radius: 6px;
+  padding-left: 12px;
+  padding-right: 12px;
+  cursor: pointer;
+  position: relative;
+  display: none;
 }
-.user_dropdown_div:focus{
-    outline: none;
+.user_dropdown_div:focus {
+  outline: none;
 }
-.user_dropdown_div:hover{
-    background-color: #9e8c8c75;
+.user_dropdown_div:hover {
+  background-color: #9e8c8c75;
 }
-.user_dropdown_div i{
-    font-size: 18px;
-    line-height: 28px;
+.user_dropdown_div i {
+  font-size: 18px;
+  line-height: 28px;
 }
-
-
-
-
-
+.user_info_dropdown {
+  position: absolute;
+  top: 45px;
+  right: 0px;
+  margin-top: 8px;
+  width: 240px;
+  padding: 12px;
+  border-radius: 4px;
+  box-shadow: 5px 5px 20px rgb(0, 0, 0, 0.5);
+  display: none;
+}
+.user_dropdown_div:hover .user_info_dropdown {
+  display: block;
+}
+.user_info_dropdown li {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 16px;
+  padding-right: 16px;
+  cursor: pointer;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 12px;
+  font-weight: 700;
+  border-radius: 6px;
+}
+.user_info_dropdown li:hover {
+  background-color: #9e8c8c;
+}
+.user_info_dropdown li i {
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 28px;
+}
+.shopping_cart_div {
+  padding: 8px;
+  display: flex;
+  padding-left: 12px;
+  padding-right: 12px;
+  position: relative;
+}
+.shopping_cart_div i{
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 28px;
+}
+.style_share:hover {
+  background-color: #9e8c8c75;
+}
+.style_share{
+  background-color: #9e8c8c25;
+  transition-duration: 200ms;
+  border-radius: 6px;
+  cursor: pointer;
+}
+.style_share i{
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 28px;
+}
+.shopping_cart_div p{
+  position: absolute;
+  background-color: blue;
+  font-weight: 700;
+  padding: 8px;
+  border-radius: 9999px;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  font-size: 12px;
+  line-height: 16px;
+  top: 0;
+  right: 0;
+  margin: 0;
+  height: 4px;
+  color: white;
+}
+.search,.menu{
+  padding: 8px;
+  padding-left: 12px;
+  padding-right: 12px;
+}
 
 @media (min-width: 768px) {
   .logo_div p {
@@ -136,7 +214,10 @@ header .night_mode {
   .search_div {
     display: flex;
   }
-  .user_dropdown_div{
+  .user_dropdown_div {
     display: flex;
+  }
+  .search,.menu{
+    display: none;
   }
 }
