@@ -10,7 +10,7 @@ header {
   align-items: center;
   z-index: 2;
 }
-header .night_mode {
+header.night_mode {
   background: black;
   color: white;
 }

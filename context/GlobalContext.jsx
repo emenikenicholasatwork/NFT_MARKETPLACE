@@ -11,13 +11,13 @@ export function GlobalProvider({children}){
     const [isShowCart, setIsShowCart] = useState(false)
     const [isSearchBar, setIsSearchBar] = useState(false)
     const [isLoggedIn, setIsLoggedIn] = useState(false)
-    const [cartlenght, setCartLenght] = useState(0)
+    const [cartLength, setCartLength] = useState(0)
 
     const setNightMode =()=>{
         isNightMode ? setIsNightMode(false) : setIsNightMode(true)
     }
-    const changeCartLenght =(length)=>{
-        setCartLenght(length)
+    const changeCartLength =(length)=>{
+        setCartLength(length)
     }
     const setLogin =()=>{
         isShowLogin ? setIsShowLogin(false) : setIsShowLogin(true)
@@ -39,8 +39,8 @@ export function GlobalProvider({children}){
             isSearchBar,
             changeSearchState,
             isLoggedIn,
-            cartlenght,
-            changeCartLenght
+            cartLength,
+            changeCartLength
         }}>{children}</GlobalContext.Provider>
     )
 }

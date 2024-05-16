@@ -7,7 +7,7 @@ const Header = () => {
     setNightMode,
     isNightMode,
     isLoggedIn,
-    cartlenght,
+    cartLength,
     changeSearchState,
     setLogin,
     isShowLogin,
@@ -24,7 +24,7 @@ const Header = () => {
   };
 
   return (
-    <header className="">
+    <header className={`${isNightMode ? 'night_mode':''}`}>
       <div className="logo_div">
         <i className="bi bi-currency-bitcoin"></i>
         <p>Crypto~Art</p>
@@ -55,7 +55,7 @@ const Header = () => {
               </li>
               <li onClick={() => (isLoggedIn ? "" : setLogin())}>
                 <i className="bi bi-eye"></i>
-                <p>Watchlist</p>
+                <p>WatchList</p>
               </li>
               <hr className="my-2" />
               <li >
@@ -83,7 +83,7 @@ const Header = () => {
           </div>
         </div>
         <div className="shopping_cart_div style_share" onClick={setShowCart}>
-          <p>{cartlenght}</p>
+          <p>{cartLength}</p>
           <i className="bi bi-cart3"></i>
         </div>
         <div className="search style_share" onClick={changeSearchState}>

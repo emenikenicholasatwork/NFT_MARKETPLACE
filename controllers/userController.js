@@ -1,5 +1,5 @@
 const jwt = require("jsonwebtoken");
-const User = require("@/models/userModel");
+const User = require("../models/userModel");
 
 const signToken = (id) => {
   return jwt.sign({ id }, process.env.JWT_SECRET, {
@@ -42,7 +42,11 @@ exports.signUp = async (req, res, next) => {
 };
 
 exports.login = async (req, res, next) => {
-  const { email, password } = req.body;
+  console.log(req.body);
+  if (req.body == undefined) {
+    res.send("body is undefined").status(200);
+  }
+  // const { email, password } = req.body;
 
   // 1) check if email exist
   if (!email) {

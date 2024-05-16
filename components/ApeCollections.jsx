@@ -63,11 +63,11 @@ const ApeCollections = () => {
     ]
     const firstSixNfts = nfts.slice(0, 6)
   return (
-    <div className=' flex flex-col min-h-fit py-5 px-5 lg:px-20 gap-3'>
+    <div className=' flex flex-col min-h-fit py-5 px-5 lg:px-20 gap-3 w-full'>
         <div className='flex flex-col justify-between '>
             <p className='font-bold text-lg'>Ape Collections</p>
         </div>
-        <div className='flex gap-3 flex-row items-center overflow-x-auto p-3'>
+        <div className='flex gap-3 flex-row items-center overflow-x-auto p-3 w-full'>
             {
                 firstSixNfts.map(nft=>(
                 <div key={nft.id} className={`rounded-lg overflow-hidden hover:-translate-y-1 min-w-fit cursor-pointer duration-200 shadow-md hover:shadow-2xl ${isNightMode ? 'bg-[#9e8c8c15]' : ''} `}>

@@ -4,7 +4,7 @@ import Image from 'next/image'
 import React from 'react'
 
 const Cart = () => {
-    const {setShowCart, isShowCart,setLogin, changeCartLenght , isLoggedIn} = useGlobal()
+    const {setShowCart, isShowCart,setLogin, changeCartLength , isLoggedIn} = useGlobal()
     const cartItems = [
         {
             id: 1,
@@ -110,7 +110,7 @@ const Cart = () => {
             volume: 2778                                          
         }
     ]
-    changeCartLenght(cartItems.length)
+    changeCartLength(cartItems.length)
   return (
     <div className={`bg-blurBackground text-black fixed w-full h-full top-0 z-10 justify-end flex`}>
         <div className={`${isShowCart ? 'w-80' : 'w-0'} transition-all duration-200 ease-in-out h-full bg-white rounded-t-2xl mt-5 flex flex-col`}>
