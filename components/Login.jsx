@@ -1,16 +1,25 @@
 "use client"
 import { useGlobal } from '@/context/GlobalContext'
-import React from 'react'
+import React, { useState } from 'react'
+const {detectEthereumProvider} = require('@metamask/detect-provider')
 
 const Login = () => {
     const {isNightMode, setLogin} = useGlobal()
-    const connect_wallet= async (account)=>{
-        try{
-            let provider;
-           
-        }catch(error){
-            console.log('Error connecting to wallet: ', error.message)
+    const [activeBtn, setActiveBtn] = useState(1)
+    const providerArray =[
+        {
+            provider: images.provider1,
+            name: "Metamask"
+        },{
+            provider: images.provider2,
+            name: "Metamask"
+        },{
+            provider: images.provider3,
+            name: "Metamask"
         }
+    ]
+    const connect_wallet = async()=>{
+
     }
   return (
     <main className='fixed z-20 top-0 right-0 w-full h-full flex items-center justify-center bg-blurBackground font-bold'>
@@ -22,19 +31,17 @@ const Login = () => {
             </div>
             <div className='w-full flex flex-col items-center mt-10'>
                 <ul className='bg-[#938c8c88] w-[380px] overflow-hidden flex flex-col rounded-lg shadow-xl'>
-                    <li className='flex flex-row items-center p-3 gap-3 cursor-pointer hover:bg-[#9e8c8c75]' onClick={()=>{
-                        connect_wallet('metamask')
-                        }}>
+                    <li className='flex flex-row items-center p-3 gap-3 cursor-pointer hover:bg-[#9e8c8c75]' onClick={connect_metamask}>
                         <img src="/icons/metamask.svg" height={20} width={30} alt="MetaMask Icon" />
                         <p>MetaMask</p>
                     </li>
                     <hr className='w-[380px]'/>
-                    <li className='flex flex-row items-center p-3 gap-3 cursor-pointer hover:bg-[#9e8c8c75]' onClick={connect_wallet('')}>
+                    <li className='flex flex-row items-center p-3 gap-3 cursor-pointer hover:bg-[#9e8c8c75]' onClick={connect_phantom}>
                         <img src="/icons/Phantom-Icon_App.svg" height={20} width={30} alt="Phantom Icon" />
                         <p>Phantom</p>
                     </li>
                     <hr className='w-[380px]'/>
-                    <li className='flex flex-row items-center p-3 gap-3 cursor-pointer hover:bg-[#9e8c8c75]' onClick={connect_wallet('')}>
+                    <li className='flex flex-row items-center p-3 gap-3 cursor-pointer hover:bg-[#9e8c8c75]' onClick={connect_coinbase}>
                         <img src="/icons/coinbase.svg" height={20} width={30} alt="Phantom Icon" />
                         <p>Coinbase Wallet</p>
                     </li>

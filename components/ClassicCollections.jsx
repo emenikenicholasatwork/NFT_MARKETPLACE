@@ -9,59 +9,94 @@ const ClassicCollections = () => {
             id: 1,
             floor: '0.11',
             name: 'Crypto Alien',
-            image: '/images/image1.jpg',
+            image: '/images/nft/classic_collection/classic1.jpeg',
             volume: 2778                               
         },{
             id: 2,
             floor: '0.11',
             name: 'Crypto Alien',
-            image: '/images/image1.jpg',
+            image: '/images/nft/classic_collection/classic2.jpeg',
             volume: 2778                                 
         },{
             id: 3,
             floor: '0.11',
             name: 'Crypto Alien',
-            image: '/images/image1.jpg',
+            image: '/images/nft/classic_collection/classic3.jpeg',
             volume: 2778                                          
         },{
             id: 4,
             floor: '0.11',
             name: 'Crypto Alien',
-            image: '/images/image1.jpg',
+            image: '/images/nft/classic_collection/classic4.jpeg',
             volume: 2778                                          
         },{
             id: 5,
             floor: '0.11',
             name: 'Crypto Alien',
-            image: '/images/image1.jpg',
+            image: '/images/nft/classic_collection/classic5.jpeg',
             volume: 2778                                          
         },{
             id: 6,
             floor: '0.11',
             name: 'Crypto Alien',
-            image: '/images/image1.jpg',
+            image: '/images/nft/classic_collection/classic6.jpeg',
             volume: 2778                                          
         },{
             id: 7,
             floor: '0.11',
             name: 'Crypto Alien',
-            image: '/images/image1.jpg',
+            image: '/images/nft/classic_collection/classic7.jpeg',
             volume: 2778                     
         },{
             id: 8,
             floor: '0.11',
             name: 'Crypto Alien',
-            image: '/images/image1.jpg',
+            image: '/images/nft/classic_collection/classic8.jpeg',
             volume: 2778                                          
         },{
             id: 9,
             floor: '0.11',
             name: 'Crypto Alien',
-            image: '/images/image1.jpg',
+            image: '/images/nft/classic_collection/classic9.jpeg',
+            volume: 2778                                          
+        },{
+            id: 10,
+            floor: '0.11',
+            name: 'Crypto Alien',
+            image: '/images/nft/classic_collection/classic10.jpeg',
+            volume: 2778                                          
+        },{
+            id: 11,
+            floor: '0.11',
+            name: 'Crypto Alien',
+            image: '/images/nft/classic_collection/classic11.jpeg',
+            volume: 2778                                          
+        },{
+            id: 12,
+            floor: '0.11',
+            name: 'Crypto Alien',
+            image: '/images/nft/classic_collection/classic12.jpeg',
+            volume: 2778                                          
+        },{
+            id: 13,
+            floor: '0.11',
+            name: 'Crypto Alien',
+            image: '/images/nft/classic_collection/classic13.jpeg',
+            volume: 2778                                          
+        },{
+            id: 14,
+            floor: '0.11',
+            name: 'Crypto Alien',
+            image: '/images/nft/classic_collection/classic14.jpeg',
+            volume: 2778                                          
+        },{
+            id: 15,
+            floor: '0.11',
+            name: 'Crypto Alien',
+            image: '/images/nft/classic_collection/classic15.jpeg',
             volume: 2778                                          
         },
     ]
-    const firstSixNfts = nfts.slice(0, 6)
   return (
     <div className=' flex flex-col min-h-fit py-5 px-5 lg:px-20 gap-3'>
         <div className='flex flex-col justify-between '>
@@ -69,9 +104,9 @@ const ClassicCollections = () => {
         </div>
         <div className='flex gap-3 flex-row items-center overflow-x-auto p-3'>
             {
-                firstSixNfts.map(nft=>(
+                nfts.map(nft=>(
                 <div key={nft.id} className={`rounded-lg overflow-hidden hover:-translate-y-1 min-w-fit cursor-pointer duration-200 shadow-md hover:shadow-2xl ${isNightMode ? 'bg-[#9e8c8c15]' : ''} `}>
-                    <Image src={nft.image} className='w-[200px] h-[200px]' height={90} width={50}/>
+                    <Image src={nft.image} className='w-[200px] h-[200px]' height={500} width={500}/>
                     <div className='items-center flex flex-col'>
                         <p className='p-3 text-sm'>{nft.name}</p>
                         <div className='flex w-full flex-row justify-between p-3'>

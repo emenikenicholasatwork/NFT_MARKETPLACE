@@ -53,7 +53,7 @@ const Dash = () => {
   return (
     <div className=' my-8 gap-8 flex flex-col px-2 lg:px-5'>
         <div className='flex flex-col justify-between '>
-            <p className='font-bold text-lg'>Trending</p>
+            <p className='font-extrabold text-3xl'>Trending</p>
         </div>
         <div className='flex flex-row items-center gap-3 overflow-x-auto px-2 lg:px-5'>
             {
