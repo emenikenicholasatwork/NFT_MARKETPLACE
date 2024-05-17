@@ -32,40 +32,46 @@ const createSendToken = (user, statusCode, req, res) => {
 };
 
 exports.signUp = async (req, res, next) => {
-  const newUser = await User.create({
-    name: req.body.name,
-    email: req.body.email,
-    password: req.body.password,
-    passwordConfirm: req.body.passwordConfirm,
-  });
-  createSendToken(newUser, 201, req, res);
+  try{
+    const newUser = await User.create({
+      email: req.body.email
+    });
+    createSendToken(newUser, 201, req, res);
+  }catch(error){
+    console.log(`Error: ${error}`)
+  }
 };
 
 exports.login = async (req, res, next) => {
-  console.log(req.body);
-  if (req.body == undefined) {
-    res.send("body is undefined").status(200);
+  try{
+
+    console.log(req.body);
+    if (req.body == undefined) {
+      res.send("body is undefined").status(200);
+    }
+    const { email, password } = req.body;
+  
+    // 1) check if email exist
+    if (!email) {
+      res.status(400).json({
+        status: "fail",
+        message: "Account does not exits",
+      });
+    }
+  
+    // 2) check if details correct
+    const user = await User.findOne({ email }).select("+password");
+  
+    if (!user || !(await user.correctPassword(password, user.password))) {
+      res.status(401).json({
+        status: "fail",
+        message: "Incorrect details",
+      });
+    }
+  
+    // 3) if everything ok, return token
+    createSendToken(user, 200, req, res);
+  }catch(error){
+    console.log(`Error: ${error}`)
   }
-  // const { email, password } = req.body;
-
-  // 1) check if email exist
-  if (!email) {
-    res.status(400).json({
-      status: "fail",
-      message: "Account does not exits",
-    });
-  }
-
-  // 2) check if details correct
-  const user = await User.findOne({ email }).select("+password");
-
-  if (!user || !(await user.correctPassword(password, user.password))) {
-    res.status(401).json({
-      status: "fail",
-      message: "Incorrect details",
-    });
-  }
-
-  // 3) if everything ok, return token
-  createSendToken(user, 200, req, res);
 };
