@@ -5,22 +5,42 @@ const {detectEthereumProvider} = require('@metamask/detect-provider')
 
 const Login = () => {
     const {isNightMode, setLogin} = useGlobal()
-    const [activeBtn, setActiveBtn] = useState(1)
-    const providerArray =[
-        {
-            provider: images.provider1,
-            name: "Metamask"
-        },{
-            provider: images.provider2,
-            name: "Metamask"
-        },{
-            provider: images.provider3,
-            name: "Metamask"
-        }
-    ]
-    const connect_wallet = async()=>{
-
-    }
+    // const [activeBtn, setActiveBtn] = useState(1)
+    // const providerArray =[
+    //     {
+    //         provider: images.provider1,
+    //         name: "Metamask"
+    //     },{
+    //         provider: images.provider2,
+    //         name: "Metamask"
+    //     },{
+    //         provider: images.provider3,
+    //         name: "Metamask"
+    //     }
+    // ]
+    const connect_metamask = async()=>{
+        if(typeof window.ethereum !== 'undefined' && window.ethereum.isMetaMask){
+            console.log('metamask is installed')
+        }else {
+            console.log('MetaMask is not installed. Please install it from https://metamask.io/');
+          }
+        };
+      
+        const connect_coinbase = () => {
+          if (typeof window.ethereum !== 'undefined' && window.ethereum.isCoinbaseWallet) {
+            console.log('Coinbase Wallet is installed!');
+          } else {
+            console.log('Coinbase Wallet is not installed. Please install it from https://www.coinbase.com/wallet');
+          }
+        };
+      
+        const connect_phantom = () => {
+          if (typeof window.solana !== 'undefined' && window.solana.isPhantom) {
+            console.log('Phantom Wallet is installed!');
+          } else {
+            console.log('Phantom Wallet is not installed. Please install it from https://phantom.app/');
+          }
+        };
   return (
     <main className='fixed z-20 top-0 right-0 w-full h-full flex items-center justify-center bg-blurBackground font-bold'>
         <div className={`h-[550px] mb-32 w-[400px] ${isNightMode ? 'bg-black text-white' : 'bg-white text-black'} pt-10 rounded-lg shadow-md flex flex-col  relative px-2`}>

@@ -1,4 +1,4 @@
-header {
+#default_header {
   background: #e0f7fa;
   color: black;
   padding: 20px;
@@ -10,7 +10,7 @@ header {
   align-items: center;
   z-index: 2;
 }
-header.night_mode {
+#default_header.night_mode {
   background: black;
   color: white;
 }

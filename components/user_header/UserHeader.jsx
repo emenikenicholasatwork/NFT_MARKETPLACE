@@ -1,8 +1,10 @@
+"use client"
 import { useGlobal } from "@/context/GlobalContext";
 import React, { useState } from "react";
-import styles from "./header.css";
+import styles from "./userHeader.css";
+import Image from "next/image";
 
-const Header = () => {
+const UserHeader = () => {
   const {
     setNightMode,
     isNightMode,
@@ -44,7 +46,7 @@ const Header = () => {
           <p className="text-lg">Login</p>
         </div>
         <div className="user_dropdown_div">
-          <i className="bi bi-person-circle"></i>
+          <Image src={'/images/bg1.jpg'} width={500} height={500} className="w-10 h-10 rounded-xl"/>
           <div className={`user_info_dropdown ${
               isNightMode ? "bg-black" : "bg-white"
             } `}>
@@ -97,4 +99,4 @@ const Header = () => {
   );
 };
 
-export default Header;
+export default UserHeader;
