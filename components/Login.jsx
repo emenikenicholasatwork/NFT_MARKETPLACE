@@ -1,9 +1,13 @@
 "use client"
 import { useGlobal } from '@/context/GlobalContext'
 import React, { useState } from 'react'
+import { toast, ToastContainer } from 'react-toastify'
 const {detectEthereumProvider} = require('@metamask/detect-provider')
+import 'react-toastify/dist/ReactToastify.css'
 
 const Login = () => {
+  const [walletAddress, setWalletAddress] = useState(null)
+  const notify =(message) => toast(message);
     const {isNightMode, setLogin} = useGlobal()
     // const [activeBtn, setActiveBtn] = useState(1)
     // const providerArray =[
@@ -20,25 +24,24 @@ const Login = () => {
     // ]
     const connect_metamask = async()=>{
         if(typeof window.ethereum !== 'undefined' && window.ethereum.isMetaMask){
-            console.log('metamask is installed')
+          const accounts = await window.ethereum.request({method: 'eth_requestAccounts'})
+          setWalletAddress(accounts[0])
         }else {
-            console.log('MetaMask is not installed. Please install it from https://metamask.io/');
+            notify('MetaMask is not installed.');
           }
         };
       
         const connect_coinbase = () => {
           if (typeof window.ethereum !== 'undefined' && window.ethereum.isCoinbaseWallet) {
-            console.log('Coinbase Wallet is installed!');
           } else {
-            console.log('Coinbase Wallet is not installed. Please install it from https://www.coinbase.com/wallet');
+            notify('Coinbase Wallet is not installed.');
           }
         };
       
         const connect_phantom = () => {
           if (typeof window.solana !== 'undefined' && window.solana.isPhantom) {
-            console.log('Phantom Wallet is installed!');
           } else {
-            console.log('Phantom Wallet is not installed. Please install it from https://phantom.app/');
+            notify('Phantom Wallet is not installed.');
           }
         };
   return (
@@ -67,6 +70,7 @@ const Login = () => {
                     </li>
                 </ul>
             </div>
+            <ToastContainer/>
             <div className='w-full flex flex-row items-center justify-between px-4 gap-3 my-5'>
                 <hr className='w-full'/>
                 <p>OR</p>
