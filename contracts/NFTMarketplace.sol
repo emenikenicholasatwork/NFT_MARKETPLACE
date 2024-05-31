@@ -4,7 +4,6 @@ pragma solidity ^0.8.0;
 //internal import for nft openzipline
 import "@openzeppelin/contracts/token/ERC721/extensions/ERC721URIStorage.sol";
 import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
-import "hardhat/console.sol";
 
 library Counter {
 
@@ -30,11 +29,12 @@ library Counter {
     }
 }
 
-contract NFTMarketplace {
+contract NFTMarketplace is ERC721URIStorage{
     using Counter for Counter.Counter;
     address payable private owner;
+    address contractAddress;
     uint256 creationPrice = 0.0015 ether;
-    Counter.Counter private _tokenIds;
+    Counter.Counter private _tokenIdCounter;
     Counter.Counter private _itemsSold;
 
     mapping(address => MarketItem) public idMarketItem;
@@ -47,8 +47,9 @@ contract NFTMarketplace {
         bool sold;
     }
 
-    constructor() {
+    constructor(address marketplaceAddress) ERC721("Metaverse Tokens","METT"){
         owner = payable(msg.sender);
+        contractAddress = marketplaceAddress;
     }
 
     modifier onlyOwner() {
@@ -83,8 +84,17 @@ contract NFTMarketplace {
         string memory tokenURI,
         uint256 price
     ) public payable returns (uint256) {
-        _tokenIds.increment();
-        uint256 newTokenId = _tokenIds.current();
-        // _safeMint(msg.sender, newTokenId);
+        _tokenIdCounter.increment();
+        uint256 newTokenId = _tokenIdCounter.current();
+        _mint(msg.sender, newTokenId);
+        _setTokenURI(newTokenId, tokenURI);
+        setApprovalForAll(contractAddress, true);
+        createMarketItem(newTokenId, price);
+        return newTokenId;
+    }
+
+    function createMarketItem(uint256 tokenId, uint256 price) private {
+        require(price > 0, "price must be atleast 1");
+        require(msg.value == creationPrice, "price must be equal to creation price");
     }
 }
