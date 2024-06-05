@@ -1,17 +1,22 @@
 import Image from "next/image"
 import styles from "./page.module.css"
 
-const page = () => {
+const page = ({params}) => {
   return (
     <main className={styles.container_div}>
         <div className={styles.details_div_left}>
-            <div>
+            <div className={styles.image_div}>
                 <Image className={styles.nft_item_image} src={'/images/notable1.jpg'} width={500} height={500}/>
             </div>
         </div>
         <div className={styles.details_div_right}>
-          <h3>Notable #330</h3>
-          <p>Owned by WisdomWaves</p>
+          <div>
+            <h3 className={styles.nft_name}>Notable #330</h3>
+            <p>Owned by <a href="#" className={styles.owner_name}>WisdomWaves</a></p>
+          </div>
+          <div>
+            <p>views <span></span></p>
+          </div>
           <div className={styles.best_offer_div_right}>
             <p>Best offer</p>
             <p>0.7501 WETH <span className={styles.price_in_dollar}>$2,867.26</span></p>
