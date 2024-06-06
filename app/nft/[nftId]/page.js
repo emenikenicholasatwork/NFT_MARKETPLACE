@@ -1,34 +1,78 @@
+"use client"
+import { useGlobal } from '@/context/GlobalContext'
 import Image from "next/image"
 import styles from "./page.module.css"
+import anime_collection from '../../../components/anime_nft/anime_nft.json';
+import trending_in_art_collection from '../../../components/trending_in_art_nft/trending_in_art_nft.json';
+import ape_collection from '../../../components/ape_nft/ape_nft.json';
+import classic_collection from '../../../components/classic_nft/classic_nft.json';
+import Link from 'next/link'
 
 const page = ({params}) => {
+  const {isNightMode} = useGlobal()
+  const id = params.nftId;
+  const allNfts = [...anime_collection, ...trending_in_art_collection, ...classic_collection, ...ape_collection];
+  const nft = allNfts.find(n => n.id.toString() === id);
+  const nfts = allNfts.filter(n => n.collection === nft.collection)
+  console.log(nft)
   return (
-    <main className={styles.container_div}>
-        <div className={styles.details_div_left}>
-            <div className={styles.image_div}>
-                <Image className={styles.nft_item_image} src={'/images/notable1.jpg'} width={500} height={500}/>
+    <main className={styles.main_container}>
+      <div className={styles.container_div}>
+          <div className={styles.details_div_left}>
+              <div className={styles.image_div}>
+                  <Image className={styles.nft_item_image} src={nft.image} width={500} height={500}/>
+              </div>
+          </div>
+          <div className={styles.details_div_right}>
+            <div>
+              <h3 className={styles.nft_name}>Notable #330</h3>
+              <p>Owned by <a href="#" className={styles.owner_name}>WisdomWaves</a></p>
             </div>
+            <div>
+              <p>views <span></span></p>
+            </div>
+            <div className={styles.best_offer_div_right}>
+              <p>Best offer</p>
+              <p>{nft.floor} WETH <span className={styles.price_in_dollar}>$2,867.26</span></p>
+              <div className={styles.offer_button_div}>
+                <button className={styles.make_offer_button}>Buy now</button>
+                <button className={styles.make_offer_button}>Add to cart</button>
+              </div>
+            </div>
+            <div className={styles.subject_description_div}>
+              <h2 className={styles.subject_description_title}>Subject Description</h2>
+              <p><span className={styles.by_title}>By </span> 
+  MissKaina <br />
+  A distinctive and vibrant collection representing the rise of the divine feminine. Power, Love, and Beauty portrayed through the creativity of fashion, photography, and NFT.</p>
+            </div>
+          </div>
+      </div>
+      <div className={styles.more_from_collection_container}>
+        <h2 className={styles.more_from_collection_title}>More from this collection</h2>
+        <hr />
+        <div className={styles.more_nft_container}>
+        {
+                nfts.map(nft=>(
+                    <Link href={`/nft/${nft.id}`} key={nft.id} className={`rounded-lg overflow-hidden hover:-translate-y-1 min-w-fit cursor-pointer duration-200 shadow-md hover:shadow-2xl ${isNightMode ? 'bg-[#9e8c8c15]' : ''} `}>
+                            <Image src={nft.image} className='w-[200px] h-[200px]' height={500} width={500}/>
+                            <div className='items-center flex flex-col'>
+                                <p className='p-3 text-sm'>{nft.name}</p>
+                                <div className='flex w-full flex-row justify-between p-3'>
+                                    <div>
+                                        <p className='font-light text-sm'>Floor</p>
+                                        <p className='text-sm'>{nft.floor} ETH</p>
+                                    </div>
+                                    <div>
+                                        <p className='font-light text-sm'>Total volume</p>
+                                        <p className='text-sm'>{nft.volume} ETH</p>
+                                    </div>
+                                </div>
+                            </div>
+                    </Link>
+                ))
+            }
         </div>
-        <div className={styles.details_div_right}>
-          <div>
-            <h3 className={styles.nft_name}>Notable #330</h3>
-            <p>Owned by <a href="#" className={styles.owner_name}>WisdomWaves</a></p>
-          </div>
-          <div>
-            <p>views <span></span></p>
-          </div>
-          <div className={styles.best_offer_div_right}>
-            <p>Best offer</p>
-            <p>0.7501 WETH <span className={styles.price_in_dollar}>$2,867.26</span></p>
-            <button className={styles.make_offer_button}>Make offer</button>
-          </div>
-          <div className={styles.subject_description_div}>
-            <h2 className={styles.subject_description_title}>Subject Description</h2>
-            <p><span className={styles.by_title}>By </span> 
-MissKaina <br />
-A distinctive and vibrant collection representing the rise of the divine feminine. Power, Love, and Beauty portrayed through the creativity of fashion, photography, and NFT.</p>
-          </div>
-        </div>
+      </div>
     </main>
   )
 }

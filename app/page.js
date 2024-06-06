@@ -1,16 +1,16 @@
 "use client"
-import ApeCollections from "@/components/ApeCollections";
+import ApeCollections from "@/components/ape_nft/ApeCollections";
 import Cart from "@/components/Cart";
-import ClassicCollections from "@/components/ClassicCollections";
+import ClassicCollections from "@/components/classic_nft/ClassicCollections";
 import Collections from "@/components/Collections";
 import Dash from "@/components/Dash";
 import DashDisplay from "@/components/dashDisplay/DashDisplay";
 import Login from "@/components/Login";
 import SearchBar from "@/components/SearchBar";
 import Top from "@/components/Top";
-import TrendingInArtCollections from "@/components/TrendingInArtCollections";
+import TrendingInArtCollections from "@/components/trending_in_art_nft/TrendingInArtCollections";
 import { useGlobal } from "@/context/GlobalContext";
-import AnimeCollection from "@/components/AnimeCollection";
+import AnimeCollection from "@/components/anime_nft/AnimeCollection";
 
 
 export default function Home() {

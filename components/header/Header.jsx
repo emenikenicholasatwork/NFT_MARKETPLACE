@@ -1,6 +1,7 @@
 import { useGlobal } from "@/context/GlobalContext";
 import React, { useState } from "react";
 import styles from "./header.css";
+import Link from "next/link";
 
 const Header = () => {
   const {
@@ -25,10 +26,12 @@ const Header = () => {
 
   return (
     <header className={`${isNightMode ? 'night_mode':''}`} id="default_header">
-      <div className="logo_div">
-        <i className="bi bi-currency-bitcoin"></i>
-        <p>Crypto~Art</p>
-      </div>
+      <Link href={'/'}>
+        <div className="logo_div">
+          <i className="bi bi-currency-bitcoin"></i>
+          <p>Crypto~Art</p>
+        </div>
+      </Link>
       <div className="search_div">
         <i className="bi bi-search"></i>
         <input onChange={handleInputChange} value={inputValue} type="text" placeholder="Search"/>
