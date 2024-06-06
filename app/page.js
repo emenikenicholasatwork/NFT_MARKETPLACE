@@ -1,6 +1,6 @@
 "use client"
 import ApeCollections from "@/components/ape_nft/ApeCollections";
-import Cart from "@/components/Cart";
+import Cart from "@/components/cart/Cart";
 import ClassicCollections from "@/components/classic_nft/ClassicCollections";
 import Collections from "@/components/Collections";
 import Dash from "@/components/Dash";
