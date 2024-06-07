@@ -7,12 +7,8 @@
     justify-content: space-between;
     padding-top: 100px;
     height: 100vh;
+    gap: 10px;
     padding-bottom: 50px;
-}
-.image_div{
-    display: flex;
-    justify-content: center;
-    width: 100%;
 }
 .owner_name{
     color: blue;
@@ -22,9 +18,9 @@
 }
 .details_div_left{
     display: flex;
-    flex-direction: column;
+    justify-content: center;
     width: 100%;
-    align-content: center;
+    align-items: center;
 }
 .details_div_right{
     display: flex;
@@ -42,7 +38,7 @@
     gap: 5px;
 }
 .nft_item_image{
-    height: 800px;
+    height: 100%;
     width: 90%;
     border-radius: 20px;
     cursor: pointer;
@@ -87,11 +83,13 @@
     font-size: large;
 }
 .more_nft_container{
-    padding-top: 20px;
+    padding-top: 30px;
     display: flex;
     flex-wrap: wrap;
     gap: .5rem;
-    padding: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-bottom: 10px;
 }
 .collection_name{
     font-size: large;

@@ -4,6 +4,7 @@ import React, { useState } from 'react'
 import { toast, ToastContainer } from 'react-toastify'
 const {detectEthereumProvider} = require('@metamask/detect-provider')
 import 'react-toastify/dist/ReactToastify.css'
+import Web3 from 'web3'
 
 const Login = () => {
   const [walletAddress, setWalletAddress] = useState(null)
@@ -24,8 +25,10 @@ const Login = () => {
     // ]
     const connect_metamask = async()=>{
         if(typeof window.ethereum !== 'undefined' && window.ethereum.isMetaMask){
-          const accounts = await window.ethereum.request({method: 'eth_requestAccounts'})
-          setWalletAddress(accounts[0])
+          await window.ethereum.request({method: 'eth_requestAccounts'})
+          const web3 = new Web3(window.ethereum)
+          const accounts = await web3.eth.getAccounts();
+          console.log(accounts);
         }else {
             notify('MetaMask is not installed.');
           }
@@ -38,14 +41,21 @@ const Login = () => {
           }
         };
       
-        const connect_phantom = () => {
+        const connect_phantom = async () => {
           if (typeof window.solana !== 'undefined' && window.solana.isPhantom) {
+            try{
+              const sol = await window.solana.connect();
+              const account = sol.publicKey.toString();
+              console.log(account)
+            }catch(error){
+              console.error('User denied account access or there was an error:', error);
+            }
           } else {
             notify('Phantom Wallet is not installed.');
           }
         };
   return (
-    <main className='fixed z-20 top-0 right-0 w-full h-full flex items-center justify-center bg-blurBackground font-bold'>
+    <main className='fixed z-50 top-0 right-0 w-full h-full flex items-center justify-center bg-blurBackground font-bold'>
         <div className={`h-[550px] mb-32 w-[400px] ${isNightMode ? 'bg-black text-white' : 'bg-white text-black'} pt-10 rounded-lg shadow-md flex flex-col  relative px-2`}>
         <i className='bi bi-x-lg absolute right-7 top-7 text-lg font-extrabold cursor-pointer' onClick={setLogin}></i>
             <div className='flex flex-col items-center font-bold gap-2 mt-5'>

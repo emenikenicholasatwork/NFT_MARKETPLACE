@@ -1,7 +1,8 @@
 "use client"
 import { useGlobal } from "@/context/GlobalContext";
 import React, { useState } from "react";
-import styles from "./userHeader.css";
+import {MdWallet} from "react-icons/md"
+import styles from "./userHeader.module.css";
 import Image from "next/image";
 
 const UserHeader = () => {
@@ -41,9 +42,9 @@ const UserHeader = () => {
         )}
       </div>
       <div className="login_menu_div">
-        <div className="login_div" onClick={setLogin}>
-          <i className="bi bi-wallet text-lg"></i>
-          <p className="text-lg">Login</p>
+        <div className={styles.wallet_value_div}>
+          <MdWallet className={styles.wallet_icon}/>
+          <p>0 ETH</p>
         </div>
         <div className="user_dropdown_div">
           <Image src={'/images/bg1.jpg'} width={500} height={500} className="w-10 h-10 rounded-xl"/>

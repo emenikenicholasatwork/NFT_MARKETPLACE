@@ -4,7 +4,7 @@ const layout = ({ children }) => {
   return (
     <main className="min-h-full min-w-full">
       <UserHeader />
-      <main className="min-h-full min-w-full">{children}</main>
+      <main className="min-h-screen min-w-full">{children}</main>
     </main>
   );
 };

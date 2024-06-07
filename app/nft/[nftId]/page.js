@@ -7,9 +7,11 @@ import trending_in_art_collection from "../../../components/trending_in_art_nft/
 import ape_collection from "../../../components/ape_nft/ape_nft.json";
 import classic_collection from "../../../components/classic_nft/classic_nft.json";
 import Link from "next/link";
+import Cart from "@/components/cart/Cart";
+import Login from "@/components/Login";
 
 const page = ({ params }) => {
-  const { isNightMode } = useGlobal();
+  const { isNightMode, isShowCart, isShowLogin } = useGlobal();
   const id = params.nftId;
   const allNfts = [
     ...anime_collection,
@@ -19,19 +21,18 @@ const page = ({ params }) => {
   ];
   const nft = allNfts.find((n) => n.id.toString() === id);
   const nfts = allNfts.filter((n) => n.collection === nft.collection);
-  console.log(nft);
   return (
     <main className={styles.main_container}>
+      {isShowCart && <Cart/>}
+      {isShowLogin && <Login/>}
       <div className={styles.container_div}>
         <div className={styles.details_div_left}>
-          <div className={styles.image_div}>
-            <Image
-              className={styles.nft_item_image}
-              src={nft.image}
-              width={500}
-              height={500}
-            />
-          </div>
+          <Image
+            className={styles.nft_item_image}
+            src={nft.image}
+            width={500}
+            height={500}
+          />
         </div>
         <div className={styles.details_div_right}>
           <div>

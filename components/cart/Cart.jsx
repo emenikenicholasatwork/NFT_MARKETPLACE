@@ -112,7 +112,7 @@ const Cart = () => {
     ]
     changeCartLength(cartItems.length)
   return (
-    <div className={`bg-blurBackground text-black fixed w-full h-full top-0 z-10 justify-end flex`}>
+    <div className={`bg-blurBackground text-black fixed w-full h-full left-0 top-0 z-10 justify-end flex`}>
         <div className={`${isShowCart ? 'w-80' : 'w-0'} transition-all duration-200 ease-in-out h-full bg-white rounded-t-2xl mt-5 flex flex-col`}>
             <div className='flex flex-row justify-between p-5'>
                 <div className='flex flex-row font-bold gap-3'>
