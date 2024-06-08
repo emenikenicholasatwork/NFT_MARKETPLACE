@@ -15,7 +15,6 @@ const Header = () => {
     setShowCart,
   } = useGlobal();
   const [inputValue, setInputValue] = useState("");
-  let timeout;
   const handleInputChange = (e) => {
     setInputValue(e.target.value);
   };

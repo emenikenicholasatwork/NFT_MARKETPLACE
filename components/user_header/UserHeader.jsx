@@ -3,6 +3,7 @@ import { useGlobal } from "@/context/GlobalContext";
 import React, { useState } from "react";
 import {MdWallet} from "react-icons/md"
 import styles from "./userHeader.module.css";
+import {BiLogOut} from "react-icons/bi"
 import Image from "next/image";
 
 const UserHeader = () => {
@@ -17,7 +18,6 @@ const UserHeader = () => {
     setShowCart,
   } = useGlobal();
   const [inputValue, setInputValue] = useState("");
-  let timeout;
   const handleInputChange = (e) => {
     setInputValue(e.target.value);
   };
@@ -47,7 +47,7 @@ const UserHeader = () => {
           <p>0 ETH</p>
         </div>
         <div className="user_dropdown_div">
-          <Image src={'/images/bg1.jpg'} width={500} height={500} className="w-10 h-10 rounded-xl"/>
+          <Image className={styles.user_image} src={'/images/bg1.jpg'} width={500} height={500}/>
           <div className={`user_info_dropdown ${
               isNightMode ? "bg-black" : "bg-white"
             } `}>
@@ -81,6 +81,11 @@ const UserHeader = () => {
               <li>
                 <i className="bi bi-question-circle"></i>
                 <p>Help center</p>
+              </li>
+              <hr className="my-2"/>
+              <li>
+                <BiLogOut className=""/>
+                <p>Logout</p>
               </li>
             </ul>
           </div>

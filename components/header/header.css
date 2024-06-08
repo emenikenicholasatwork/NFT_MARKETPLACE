@@ -131,10 +131,13 @@
   padding: 12px;
   border-radius: 4px;
   box-shadow: 5px 5px 20px rgb(0, 0, 0, 0.5);
-  display: none;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.2s ease, visibility 0.2s ease;
 }
 .user_dropdown_div:hover .user_info_dropdown {
-  display: block;
+  opacity: 1;
+  visibility: visible;
 }
 .user_info_dropdown li {
   padding-top: 8px;
