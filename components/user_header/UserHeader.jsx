@@ -3,10 +3,17 @@ import { useGlobal } from "@/context/GlobalContext";
 import React, { useState } from "react";
 import {MdWallet} from "react-icons/md"
 import styles from "./userHeader.module.css";
+import { IoChevronDownOutline } from "react-icons/io5";
 import {BiLogOut} from "react-icons/bi"
 import Image from "next/image";
+import { FaInfinity } from "react-icons/fa6";
 
 const UserHeader = () => {
+  const [open_wallet_details, set_open_wallet_details] = useState(false)
+  const change_open_wallet_details_state =()=>{
+    set_open_wallet_details(!open_wallet_details)
+  }
+
   const {
     setNightMode,
     isNightMode,
@@ -21,10 +28,11 @@ const UserHeader = () => {
   const handleInputChange = (e) => {
     setInputValue(e.target.value);
   };
-
   const clearInput = () => {
     setInputValue("");
   };
+
+
 
   return (
     <header className={`${isNightMode ? 'night_mode':''}`} id="default_header">
@@ -42,9 +50,38 @@ const UserHeader = () => {
         )}
       </div>
       <div className="login_menu_div">
-        <div className={styles.wallet_value_div}>
+        <div className={styles.wallet_value_div} onClick={()=>set_open_wallet_details(true)}>
           <MdWallet className={styles.wallet_icon}/>
-          <p>0 ETH</p>
+          <p className="text-lg">0 ETH</p>
+          {
+            open_wallet_details && 
+            <div className={`${styles.wallet_info_div} ${
+              isNightMode ? "bg-black" : "bg-white"
+            } `}>
+            <div>
+              
+            <div className="flex flex-row justify-between">
+              <div className="flex flex-row items-center">
+                <img src="/icons/metamask.svg" className="" height={20} width={30} alt="MetaMask Icon" />
+                <p>0x43be...15ed</p>
+              </div>
+              <div className="flex flex-row items-center gap-2 text-lg">
+                <FaInfinity/>
+                <IoChevronDownOutline />
+              </div>
+            </div>
+            <div className="flex flex-row justify-between items-center">
+              <div>
+                <p className="">$0.00 USD</p>
+                <p className="">wallet balance</p>
+              </div>
+              <div className="bg-neutral-400 w-12 h-12 rounded-md hover:bg-neutral-500 duration-300 ease flex items-center justify-center">
+                <p className="text-white text-5xl font-thin">+</p>
+              </div>
+            </div>
+            </div>
+          </div>
+          }
         </div>
         <div className="user_dropdown_div">
           <Image className={styles.user_image} src={'/images/bg1.jpg'} width={500} height={500}/>
