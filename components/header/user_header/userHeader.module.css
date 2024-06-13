@@ -104,8 +104,8 @@
   font-weight: 700;
   cursor: pointer;
 }
-.wallet_value_div .plus_sign{
-  font-size: 50px ;
+.wallet_value_div .plus_sign {
+  font-size: 50px;
   color: white;
 }
 .wallet_value_div:hover {
@@ -197,7 +197,13 @@
   padding-left: 12px;
   padding-right: 12px;
 }
-.wallet_info_div{
+#bottom_nav.night_active {
+  color: white;
+}
+#bottom_nav.day_active {
+  color: black;
+}
+.wallet_info_div {
   position: absolute;
   top: 45px;
   right: 0px;

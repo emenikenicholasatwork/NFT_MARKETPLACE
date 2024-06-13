@@ -3,14 +3,18 @@ import { useGlobal } from "@/context/GlobalContext";
 import React, { useState } from "react";
 import { MdWallet } from "react-icons/md";
 import styles from "./userHeader.module.css";
-import { IoChevronDownOutline, IoSettingsOutline } from "react-icons/io5";
+import { IoSettingsOutline } from "react-icons/io5";
 import { BiLogOut } from "react-icons/bi";
 import Image from "next/image";
 import { IoMdSwap } from "react-icons/io";
 import { AiOutlineDollar } from "react-icons/ai";
-import { FaInfinity, FaTableList } from "react-icons/fa6";
+import { FaTableList } from "react-icons/fa6";
+import Swap from "./user_header_quick_component/swap/Swap";
+import Crypto from "./user_header_quick_component/crypto/Crypto";
+import Transactions from "./user_header_quick_component/transactions/Transactions";
 
 const UserHeader = () => {
+  const [activeTab, setActiveTab] = useState("crypto");
   const [open_wallet_details, set_open_wallet_details] = useState(false);
   const change_open_wallet_details_state = () => {
     set_open_wallet_details(!open_wallet_details);
@@ -70,51 +74,9 @@ const UserHeader = () => {
                 isNightMode ? "bg-black" : "bg-white"
               } `}
             >
-              <div className="p-3 gap-5 flex flex-col">
-                <div className="flex flex-row justify-between">
-                  <div className="flex flex-row gap-1 items-center hover:bg-gray-400 p-2 rounded-md duration-100 hover:text-white">
-                    <img
-                      src="/icons/metamask.svg"
-                      className=""
-                      height={20}
-                      width={30}
-                      alt="MetaMask Icon"
-                    />
-                    <p>0x43be...15ed</p>
-                  </div>
-                  <div className="flex flex-row items-center gap-2 text-lg hover:bg-gray-500 rounded-md p-2 hover:text-white duration-200">
-                    <FaInfinity />
-                    <IoChevronDownOutline />
-                  </div>
-                </div>
-                <div className="flex flex-row justify-between items-center">
-                  <div>
-                    <p className="text-3xl">$0.00 USD</p>
-                    <p className="">wallet balance</p>
-                  </div>
-                  <div className="bg-neutral-400 w-12 h-12 rounded-md hover:bg-neutral-500 duration-300 ease flex items-center justify-center">
-                    <p className="text-white text-5xl font-thin">+</p>
-                  </div>
-                </div>
-              </div>
-              <div
-                className={`${
-                  isNightMode ? "bg[#192f37]" : "bg-gray-200"
-                } h-72 pt-5`}
-              >
-                <div className="flex flex-col justify-center items-center gap-2">
-                  <Image
-                    className="w-24 h-24"
-                    src={"/icons/wallet.png"}
-                    height={500}
-                    width={500}
-                  />
-                  <p className="w-36">Fund your wallet to purchase NFTs</p>
-                  <button className="bg-blue-500 text-white p-3 rounded-md">
-                    Add funds with card
-                  </button>
-                </div>
-              </div>
+              {activeTab === "crypto" && <Crypto />}
+              {activeTab === "swap" && <Swap />}
+              {activeTab === "transactions" && <Transactions />}
               <div
                 className={`flex flex-col ${
                   isNightMode ? "dark:bg-gray-900" : "bg-gray-200"
@@ -123,6 +85,7 @@ const UserHeader = () => {
                 <hr className="bg-white w-full border-white" />
                 <div className="flex flex-row justify-between p-3">
                   <div
+                    onClick={() => setActiveTab("crypto")}
                     id="bottom_nav"
                     className={`flex active flex-col items-center ${
                       isNightMode ? "text-gray-400" : "text-[#66696b]"
@@ -132,6 +95,7 @@ const UserHeader = () => {
                     <p>Crypto</p>
                   </div>
                   <div
+                    onClick={() => setActiveTab("swap")}
                     id="bottom_nav"
                     className={`flex flex-col items-center ${
                       isNightMode ? "text-gray-400" : "text-[#66696b]"
@@ -141,6 +105,7 @@ const UserHeader = () => {
                     <p>Swap</p>
                   </div>
                   <div
+                    onClick={() => setActiveTab("transactions")}
                     id="bottom_nav"
                     className={`flex flex-col items-center ${
                       isNightMode

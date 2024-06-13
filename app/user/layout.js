@@ -1,4 +1,4 @@
-import UserHeader from "@/components/user_header/UserHeader";
+import UserHeader from "@/components/header/user_header/UserHeader";
 
 const layout = ({ children }) => {
   return (
