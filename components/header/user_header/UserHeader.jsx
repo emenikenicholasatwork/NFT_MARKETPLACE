@@ -12,6 +12,7 @@ import { FaTableList } from "react-icons/fa6";
 import Swap from "./user_header_quick_component/swap/Swap";
 import Crypto from "./user_header_quick_component/crypto/Crypto";
 import Transactions from "./user_header_quick_component/transactions/Transactions";
+import Setting from "./user_header_quick_component/settings/Setting";
 
 const UserHeader = () => {
   const [activeTab, setActiveTab] = useState("crypto");
@@ -77,6 +78,7 @@ const UserHeader = () => {
               {activeTab === "crypto" && <Crypto />}
               {activeTab === "swap" && <Swap />}
               {activeTab === "transactions" && <Transactions />}
+              {activeTab === "settings" && <Setting />}
               <div
                 className={`flex flex-col ${
                   isNightMode ? "dark:bg-gray-900" : "bg-gray-200"
@@ -117,6 +119,7 @@ const UserHeader = () => {
                     <p>Transactions</p>
                   </div>
                   <div
+                    onClick={() => setActiveTab("settings")}
                     id="bottom_nav"
                     className={`flex flex-col items-center ${
                       isNightMode ? "text-gray-400" : "text-[#66696b]"

@@ -20,8 +20,8 @@ const Transactions = () => {
           <IoChevronDownOutline />
         </div>
       </div>
-      <div className="flex flex-col">
-        <h1>Transactions</h1>
+      <div className="flex flex-col h-full px-2 bg-gray-200 rounded-t-3xl pt-3">
+        <h1 className="text-2xl">Transactions</h1>
         <div className=""></div>
       </div>
     </div>
