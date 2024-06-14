@@ -8,10 +8,9 @@ const Header = () => {
     setNightMode,
     isNightMode,
     isLoggedIn,
-    cartLength,
     changeSearchState,
+    cartItems,
     setLogin,
-    isShowLogin,
     setShowCart,
   } = useGlobal();
   const [inputValue, setInputValue] = useState("");
@@ -24,8 +23,11 @@ const Header = () => {
   };
 
   return (
-    <header className={`${isNightMode ? 'night_mode':''}`} id="default_header">
-      <Link href={'/'}>
+    <header
+      className={`${isNightMode ? "night_mode" : ""}`}
+      id="default_header"
+    >
+      <Link href={"/"}>
         <div className="logo_div">
           <i className="bi bi-currency-bitcoin"></i>
           <p>Crypto~Art</p>
@@ -33,7 +35,12 @@ const Header = () => {
       </Link>
       <div className="search_div">
         <i className="bi bi-search"></i>
-        <input onChange={handleInputChange} value={inputValue} type="text" placeholder="Search"/>
+        <input
+          onChange={handleInputChange}
+          value={inputValue}
+          type="text"
+          placeholder="Search"
+        />
         {inputValue ? (
           <i className="search_input_icon_1 bi bi-x" onClick={clearInput}></i>
         ) : (
@@ -47,9 +54,11 @@ const Header = () => {
         </div>
         <div className="user_dropdown_div">
           <i className="bi bi-person-circle"></i>
-          <div className={`user_info_dropdown ${
+          <div
+            className={`user_info_dropdown ${
               isNightMode ? "bg-black" : "bg-white"
-            } `}>
+            } `}
+          >
             <ul>
               <li onClick={() => (isLoggedIn ? "" : setLogin())}>
                 <i className="bi bi-person"></i>
@@ -60,20 +69,22 @@ const Header = () => {
                 <p>WatchList</p>
               </li>
               <hr className="my-2" />
-              <li >
+              <li>
                 <i className="bi bi-gear"></i>
                 <p>Settings</p>
               </li>
               <li>
                 <i className="bi bi-moon"></i>
                 <p>Night Mode</p>
-                <i className={`bi ${
+                <i
+                  className={`bi ${
                     isNightMode ? "bi-toggle-on" : "bi-toggle-off"
                   } font-bold text-3xl text-blue-500 ms-3 hover:text-blue-700`}
-                  onClick={() => setNightMode()}></i>
+                  onClick={() => setNightMode()}
+                ></i>
               </li>
               <hr className="my-2" />
-              <li >
+              <li>
                 <i className="bi bi-journals"></i>
                 <p>Learn</p>
               </li>
@@ -85,13 +96,16 @@ const Header = () => {
           </div>
         </div>
         <div className="shopping_cart_div style_share" onClick={setShowCart}>
-          <p>{cartLength}</p>
+          <p>{cartItems.length}</p>
           <i className="bi bi-cart3"></i>
         </div>
         <div className="search style_share" onClick={changeSearchState}>
           <i className="bi bi-search"></i>
         </div>
-        <div className="menu style_share" onClick={() => setIsDropdownOpen(true)}>
+        <div
+          className="menu style_share"
+          onClick={() => setIsDropdownOpen(true)}
+        >
           <i className="bi bi-list"></i>
         </div>
       </div>

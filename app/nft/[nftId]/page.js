@@ -11,7 +11,7 @@ import Cart from "@/components/cart/Cart";
 import Login from "@/components/Login";
 
 const page = ({ params }) => {
-  const { isNightMode, isShowCart, isShowLogin } = useGlobal();
+  const { isNightMode, isShowCart, isShowLogin, addToCartItems } = useGlobal();
   const id = params.nftId;
   const allNfts = [
     ...anime_collection,
@@ -23,8 +23,8 @@ const page = ({ params }) => {
   const nfts = allNfts.filter((n) => n.collection === nft.collection);
   return (
     <main className={styles.main_container}>
-      {isShowCart && <Cart/>}
-      {isShowLogin && <Login/>}
+      {isShowCart && <Cart />}
+      {isShowLogin && <Login />}
       <div className={styles.container_div}>
         <div className={styles.details_div_left}>
           <Image
@@ -45,7 +45,9 @@ const page = ({ params }) => {
             </p>
           </div>
           <div>
-            <p className={styles.collection_name}>{nft.collection} Collection</p>
+            <p className={styles.collection_name}>
+              {nft.collection} Collection
+            </p>
           </div>
           <div>
             <p>
@@ -60,7 +62,12 @@ const page = ({ params }) => {
             </p>
             <div className={styles.offer_button_div}>
               <button className={styles.make_offer_button}>Buy now</button>
-              <button className={styles.make_offer_button}>Add to cart</button>
+              <button
+                onClick={() => addToCartItems(nft.id)}
+                className={styles.make_offer_button}
+              >
+                Add to cart
+              </button>
             </div>
           </div>
           <div className={styles.subject_description_div}>

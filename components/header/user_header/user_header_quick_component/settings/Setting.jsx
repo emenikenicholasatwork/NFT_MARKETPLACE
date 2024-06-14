@@ -3,12 +3,14 @@ import { FaArrowRightArrowLeft, FaInfinity } from "react-icons/fa6";
 import { IoChevronDownOutline } from "react-icons/io5";
 import { useState } from "react";
 import Image from "next/image";
+import { useGlobal } from "@/context/GlobalContext";
 
 const Setting = () => {
   const [dropdownWalletOpen, setIsDropdownWalletOpen] = useState(false);
+  const { isNightMode } = useGlobal();
   return (
     <div>
-      <div className="flex flex-row justify-between">
+      <div className="flex flex-row py-3 px-2 justify-between">
         <div className="flex flex-row gap-1 items-center hover:bg-gray-400 p-2 rounded-md duration-100 hover:text-white">
           <img
             src="/icons/metamask.svg"
@@ -24,7 +26,11 @@ const Setting = () => {
           <IoChevronDownOutline />
         </div>
       </div>
-      <div className="bg-gray-200 h-96 rounded-t-2xl pt-3 px-2 items-center">
+      <div
+        className={`bg-gray-200 ${
+          isNightMode && "bg-slate-700"
+        } h-96 rounded-t-2xl pt-3 px-2 items-center`}
+      >
         <h1 className="text-2xl">Settings</h1>
         <div
           className="flex flex-row justify-between items-center pt-5 px-3"
@@ -47,7 +53,7 @@ const Setting = () => {
           />
         </div>
         <div
-          className={`flex flex-col gap-3 py-3 h-0 w-0 duration-200 ease-in-out ${
+          className={`flex flex-col gap-3 py-3 h-0 w-0 duration-300 ease-in-out ${
             dropdownWalletOpen && "w-full h-full"
           } overflow-hidden`}
         >

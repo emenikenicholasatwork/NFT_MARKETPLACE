@@ -90,7 +90,13 @@ const UserHeader = () => {
                     onClick={() => setActiveTab("crypto")}
                     id="bottom_nav"
                     className={`flex active flex-col items-center ${
-                      isNightMode ? "text-gray-400" : "text-[#66696b]"
+                      isNightMode
+                        ? `text-gray-400 ${
+                            activeTab === "crypto" && "text-white"
+                          }`
+                        : `text-[#66696b] ${
+                            activeTab === "crypto" && "text-black"
+                          }`
                     }`}
                   >
                     <AiOutlineDollar />
@@ -100,7 +106,13 @@ const UserHeader = () => {
                     onClick={() => setActiveTab("swap")}
                     id="bottom_nav"
                     className={`flex flex-col items-center ${
-                      isNightMode ? "text-gray-400" : "text-[#66696b]"
+                      isNightMode
+                        ? `text-gray-400 ${
+                            activeTab === "swap" && "text-white"
+                          }`
+                        : `text-[#66696b] ${
+                            activeTab === "swap" && "text-black"
+                          }`
                     }`}
                   >
                     <IoMdSwap />
@@ -111,8 +123,12 @@ const UserHeader = () => {
                     id="bottom_nav"
                     className={`flex flex-col items-center ${
                       isNightMode
-                        ? "text-gray-400 night_active"
-                        : "text-[#66696b] day_active"
+                        ? `text-gray-400 ${
+                            activeTab === "transactions" && "text-white"
+                          }`
+                        : `text-[#66696b] ${
+                            activeTab === "transactions" && "text-black"
+                          }`
                     }`}
                   >
                     <FaTableList />
@@ -122,7 +138,13 @@ const UserHeader = () => {
                     onClick={() => setActiveTab("settings")}
                     id="bottom_nav"
                     className={`flex flex-col items-center ${
-                      isNightMode ? "text-gray-400" : "text-[#66696b]"
+                      isNightMode
+                        ? `text-gray-400 ${
+                            activeTab === "settings" && "text-white"
+                          }`
+                        : `text-[#66696b] ${
+                            activeTab === "settings" && "text-black"
+                          }`
                     }`}
                   >
                     <IoSettingsOutline />
