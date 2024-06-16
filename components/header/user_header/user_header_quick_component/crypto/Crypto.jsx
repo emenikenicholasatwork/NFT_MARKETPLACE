@@ -1,16 +1,14 @@
-"use client";
-import { IoChevronDownOutline } from "react-icons/io5";
-import { FaInfinity } from "react-icons/fa6";
 import { useGlobal } from "@/context/GlobalContext";
 import Image from "next/image";
+import { IoMdClose } from "react-icons/io";
 
 const Crypto = () => {
-  const { isNightMode } = useGlobal();
+  const { isNightMode, setUserHeaderWalletInfo } = useGlobal();
   return (
     <div>
       <div className="p-3 gap-5 flex flex-col">
         <div className="flex flex-row justify-between">
-          <div className="flex flex-row gap-1 items-center hover:bg-gray-400 p-2 rounded-md duration-100 hover:text-white">
+          <div className="flex flex-row gap-1 items-center cursor-pointer hover:bg-gray-400 p-2 rounded-md duration-100 hover:text-white">
             <img
               src="/icons/metamask.svg"
               className=""
@@ -20,9 +18,11 @@ const Crypto = () => {
             />
             <p>0x43be...15ed</p>
           </div>
-          <div className="flex flex-row items-center gap-2 text-lg hover:bg-gray-500 rounded-md p-2 hover:text-white duration-200">
-            <FaInfinity />
-            <IoChevronDownOutline />
+          <div
+            className="flex flex-row items-center gap-2 text-lg hover:bg-gray-500 rounded-md p-2 hover:text-white duration-200"
+            onClick={() => setUserHeaderWalletInfo()}
+          >
+            <IoMdClose />
           </div>
         </div>
         <div className="flex flex-row justify-between items-center">
@@ -30,7 +30,7 @@ const Crypto = () => {
             <p className="text-3xl">$0.00 USD</p>
             <p className="">wallet balance</p>
           </div>
-          <div className="bg-neutral-400 w-12 h-12 rounded-md hover:bg-neutral-500 duration-300 ease flex items-center justify-center">
+          <div className="bg-neutral-400 w-12 h-12 rounded-md cursor-pointer hover:bg-neutral-500 duration-300 ease flex items-center justify-center">
             <p className="text-white text-5xl font-thin">+</p>
           </div>
         </div>

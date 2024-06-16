@@ -3,23 +3,21 @@ import { useGlobal } from "@/context/GlobalContext";
 import React, { useState } from "react";
 import { MdWallet } from "react-icons/md";
 import styles from "./userHeader.module.css";
-import { IoSettingsOutline } from "react-icons/io5";
+import { IoNotificationsSharp, IoSettingsOutline } from "react-icons/io5";
 import { BiLogOut } from "react-icons/bi";
 import Image from "next/image";
-import { IoMdSwap } from "react-icons/io";
+import { IoIosCreate, IoMdSwap } from "react-icons/io";
 import { AiOutlineDollar } from "react-icons/ai";
 import { FaTableList } from "react-icons/fa6";
 import Swap from "./user_header_quick_component/swap/Swap";
 import Crypto from "./user_header_quick_component/crypto/Crypto";
 import Transactions from "./user_header_quick_component/transactions/Transactions";
 import Setting from "./user_header_quick_component/settings/Setting";
+import { useRouter } from "next/navigation";
 
 const UserHeader = () => {
+  const router = useRouter();
   const [activeTab, setActiveTab] = useState("crypto");
-  const [open_wallet_details, set_open_wallet_details] = useState(false);
-  const change_open_wallet_details_state = () => {
-    set_open_wallet_details(!open_wallet_details);
-  };
 
   const {
     setNightMode,
@@ -29,6 +27,8 @@ const UserHeader = () => {
     changeSearchState,
     setLogin,
     isShowLogin,
+    isUserHeaderWalletInfo,
+    setUserHeaderWalletInfo,
     setShowCart,
   } = useGlobal();
   const [inputValue, setInputValue] = useState("");
@@ -41,8 +41,7 @@ const UserHeader = () => {
 
   return (
     <header
-      className={`${isNightMode ? "night_mode" : ""}`}
-      id="default_header"
+      className={`${isNightMode ? "bg-[#252927] text-white" : "bg-[#e0f7fa] text-black"} h-20 w-[100px] p-5 fixed z-[2] items-center justify-between flex`}
     >
       <div className="logo_div">
         <i className="bi bi-currency-bitcoin"></i>
@@ -65,11 +64,12 @@ const UserHeader = () => {
       <div className="login_menu_div">
         <div
           className={styles.wallet_value_div}
-          onClick={() => set_open_wallet_details(true)}
+          onClick={() => setUserHeaderWalletInfo()}
         >
           <MdWallet className={styles.wallet_icon} />
           <p className="text-lg">0 ETH</p>
-          {open_wallet_details && (
+        </div>
+          {isUserHeaderWalletInfo && (
             <div
               className={`${styles.wallet_info_div} ${
                 isNightMode ? "bg-black" : "bg-white"
@@ -89,7 +89,7 @@ const UserHeader = () => {
                   <div
                     onClick={() => setActiveTab("crypto")}
                     id="bottom_nav"
-                    className={`flex active flex-col items-center ${
+                    className={`flex active flex-col items-center cursor-pointer ${
                       isNightMode
                         ? `text-gray-400 ${
                             activeTab === "crypto" && "text-white"
@@ -105,7 +105,7 @@ const UserHeader = () => {
                   <div
                     onClick={() => setActiveTab("swap")}
                     id="bottom_nav"
-                    className={`flex flex-col items-center ${
+                    className={`flex flex-col items-center cursor-pointer ${
                       isNightMode
                         ? `text-gray-400 ${
                             activeTab === "swap" && "text-white"
@@ -121,7 +121,7 @@ const UserHeader = () => {
                   <div
                     onClick={() => setActiveTab("transactions")}
                     id="bottom_nav"
-                    className={`flex flex-col items-center ${
+                    className={`flex flex-col items-center cursor-pointer ${
                       isNightMode
                         ? `text-gray-400 ${
                             activeTab === "transactions" && "text-white"
@@ -137,7 +137,7 @@ const UserHeader = () => {
                   <div
                     onClick={() => setActiveTab("settings")}
                     id="bottom_nav"
-                    className={`flex flex-col items-center ${
+                    className={`flex flex-col items-center cursor-pointer ${
                       isNightMode
                         ? `text-gray-400 ${
                             activeTab === "settings" && "text-white"
@@ -154,7 +154,6 @@ const UserHeader = () => {
               </div>
             </div>
           )}
-        </div>
         <div className="user_dropdown_div">
           <Image
             className={styles.user_image}
@@ -175,6 +174,18 @@ const UserHeader = () => {
               <li onClick={() => (isLoggedIn ? "" : setLogin())}>
                 <i className="bi bi-eye"></i>
                 <p>WatchList</p>
+              </li>
+              <li onClick={() => (isLoggedIn ? "" : setLogin())}>
+                <IoNotificationsSharp />
+                <p>Notification</p>
+              </li>
+              <li
+                onClick={() =>
+                  isLoggedIn ? router.push("user/create") : setLogin()
+                }
+              >
+                <IoIosCreate />
+                <p>Create NFT</p>
               </li>
               <hr className="my-2" />
               <li>

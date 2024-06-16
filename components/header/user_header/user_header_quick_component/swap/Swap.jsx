@@ -3,12 +3,21 @@ import styles from "./swap.module.css";
 import { FaEthereum } from "react-icons/fa6";
 import { SiSolana } from "react-icons/si";
 import { useGlobal } from "@/context/GlobalContext";
+import { IoMdClose } from "react-icons/io";
 
 const Swap = () => {
-  const { isNightMode } = useGlobal();
+  const { isNightMode, setUserHeaderWalletInfo } = useGlobal();
   return (
     <div className="flex flex-col p-3 gap-5">
-      <h1 className="text-2xl">Swap</h1>
+      <div className="flex flex-row justify-between">
+        <h1 className="text-2xl">Swap</h1>
+        <div
+          className="flex flex-row items-center gap-2 cursor-pointer text-lg hover:bg-gray-500 rounded-md p-2 hover:text-white duration-200"
+          onClick={() => setUserHeaderWalletInfo()}
+        >
+          <IoMdClose />
+        </div>
+      </div>
       <div className="flex flex-col gap-3 relative">
         <div
           className={`bg-slate-300 p-3 rounded-md ${
@@ -64,7 +73,7 @@ const Swap = () => {
           }`}
         >
           <IoChevronDownOutline
-            className={`${isNightMode ? "text-black" : "text-white"}`}
+            className={`cursor-pointer ${isNightMode ? "text-black" : "text-white"}`}
           />
         </div>
       </div>

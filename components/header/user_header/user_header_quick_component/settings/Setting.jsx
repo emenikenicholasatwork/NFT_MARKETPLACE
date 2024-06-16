@@ -1,17 +1,18 @@
 "use client";
-import { FaArrowRightArrowLeft, FaInfinity } from "react-icons/fa6";
+import { FaArrowRightArrowLeft } from "react-icons/fa6";
 import { IoChevronDownOutline } from "react-icons/io5";
 import { useState } from "react";
+import { IoMdClose } from "react-icons/io";
 import Image from "next/image";
 import { useGlobal } from "@/context/GlobalContext";
 
 const Setting = () => {
   const [dropdownWalletOpen, setIsDropdownWalletOpen] = useState(false);
-  const { isNightMode } = useGlobal();
+  const { isNightMode, setUserHeaderWalletInfo } = useGlobal();
   return (
     <div>
       <div className="flex flex-row py-3 px-2 justify-between">
-        <div className="flex flex-row gap-1 items-center hover:bg-gray-400 p-2 rounded-md duration-100 hover:text-white">
+        <div className="flex flex-row gap-1 items-center hover:bg-gray-400 p-2 cursor-pointer rounded-md duration-100 hover:text-white">
           <img
             src="/icons/metamask.svg"
             className=""
@@ -21,9 +22,11 @@ const Setting = () => {
           />
           <p>0x43be...15ed</p>
         </div>
-        <div className="flex flex-row items-center gap-2 text-lg hover:bg-gray-500 rounded-md p-2 hover:text-white duration-200">
-          <FaInfinity />
-          <IoChevronDownOutline />
+        <div
+          className="flex flex-row items-center gap-2 text-lg hover:bg-gray-500 rounded-md p-2 hover:text-white duration-200"
+          onClick={() => setUserHeaderWalletInfo()}
+        >
+          <IoMdClose />
         </div>
       </div>
       <div
@@ -40,7 +43,7 @@ const Setting = () => {
               : setIsDropdownWalletOpen(true)
           }
         >
-          <div className="flex flex-row items-center gap-2">
+          <div className="flex flex-row items-center gap-2 cursor-pointer">
             <div className="p-5 rounded-md bg-gray-500 text-white">
               <FaArrowRightArrowLeft />
             </div>
@@ -58,7 +61,7 @@ const Setting = () => {
           } overflow-hidden`}
         >
           <div
-            className="flex flex-row items-center hover:bg-gray-500 hover:text-white
+            className="flex flex-row items-center cursor-pointer hover:bg-gray-500 hover:text-white
            rounded-md ps-10 py-3 gap-2"
           >
             <Image
@@ -69,7 +72,7 @@ const Setting = () => {
             />
             <p>Metamask</p>
           </div>
-          <div className="flex flex-row items-center hover:text-white hover:bg-gray-500 rounded-md ps-10 py-3 gap-2">
+          <div className="flex flex-row items-center cursor-pointer hover:text-white hover:bg-gray-500 rounded-md ps-10 py-3 gap-2">
             <Image
               className="w-10"
               src={"/icons/Phantom-Icon_App.svg"}
@@ -78,7 +81,7 @@ const Setting = () => {
             />
             <p>Phantom</p>
           </div>
-          <div className="flex flex-row items-center hover:text-white hover:bg-gray-500 rounded-md ps-10 py-3 gap-2">
+          <div className="flex flex-row items-center cursor-pointer hover:text-white hover:bg-gray-500 rounded-md ps-10 py-3 gap-2">
             <Image
               className="w-10"
               src={"/icons/coinbase.svg"}

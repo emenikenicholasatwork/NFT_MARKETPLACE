@@ -1,13 +1,12 @@
 import { useGlobal } from "@/context/GlobalContext";
-import { FaInfinity } from "react-icons/fa6";
-import { IoChevronDownOutline } from "react-icons/io5";
+import { IoMdClose } from "react-icons/io";
 
 const Transactions = () => {
-  const { isNightMode } = useGlobal();
+  const { isNightMode, setUserHeaderWalletInfo } = useGlobal();
   return (
     <div className="flex flex-col">
       <div className="flex flex-row py-3 px-2 justify-between">
-        <div className="flex flex-row gap-1 items-center hover:bg-gray-400 p-2 rounded-md duration-100 hover:text-white">
+        <div className="flex flex-row gap-1 items-center cursor-pointer hover:bg-gray-400 p-2 rounded-md duration-100 hover:text-white">
           <img
             src="/icons/metamask.svg"
             className=""
@@ -17,9 +16,11 @@ const Transactions = () => {
           />
           <p>0x43be...15ed</p>
         </div>
-        <div className="flex flex-row items-center gap-2 text-lg hover:bg-gray-500 rounded-md p-2 hover:text-white duration-200">
-          <FaInfinity />
-          <IoChevronDownOutline />
+        <div
+          className="flex flex-row items-center gap-2 text-lg hover:bg-gray-500 rounded-md p-2 hover:text-white duration-200"
+          onClick={() => setUserHeaderWalletInfo()}
+        >
+          <IoMdClose />
         </div>
       </div>
       <div

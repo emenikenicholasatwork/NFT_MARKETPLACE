@@ -10,10 +10,6 @@
   align-items: center;
   z-index: 2;
 }
-#default_header.night_mode {
-  background: black;
-  color: white;
-}
 .logo_div {
   display: flex;
   flex-direction: row;
@@ -79,6 +75,7 @@
   box-shadow: 5px 5px 20px rgb(0, 0, 0, 0.3);
 }
 .login_menu_div {
+  position: relative;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -97,7 +94,6 @@
   justify-items: center;
   padding-right: 12px;
   gap: 4px;
-  position: relative;
   background-color: #9e8c8c25;
   transition-duration: 200ms;
   border-radius: 6px;
@@ -205,8 +201,8 @@
 }
 .wallet_info_div {
   position: absolute;
-  top: 45px;
-  right: 0px;
+  top: 60px;
+  right: 50px;
   margin-top: 8px;
   width: 400px;
   border-radius: 4px;
