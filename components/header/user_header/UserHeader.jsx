@@ -1,19 +1,21 @@
 "use client";
 import { useGlobal } from "@/context/GlobalContext";
 import React, { useState } from "react";
-import { MdWallet } from "react-icons/md";
+import { MdOutlineSwapHorizontalCircle, MdSwapHorizontalCircle, MdWallet } from "react-icons/md";
 import styles from "./userHeader.module.css";
-import { IoNotificationsSharp, IoSettingsOutline } from "react-icons/io5";
+import { IoNotificationsSharp, IoSettings, IoSettingsOutline } from "react-icons/io5";
 import { BiLogOut } from "react-icons/bi";
 import Image from "next/image";
-import { IoIosCreate, IoMdSwap } from "react-icons/io";
-import { AiOutlineDollar } from "react-icons/ai";
-import { FaTableList } from "react-icons/fa6";
+import { IoIosCreate } from "react-icons/io";
+import { AiFillDollarCircle, AiOutlineDollar } from "react-icons/ai";
+import { FaListUl } from "react-icons/fa6";
+import { FaListAlt } from "react-icons/fa";
 import Swap from "./user_header_quick_component/swap/Swap";
 import Crypto from "./user_header_quick_component/crypto/Crypto";
 import Transactions from "./user_header_quick_component/transactions/Transactions";
 import Setting from "./user_header_quick_component/settings/Setting";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 const UserHeader = () => {
   const router = useRouter();
@@ -23,13 +25,14 @@ const UserHeader = () => {
     setNightMode,
     isNightMode,
     isLoggedIn,
-    cartLength,
+    cartItems,
     changeSearchState,
     setLogin,
     isShowLogin,
     isUserHeaderWalletInfo,
     setUserHeaderWalletInfo,
     setShowCart,
+    activate_account
   } = useGlobal();
   const [inputValue, setInputValue] = useState("");
   const handleInputChange = (e) => {
@@ -41,7 +44,7 @@ const UserHeader = () => {
 
   return (
     <header
-      className={`${isNightMode ? "bg-[#252927] text-white" : "bg-[#e0f7fa] text-black"} h-20 w-[100px] p-5 fixed z-[2] items-center justify-between flex`}
+      className={` h-20 p-5 left-0 right-0 fixed z-[2] items-center justify-between flex ${isNightMode ? "bg-[#252927] text-white" : "bg-[#e0f7fa] text-black"}`}
     >
       <div className="logo_div">
         <i className="bi bi-currency-bitcoin"></i>
@@ -99,7 +102,7 @@ const UserHeader = () => {
                           }`
                     }`}
                   >
-                    <AiOutlineDollar />
+                    {activeTab === "crypto" ? <AiFillDollarCircle/> : <AiOutlineDollar />}
                     <p>Crypto</p>
                   </div>
                   <div
@@ -115,7 +118,7 @@ const UserHeader = () => {
                           }`
                     }`}
                   >
-                    <IoMdSwap />
+                    {activeTab === "swap" ? <MdSwapHorizontalCircle/> : <MdOutlineSwapHorizontalCircle />}
                     <p>Swap</p>
                   </div>
                   <div
@@ -131,7 +134,7 @@ const UserHeader = () => {
                           }`
                     }`}
                   >
-                    <FaTableList />
+                    {activeTab === "transactions" ? <FaListAlt/> : <FaListUl/>}
                     <p>Transactions</p>
                   </div>
                   <div
@@ -147,7 +150,7 @@ const UserHeader = () => {
                           }`
                     }`}
                   >
-                    <IoSettingsOutline />
+                    {activeTab === "settings" ? <IoSettings/> : <IoSettingsOutline />}
                     <p>Settings</p>
                   </div>
                 </div>
@@ -167,36 +170,41 @@ const UserHeader = () => {
             } `}
           >
             <ul>
-              <li onClick={() => (isLoggedIn ? "" : setLogin())}>
-                <i className="bi bi-person"></i>
-                <p>Profile</p>
-              </li>
-              <li onClick={() => (isLoggedIn ? "" : setLogin())}>
-                <i className="bi bi-eye"></i>
-                <p>WatchList</p>
-              </li>
-              <li onClick={() => (isLoggedIn ? "" : setLogin())}>
-                <IoNotificationsSharp />
-                <p>Notification</p>
-              </li>
-              <li
-                onClick={() =>
-                  isLoggedIn ? router.push("user/create") : setLogin()
-                }
-              >
-                <IoIosCreate />
-                <p>Create NFT</p>
-              </li>
+              <Link href={"/user/profile"}>
+                <li>
+                  <i className="bi bi-person"></i>
+                  <p>Profile</p>
+                </li>
+              </Link>
+              <Link href={"/user/watchlist"}>
+                <li>
+                  <i className="bi bi-eye"></i>
+                  <p>WatchList</p>
+                </li>
+              </Link>
+              <Link href={"/user/notification"}>
+                <li>
+                  <IoNotificationsSharp />
+                  <p>Notification</p>
+                </li>
+              </Link>
+              <Link href={"/user/create"}>
+                <li>
+                  <IoIosCreate />
+                  <p>Create NFT</p>
+                </li>
+              </Link>
               <hr className="my-2" />
-              <li>
-                <i className="bi bi-gear"></i>
-                <p>Settings</p>
-              </li>
+              <Link href={"/user/settings"}>
+                <li>
+                  <i className="bi bi-gear"></i>
+                  <p>Settings</p>
+                </li>
+              </Link>
               <li>
                 <i className="bi bi-moon"></i>
                 <p>Night Mode</p>
-                <i
-                  className={`bi ${
+                <i className={`bi ${
                     isNightMode ? "bi-toggle-on" : "bi-toggle-off"
                   } font-bold text-3xl text-blue-500 ms-3 hover:text-blue-700`}
                   onClick={() => setNightMode()}
@@ -212,15 +220,17 @@ const UserHeader = () => {
                 <p>Help center</p>
               </li>
               <hr className="my-2" />
-              <li>
-                <BiLogOut className="" />
-                <p>Logout</p>
-              </li>
+              <Link href={"/"} onClick={()=>activate_account(null)}>
+                <li>
+                  <BiLogOut/>
+                  <p>Logout</p>
+                </li>
+              </Link>
             </ul>
           </div>
         </div>
         <div className="shopping_cart_div style_share" onClick={setShowCart}>
-          <p>{cartLength}</p>
+          <p>{cartItems.length}</p>
           <i className="bi bi-cart3"></i>
         </div>
         <div className="search style_share" onClick={changeSearchState}>

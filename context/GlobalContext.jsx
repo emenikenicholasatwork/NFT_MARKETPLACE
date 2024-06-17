@@ -1,19 +1,27 @@
 "use client";
 
-import SearchBar from "@/components/SearchBar";
+import { useRouter } from "next/navigation";
 
 const { createContext, useState, useContext } = require("react");
 
 const GlobalContext = createContext();
 export function GlobalProvider({ children }) {
+  const router = useRouter();
   const [isUserHeaderWalletInfo, setIsUserHeaderWalletInfo] = useState();
-
+  const [account, setAccount] = useState(null);
   const [isNightMode, setIsNightMode] = useState(false);
   const [isShowLogin, setIsShowLogin] = useState(false);
   const [isShowCart, setIsShowCart] = useState(false);
   const [isSearchBar, setIsSearchBar] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(true);
   const [cartItems, setCartItems] = useState([]);
+
+  const activate_account =(account) =>{
+    setAccount(account);
+    setIsLoggedIn(true);
+    setIsShowLogin(false);
+    router.push("/user");
+  };
 
   const setUserHeaderWalletInfo = () => {
     isUserHeaderWalletInfo
@@ -59,6 +67,8 @@ export function GlobalProvider({ children }) {
         changeSearchState,
         isLoggedIn,
         cartItems,
+        account,
+        activate_account,
         addToCartItems,
         isUserHeaderWalletInfo,
         setUserHeaderWalletInfo,

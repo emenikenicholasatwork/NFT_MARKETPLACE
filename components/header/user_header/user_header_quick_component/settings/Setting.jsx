@@ -8,9 +8,11 @@ import { useGlobal } from "@/context/GlobalContext";
 
 const Setting = () => {
   const [dropdownWalletOpen, setIsDropdownWalletOpen] = useState(false);
-  const { isNightMode, setUserHeaderWalletInfo } = useGlobal();
+  const { isNightMode, setUserHeaderWalletInfo, account } = useGlobal();
+  const first_6 = account.slice(0, 6);
+  const last_4 = account.slice(38, 42);
   return (
-    <div>
+    <div className="h-[434.73px]">
       <div className="flex flex-row py-3 px-2 justify-between">
         <div className="flex flex-row gap-1 items-center hover:bg-gray-400 p-2 cursor-pointer rounded-md duration-100 hover:text-white">
           <img
@@ -20,10 +22,10 @@ const Setting = () => {
             width={30}
             alt="MetaMask Icon"
           />
-          <p>0x43be...15ed</p>
+          <p>{`${first_6}...${last_4}`}</p>
         </div>
         <div
-          className="flex flex-row items-center gap-2 text-lg hover:bg-gray-500 rounded-md p-2 hover:text-white duration-200"
+          className="flex flex-row cursor-pointer items-center gap-2 text-lg hover:bg-gray-500 rounded-md p-2 hover:text-white duration-200"
           onClick={() => setUserHeaderWalletInfo()}
         >
           <IoMdClose />
@@ -36,14 +38,14 @@ const Setting = () => {
       >
         <h1 className="text-2xl">Settings</h1>
         <div
-          className="flex flex-row justify-between items-center pt-5 px-3"
+          className="flex flex-row justify-between cursor-pointer items-center pt-5 px-3"
           onClick={() =>
             dropdownWalletOpen
               ? setIsDropdownWalletOpen(false)
               : setIsDropdownWalletOpen(true)
           }
         >
-          <div className="flex flex-row items-center gap-2 cursor-pointer">
+          <div className="flex flex-row items-center gap-2">
             <div className="p-5 rounded-md bg-gray-500 text-white">
               <FaArrowRightArrowLeft />
             </div>

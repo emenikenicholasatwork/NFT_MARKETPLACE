@@ -1,5 +1,4 @@
 import { IoChevronDownOutline } from "react-icons/io5";
-import styles from "./swap.module.css";
 import { FaEthereum } from "react-icons/fa6";
 import { SiSolana } from "react-icons/si";
 import { useGlobal } from "@/context/GlobalContext";
@@ -8,7 +7,7 @@ import { IoMdClose } from "react-icons/io";
 const Swap = () => {
   const { isNightMode, setUserHeaderWalletInfo } = useGlobal();
   return (
-    <div className="flex flex-col p-3 gap-5">
+    <div className="flex flex-col p-3 gap-5 h-[434.73px]">
       <div className="flex flex-row justify-between">
         <h1 className="text-2xl">Swap</h1>
         <div

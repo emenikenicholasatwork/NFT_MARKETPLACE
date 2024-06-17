@@ -3,9 +3,11 @@ import Image from "next/image";
 import { IoMdClose } from "react-icons/io";
 
 const Crypto = () => {
-  const { isNightMode, setUserHeaderWalletInfo } = useGlobal();
+  const { isNightMode, setUserHeaderWalletInfo, account } = useGlobal();
+  const first_6 = account.slice(0, 6);
+  const last_4 = account.slice(38, 42);
   return (
-    <div>
+    <div className="h-[434.73px]">
       <div className="p-3 gap-5 flex flex-col">
         <div className="flex flex-row justify-between">
           <div className="flex flex-row gap-1 items-center cursor-pointer hover:bg-gray-400 p-2 rounded-md duration-100 hover:text-white">
@@ -16,10 +18,10 @@ const Crypto = () => {
               width={30}
               alt="MetaMask Icon"
             />
-            <p>0x43be...15ed</p>
+            <p>{`${first_6}...${last_4}`}</p>
           </div>
           <div
-            className="flex flex-row items-center gap-2 text-lg hover:bg-gray-500 rounded-md p-2 hover:text-white duration-200"
+            className="flex flex-row items-center cursor-pointer gap-2 text-lg hover:bg-gray-500 rounded-md p-2 hover:text-white duration-200"
             onClick={() => setUserHeaderWalletInfo()}
           >
             <IoMdClose />
@@ -48,7 +50,7 @@ const Crypto = () => {
             width={500}
           />
           <p className="w-36">Fund your wallet to purchase NFTs</p>
-          <button className="bg-blue-500 text-white p-3 rounded-md">
+          <button className="bg-blue-500 hover:scale-105 duration-300 text-white p-3 rounded-md">
             Add funds with card
           </button>
         </div>

@@ -1,38 +1,34 @@
 "use client"
 import { useGlobal } from '@/context/GlobalContext'
+import { ethers } from 'ethers'
 import React, { useState } from 'react'
 import { toast, ToastContainer } from 'react-toastify'
-const {detectEthereumProvider} = require('@metamask/detect-provider')
 import 'react-toastify/dist/ReactToastify.css'
 import Web3 from 'web3'
 
 const Login = () => {
   const [walletAddress, setWalletAddress] = useState(null)
   const notify =(message) => toast(message);
-    const {isNightMode, setLogin} = useGlobal()
-    // const [activeBtn, setActiveBtn] = useState(1)
-    // const providerArray =[
-    //     {
-    //         provider: images.provider1,
-    //         name: "Metamask"
-    //     },{
-    //         provider: images.provider2,
-    //         name: "Metamask"
-    //     },{
-    //         provider: images.provider3,
-    //         name: "Metamask"
-    //     }
-    // ]
-    const connect_metamask = async()=>{
-        if(typeof window.ethereum !== 'undefined' && window.ethereum.isMetaMask){
-          await window.ethereum.request({method: 'eth_requestAccounts'})
-          const web3 = new Web3(window.ethereum)
-          const accounts = await web3.eth.getAccounts();
-          console.log(accounts);
-        }else {
-            notify('MetaMask is not installed.');
-          }
-        };
+  const {isNightMode, setLogin, activate_account} = useGlobal()
+
+  const connect_metamask = async()=>{
+    try{
+      if(typeof window.ethereum !== 'undefined' && window.ethereum.isMetaMask){
+        const account = await window.ethereum.request({method: 'eth_requestAccounts'})
+        if(account.length){
+          activate_account(account[0])
+        }else{
+          notify('No account found...')
+        }
+        // const provider = typeof window.ethereum !== 'undefined' ? new ethers.providers.Web3Provider(window.ethereum) : null;
+        console.log(window.ethereum)
+      }else {
+        notify('MetaMask is not installed.');
+      };
+    }catch(error){
+      console.log(`Error while connecting metamask: ${error}`);
+    };
+  };
       
         const connect_coinbase = () => {
           if (typeof window.ethereum !== 'undefined' && window.ethereum.isCoinbaseWallet) {

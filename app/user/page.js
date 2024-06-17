@@ -17,7 +17,7 @@ const page = () => {
   const { isNightMode, isShowCart, isSearchBar, isShowLogin } = useGlobal();
   return (
     <main
-      className={`min-h-screen pt-12 gap-0  ${
+      className={`min-h-screen gap-0  ${
         isNightMode ? "bg-[#252927]  text-white" : "bg-[#e0f7fa] text-black"
       } `}
     >
