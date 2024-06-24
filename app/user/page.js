@@ -1,6 +1,5 @@
 "use client";
 import Top from "@/components/Top";
-import styles from "./style.css";
 import Dash from "@/components/Dash";
 import DashDisplay from "@/components/dashDisplay/DashDisplay";
 import Login from "@/components/Login";
