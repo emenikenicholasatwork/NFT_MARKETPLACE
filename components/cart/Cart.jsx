@@ -1,5 +1,5 @@
 "use client";
-import { useGlobal } from "@/context/GlobalContext";
+import { useGlobal } from "../../context/GlobalContext";
 import Image from "next/image";
 import anime_collection from "../azuki_nft/azuki_nft.json";
 import trending_in_art_collection from "../trending_in_art_nft/trending_in_art_nft.json";

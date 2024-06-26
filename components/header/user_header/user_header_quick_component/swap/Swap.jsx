@@ -1,7 +1,7 @@
 import { IoChevronDownOutline } from "react-icons/io5";
 import { FaEthereum } from "react-icons/fa6";
 import { SiSolana } from "react-icons/si";
-import { useGlobal } from "@/context/GlobalContext";
+import { useGlobal } from "../../../../../context/GlobalContext";
 import { IoMdClose } from "react-icons/io";
 
 const Swap = () => {

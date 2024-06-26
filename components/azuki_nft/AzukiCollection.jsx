@@ -1,4 +1,4 @@
-import { useGlobal } from '@/context/GlobalContext'
+import { useGlobal } from '../../context/GlobalContext'
 import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'

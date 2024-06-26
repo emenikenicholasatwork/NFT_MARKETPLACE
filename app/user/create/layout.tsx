@@ -1,4 +1,6 @@
-const layout = ({children}) => {
+import React from "react";
+
+const layout = ({children}: Readonly<{children: React.ReactNode}>) => {
   return (
     <html>
         <body>

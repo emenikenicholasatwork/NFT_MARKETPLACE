@@ -1,5 +1,5 @@
 "use client"
-import { useGlobal } from '@/context/GlobalContext'
+import { useGlobal } from '../context/GlobalContext'
 import {CiWallet} from 'react-icons/ci'
 import React, { useState } from 'react'
 import { toast, ToastContainer } from 'react-toastify'

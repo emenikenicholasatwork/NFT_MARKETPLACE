@@ -1,4 +1,4 @@
-import { useGlobal } from "@/context/GlobalContext";
+import { useGlobal } from "../../context/GlobalContext";
 import React, { useState } from "react";
 import styles from "./header.css";
 import Link from "next/link";

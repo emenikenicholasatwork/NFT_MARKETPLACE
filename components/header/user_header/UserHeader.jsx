@@ -1,5 +1,5 @@
 "use client";
-import { useGlobal } from "@/context/GlobalContext";
+import { useGlobal } from "../../../context/GlobalContext";
 import React, { useState } from "react";
 import { MdOutlineSwapHorizontalCircle, MdSwapHorizontalCircle, MdWallet } from "react-icons/md";
 import styles from "./userHeader.module.css";
