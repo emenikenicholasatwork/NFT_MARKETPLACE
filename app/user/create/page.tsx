@@ -3,11 +3,9 @@ import { useGlobal } from "../../../context/GlobalContext";
 import * as React from "react";
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
-import { MdArrowBackIosNew } from "react-icons/md";
-import { useRouter } from "next/navigation";
 
 const page: React.FC = () => {
-  const router = useRouter();
+
   const {isNightMode} = useGlobal();
   const [imagePreview, setImagePreview] = useState<string | ArrayBuffer | null>("");
   const imageRef = React.useRef<HTMLInputElement>();
@@ -33,15 +31,14 @@ const page: React.FC = () => {
   },[imagePreview]);
   
   return (
-    <main className={`min-h-screen w-screen flex flex-col py-5 justify-center items-center ${isNightMode ? "bg-[#252927] text-white" : "bg-[#e0f7fa] text-black"} relative`}>
-      <MdArrowBackIosNew className="absolute top-10 left-16 cursor-pointer text-2xl" onClick={()=> router.back()}/>
+    <main className={`min-h-screen pt-32 w-screen flex flex-col py-5 justify-center items-center ${isNightMode ? "bg-[#252927] text-white" : "bg-[#e0f7fa] text-black"} relative`}>
       <div className="flex flex-col flex-1">
-        <h1 className="text-4xl mb-2">Create an NFT</h1>
-        <h4 className="mb-10">once your items i minted you will not be able to change any of it's information.</h4>
-        <div className="flex flex-row items-center justify-center py-5">
+        <h1 className="text-4xl">Create an NFT</h1>
+        <h4 className="">once your items is minted you will not be able to change any of it's information.</h4>
+        <div className="flex flex-row items-center gap-32 justify-center">
         <div onClick={()=> imageRef.current.click()}>
-        <div className="flex flex-row justify-between gap-10 mt-10">
-              <div className={`flex flex-col items-center justify-center w-[600px] h-[600px] duration-100 rounded-md border-dotted border-2 hover:bg-[#eaf9fb] ${isNightMode && "border-white hover:bg-[#0d0e0e]"} border-black cursor-pointer`}>
+        <div className="flex flex-row justify-between gap-10 mt-5">
+              <div className={`flex flex-col items-center justify-center w-[600px] h-[600px] duration-100 rounded-md border-dotted border-2  ${isNightMode ? "border-white hover:bg-[#0d0e0e]" : "hover:bg-[#eaf9fb]"} border-black cursor-pointer`}>
                 <p className="text-4xl py-3">Upload</p>
                 <p>Drag and drop Image</p>
                 <p className="text-blue-700" onClick={()=> imageRef.current.click()}>Browse file</p>
@@ -52,37 +49,25 @@ const page: React.FC = () => {
               <input className="hidden" type="file" accept=".png, .svg, .gif, .jpg, .jpeg, image/png, image/svg+xml, image/gif, image/jpeg" onChange={handle_image_change} ref={imageRef}/>
             </div>
           </div>
-          <div className="flex flex-col flex-1">
-            <div>
+          <div className="flex flex-col flex-1 w-[600px]">
+            <div className="flex flex-col w-full gap-2">
               <p>Collection *</p>
-              <div></div>
+              <div className={`flex flex-row items-center gap-3 bg-[#202222] duration-200 w-full p-5 rounded-md  ${isNightMode ?  "hover:bg-[#0d0e0e]" : "hover:bg-[#eaf9fb]"} cursor-pointer `}>
+                <p className="py-5 px-7 text-2xl rounded-md bg-[#0d0e0e]">+</p>
+                <p>Create new collection</p>
+              </div>
             </div>
-            <div>
+            <div className="flex flex-col gap-1">
               <p>Name *</p>
-              <input type="text" placeholder="Name your NFT"/>
+              <input className="rounded-md bg-transparent border p-2 border-slate-600" type="text" placeholder="Name your NFT"/>
             </div>
-            <div>
+            <div className="flex flex-col gap-1">
               <p>Description *</p>
-              <textarea name="" id="" placeholder="Enter a description"></textarea>
+              <textarea className="rounded-md border border-slate-600 bg-transparent resize-none p-2 h-28" name="" id="" placeholder="Enter a description"></textarea>
             </div>
           </div>
         </div>
       </div>
-      {/* <div>
-        <div>
-          <label htmlFor="">NFT logo image</label>
-          <div className="flex flex-row gap-5 items-center border-[1px] h-60 rounded-lg border-black">
-            <div>
-              <Image name="nft_image" alt="nft image" src={imagePreview} onClick={()=>imageRef.current.click()} className="w-56 h-56 rounded-lg shadow-lg cursor-pointer" height={50} width={50} /> 
-              <input className="hidden" type="file" accept=".png, .svg, .gif, .jpg, .jpeg, image/png, image/svg+xml, image/gif, image/jpeg" onChange={handle_image_change} ref={imageRef}/>
-            </div>
-            <div>
-              <p>Drag and drop or click to upload</p>
-              <p>Recommended File Type: JPG, SVG, PNG, GIF</p>
-            </div>
-          </div>
-        </div>
-      </div> */}
     </main>
   );
 };

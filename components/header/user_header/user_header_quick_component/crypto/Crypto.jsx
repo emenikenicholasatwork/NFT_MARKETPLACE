@@ -44,6 +44,7 @@ const Crypto = () => {
       >
         <div className="flex flex-col justify-center items-center gap-2">
           <Image
+            alt="wallet icon"
             className="w-24 h-24"
             src={"/icons/wallet.png"}
             height={500}

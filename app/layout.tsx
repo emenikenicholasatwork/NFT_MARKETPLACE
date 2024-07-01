@@ -11,10 +11,8 @@ export default function RootLayout({ children }: Readonly<{children: React.React
     <html lang="en">
         <GlobalProvider>
           <body>
-              <Header/>
-              <main>{children}</main>
-              <Footer/>
-              </body>
+            {children}
+          </body>
       </GlobalProvider>
       </html>
   );

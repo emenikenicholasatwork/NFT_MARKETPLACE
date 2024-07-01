@@ -7,9 +7,9 @@ const { createContext, useState, useContext } = require("react");
 const GlobalContext = createContext();
 export function GlobalProvider({ children }) {
   const router = useRouter();
-  const [isUserHeaderWalletInfo, setIsUserHeaderWalletInfo] = useState();
-  const [account, setAccount] = useState(null);
-  const [isNightMode, setIsNightMode] = useState(false);
+  const [isUserHeaderWalletInfo, setIsUserHeaderWalletInfo] = useState(false);
+  const [account, setAccount] = useState("0x43Bea93563Ff08dC888bD3B0A152ef94F56D15ed");
+  const [isNightMode, setIsNightMode] = useState(true);
   const [isShowLogin, setIsShowLogin] = useState(false);
   const [isShowCart, setIsShowCart] = useState(false);
   const [isSearchBar, setIsSearchBar] = useState(false);

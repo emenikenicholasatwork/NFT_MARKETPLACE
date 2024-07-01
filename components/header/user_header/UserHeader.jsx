@@ -55,7 +55,7 @@ const UserHeader = () => {
         {inputValue ? ( <i className="rounded-md text-lg px-2 cursor-pointer bg-[#cfc3c322] shadow-lg bi bi-x" onClick={clearInput}></i> ) : ( <i className="rounded-md bg-[##cfc3c322] text-lg px-1 shadow-lg">/</i> )}
       </div>
       <div className="relative flex flex-row items-center gap-2">
-        <div className="flex flex-row items-center content-center p-2 px-3 justify-items-center gap-1 bg-[#9e8c8c25] duration-200 rounded-md font-bold cursor-pointer " onClick={() => setUserHeaderWalletInfo()}>
+        <div className="flex flex-row items-center content-center p-2 px-3 justify-items-center gap-1 bg-[#9e8c8c25] hover:bg-[#9e8c8c75] duration-200 rounded-md font-bold cursor-pointer" onClick={() => setUserHeaderWalletInfo()}>
           <MdWallet className="text-2xl" />
           <p className="text-lg">0 ETH</p>
         </div>
@@ -116,7 +116,7 @@ const UserHeader = () => {
             </div>
           )}
         <div className="user_dropdown_div">
-          <Image className={styles.user_image} src={"/images/bg1.jpg"} width={500} height={500}/>
+          <Image alt="user image" className="rounded-[20px] h-[30px] w-[30px]" src={"/images/bg1.jpg"} width={500} height={500}/>
           <div className={`user_info_dropdown ${isOpenMenu && "block"} ${isNightMode ? "bg-black" : "bg-white"}`}>
             <ul>
               <Link href={"/user/profile"}>

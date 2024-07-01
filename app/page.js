@@ -10,16 +10,19 @@ import SearchBar from "../components/SearchBar";
 import Top from "../components/Top";
 import TrendingInArtCollections from "../components/trending_in_art_nft/TrendingInArtCollections";
 import { useGlobal } from "../context/GlobalContext";
+import Footer from '../components/Footer';
+import Header from "../components/header/Header";
 import AnimeCollection from "../components/azuki_nft/AzukiCollection";
 
 export default function Home() {
   const { isNightMode, isShowLogin, isShowCart, isSearchBar } = useGlobal();
   return (
     <main
-      className={`min-h-screen pt-12 gap-0  ${
+      className={`min-h-screen gap-0  ${
         isNightMode ? "bg-[#252927]  text-white" : "bg-[#e0f7fa] text-black"
       } `}
     >
+      <Header/>
       {isShowLogin && <Login />}
       {isShowCart && <Cart />}
       {isSearchBar && <SearchBar />}
@@ -31,6 +34,7 @@ export default function Home() {
       <ApeCollections />
       <ClassicCollections />
       <TrendingInArtCollections />
+      <Footer/>
     </main>
   );
 }
