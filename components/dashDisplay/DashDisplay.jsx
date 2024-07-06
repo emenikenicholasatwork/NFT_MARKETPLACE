@@ -30,5 +30,4 @@ const DashDisplay = () => {
     </div>
   )
 }
-// DashDisplay.propTypes = {}
 export default DashDisplay

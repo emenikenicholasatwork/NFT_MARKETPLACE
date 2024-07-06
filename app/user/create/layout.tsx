@@ -26,6 +26,7 @@ import { IoIosCreate } from "react-icons/io";
 import { FaListAlt } from "react-icons/fa";
 
 const layout = ({ children }:{ children: React.ReactNode }) => {
+  const [createClickable, setCreateClickable] = useState(false);
   const {
     isUserHeaderWalletInfo,
     isNightMode,
@@ -219,12 +220,11 @@ const layout = ({ children }:{ children: React.ReactNode }) => {
         </header>
         <main>
         {children}
-          
         </main>
-        <footer>
+        <footer className="bg-transparent fixed bottom-0 left-0 right-0 flex flex-col gap-3 h-20 px-2">
           <hr />
-          <div>
-            <button>Create</button>
+          <div className="flex w-full justify-end pe-10">
+            <button className={`h-10 w-36 justify-center items-center duration-200 ${createClickable ? "bg-blue-600 hover:scale-110 text-white" : "bg-blue-900 text-gray-400 cursor-default"} flex rounded`}>Create</button>
           </div>
         </footer>
       </section>

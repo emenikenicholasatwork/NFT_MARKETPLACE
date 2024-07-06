@@ -12,15 +12,14 @@ import ClassicCollections from "../../components/classic_nft/ClassicCollections"
 import TrendingInArtCollections from "../../components/trending_in_art_nft/TrendingInArtCollections";
 import AzukiCollection from "../../components/azuki_nft/AzukiCollection";
 import { useGlobal } from "../../context/GlobalContext";
+import UserHeader from "../../components/header/user_header/UserHeader";
+import Footer from "../../components/Footer";
 
 const page = () => {
   const { isNightMode, isShowCart, isSearchBar, isShowLogin } = useGlobal();
   return (
-    <main
-      className={`min-h-screen gap-0  ${
-        isNightMode ? "bg-[#252927]  text-white" : "bg-[#e0f7fa] text-black"
-      } `}
-    >
+    <main className={`min-h-screen gap-0 ${isNightMode ? "bg-[#252927]  text-white" : "bg-[#e0f7fa] text-black"}`}>
+      <UserHeader/>
       {isShowLogin && <Login />}
       {isShowCart && <Cart />}
       {isSearchBar && <SearchBar />}
@@ -32,6 +31,7 @@ const page = () => {
       <ApeCollections />
       <ClassicCollections />
       <TrendingInArtCollections />
+      <Footer/>
     </main>
   );
 };

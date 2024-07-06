@@ -7,47 +7,47 @@ const Dash = () => {
             id: 1,
             floor: '0.11',
             name: 'Crypto Alien',
-            image: '/images/image1.jpg'          
+            image: '/images/notable3.jpg'            
         },{
             id: 2,
             floor: '0.11',
             name: 'Crypto Alien',
-            image: '/images/image1.jpg'            
+            image: '/images/notable2.jpg'            
         },{
             id: 3,
             floor: '0.11',
             name: 'Crypto Alien',
-            image: '/images/image1.jpg'                     
+            image: '/images/notable1.jpg'            
         },{
             id: 4,
             floor: '0.11',
             name: 'Crypto Alien',
-            image: '/images/image1.jpg'                     
+            image: '/images/notable2.jpg'            
         },{
             id: 5,
             floor: '0.11',
             name: 'Crypto Alien',
-            image: '/images/image1.jpg'                     
+            image: '/images/notable1.jpg'            
         },{
             id: 6,
             floor: '0.11',
             name: 'Crypto Alien',
-            image: '/images/image1.jpg'                     
+            image: '/images/notable3.jpg'            
         },{
             id: 7,
             floor: '0.11',
             name: 'Crypto Alien',
-            image: '/images/image1.jpg'                     
+            image: '/images/notable1.jpg'            
         },{
             id: 8,
             floor: '0.11',
             name: 'Crypto Alien',
-            image: '/images/image1.jpg'                     
+            image: '/images/notable2.jpg'            
         },{
             id: 9,
             floor: '0.11',
             name: 'Crypto Alien',
-            image: '/images/image1.jpg'                     
+            image: '/images/notable3.jpg'            
         },
     ]
   return (

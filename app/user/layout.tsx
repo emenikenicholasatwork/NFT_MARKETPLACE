@@ -5,11 +5,7 @@ import React from 'react';
 
 const layout = ({ children }: Readonly<{children: React.ReactNode}>) => {
   return (
-      <main>
-        <UserHeader />
-       {children}
-       <Footer/>
-      </main>
+      <main>{children}</main>
   );
 };
 export default layout;
