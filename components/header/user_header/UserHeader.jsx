@@ -18,7 +18,6 @@ import { useRouter } from "next/navigation";
 import Link from "next/link";
 
 const UserHeader = () => {
-  const [isOpenMenu, setIsOpenMenu] = useState(false);
   const router = useRouter();
   const [activeTab, setActiveTab] = useState("crypto");
 
@@ -115,9 +114,9 @@ const UserHeader = () => {
               </div>
             </div>
           )}
-        <div className="user_dropdown_div">
+        <div className="bg-[#9e8c8c25] px-3 py-2 hover:bg-[#9e8c8c75] duration-200 cursor-pointer rounded-md relative group">
           <Image alt="user image" className="rounded-[20px] h-[30px] w-[30px]" src={"/images/bg1.jpg"} width={500} height={500}/>
-          <div className={`user_info_dropdown ${isOpenMenu && "block"} ${isNightMode ? "bg-black" : "bg-white"}`}>
+          <div className={`group-hover:visible invisible duration-200 absolute right-0 top-14 w-[250px] p-3 ${isNightMode ? "bg-black" : "bg-white"}`}>
             <ul>
               <Link href={"/user/profile"}>
                 <li className="items-center py-2 hover:bg-[#9e8c8c] cursor-pointer flex flex-row gap-3 font-bold rounded-md px-4">
@@ -174,14 +173,14 @@ const UserHeader = () => {
             </ul>
           </div>
         </div>
-        <div className="p-2 flex relative px-3 style_share" onClick={setShowCart}>
+        <div className="py-2 flex relative px-3 bg-[#9e8c8c25] hover:bg-[#9e8c8c75] duration-200 cursor-pointer rounded-md" onClick={setShowCart}>
           <p className="absolute bg-blue-600 font-bold p-2 rounded-full items-center flex justify-center text-xs top-0 right-0 m-0 h-1 text-white">{cartItems.length}</p>
           <i className="bi bi-cart3 text-lg font-bold"></i>
         </div>
-        <div className="search style_share" onClick={changeSearchState}>
+        <div className="lg:hidden bg-[#9e8c8c25] hover:bg-[#9e8c8c75] duration-200 cursor-pointer rounded-md" onClick={changeSearchState}>
           <i className="bi bi-search"></i>
         </div>
-        <div className="menu style_share" onClick={()=> setIsOpenMenu(true)}>
+        <div className="lg:hidden bg-[#9e8c8c25] hover:bg-[#9e8c8c75] duration-200 cursor-pointer rounded-md" onClick={()=> setIsOpenMenu(true)}>
           <i className="bi bi-list"></i>
         </div>
       </div>

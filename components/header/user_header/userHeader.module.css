@@ -5,28 +5,10 @@
 .wallet_value_div:hover {
   background-color: #9e8c8c75;
 }
-.user_dropdown_div {
-  border-radius: 6px;
-  cursor: pointer;
-  position: relative;
-  display: none;
-}
-.user_dropdown_div:hover .user_info_dropdown {
-  display: block;
-}
 .user_info_dropdown li i {
   font-weight: 700;
   font-size: 20px;
   line-height: 28px;
-}
-.style_share:hover {
-  background-color: #9e8c8c75;
-}
-.style_share {
-  background-color: #9e8c8c25;
-  transition-duration: 200ms;
-  border-radius: 6px;
-  cursor: pointer;
 }
 .style_share i {
   font-weight: 700;
@@ -58,9 +40,5 @@
 @media (min-width: 1024px) {
   .user_dropdown_div {
     display: flex;
-  }
-  .search,
-  .menu {
-    display: none;
   }
 }

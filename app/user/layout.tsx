@@ -1,5 +1,3 @@
-import Footer from '../../components/Footer';
-import UserHeader from '../../components/header/user_header/UserHeader';
 import React from 'react';
 
 

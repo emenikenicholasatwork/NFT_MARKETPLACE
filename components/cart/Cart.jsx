@@ -1,20 +1,10 @@
 "use client";
 import { useGlobal } from "../../context/GlobalContext";
 import Image from "next/image";
-import anime_collection from "../azuki_nft/azuki_nft.json";
-import trending_in_art_collection from "../trending_in_art_nft/trending_in_art_nft.json";
-import ape_collection from "../ape_nft/ape_nft.json";
-import classic_collection from "../classic_nft/classic_nft.json";
+import allNfts from "../collections/nft.json";
 
 const Cart = () => {
-  const { setShowCart, isShowCart, setLogin, cartItems, isLoggedIn } =
-    useGlobal();
-  const allNfts = [
-    ...anime_collection,
-    ...trending_in_art_collection,
-    ...classic_collection,
-    ...ape_collection,
-  ];
+  const { setShowCart, isShowCart, setLogin, cartItems, isLoggedIn } = useGlobal();
   const nftInCart = allNfts.filter((n) => cartItems.includes(n.id));
   return (
     <div

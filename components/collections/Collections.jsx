@@ -1,17 +1,23 @@
 import { useGlobal } from '../../context/GlobalContext'
 import Image from 'next/image'
-import Link from 'next/link'
 import React from 'react'
-import nfts from './azuki_nft.json'
+import nfts from './nft.json'
+import Link from 'next/link'
 
-const AzukiCollection = () => {
-    const {isNightMode} = useGlobal()
+const Collections = () => {
+    const {isNightMode} = useGlobal();
   return (
-    <div className=' flex flex-col min-h-fit py-5 px-5 lg:px-20 gap-3'>
+    <section>
+      <div className=' min-h-fit flex justify-center py-5 px-5'>
+          <p className='text-4xl font-extrabold'>
+              Collections......
+          </p>
+      </div>
+      <div className=' flex flex-col min-h-fit py-5 px-5 lg:px-20 gap-3'>
         <div className='flex flex-col justify-between '>
             <p className='font-bold text-lg'>Azuki Collections</p>
         </div>
-        <div className='flex gap-3 flex-row items-center overflow-x-auto p-3'>
+        <div className='flex gap-3 flex-wrap items-center overflow-x-auto p-3'>
             {
                 nfts.map(nft=>(
                     <Link href={`/nft/${nft.id}`} key={nft.id} className={`rounded-lg overflow-hidden hover:-translate-y-1 min-w-fit cursor-pointer duration-200 shadow-md hover:shadow-2xl ${isNightMode ? 'bg-[#9e8c8c15]' : ''} `}>
@@ -34,7 +40,8 @@ const AzukiCollection = () => {
             }
         </div>
     </div>
+    </section>
   )
 }
 
-export default AzukiCollection
+export default Collections

@@ -58,13 +58,13 @@ const Dash = () => {
         <div className='flex flex-row items-center gap-3 overflow-x-auto px-2 lg:px-5'>
             {
                 nfts.map(nft => (
-                <div className='relative rounded-lg shadow-lg duration-300 overflow-hidden ' key={nft.id} style={{ minWidth: '300px' }}>
+                <div className='relative rounded-lg shadow-lg duration-300 overflow-hidden ' key={nft.id} style={{ minWidth: '600px' }}>
                     <div className='text-white absolute bottom-2 left-3'>
                         <p className='font-bold text-sm'>{nft.name}</p>
                         <p className='font-light text-sm'>Floor: {nft.floor} ETH</p>
                     </div>
-                    <div style={{ minWidth: '300px' }}>
-                        <Image src={nft.image} className='h-[350px] cursor-pointer shadow-md hover:scale-110 duration-300' height={100} width={300} alt='NFT dash image'/>
+                    <div style={{ minWidth: '500px' }}>
+                        <Image src={nft.image} className='h-[600px] cursor-pointer shadow-md hover:scale-110 duration-300' height={100} width={600} alt='NFT dash image'/>
                     </div>                
                 </div>
                 ))
