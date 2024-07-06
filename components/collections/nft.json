@@ -1,416 +1,418 @@
 [
     {
         "id": 1,
-        "floor": "0.11",
+        "price": 0.11,
         "name": "Crypto Alien",
+        "description": "This is just the best NFT you can get in the market right now.. with adequete customisations..",
         "collection": "Azuki",
-        "image": "/images/nft/anime_collection/anime1.jpeg",            
-        "volume": 2778                               
+        "image": "/images/nft/anime1.jpeg"            
     },{
         "id": 2,
-        "floor": "0.11",
+        "price": 0.11,
         "name": "Crypto Alien",
+        "description": "This is just the best NFT you can get in the market right now.. with adequete customisations..",
         "collection": "Azuki",
-        "image": "/images/nft/anime_collection/anime2.jpeg",            
-        "volume": 2778                               
+        "image": "/images/nft/anime2.jpeg"            
     },{
         "id": 3,
-        "floor": "0.11",
+        "price": 0.11,
         "name": "Crypto Alien",
+        "description": "This is just the best NFT you can get in the market right now.. with adequete customisations..",
         "collection": "Azuki",
-        "image": "/images/nft/anime_collection/anime3.jpeg",            
-        "volume": 2778                               
+        "image": "/images/nft/anime3.jpeg"            
     },{
         "id": 4,
-        "floor": "0.11",
+        "price": 0.11,
         "name": "Crypto Alien",
+        "description": "This is just the best NFT you can get in the market right now.. with adequete customisations..",
         "collection": "Azuki",
-        "image": "/images/nft/anime_collection/anime4.jpeg",            
-        "volume": 2778                               
+        "image": "/images/nft/anime4.jpeg"            
     },{
         "id": 5,
-        "floor": "0.11",
+        "price": 0.11,
         "name": "Crypto Alien",
+        "description": "This is just the best NFT you can get in the market right now.. with adequete customisations..",
         "collection": "Azuki",
-        "image": "/images/nft/anime_collection/anime5.jpeg",            
-        "volume": 2778                               
+        "image": "/images/nft/anime5.jpeg"            
     },{
         "id": 6,
-        "floor": "0.11",
+        "price": 0.11,
         "name": "Crypto Alien",
+        "description": "This is just the best NFT you can get in the market right now.. with adequete customisations..",
         "collection": "Azuki",
-        "image": "/images/nft/anime_collection/anime6.jpeg",            
-        "volume": 2778                               
+        "image": "/images/nft/anime6.jpeg"            
     },{
         "id": 7,
-        "floor": "0.11",
+        "price": 0.11,
         "name": "Crypto Alien",
+        "description": "This is just the best NFT you can get in the market right now.. with adequete customisations..",
         "collection": "Azuki",
-        "image": "/images/nft/anime_collection/anime7.jpeg",            
-        "volume": 2778                               
+        "image": "/images/nft/anime7.jpeg"            
     },{
         "id": 8,
-        "floor": "0.11",
+        "price": 0.11,
         "name": "Crypto Alien",
+        "description": "This is just the best NFT you can get in the market right now.. with adequete customisations..",
         "collection": "Azuki",
-        "image": "/images/nft/anime_collection/anime8.jpeg",            
-        "volume": 2778                               
+        "image": "/images/nft/anime8.jpeg"            
     },{
         "id": 9,
-        "floor": "0.11",
+        "price": 0.11,
         "name": "Crypto Alien",
+        "description": "This is just the best NFT you can get in the market right now.. with adequete customisations..",
         "collection": "Azuki",
-        "image": "/images/nft/anime_collection/anime9.jpeg",            
-        "volume": 2778                               
+        "image": "/images/nft/anime9.jpeg"            
     },{
         "id": 10,
-        "floor": "0.11",
+        "price": 0.11,
         "name": "Crypto Alien",
+        "description": "This is just the best NFT you can get in the market right now.. with adequete customisations..",
         "collection": "Azuki",
-        "image": "/images/nft/anime_collection/anime10.jpeg",            
-        "volume": 2778                               
+        "image": "/images/nft/anime10.jpeg"            
     },{
         "id": 11,
-        "floor": "0.11",
+        "price": 0.11,
         "name": "Crypto Alien",
+        "description": "This is just the best NFT you can get in the market right now.. with adequete customisations..",
         "collection": "Azuki",
-        "image": "/images/nft/anime_collection/anime11.jpeg",            
-        "volume": 2778                               
+        "image": "/images/nft/anime11.jpeg"         
     },{
         "id": 12,
-        "floor": "0.11",
+        "price": 0.11,
         "name": "Crypto Alien",
+        "description": "This is just the best NFT you can get in the market right now.. with adequete customisations..",
         "collection": "Azuki",
-        "image": "/images/nft/anime_collection/anime12.jpeg",            
-        "volume": 2778                               
+        "image": "/images/nft/anime12.jpeg"            
     },{
         "id": 13,
-        "floor": "0.11",
+        "price": 0.11,
         "name": "Crypto Alien",
+        "description": "This is just the best NFT you can get in the market right now.. with adequete customisations..",
         "collection": "Azuki",
-        "image": "/images/nft/anime_collection/anime13.jpeg",            
-        "volume": 2778                               
+        "image": "/images/nft/anime13.jpeg"            
     },{
         "id": 14,
-        "floor": "0.11",
+        "price": 0.11,
         "name": "Crypto Alien",
+        "description": "This is just the best NFT you can get in the market right now.. with adequete customisations..",
         "collection": "Bored Ape Yacht Club (BACY)",
-        "image": "/images/nft/ape_collection/ape1.jpg",
-        "volume": 2778                               
+        "image": "/images/nft/ape1.jpg"
     },{
         "id": 15,
-        "floor": "0.11",
+        "price": 0.11,
         "name": "Crypto Alien",
+        "description": "This is just the best NFT you can get in the market right now.. with adequete customisations..",
         "collection": "Bored Ape Yacht Club (BACY)",
-        "image": "/images/nft/ape_collection/ape2.jpg",            
-        "volume": 2778                                 
+        "image": "/images/nft/ape2.jpg"            
     },{
         "id": 16,
-        "floor": "0.11",
+        "price": 0.11,
         "name": "Crypto Alien",
+        "description": "This is just the best NFT you can get in the market right now.. with adequete customisations..",
         "collection": "Bored Ape Yacht Club (BACY)",
-        "image": "/images/nft/ape_collection/ape3.jpg",            
-        "volume": 2778                                          
+        "image": "/images/nft/ape3.jpg"            
     },{
         "id": 17,
-        "floor": "0.11",
+        "price": 0.11,
         "name": "Crypto Alien",
+        "description": "This is just the best NFT you can get in the market right now.. with adequete customisations..",
         "collection": "Bored Ape Yacht Club (BACY)",
-        "image": "/images/nft/ape_collection/ape4.jpg",            
-        "volume": 2778                                          
+        "image": "/images/nft/ape4.jpg"            
     },{
         "id": 18,
-        "floor": "0.11",
+        "price": 0.11,
         "name": "Crypto Alien",
+        "description": "This is just the best NFT you can get in the market right now.. with adequete customisations..",
         "collection": "Bored Ape Yacht Club (BACY)",
-        "image": "/images/nft/ape_collection/ape5.jpg",            
-        "volume": 2778                                          
+        "image": "/images/nft/ape5.jpg"            
     },{
         "id": 19,
-        "floor": "0.11",
+        "price": 0.11,
         "name": "Crypto Alien",
+        "description": "This is just the best NFT you can get in the market right now.. with adequete customisations..",
         "collection": "Bored Ape Yacht Club (BACY)",
-        "image": "/images/nft/ape_collection/ape6.jpg",         
-        "volume": 2778                                          
+        "image": "/images/nft/ape6.jpg"         
     },{
         "id": 20,
-        "floor": "0.11",
+        "price": 0.11,
         "name": "Crypto Alien",
+        "description": "This is just the best NFT you can get in the market right now.. with adequete customisations..",
         "collection": "Bored Ape Yacht Club (BACY)",
-        "image": "/images/nft/ape_collection/ape7.jpg",            
+        "image": "/images/nft/ape7.jpg",            
         "volume": 2778                     
     },{
         "id": 21,
-        "floor": "0.11",
+        "price": 0.11,
         "name": "Crypto Alien",
+        "description": "This is just the best NFT you can get in the market right now.. with adequete customisations..",
         "collection": "Bored Ape Yacht Club (BACY)",
-        "image": "/images/nft/ape_collection/ape8.jpg",            
-        "volume": 2778                                          
+        "image": "/images/nft/ape8.jpg"            
     },{
         "id": 22,
-        "floor": "0.11",
+        "price": 0.11,
         "name": "Crypto Alien",
+        "description": "This is just the best NFT you can get in the market right now.. with adequete customisations..",
         "collection": "Bored Ape Yacht Club (BACY)",
-        "image": "/images/nft/ape_collection/ape9.jpg",            
-        "volume": 2778                                          
+        "image": "/images/nft/ape9.jpg"            
     },{
         "id": 23,
-        "floor": "0.11",
+        "price": 0.11,
         "name": "Crypto Alien",
+        "description": "This is just the best NFT you can get in the market right now.. with adequete customisations..",
         "collection": "Bored Ape Yacht Club (BACY)",
-        "image": "/images/nft/ape_collection/ape10.jpg",            
-        "volume": 2778                                          
+        "image": "/images/nft/ape10.jpg"            
     },{
         "id": 24,
-        "floor": "0.11",
+        "price": 0.11,
         "name": "Crypto Alien",
+        "description": "This is just the best NFT you can get in the market right now.. with adequete customisations..",
         "collection": "Bored Ape Yacht Club (BACY)",
-        "image": "/images/nft/ape_collection/ape11.jpg",            
-        "volume": 2778                                          
+        "image": "/images/nft/ape11.jpg"            
     },{
         "id": 25,
-        "floor": "0.11",
+        "price": 0.11,
         "name": "Crypto Alien",
+        "description": "This is just the best NFT you can get in the market right now.. with adequete customisations..",
         "collection": "Bored Ape Yacht Club (BACY)",
-        "image": "/images/nft/ape_collection/ape12.jpg",            
-        "volume": 2778                                          
+        "image": "/images/nft/ape12.jpg"            
     },{
         "id": 26,
-        "floor": "0.11",
+        "price": 0.11,
         "name": "Crypto Alien",
+        "description": "This is just the best NFT you can get in the market right now.. with adequete customisations..",
         "collection": "Bored Ape Yacht Club (BACY)",
-        "image": "/images/nft/ape_collection/ape13.jpg",            
-        "volume": 2778                                          
+        "image": "/images/nft/ape13.jpg"            
     },{
         "id": 27,
-        "floor": "0.11",
+        "price": 0.11,
         "views": 0,
         "name": "Crypto Alien",
+        "description": "This is just the best NFT you can get in the market right now.. with adequete customisations..",
         "collection": "Classic Shady",
-        "image": "/images/nft/classic_collection/classic1.jpeg",
-        "volume": 2778                               
+        "image": "/images/nft/classic1.jpeg"
     },{
         "id": 28,
-        "floor": "0.11",
+        "price": 0.11,
         "views": 6,
         "name": "Crypto Alien",
+        "description": "This is just the best NFT you can get in the market right now.. with adequete customisations..",
         "collection": "Classic Shady",
-        "image": "/images/nft/classic_collection/classic2.jpeg",
-        "volume": 2778                                 
+        "image": "/images/nft/classic2.jpeg"
     },{
         "id": 29,
-        "floor": "0.11",
+        "price": 0.11,
         "views": 8,
         "name": "Crypto Alien",
+        "description": "This is just the best NFT you can get in the market right now.. with adequete customisations..",
         "collection": "Classic Shady",
-        "image": "/images/nft/classic_collection/classic3.jpeg",
-        "volume": 2778                                          
+        "image": "/images/nft/classic3.jpeg"
     },{
         "id": 30,
-        "floor": "0.11",
+        "price": 0.11,
         "views": 9,
         "name": "Crypto Alien",
+        "description": "This is just the best NFT you can get in the market right now.. with adequete customisations..",
         "collection": "Classic Shady",
-        "image": "/images/nft/classic_collection/classic4.jpeg",
-        "volume": 2778                                          
+        "image": "/images/nft/classic4.jpeg"
     },{
         "id": 31,
-        "floor": "0.11",
+        "price": 0.11,
         "views": 0,
         "name": "Crypto Alien",
+        "description": "This is just the best NFT you can get in the market right now.. with adequete customisations..",
         "collection": "Classic Shady",
-        "image": "/images/nft/classic_collection/classic5.jpeg",
-        "volume": 2778                                          
+        "image": "/images/nft/classic5.jpeg"
     },{
         "id": 32,
-        "floor": "0.11",
+        "price": 0.11,
         "views": 21,
         "name": "Crypto Alien",
+        "description": "This is just the best NFT you can get in the market right now.. with adequete customisations..",
         "collection": "Classic Shady",
-        "image": "/images/nft/classic_collection/classic6.jpeg",
-        "volume": 2778                                          
+        "image": "/images/nft/classic6.jpeg"
     },{
         "id": 33,
-        "floor": "0.11",
+        "price": 0.11,
 
         "name": "Crypto Alien",
+        "description": "This is just the best NFT you can get in the market right now.. with adequete customisations..",
         "collection": "Classic Shady",
-        "image": "/images/nft/classic_collection/classic7.jpeg",
+        "image": "/images/nft/classic7.jpeg",
         "volume": 2778                     
     },{
         "id": 34,
-        "floor": "0.11",
+        "price": 0.11,
         "name": "Crypto Alien",
+        "description": "This is just the best NFT you can get in the market right now.. with adequete customisations..",
         "collection": "Classic Shady",
-        "image": "/images/nft/classic_collection/classic8.jpeg",
-        "volume": 2778                                          
+        "image": "/images/nft/classic8.jpeg"
     },{
         "id": 35,
-        "floor": "0.11",
+        "price": 0.11,
         "name": "Crypto Alien",
+        "description": "This is just the best NFT you can get in the market right now.. with adequete customisations..",
         "collection": "Classic Shady",
-        "image": "/images/nft/classic_collection/classic9.jpeg",
-        "volume": 2778                                          
+        "image": "/images/nft/classic9.jpeg"
     },{
         "id": 36,
-        "floor": "0.11",
+        "price": 0.11,
         "name": "Crypto Alien",
+        "description": "This is just the best NFT you can get in the market right now.. with adequete customisations..",
         "collection": "Classic Shady",
-        "image": "/images/nft/classic_collection/classic10.jpeg",
-        "volume": 2778                                          
+        "image": "/images/nft/classic10.jpeg"
     },{
         "id": 37,
-        "floor": "0.11",
+        "price": 0.11,
         "name": "Crypto Alien",
+        "description": "This is just the best NFT you can get in the market right now.. with adequete customisations..",
         "collection": "Classic Shady",
-        "image": "/images/nft/classic_collection/classic11.jpeg",
-        "volume": 2778                                          
+        "image": "/images/nft/classic11.jpeg"
     },{
         "id": 38,
-        "floor": "0.11",
+        "price": 0.11,
         "name": "Crypto Alien",
+        "description": "This is just the best NFT you can get in the market right now.. with adequete customisations..",
         "collection": "Classic Shady",
-        "image": "/images/nft/classic_collection/classic12.jpeg",
-        "volume": 2778                                          
+        "image": "/images/nft/classic12.jpeg"
     },{
         "id": 39,
-        "floor": "0.11",
+        "price": 0.11,
         "name": "Crypto Alien",
+        "description": "This is just the best NFT you can get in the market right now.. with adequete customisations..",
         "collection": "Classic Shady",
-        "image": "/images/nft/classic_collection/classic13.jpeg",
-        "volume": 2778                                          
+        "image": "/images/nft/classic13.jpeg"
     },{
         "id": 40,
-        "floor": "0.11",
+        "price": 0.11,
         "name": "Crypto Alien",
+        "description": "This is just the best NFT you can get in the market right now.. with adequete customisations..",
         "collection": "Classic Shady",
-        "image": "/images/nft/classic_collection/classic14.jpeg",
-        "volume": 2778                                          
+        "image": "/images/nft/classic14.jpeg"
     },{
         "id": 41,
-        "floor": "0.11",
+        "price": 0.11,
         "name": "Crypto Alien",
+        "description": "This is just the best NFT you can get in the market right now.. with adequete customisations..",
         "collection": "Classic Shady",
-        "image": "/images/nft/classic_collection/classic15.jpeg",
-        "volume": 2778                                          
+        "image": "/images/nft/classic15.jpeg"
     },{
         "id": 42,
-        "floor": "0.11",
+        "price": 0.11,
         "name": "Crypto Alien",
+        "description": "This is just the best NFT you can get in the market right now.. with adequete customisations..",
         "collection": "Great Art",
-        "image": "/images/nft/trending_in_art_collection/art1.jpeg",
-        "volume": 2778                               
+        "image": "/images/nft/art1.jpeg"
     },{
         "id": 43,
-        "floor": "0.11",
+        "price": 0.11,
         "name": "Crypto Alien",
+        "description": "This is just the best NFT you can get in the market right now.. with adequete customisations..",
         "collection": "Great Art",
-        "image": "/images/nft/trending_in_art_collection/art2.jpeg",
-        "volume": 2778                               
+        "image": "/images/nft/art2.jpeg"
     },{
         "id": 44,
-        "floor": "0.11",
+        "price": 0.11,
         "name": "Crypto Alien",
+        "description": "This is just the best NFT you can get in the market right now.. with adequete customisations..",
         "collection": "Great Art",
-        "image": "/images/nft/trending_in_art_collection/art3.jpeg",
-        "volume": 2778                               
+        "image": "/images/nft/art3.jpeg"
     },{
         "id": 45,
-        "floor": "0.11",
+        "price": 0.11,
         "name": "Crypto Alien",
+        "description": "This is just the best NFT you can get in the market right now.. with adequete customisations..",
         "collection": "Great Art",
-        "image": "/images/nft/trending_in_art_collection/art4.jpeg",
-        "volume": 2778                               
+        "image": "/images/nft/art4.jpeg"
     },{
         "id": 46,
-        "floor": "0.11",
+        "price": 0.11,
         "name": "Crypto Alien",
+        "description": "This is just the best NFT you can get in the market right now.. with adequete customisations..",
         "collection": "Great Art",
-        "image": "/images/nft/trending_in_art_collection/art5.jpeg",
-        "volume": 2778                               
+        "image": "/images/nft/art5.jpeg"
     },{
         "id": 47,
-        "floor": "0.11",
+        "price": 0.11,
         "name": "Crypto Alien",
+        "description": "This is just the best NFT you can get in the market right now.. with adequete customisations..",
         "collection": "Great Art",
-        "image": "/images/nft/trending_in_art_collection/art6.jpeg",
-        "volume": 2778                               
+        "image": "/images/nft/art6.jpeg"
     },{
         "id": 48,
-        "floor": "0.11",
+        "price": 0.11,
         "name": "Crypto Alien",
+        "description": "This is just the best NFT you can get in the market right now.. with adequete customisations..",
         "collection": "Great Art",
-        "image": "/images/nft/trending_in_art_collection/art7.jpeg",
-        "volume": 2778                               
+        "image": "/images/nft/art7.jpeg"
     },{
         "id": 49,
-        "floor": "0.11",
+        "price": 0.11,
         "name": "Crypto Alien",
+        "description": "This is just the best NFT you can get in the market right now.. with adequete customisations..",
         "collection": "Great Art",
-        "image": "/images/nft/trending_in_art_collection/art8.jpeg",
-        "volume": 2778                               
+        "image": "/images/nft/art8.jpeg"
     },{
         "id": 50,
-        "floor": "0.11",
+        "price": 0.11,
         "name": "Crypto Alien",
+        "description": "This is just the best NFT you can get in the market right now.. with adequete customisations..",
         "collection": "Great Art",
-        "image": "/images/nft/trending_in_art_collection/art9.jpeg",
-        "volume": 2778                               
+        "image": "/images/nft/art9.jpeg"
     },{
         "id": 51,
-        "floor": "0.11",
+        "price": 0.11,
         "name": "Crypto Alien",
+        "description": "This is just the best NFT you can get in the market right now.. with adequete customisations..",
         "collection": "Great Art",
-        "image": "/images/nft/trending_in_art_collection/art10.jpeg",
-        "volume": 2778                               
+        "image": "/images/nft/art10.jpeg"
     },{
         "id": 52,
-        "floor": "0.11",
+        "price": 0.11,
         "name": "Crypto Alien",
+        "description": "This is just the best NFT you can get in the market right now.. with adequete customisations..",
         "collection": "Great Art",
-        "image": "/images/nft/trending_in_art_collection/art11.jpeg",
-        "volume": 2778                               
+        "image": "/images/nft/art11.jpeg"
     },{
         "id": 53,
-        "floor": "0.11",
+        "price": 0.11,
         "name": "Crypto Alien",
+        "description": "This is just the best NFT you can get in the market right now.. with adequete customisations..",
         "collection": "Great Art",
-        "image": "/images/nft/trending_in_art_collection/art12.jpeg",
-        "volume": 2778                               
+        "image": "/images/nft/art12.jpeg"
     },{
         "id": 54,
-        "floor": "0.11",
+        "price": 0.11,
         "name": "Crypto Alien",
+        "description": "This is just the best NFT you can get in the market right now.. with adequete customisations..",
         "collection": "Great Art",
-        "image": "/images/nft/trending_in_art_collection/art13.jpeg",
-        "volume": 2778                               
+        "image": "/images/nft/art13.jpeg"
     },{
         "id": 55,
-        "floor": "0.11",
+        "price": 0.11,
         "name": "Crypto Alien",
+        "description": "This is just the best NFT you can get in the market right now.. with adequete customisations..",
         "collection": "Great Art",
-        "image": "/images/nft/trending_in_art_collection/art14.jpeg",
-        "volume": 2778                               
+        "image": "/images/nft/art14.jpeg"
     },{
         "id": 56,
-        "floor": "0.11",
+        "price": 0.11,
         "name": "Crypto Alien",
+        "description": "This is just the best NFT you can get in the market right now.. with adequete customisations..",
         "collection": "Great Art",
-        "image": "/images/nft/trending_in_art_collection/art15.jpeg",
-        "volume": 2778                               
+        "image": "/images/nft/art15.jpeg"
     },{
         "id": 57,
-        "floor": "0.11",
+        "price": 0.11,
         "name": "Crypto Alien",
+        "description": "This is just the best NFT you can get in the market right now.. with adequete customisations..",
         "collection": "Great Art",
-        "image": "/images/nft/trending_in_art_collection/art16.jpeg",
-        "volume": 2778                               
+        "image": "/images/nft/art16.jpeg"
     },{
         "id": 58,
-        "floor": "0.11",
+        "price": 0.11,
         "name": "Crypto Alien",
+        "description": "This is just the best NFT you can get in the market right now.. with adequete customisations..",
         "collection": "Great Art",
-        "image": "/images/nft/trending_in_art_collection/art17.jpeg",
-        "volume": 2778                               
+        "image": "/images/nft/art17.jpeg"
     }
 ]

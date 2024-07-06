@@ -14,7 +14,7 @@ const page = ({ params }) => {
   const nft = allNfts.find((n) => n.id.toString() === id);
   const nfts = allNfts.filter((n) => n.collection === nft.collection);
   return (
-    <main className={styles.main_container}>
+    <section className={styles.main_container}>
       {isShowCart && <Cart />}
       {isShowLogin && <Login />}
       <div className={styles.container_div}>
@@ -49,7 +49,7 @@ const page = ({ params }) => {
           <div className={styles.best_offer_div_right}>
             <p>Best offer</p>
             <p>
-              {nft.floor} WETH{" "}
+              {nft.price} ETH{" "}
               <span className={styles.price_in_dollar}>$2,867.26</span>
             </p>
             <div className={styles.offer_button_div}>
@@ -97,14 +97,10 @@ const page = ({ params }) => {
               />
               <div className="items-center flex flex-col">
                 <p className="p-3 text-sm">{nft.name}</p>
-                <div className="flex w-full flex-row justify-between p-3">
+                <div className="flex w-full justify-end p-3">
                   <div>
-                    <p className="font-light text-sm">Floor</p>
-                    <p className="text-sm">{nft.floor} ETH</p>
-                  </div>
-                  <div>
-                    <p className="font-light text-sm">Total volume</p>
-                    <p className="text-sm">{nft.volume} ETH</p>
+                    <p className="font-light text-sm">Total price</p>
+                    <p className="text-sm">{nft.price} ETH</p>
                   </div>
                 </div>
               </div>
@@ -112,7 +108,7 @@ const page = ({ params }) => {
           ))}
         </div>
       </div>
-    </main>
+    </section>
   );
 };
 export default page;

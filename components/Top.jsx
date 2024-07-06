@@ -9,64 +9,64 @@ const Top = () => {
           name: 'Ape Mutan ',
           floor_price: 0.27,
           volume: 203.9,
-          image: '/images/ape1.jpg',
+          image: '/images/nft/ape1.jpg',
           
         },{
           id: 2,
           name: 'Ape Mutan ',
           floor_price: 0.27,
           volume: 203.9,
-          image: '/images/ape1.jpg',
+          image: '/images/nft/ape1.jpg',
           
         },{
           id: 3,
           name: 'Ape Mutan ',
           floor_price: 0.27,
           volume: 203.9,
-          image: '/images/ape1.jpg',
+          image: '/images/nft/ape1.jpg',
         },{
           id: 4,
           name: 'Ape Mutan ',
           floor_price: 0.27,
           volume: 203.9,
-          image: '/images/ape1.jpg',
+          image: '/images/nft/ape1.jpg',
         },{
           id: 5,
           name: 'Ape Mutan ',
           floor_price: 0.27,
           volume: 203.9,
-          image: '/images/ape1.jpg',
+          image: '/images/nft/ape1.jpg',
           
         },{
             id: 6,
             name: 'Ape Mutan ',
             floor_price: 0.27,
             volume: 203.9,
-            image: '/images/ape1.jpg',
+            image: '/images/nft/ape1.jpg',
           },{
             id: 7,
             name: 'Ape Mutan ',
             floor_price: 0.27,
             volume: 203.9,
-            image: '/images/ape1.jpg',
+            image: '/images/nft/ape1.jpg',
           },{
             id: 8,
             name: 'Ape Mutan ',
             floor_price: 0.27,
             volume: 203.9,
-            image: '/images/ape1.jpg',
+            image: '/images/nft/ape1.jpg',
           },{
             id: 9,
             name: 'Ape Mutan ',
             floor_price: 0.27,
             volume: 203.9,
-            image: '/images/ape1.jpg',
+            image: '/images/nft/ape1.jpg',
           },{
             id: 10,
             name: 'Ape Mutan ',
             floor_price: 0.27,
             volume: 203.9,
-            image: '/images/ape1.jpg',
+            image: '/images/nft/ape1.jpg',
           },
       ];
       // Split the nft array into two separate arrays
