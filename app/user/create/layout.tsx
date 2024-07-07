@@ -38,13 +38,10 @@ const layout = ({ children }:{ children: React.ReactNode }) => {
   const router = useRouter();
   const handleBack = () => {
     router.back();
-    setTimeout(() => {
-      window.location.reload();
-    }, 1000);
   };
   return (
-      <section className="min-h-screen min-w-full">
-        <header className={` h-20 py-10 left-0 right-0 fixed z-[2] items-center justify-between px-20 flex ${isNightMode ? "bg-[#252927] text-white" : "bg-[#e0f7fa] text-black"}`}>
+      <section className={`min-h-screen min-w-full ${isNightMode ? "bg-[#252927] text-white" : "bg-white text-black"} duration-300`}>
+        <header className={` h-20 py-10 left-0 right-0 fixed z-[2] items-center justify-between px-20 flex `}>
           <MdArrowBackIosNew
             className="cursor-pointer text-2xl"
             onClick={handleBack}
@@ -57,7 +54,7 @@ const layout = ({ children }:{ children: React.ReactNode }) => {
             {isUserHeaderWalletInfo && (
               <div
                 className={`absolute top-[60px] right-[50px] mt-2 w-[400px] rounded shadow  ${
-                  isNightMode ? "bg-black" : "bg-white"
+                  isNightMode ? "bg-[#1c1f1d]" : "bg-white"
                 } `}
               >
                 {activeTab === "crypto" && <Crypto />}
@@ -150,11 +147,7 @@ const layout = ({ children }:{ children: React.ReactNode }) => {
                 width={500}
                 height={500}
               />
-              <div
-                className={`duration-200 absolute top-[45px] right-0 mt-2 w-60 p-2  invisible rounded shadow group-hover:visible ${
-                  isNightMode ? "bg-black" : "bg-white"
-                }`}
-              >
+              <div className={`duration-200 absolute top-[45px] shadow-lg right-0 mt-2 w-60 p-2 ${isNightMode ? "bg-[#1c1f1d]" : "bg-white"} invisible rounded shadow group-hover:visible`}>
                 <ul>
                   <Link href={"/user/profile"}>
                     <li className="items-center py-2 hover:bg-[#9e8c8c] cursor-pointer flex flex-row gap-3 font-bold rounded-md px-4">

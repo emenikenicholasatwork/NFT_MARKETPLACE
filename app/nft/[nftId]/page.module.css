@@ -19,8 +19,11 @@
 .details_div_left{
     display: flex;
     justify-content: center;
-    width: 100%;
+    width: 80%;
+    height: 100%;
+    overflow: hidden;
     align-items: center;
+    border-radius: 20px;
 }
 .details_div_right{
     display: flex;
@@ -38,19 +41,24 @@
     gap: 5px;
 }
 .nft_item_image{
+    width: 80%;
     height: 100%;
-    width: 90%;
     border-radius: 20px;
     cursor: pointer;
+    transition-duration: 300ms;
+}
+.nft_item_image:hover{
+    scale: 1.03;
 }
 .make_offer_button{
     padding: 15px;
     width: 30rem;
     border-radius: 10px;
-    background-color: rgb(217, 217, 217);
+    background-color: gray;
+    transition-duration: 200ms;
 }
 .make_offer_button:hover{
-    background-color: gray;
+    background-color: rgb(65, 65, 65);
     color: white;
 }
 .subject_description_div{

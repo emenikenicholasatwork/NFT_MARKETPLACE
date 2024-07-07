@@ -18,7 +18,6 @@ import { useRouter } from "next/navigation";
 import Link from "next/link";
 
 const UserHeader = () => {
-  const router = useRouter();
   const [activeTab, setActiveTab] = useState("crypto");
 
   const {
@@ -43,7 +42,7 @@ const UserHeader = () => {
   };
 
   return (
-    <header className={` h-20 p-5 left-0 right-0 fixed z-[2] items-center justify-between flex ${isNightMode ? "bg-[#252927] text-white" : "bg-[#e0f7fa] text-black"}`}>
+    <header className={` h-20 p-5 left-0 right-0 duration-300 fixed z-[2] items-center justify-between flex ${isNightMode ? "bg-[#252927] text-white" : "bg-white text-black"}`}>
       <div className="flex flex-row items-center gap-1">
         <i className="bi bi-currency-bitcoin text-lg bg-green-700 p-2 rounded-md"></i>
         <p className="text-2xl md:block font-bold font-serif hidden">Crypto~Art</p>
@@ -61,7 +60,7 @@ const UserHeader = () => {
           {isUserHeaderWalletInfo && (
             <div
               className={`${styles.wallet_info_div} ${
-                isNightMode ? "bg-black" : "bg-white"
+                isNightMode ? "bg-[#1c1f1d]" : "bg-white"
               } `}
             >
               {activeTab === "crypto" && <Crypto />}
@@ -116,7 +115,7 @@ const UserHeader = () => {
           )}
         <div className="bg-[#9e8c8c25] px-3 py-2 hover:bg-[#9e8c8c75] duration-200 cursor-pointer rounded-md relative group">
           <Image alt="user image" className="rounded-[20px] h-[30px] w-[30px]" src={"/images/bg1.jpg"} width={500} height={500}/>
-          <div className={`group-hover:visible invisible duration-200 absolute right-0 top-14 w-[250px] p-3 ${isNightMode ? "bg-black" : "bg-white"}`}>
+          <div className={`group-hover:visible invisible duration-200 shadow-2xl absolute right-0 top-14 w-[250px] p-3 ${isNightMode ? "bg-[#1c1f1d]" : "bg-white"}`}>
             <ul>
               <Link href={"/user/profile"}>
                 <li className="items-center py-2 hover:bg-[#9e8c8c] cursor-pointer flex flex-row gap-3 font-bold rounded-md px-4">

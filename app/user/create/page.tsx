@@ -42,7 +42,7 @@ const Page: React.FC = () => {
   }, [imagePreview]);
 
   return (
-    <main className={`min-h-screen pt-32 w-screen flex flex-col py-5 justify-center items-center ${isNightMode ? "bg-[#252927] text-white" : "bg-[#e0f7fa] text-black"} relative`}>
+    <main className={`min-h-screen pt-32 w-screen flex flex-col py-5 justify-center items-center relative`}>
       <div className="flex flex-col flex-1">
         <h1 className="text-4xl">Create an NFT</h1>
         <h4>Once your item is minted you will not be able to change any of its information.</h4>
@@ -69,8 +69,8 @@ const Page: React.FC = () => {
           <div className="flex flex-col flex-1 w-[600px] gap-3">
             <div className="flex flex-col w-full gap-2">
               <p>Collection *</p>
-              <div className={`flex flex-row items-center gap-3 bg-[#202222] duration-200 w-full p-5 rounded-md ${isNightMode ? "hover:bg-[#0d0e0e]" : "hover:bg-[#eaf9fb]"} cursor-pointer `}>
-                <p className="py-5 px-7 text-2xl rounded-md bg-[#0d0e0e]">+</p>
+              <div className={`flex flex-row items-center gap-3 border border-slate-600 duration-200 w-full p-5 rounded-md cursor-pointer `}>
+                <p className={`py-5 px-7 text-2xl rounded-md ${isNightMode ? "bg-slate-700" : "bg-slate-300"}`}>+</p>
                 <p>Create new collection</p>
               </div>
               <div className="text-end text-blue-600">

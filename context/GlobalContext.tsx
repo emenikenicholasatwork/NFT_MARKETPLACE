@@ -15,6 +15,7 @@ export function GlobalProvider({ children }) {
   const [isSearchBar, setIsSearchBar] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(true);
   const [cartItems, setCartItems] = useState([]);
+  const [cartPrice, setCartPrice] = useState(0);
 
   const activate_account =(account) =>{
     setAccount(account);
@@ -41,6 +42,10 @@ export function GlobalProvider({ children }) {
       console.log(error);
     }
   };
+
+  const removeFromCart =(itemId)=>{
+    setCartItems(cartItems.filter(item => item !== itemId));
+  }
 
   const setNightMode = () => {
     isNightMode ? setIsNightMode(false) : setIsNightMode(true);
@@ -70,6 +75,7 @@ export function GlobalProvider({ children }) {
         account,
         activate_account,
         addToCartItems,
+        removeFromCart,
         isUserHeaderWalletInfo,
         setUserHeaderWalletInfo,
       }}

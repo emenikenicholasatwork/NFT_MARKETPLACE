@@ -15,8 +15,8 @@ export default function Home() {
   return (
     <main
       className={`min-h-screen gap-0  ${
-        isNightMode ? "bg-[#252927]  text-white" : "bg-[#e0f7fa] text-black"
-      } `}
+        isNightMode ? "bg-[#252927]  text-white" : "bg-white text-black"
+      } duration-300`}
     >
       <Header/>
       {isShowLogin && <Login />}

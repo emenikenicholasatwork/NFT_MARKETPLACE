@@ -2,9 +2,10 @@
 import { useGlobal } from "../../context/GlobalContext";
 import Image from "next/image";
 import allNfts from "../collections/nft.json";
+import { GiCancel } from "react-icons/gi";
 
 const Cart = () => {
-  const { setShowCart, isShowCart, setLogin, cartItems, isLoggedIn } = useGlobal();
+  const { setShowCart, isShowCart, setLogin, cartItems, isLoggedIn, removeFromCart } = useGlobal();
   const nftInCart = allNfts.filter((n) => cartItems.includes(n.id));
   return (
     <div
@@ -12,7 +13,7 @@ const Cart = () => {
     >
       <div
         className={`${
-          isShowCart ? "w-80" : "w-0"
+          isShowCart ? "w-96" : "w-0"
         } transition-all duration-200 ease-in-out h-full bg-white rounded-t-2xl mt-5 flex flex-col`}
       >
         <div className="flex flex-row justify-between p-5">
@@ -40,11 +41,12 @@ const Cart = () => {
                 <div
                   className="flex flex-row items-center justify-between px-3"
                   key={nft.id}
-                >
+                  >
+                  <GiCancel className="cursor-pointer hover:text-red-700" onClick={()=> removeFromCart(nft.id)}/>
                   <Image
                     className="w-16 h-16 rounded-xl"
-                    width={20}
-                    height={20}
+                    width={50}
+                    height={50}
                     src={nft.image}
                   />
                   <div>
@@ -52,7 +54,7 @@ const Cart = () => {
                     <p className="text-sm">Selection of invasion</p>
                     <p className="font-light text-sm">Creator earning: 5%</p>
                   </div>
-                  <p>{nft.floor} ETH</p>
+                  <p>{nft.price} ETH</p>
                 </div>
                 <hr className="my-3" />
               </div>

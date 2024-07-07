@@ -32,18 +32,17 @@ const layout = ({ children }:{ children: React.ReactNode }) => {
     setUserHeaderWalletInfo,
     setNightMode,
     activate_account,
+    setShowCart,
+    cartItems
   } = useGlobal();
   const [activeTab, setActiveTab] = useState("crypto");
   const router = useRouter();
   const handleBack = () => {
     router.back();
-    setTimeout(() => {
-      window.location.reload();
-    }, 1000);
   };
   return (
-      <section className="min-h-screen min-w-full">
-        <header className={` h-20 py-10 left-0 right-0 fixed z-[2] items-center justify-between px-20 flex ${isNightMode ? "bg-[#252927] text-white" : "bg-white text-black"}`}>
+      <section className={`min-h-screen min-w-full  ${isNightMode ? "bg-[#252927] text-white" : "bg-white text-black"} duration-300`}>
+        <header className={` h-20 py-10 left-0 right-0 fixed z-[2] items-center justify-between px-20 flex `}>
           <MdArrowBackIosNew
             className="cursor-pointer text-2xl"
             onClick={handleBack}
@@ -54,11 +53,7 @@ const layout = ({ children }:{ children: React.ReactNode }) => {
               <p className="text-lg">0 ETH</p>
             </div>
             {isUserHeaderWalletInfo && (
-              <div
-                className={`absolute top-[60px] right-[50px] mt-2 w-[400px] rounded shadow  ${
-                  isNightMode ? "bg-black" : "bg-white"
-                } `}
-              >
+              <div className={`absolute top-[60px] right-[50px] mt-2 w-[400px] rounded shadow  ${isNightMode ? "bg-[#1c1f1d]" : "bg-white"} `}>
                 {activeTab === "crypto" && <Crypto />}
                 {activeTab === "swap" && <Swap />}
                 {activeTab === "transactions" && <Transactions />}
@@ -150,8 +145,8 @@ const layout = ({ children }:{ children: React.ReactNode }) => {
                 height={500}
               />
               <div
-                className={`duration-200 absolute top-[45px] right-0 mt-2 w-60 p-2  invisible rounded shadow group-hover:visible ${
-                  isNightMode ? "bg-black" : "bg-white"
+                className={`duration-200 absolute top-[45px] right-0 mt-2 w-60 p-2  invisible rounded shadow-2xl group-hover:visible ${
+                  isNightMode ? "bg-[#1c1f1d]" : "bg-white"
                 }`}
               >
                 <ul>
@@ -214,6 +209,10 @@ const layout = ({ children }:{ children: React.ReactNode }) => {
                   </Link>
                 </ul>
               </div>
+            </div>
+            <div className="py-2 flex relative px-3 bg-[#9e8c8c25] hover:bg-[#9e8c8c75] duration-200 cursor-pointer rounded-md" onClick={setShowCart}>
+              <p className="absolute bg-blue-600 font-bold p-2 rounded-full items-center flex justify-center text-xs top-0 right-0 m-0 h-1 text-white">{cartItems.length}</p>
+              <i className="bi bi-cart3 text-lg font-bold"></i>
             </div>
           </div>
         </header>
