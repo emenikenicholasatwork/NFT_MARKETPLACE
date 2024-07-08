@@ -2,12 +2,10 @@
 import { useGlobal } from '../context/GlobalContext'
 import {CiWallet} from 'react-icons/ci'
 import React, { useState } from 'react'
-import { toast, ToastContainer } from 'react-toastify'
-import 'react-toastify/dist/ReactToastify.css'
+import toast from 'react-hot-toast'
 
 const Login = () => {
   const [walletAddress, setWalletAddress] = useState(null)
-  const notify =(message) => toast(message);
   const {isNightMode, setLogin, activate_account} = useGlobal()
   const connect_wallet = async()=>{
     try{
@@ -15,11 +13,11 @@ const Login = () => {
         const account = await window.ethereum.request({method: 'eth_requestAccounts'})
         if(account.length){
           activate_account(account[0])
+          toast.success("succesfully logged in..")
         }else{
-          notify('No account found...')
         }
       }else {
-        notify('No wallet installed. Kindly install any crypto or web3 wallet.. eg metamask..');
+        toast.error("metamask or any web3 wallet not installed...")
       };
     }catch(error){
       console.log(`Error while connecting metamask: ${error}`);
@@ -38,7 +36,6 @@ const Login = () => {
               <CiWallet className='text-2xl'/>
               <p>Connect Wallet</p>
             </div>
-            <ToastContainer/>
             <div className='w-full flex flex-row items-center justify-between px-4 gap-3 my-5'>
                 <hr className='w-full'/>
                 <p>OR</p>

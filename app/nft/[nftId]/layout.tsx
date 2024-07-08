@@ -42,7 +42,7 @@ const layout = ({ children }:{ children: React.ReactNode }) => {
   };
   return (
       <section className={`min-h-screen min-w-full  ${isNightMode ? "bg-[#252927] text-white" : "bg-white text-black"} duration-300`}>
-        <header className={` h-20 py-10 left-0 right-0 fixed z-[2] items-center justify-between px-20 flex `}>
+        <header className={` h-20 py-10 left-0 right-0 fixed z-[2] ${isNightMode ? "bg-[#252927] text-white" : "bg-white text-black"} duration-300 items-center justify-between px-20 flex `}>
           <MdArrowBackIosNew
             className="cursor-pointer text-2xl"
             onClick={handleBack}

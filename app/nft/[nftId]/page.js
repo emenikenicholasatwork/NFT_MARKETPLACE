@@ -7,7 +7,6 @@ import Link from "next/link";
 import Cart from "../../../components/cart/Cart";
 import Login from "../../../components/Login";
 import { GrCart } from "react-icons/gr";
-import {ToastContainer} from "react-toastify";
 
 const page = ({ params }) => {
   const { isNightMode, isShowCart, isShowLogin, addToCartItems } = useGlobal();
@@ -120,7 +119,6 @@ const page = ({ params }) => {
       ))}
         </div>
       </div>
-      <ToastContainer/>
     </section>
   );
 };

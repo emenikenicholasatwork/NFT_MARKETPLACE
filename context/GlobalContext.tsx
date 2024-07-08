@@ -3,7 +3,7 @@
 import { useRouter } from "next/navigation";
 import React, {useContext, createContext, useState, ReactNode, useEffect} from "react";
 import { retrieveCookie, saveCookie } from "../utils/cookieUtils";
-import { toast } from "react-toastify";
+import { toast } from "react-hot-toast";
 
 interface GlobalContextProps {
   isShowCart: boolean;
@@ -32,8 +32,8 @@ interface GlobalProviderProps {
 }
 
 export const GlobalProvider: React.FC<GlobalProviderProps> = ({ children }) =>{
-  const notifyAdd = ()=> toast('Added to cart');
-  const notifyRemove = ()=> toast('Removed from cart');
+  const notifyAdd = ()=> toast.success('Added to cart');
+  const notifyRemove = ()=> toast.success('Removed from cart');
   const router = useRouter();
   const [isUserHeaderWalletInfo, setIsUserHeaderWalletInfo] = useState(false);
   const [account, setAccount] = useState("0x43Bea93563Ff08dC888bD3B0A152ef94F56D15ed");
@@ -68,6 +68,7 @@ export const GlobalProvider: React.FC<GlobalProviderProps> = ({ children }) =>{
     try {
       for (const id of cartItems) {
         if (itemId === id) {
+          removeFromCart(itemId);
           return;
         }
       }
@@ -88,9 +89,30 @@ export const GlobalProvider: React.FC<GlobalProviderProps> = ({ children }) =>{
   }
 
   const setNightMode = () => {
-    const newNightMode = !isNightMode;
+    let newNightMode: boolean;
+    if (isNightMode){
+      newNightMode = false;
+      toast('Light theme!',{
+        icon: '☀️',
+        style: {
+        borderRadius: '10px',
+        background: '#fff',
+        color: '#333',
+        },
+      })
+    }else{
+      newNightMode = true;
+      toast('Dark theme!',{
+        icon: '🌙',
+        style: {
+        borderRadius: '10px',
+        background: '#333',
+        color: '#fff',
+        },
+      })
+    }
     setIsNightMode(newNightMode);
-    saveCookie('nightMode', newNightMode ? 'enabled' : 'disabled', 7)
+    saveCookie('theme', newNightMode ? 'enabled' : 'disabled', 7)
   };
   const setLogin = () => {
     isShowLogin ? setIsShowLogin(false) : setIsShowLogin(true);
