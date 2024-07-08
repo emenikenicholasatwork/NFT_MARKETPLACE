@@ -28,7 +28,7 @@ const Login = () => {
       
   return (
     <main className='fixed z-50 top-0 right-0 w-full h-full flex items-center justify-center bg-blurBackground font-bold'>
-        <div className={`h-[450px] mb-32 w-[400px] ${isNightMode ? 'bg-black text-white' : 'bg-white text-black'} pt-10 rounded-lg shadow-md flex flex-col  relative px-2`}>
+        <div className={`h-[450px] mb-32 w-[400px] ${isNightMode ? 'bg-[#1c1f1d] text-white' : 'bg-white text-black'} pt-10 rounded-lg shadow-md flex flex-col  relative px-2`}>
         <i className='bi bi-x-lg absolute right-7 top-7 text-lg font-extrabold cursor-pointer' onClick={setLogin}></i>
             <div className='flex flex-col items-center font-bold gap-2 mt-5'>
                 <i className='bi bi-currency-bitcoin text-4xl bg-green-500 p-3 rounded-md'></i>

@@ -23,7 +23,7 @@ const Header = () => {
   };
 
   return (
-    <header className={` h-20 p-5 left-0 right-0 fixed z-[2] shadow-2xl items-center justify-between flex ${isNightMode ? "bg-[#252927] text-white" : "bg-white text-black"} duration-300`}>
+    <header className={` h-20 p-5 left-0 right-0 fixed z-[2] items-center justify-between flex ${isNightMode ? "bg-[#252927] text-white" : "bg-white text-black"} duration-300`}>
       <Link href={"/"}>
         <div className="logo_div">
           <i className="bi bi-currency-bitcoin"></i>
@@ -53,7 +53,7 @@ const Header = () => {
           <i className="bi bi-person-circle"></i>
           <div
             className={`user_info_dropdown ${
-              isNightMode ? "bg-black" : "bg-white"
+              isNightMode ? "bg-[#1c1f1d]" : "bg-white"
             } `}
           >
             <ul>

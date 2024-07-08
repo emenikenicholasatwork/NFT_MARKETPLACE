@@ -5,7 +5,7 @@ import allNfts from "../collections/nft.json";
 import { GiCancel } from "react-icons/gi";
 
 const Cart = () => {
-  const { setShowCart, isShowCart, setLogin, cartItems, isLoggedIn, removeFromCart } = useGlobal();
+  const { setShowCart, isShowCart, setLogin, cartItems, isLoggedIn, clearCartItems, removeFromCart } = useGlobal();
   const nftInCart = allNfts.filter((n) => cartItems.includes(n.id));
   return (
     <div
@@ -30,7 +30,7 @@ const Cart = () => {
         <div className="flex flex-col justify-between p-3">
           <div className="flex flex-row justify-between p-3">
             <p>{cartItems.length} item</p>
-            <p className="cursor-pointer">Clear all</p>
+            <p className="cursor-pointer" onClick={clearCartItems}>Clear all</p>
           </div>
           <hr />
         </div>

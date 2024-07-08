@@ -1,13 +1,13 @@
-import * as Cookies from "js-cookie";
+import { getCookie, setCookie, removeCookie } from 'typescript-cookie'
 
-export function setCookie(name: string, value: string, days: number){
-    Cookies.set(name, value, {expires: days});
+export function saveCookie(name: string, value: string, days: number){
+    setCookie(name, value, {expires: days});
 }
 
-export function getCookie(name: string): string | undefined {
-    return Cookies.get(name);
+export function retrieveCookie(name: string): string | undefined {
+    return getCookie(name);
 }
 
 export function deleteCookie(name: string) {
-    Cookies.remove(name);
+    removeCookie(name);
 }
