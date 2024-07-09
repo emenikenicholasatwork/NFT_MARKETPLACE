@@ -2,6 +2,7 @@
     {
         "id": 1,
         "price": 0.11,
+        "inCart": false,
         "name": "Crypto Alien",
         "description": "This is just the best NFT you can get in the market right now.. with adequete customisations..",
         "collection": "Azuki",
@@ -9,6 +10,7 @@
     },{
         "id": 2,
         "price": 0.11,
+        "inCart": false,
         "name": "Crypto Alien",
         "description": "This is just the best NFT you can get in the market right now.. with adequete customisations..",
         "collection": "Azuki",
@@ -16,6 +18,7 @@
     },{
         "id": 3,
         "price": 0.11,
+        "inCart": false,
         "name": "Crypto Alien",
         "description": "This is just the best NFT you can get in the market right now.. with adequete customisations..",
         "collection": "Azuki",
@@ -23,6 +26,7 @@
     },{
         "id": 4,
         "price": 0.11,
+        "inCart": false,
         "name": "Crypto Alien",
         "description": "This is just the best NFT you can get in the market right now.. with adequete customisations..",
         "collection": "Azuki",
@@ -30,6 +34,7 @@
     },{
         "id": 5,
         "price": 0.11,
+        "inCart": false,
         "name": "Crypto Alien",
         "description": "This is just the best NFT you can get in the market right now.. with adequete customisations..",
         "collection": "Azuki",
@@ -37,6 +42,7 @@
     },{
         "id": 6,
         "price": 0.11,
+        "inCart": false,
         "name": "Crypto Alien",
         "description": "This is just the best NFT you can get in the market right now.. with adequete customisations..",
         "collection": "Azuki",
@@ -44,6 +50,7 @@
     },{
         "id": 7,
         "price": 0.11,
+        "inCart": false,
         "name": "Crypto Alien",
         "description": "This is just the best NFT you can get in the market right now.. with adequete customisations..",
         "collection": "Azuki",
@@ -51,6 +58,7 @@
     },{
         "id": 8,
         "price": 0.11,
+        "inCart": false,
         "name": "Crypto Alien",
         "description": "This is just the best NFT you can get in the market right now.. with adequete customisations..",
         "collection": "Azuki",
@@ -58,6 +66,7 @@
     },{
         "id": 9,
         "price": 0.11,
+        "inCart": false,
         "name": "Crypto Alien",
         "description": "This is just the best NFT you can get in the market right now.. with adequete customisations..",
         "collection": "Azuki",
@@ -65,6 +74,7 @@
     },{
         "id": 10,
         "price": 0.11,
+        "inCart": false,
         "name": "Crypto Alien",
         "description": "This is just the best NFT you can get in the market right now.. with adequete customisations..",
         "collection": "Azuki",
@@ -72,6 +82,7 @@
     },{
         "id": 11,
         "price": 0.11,
+        "inCart": false,
         "name": "Crypto Alien",
         "description": "This is just the best NFT you can get in the market right now.. with adequete customisations..",
         "collection": "Azuki",
@@ -79,6 +90,7 @@
     },{
         "id": 12,
         "price": 0.11,
+        "inCart": false,
         "name": "Crypto Alien",
         "description": "This is just the best NFT you can get in the market right now.. with adequete customisations..",
         "collection": "Azuki",
@@ -86,6 +98,7 @@
     },{
         "id": 13,
         "price": 0.11,
+        "inCart": false,
         "name": "Crypto Alien",
         "description": "This is just the best NFT you can get in the market right now.. with adequete customisations..",
         "collection": "Azuki",
@@ -93,6 +106,7 @@
     },{
         "id": 14,
         "price": 0.11,
+        "inCart": false,
         "name": "Crypto Alien",
         "description": "This is just the best NFT you can get in the market right now.. with adequete customisations..",
         "collection": "Bored Ape Yacht Club (BACY)",
@@ -100,6 +114,7 @@
     },{
         "id": 15,
         "price": 0.11,
+        "inCart": false,
         "name": "Crypto Alien",
         "description": "This is just the best NFT you can get in the market right now.. with adequete customisations..",
         "collection": "Bored Ape Yacht Club (BACY)",
@@ -107,6 +122,7 @@
     },{
         "id": 16,
         "price": 0.11,
+        "inCart": false,
         "name": "Crypto Alien",
         "description": "This is just the best NFT you can get in the market right now.. with adequete customisations..",
         "collection": "Bored Ape Yacht Club (BACY)",
@@ -114,6 +130,7 @@
     },{
         "id": 17,
         "price": 0.11,
+        "inCart": false,
         "name": "Crypto Alien",
         "description": "This is just the best NFT you can get in the market right now.. with adequete customisations..",
         "collection": "Bored Ape Yacht Club (BACY)",
@@ -121,6 +138,7 @@
     },{
         "id": 18,
         "price": 0.11,
+        "inCart": false,
         "name": "Crypto Alien",
         "description": "This is just the best NFT you can get in the market right now.. with adequete customisations..",
         "collection": "Bored Ape Yacht Club (BACY)",
@@ -128,6 +146,7 @@
     },{
         "id": 19,
         "price": 0.11,
+        "inCart": false,
         "name": "Crypto Alien",
         "description": "This is just the best NFT you can get in the market right now.. with adequete customisations..",
         "collection": "Bored Ape Yacht Club (BACY)",
@@ -135,6 +154,7 @@
     },{
         "id": 20,
         "price": 0.11,
+        "inCart": false,
         "name": "Crypto Alien",
         "description": "This is just the best NFT you can get in the market right now.. with adequete customisations..",
         "collection": "Bored Ape Yacht Club (BACY)",
@@ -143,6 +163,7 @@
     },{
         "id": 21,
         "price": 0.11,
+        "inCart": false,
         "name": "Crypto Alien",
         "description": "This is just the best NFT you can get in the market right now.. with adequete customisations..",
         "collection": "Bored Ape Yacht Club (BACY)",
@@ -150,6 +171,7 @@
     },{
         "id": 22,
         "price": 0.11,
+        "inCart": false,
         "name": "Crypto Alien",
         "description": "This is just the best NFT you can get in the market right now.. with adequete customisations..",
         "collection": "Bored Ape Yacht Club (BACY)",
@@ -157,6 +179,7 @@
     },{
         "id": 23,
         "price": 0.11,
+        "inCart": false,
         "name": "Crypto Alien",
         "description": "This is just the best NFT you can get in the market right now.. with adequete customisations..",
         "collection": "Bored Ape Yacht Club (BACY)",
@@ -164,6 +187,7 @@
     },{
         "id": 24,
         "price": 0.11,
+        "inCart": false,
         "name": "Crypto Alien",
         "description": "This is just the best NFT you can get in the market right now.. with adequete customisations..",
         "collection": "Bored Ape Yacht Club (BACY)",
@@ -171,6 +195,7 @@
     },{
         "id": 25,
         "price": 0.11,
+        "inCart": false,
         "name": "Crypto Alien",
         "description": "This is just the best NFT you can get in the market right now.. with adequete customisations..",
         "collection": "Bored Ape Yacht Club (BACY)",
@@ -178,6 +203,7 @@
     },{
         "id": 26,
         "price": 0.11,
+        "inCart": false,
         "name": "Crypto Alien",
         "description": "This is just the best NFT you can get in the market right now.. with adequete customisations..",
         "collection": "Bored Ape Yacht Club (BACY)",
@@ -185,6 +211,7 @@
     },{
         "id": 27,
         "price": 0.11,
+        "inCart": false,
         "views": 0,
         "name": "Crypto Alien",
         "description": "This is just the best NFT you can get in the market right now.. with adequete customisations..",
@@ -193,6 +220,7 @@
     },{
         "id": 28,
         "price": 0.11,
+        "inCart": false,
         "views": 6,
         "name": "Crypto Alien",
         "description": "This is just the best NFT you can get in the market right now.. with adequete customisations..",
@@ -201,6 +229,7 @@
     },{
         "id": 29,
         "price": 0.11,
+        "inCart": false,
         "views": 8,
         "name": "Crypto Alien",
         "description": "This is just the best NFT you can get in the market right now.. with adequete customisations..",
@@ -209,6 +238,7 @@
     },{
         "id": 30,
         "price": 0.11,
+        "inCart": false,
         "views": 9,
         "name": "Crypto Alien",
         "description": "This is just the best NFT you can get in the market right now.. with adequete customisations..",
@@ -217,6 +247,7 @@
     },{
         "id": 31,
         "price": 0.11,
+        "inCart": false,
         "views": 0,
         "name": "Crypto Alien",
         "description": "This is just the best NFT you can get in the market right now.. with adequete customisations..",
@@ -225,6 +256,7 @@
     },{
         "id": 32,
         "price": 0.11,
+        "inCart": false,
         "views": 21,
         "name": "Crypto Alien",
         "description": "This is just the best NFT you can get in the market right now.. with adequete customisations..",
@@ -233,6 +265,7 @@
     },{
         "id": 33,
         "price": 0.11,
+        "inCart": false,
 
         "name": "Crypto Alien",
         "description": "This is just the best NFT you can get in the market right now.. with adequete customisations..",
@@ -242,6 +275,7 @@
     },{
         "id": 34,
         "price": 0.11,
+        "inCart": false,
         "name": "Crypto Alien",
         "description": "This is just the best NFT you can get in the market right now.. with adequete customisations..",
         "collection": "Classic Shady",
@@ -249,6 +283,7 @@
     },{
         "id": 35,
         "price": 0.11,
+        "inCart": false,
         "name": "Crypto Alien",
         "description": "This is just the best NFT you can get in the market right now.. with adequete customisations..",
         "collection": "Classic Shady",
@@ -256,6 +291,7 @@
     },{
         "id": 36,
         "price": 0.11,
+        "inCart": false,
         "name": "Crypto Alien",
         "description": "This is just the best NFT you can get in the market right now.. with adequete customisations..",
         "collection": "Classic Shady",
@@ -263,6 +299,7 @@
     },{
         "id": 37,
         "price": 0.11,
+        "inCart": false,
         "name": "Crypto Alien",
         "description": "This is just the best NFT you can get in the market right now.. with adequete customisations..",
         "collection": "Classic Shady",
@@ -270,6 +307,7 @@
     },{
         "id": 38,
         "price": 0.11,
+        "inCart": false,
         "name": "Crypto Alien",
         "description": "This is just the best NFT you can get in the market right now.. with adequete customisations..",
         "collection": "Classic Shady",
@@ -277,6 +315,7 @@
     },{
         "id": 39,
         "price": 0.11,
+        "inCart": false,
         "name": "Crypto Alien",
         "description": "This is just the best NFT you can get in the market right now.. with adequete customisations..",
         "collection": "Classic Shady",
@@ -284,6 +323,7 @@
     },{
         "id": 40,
         "price": 0.11,
+        "inCart": false,
         "name": "Crypto Alien",
         "description": "This is just the best NFT you can get in the market right now.. with adequete customisations..",
         "collection": "Classic Shady",
@@ -291,6 +331,7 @@
     },{
         "id": 41,
         "price": 0.11,
+        "inCart": false,
         "name": "Crypto Alien",
         "description": "This is just the best NFT you can get in the market right now.. with adequete customisations..",
         "collection": "Classic Shady",
@@ -298,6 +339,7 @@
     },{
         "id": 42,
         "price": 0.11,
+        "inCart": false,
         "name": "Crypto Alien",
         "description": "This is just the best NFT you can get in the market right now.. with adequete customisations..",
         "collection": "Great Art",
@@ -305,6 +347,7 @@
     },{
         "id": 43,
         "price": 0.11,
+        "inCart": false,
         "name": "Crypto Alien",
         "description": "This is just the best NFT you can get in the market right now.. with adequete customisations..",
         "collection": "Great Art",
@@ -312,6 +355,7 @@
     },{
         "id": 44,
         "price": 0.11,
+        "inCart": false,
         "name": "Crypto Alien",
         "description": "This is just the best NFT you can get in the market right now.. with adequete customisations..",
         "collection": "Great Art",
@@ -319,6 +363,7 @@
     },{
         "id": 45,
         "price": 0.11,
+        "inCart": false,
         "name": "Crypto Alien",
         "description": "This is just the best NFT you can get in the market right now.. with adequete customisations..",
         "collection": "Great Art",
@@ -326,6 +371,7 @@
     },{
         "id": 46,
         "price": 0.11,
+        "inCart": false,
         "name": "Crypto Alien",
         "description": "This is just the best NFT you can get in the market right now.. with adequete customisations..",
         "collection": "Great Art",
@@ -333,6 +379,7 @@
     },{
         "id": 47,
         "price": 0.11,
+        "inCart": false,
         "name": "Crypto Alien",
         "description": "This is just the best NFT you can get in the market right now.. with adequete customisations..",
         "collection": "Great Art",
@@ -340,6 +387,7 @@
     },{
         "id": 48,
         "price": 0.11,
+        "inCart": false,
         "name": "Crypto Alien",
         "description": "This is just the best NFT you can get in the market right now.. with adequete customisations..",
         "collection": "Great Art",
@@ -347,6 +395,7 @@
     },{
         "id": 49,
         "price": 0.11,
+        "inCart": false,
         "name": "Crypto Alien",
         "description": "This is just the best NFT you can get in the market right now.. with adequete customisations..",
         "collection": "Great Art",
@@ -354,6 +403,7 @@
     },{
         "id": 50,
         "price": 0.11,
+        "inCart": false,
         "name": "Crypto Alien",
         "description": "This is just the best NFT you can get in the market right now.. with adequete customisations..",
         "collection": "Great Art",
@@ -361,6 +411,7 @@
     },{
         "id": 51,
         "price": 0.11,
+        "inCart": false,
         "name": "Crypto Alien",
         "description": "This is just the best NFT you can get in the market right now.. with adequete customisations..",
         "collection": "Great Art",
@@ -368,6 +419,7 @@
     },{
         "id": 52,
         "price": 0.11,
+        "inCart": false,
         "name": "Crypto Alien",
         "description": "This is just the best NFT you can get in the market right now.. with adequete customisations..",
         "collection": "Great Art",
@@ -375,6 +427,7 @@
     },{
         "id": 53,
         "price": 0.11,
+        "inCart": false,
         "name": "Crypto Alien",
         "description": "This is just the best NFT you can get in the market right now.. with adequete customisations..",
         "collection": "Great Art",
@@ -382,6 +435,7 @@
     },{
         "id": 54,
         "price": 0.11,
+        "inCart": false,
         "name": "Crypto Alien",
         "description": "This is just the best NFT you can get in the market right now.. with adequete customisations..",
         "collection": "Great Art",
@@ -389,6 +443,7 @@
     },{
         "id": 55,
         "price": 0.11,
+        "inCart": false,
         "name": "Crypto Alien",
         "description": "This is just the best NFT you can get in the market right now.. with adequete customisations..",
         "collection": "Great Art",
@@ -396,6 +451,7 @@
     },{
         "id": 56,
         "price": 0.11,
+        "inCart": false,
         "name": "Crypto Alien",
         "description": "This is just the best NFT you can get in the market right now.. with adequete customisations..",
         "collection": "Great Art",
@@ -403,6 +459,7 @@
     },{
         "id": 57,
         "price": 0.11,
+        "inCart": false,
         "name": "Crypto Alien",
         "description": "This is just the best NFT you can get in the market right now.. with adequete customisations..",
         "collection": "Great Art",
@@ -410,6 +467,7 @@
     },{
         "id": 58,
         "price": 0.11,
+        "inCart": false,
         "name": "Crypto Alien",
         "description": "This is just the best NFT you can get in the market right now.. with adequete customisations..",
         "collection": "Great Art",

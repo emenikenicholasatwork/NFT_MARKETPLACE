@@ -2,7 +2,7 @@
 
 import { useRouter } from "next/navigation";
 import React, {useContext, createContext, useState, ReactNode, useEffect} from "react";
-import { retrieveCookie, saveCookie } from "../utils/cookieUtils";
+import { findNftById, saveNftChange, retrieveCookie, saveCookie } from "../utils/Utils";
 import { toast } from "react-hot-toast";
 
 interface GlobalContextProps {
@@ -74,6 +74,9 @@ export const GlobalProvider: React.FC<GlobalProviderProps> = ({ children }) =>{
       }
       setCartItems((prevItems) => [...prevItems, itemId]);
       notifyAdd();
+      const nft = findNftById(itemId);
+      nft.inCart=true;
+      saveNftChange(nft);
     } catch (error) {
       console.log(error);
     }
@@ -82,6 +85,9 @@ export const GlobalProvider: React.FC<GlobalProviderProps> = ({ children }) =>{
   const removeFromCart =(itemId: string)=>{
     setCartItems(cartItems.filter(item => item !== itemId));
     notifyRemove();
+    const nft = findNftById(itemId);
+    nft.inCart=false;
+    saveNftChange(nft);
   }
 
   const clearCartItems =()=>{
