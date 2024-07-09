@@ -13,11 +13,11 @@ import Header from "../components/header/Header";
 export default function Home() {
   const { isNightMode, isShowLogin, isShowCart, isSearchBar } = useGlobal();
   return (
-    <main
-      className={`min-h-screen gap-0  ${
-        isNightMode ? "bg-[#252927]  text-white" : "bg-white text-black"
-      } duration-300`}
-    >
+    <main className={`min-h-screen gap-0  ${isNightMode ? "bg-[#252927]  text-white" : "bg-white text-black"} duration-300`}>
+      <head>
+        <link rel="icon" href="/icon?<generated>" type="image/png" sizes="32x32" />
+        <title>Crypto Art</title>
+      </head>
       <Header/>
       {isShowLogin && <Login />}
       {isShowCart && <Cart />}

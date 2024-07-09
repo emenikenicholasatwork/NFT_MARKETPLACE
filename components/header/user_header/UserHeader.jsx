@@ -16,6 +16,7 @@ import Transactions from "./user_header_quick_component/transactions/Transaction
 import Setting from "./user_header_quick_component/settings/Setting";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
+import toast from "react-hot-toast";
 
 const UserHeader = () => {
   const [activeTab, setActiveTab] = useState("crypto");
@@ -148,10 +149,10 @@ const UserHeader = () => {
                   <p>Settings</p>
                 </li>
               </Link>
-              <li className="items-center py-2 hover:bg-[#9e8c8c] cursor-pointer flex flex-row gap-3 font-bold rounded-md px-4">
+              <li className="items-center py-2 hover:bg-[#9e8c8c] cursor-pointer flex flex-row gap-3 font-bold rounded-md px-4" onClick={() => setNightMode()}>
                 <i className="bi bi-moon"></i>
                 <p>Night Mode</p>
-                <i className={`bi ${isNightMode ? "bi-toggle-on" : "bi-toggle-off"} font-bold text-3xl text-blue-500 ms-3 hover:text-blue-700`} onClick={() => setNightMode()}></i>
+                <i className={`bi ${isNightMode ? "bi-toggle-on" : "bi-toggle-off"} font-bold text-3xl text-blue-500 ms-3 hover:text-blue-700`}></i>
               </li>
               <hr className="my-2" />
               <li className="items-center py-2 hover:bg-[#9e8c8c] cursor-pointer flex flex-row gap-3 font-bold rounded-md px-4">
@@ -164,7 +165,7 @@ const UserHeader = () => {
               </li>
               <hr className="my-2" />
               <Link href={"/"} onClick={()=>activate_account(null)}>
-                <li className="items-center py-2 hover:bg-[#9e8c8c] cursor-pointer flex flex-row gap-3 font-bold rounded-md px-4">
+                <li className="items-center py-2 hover:bg-[#9e8c8c] cursor-pointer flex flex-row gap-3 font-bold rounded-md px-4" onClick={()=> toast.success("successfully logged out")}>
                   <BiLogOut/>
                   <p>Logout</p>
                 </li>

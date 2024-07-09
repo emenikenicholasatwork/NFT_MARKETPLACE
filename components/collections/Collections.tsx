@@ -1,70 +1,81 @@
 "use client";
-import { useGlobal } from '../../context/GlobalContext'
-import React, { useEffect, useState } from 'react'
-import nftData from './nft.json';
-import Link from 'next/link'
-import Image from 'next/image';
+import { useGlobal } from "../../context/GlobalContext";
+import React, { useEffect, useState } from "react";
+import nftData from "./nft.json";
+import Link from "next/link";
+import Image from "next/image";
 
 interface NFT {
-    id: number;
-    name: string;
-    description: string;
-    image: string;
-    collection: string;
-    price: number;
+  id: number;
+  name: string;
+  description: string;
+  image: string;
+  collection: string;
+  price: number;
 }
 
 const Collections: React.FC = () => {
-    const {isNightMode} = useGlobal();
-    const [groupedNfts, setGroupedNfts] = useState<{[key: string]: NFT[]}>({});
+  const { isNightMode } = useGlobal();
+  const [groupedNfts, setGroupedNfts] = useState<{ [key: string]: NFT[] }>({});
 
-    useEffect(()=>{
-        const groupByCollection = (nfts: NFT[]): {[key: string]: NFT[]} =>{
-            return nfts.reduce((acc, nft)=>{
-                const {collection} = nft;
-                if(!acc[collection]){
-                    acc[collection] = [];
-                }
-                acc[collection].push(nft);
-                return acc;
-            }, {} as {[key: string]: NFT[]});
-        };
-        setGroupedNfts(groupByCollection(nftData));
-    },[]);
+  useEffect(() => {
+    const groupByCollection = (nfts: NFT[]): { [key: string]: NFT[] } => {
+      return nfts.reduce((acc, nft) => {
+        const { collection } = nft;
+        if (!acc[collection]) {
+          acc[collection] = [];
+        }
+        acc[collection].push(nft);
+        return acc;
+      }, {} as { [key: string]: NFT[] });
+    };
+    setGroupedNfts(groupByCollection(nftData));
+  }, []);
   return (
-    <section className='pb-32'>
-      <div className=' min-h-fit flex justify-center py-5 px-5'>
-          <p className='text-4xl font-extrabold'>
-              Collections......
-          </p>
+    <section className="pb-32">
+      <div className=" min-h-fit flex justify-center py-5 px-5">
+        <p className="text-4xl font-extrabold">Collections......</p>
       </div>
-      {Object.keys(groupedNfts).map((collectionName)=>(
-      <div key={collectionName} className=' flex flex-col min-h-fit py-2 px-5 lg:px-20 gap-1'>
-        <div className='flex flex-col justify-between '>
-            <p className='font-bold text-lg'>{collectionName} Collections</p>
+      {Object.keys(groupedNfts).map((collectionName) => (
+        <div
+          key={collectionName}
+          className=" flex flex-col min-h-fit py-2 px-5 lg:px-20 gap-1"
+        >
+          <div className="flex flex-col justify-between ">
+            <p className="font-bold text-lg">{collectionName} Collections</p>
+          </div>
+          <div className="flex gap-3 flex-row items-center overflow-x-auto p-3">
+            {groupedNfts[collectionName].map((nft) => (
+              <Link
+                href={`/nft/${nft.id}`}
+                key={nft.id}
+                className={`rounded-lg overflow-hidden hover:-translate-y-1 min-w-fit cursor-pointer duration-200 shadow-md hover:shadow-2xl ${
+                  isNightMode ? "bg-[#9e8c8c15]" : ""
+                } `}
+              >
+                <Image
+                  alt={nft.name}
+                  src={nft.image}
+                  className="w-[200px] h-[200px]"
+                  height={500}
+                  width={500}
+                />
+                <div className="items-center flex flex-col">
+                  <p className="p-3 text-sm">{nft.name}</p>
+                  <div className="flex w-full justify-end p-3">
+                    <div>
+                      <p className="font-light text-sm">Total Price</p>
+                      <p className="text-sm">{nft.price} ETH</p>
+                    </div>
+                  </div>
+                </div>
+              </Link>
+            ))}
+          </div>
         </div>
-        <div className='flex gap-3 flex-row items-center overflow-x-auto p-3'>
-            {
-                groupedNfts[collectionName].map(nft=>(
-                    <Link href={`/nft/${nft.id}`} key={nft.id} className={`rounded-lg overflow-hidden hover:-translate-y-1 min-w-fit cursor-pointer duration-200 shadow-md hover:shadow-2xl ${isNightMode ? 'bg-[#9e8c8c15]' : ''} `}>
-                            <Image alt={nft.name} src={nft.image} className='w-[200px] h-[200px]' height={500} width={500}/>
-                            <div className='items-center flex flex-col'>
-                                <p className='p-3 text-sm'>{nft.name}</p>
-                                <div className='flex w-full justify-end p-3'>           
-                                    <div>
-                                        <p className='font-light text-sm'>Total Price</p>
-                                        <p className='text-sm'>{nft.price} ETH</p>
-                                    </div>
-                                </div>
-                            </div>
-                    </Link>
-                ))
-            }
-        </div>
-    </div>
-        ))}
+      ))}
     </section>
-  )
-}
+  );
+};
 
-export default Collections
+export default Collections;

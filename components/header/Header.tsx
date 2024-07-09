@@ -1,6 +1,6 @@
 import { useGlobal } from "../../context/GlobalContext";
 import React, { useState } from "react";
-import styles from "./header.css";
+import "./header.css";
 import Link from "next/link";
 
 const Header = () => {
@@ -14,7 +14,7 @@ const Header = () => {
     setShowCart,
   } = useGlobal();
   const [inputValue, setInputValue] = useState("");
-  const handleInputChange = (e) => {
+  const handleInputChange = (e:React.ChangeEvent<HTMLInputElement>) => {
     setInputValue(e.target.value);
   };
 
@@ -32,12 +32,7 @@ const Header = () => {
       </Link>
       <div className="search_div">
         <i className="bi bi-search"></i>
-        <input
-          onChange={handleInputChange}
-          value={inputValue}
-          type="text"
-          placeholder="Search"
-        />
+        <input onChange={handleInputChange} value={inputValue} type="text" placeholder="Search"/>
         {inputValue ? (
           <i className="search_input_icon_1 bi bi-x" onClick={clearInput}></i>
         ) : (
@@ -57,28 +52,23 @@ const Header = () => {
             } `}
           >
             <ul>
-              <li onClick={() => (isLoggedIn ? "" : setLogin())}>
+              <li onClick={() => (setLogin())}>
                 <i className="bi bi-person"></i>
                 <p>Profile</p>
               </li>
-              <li onClick={() => (isLoggedIn ? "" : setLogin())}>
+              <li onClick={() => (setLogin())}>
                 <i className="bi bi-eye"></i>
                 <p>WatchList</p>
               </li>
               <hr className="my-2" />
-              <li>
+              <li onClick={() => (setLogin())}>
                 <i className="bi bi-gear"></i>
                 <p>Settings</p>
               </li>
-              <li>
+              <li onClick={()=> setNightMode()}>
                 <i className="bi bi-moon"></i>
                 <p>Night Mode</p>
-                <i
-                  className={`bi ${
-                    isNightMode ? "bi-toggle-on" : "bi-toggle-off"
-                  } font-bold text-3xl text-blue-500 ms-3 hover:text-blue-700`}
-                  onClick={() => setNightMode()}
-                ></i>
+                <i className={`bi ${isNightMode ? "bi-toggle-on" : "bi-toggle-off"} font-bold text-3xl text-blue-500 ms-3 hover:text-blue-700`}></i>
               </li>
               <hr className="my-2" />
               <li>
@@ -99,10 +89,7 @@ const Header = () => {
         <div className="search style_share" onClick={changeSearchState}>
           <i className="bi bi-search"></i>
         </div>
-        <div
-          className="menu style_share"
-          onClick={() => setIsDropdownOpen(true)}
-        >
+        <div className="menu style_share" >
           <i className="bi bi-list"></i>
         </div>
       </div>
