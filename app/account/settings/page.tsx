@@ -9,14 +9,15 @@ import { IoIosCreate } from "react-icons/io";
 import { AiFillDollarCircle, AiOutlineDollar } from "react-icons/ai";
 import { FaListUl } from "react-icons/fa6";
 import { FaListAlt, FaRegUserCircle } from "react-icons/fa";
-import Swap from "../../../components/header/user_header/user_header_quick_component/swap/Swap";
-import Crypto from "../../../components/header/user_header/user_header_quick_component/crypto/Crypto";
-import Transactions from "../../../components/header/user_header/user_header_quick_component/transactions/Transactions";
-import Setting from "../../../components/header/user_header/user_header_quick_component/settings/Setting";
+import Swap from "../../../components/acc_comp/head_comp/swap/Swap";
+import Crypto from "../../../components/acc_comp/head_comp/crypto/Crypto";
+import Transactions from "../../../components/acc_comp/head_comp/transactions/Transactions";
+import Setting from "../../../components/acc_comp/head_comp/settings/Setting";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import toast from "react-hot-toast";
 import { GiCheckedShield } from "react-icons/gi";
+import Profile from "../../../components/acc_comp/setting_comp/Profile";
 
 const UserHeader: React.FC = () => {
   const [activeTab, setActiveTab] = useState("crypto");
@@ -180,7 +181,9 @@ const UserHeader: React.FC = () => {
           </nav>
         </div>
         <div className="bg-slate-600 w-[1px] h-full"></div>
-        <div></div>
+        <div>
+          <Profile/>
+        </div>
       </section>
     </main>
   );

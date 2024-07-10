@@ -4,7 +4,7 @@ import { IoChevronDownOutline } from "react-icons/io5";
 import { useState } from "react";
 import { IoMdClose } from "react-icons/io";
 import Image from "next/image";
-import { useGlobal } from "../../../../../context/GlobalContext";
+import { useGlobal } from "../../../../context/GlobalContext";
 
 const Setting = () => {
   const [dropdownWalletOpen, setIsDropdownWalletOpen] = useState(false);

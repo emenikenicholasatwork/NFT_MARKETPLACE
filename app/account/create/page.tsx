@@ -23,7 +23,7 @@ const Page: React.FC = () => {
         const validTypes = ['image/png', 'image/svg+xml', 'image/gif', 'image/jpeg'];
         if (validTypes.includes(file.type)) {
           const reader = new FileReader();
-          reader.onloadend = () => {
+          reader.onload = () => {
             setImagePreview(reader.result);
             setImageEmpty(false);
           };
