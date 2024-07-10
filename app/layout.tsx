@@ -9,6 +9,10 @@ export default function RootLayout({ children }: Readonly<{children: React.React
   return (
     <html lang="en">
         <GlobalProvider>
+          <head>
+            <title>Crypto Art</title>
+            <link rel="icon" href="/icon?<generated>" type="image/png" sizes="32x32" />
+          </head>
           <body>
             <Toaster position="bottom-right" reverseOrder={false}/>
             {children}

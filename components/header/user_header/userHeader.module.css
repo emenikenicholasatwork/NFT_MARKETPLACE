@@ -28,11 +28,13 @@
   color: black;
 }
 .wallet_info_div {
+  transition-duration: 300ms;
   position: absolute;
   top: 60px;
   right: 50px;
   margin-top: 8px;
   width: 400px;
+  overflow: hidden;
   border-radius: 4px;
   box-shadow: 5px 5px 20px rgb(0, 0, 0, 0.5);
 }

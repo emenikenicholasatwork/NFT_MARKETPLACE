@@ -59,46 +59,19 @@ const UserHeader = () => {
           <p className="text-lg">0 ETH</p>
         </div>
           {isUserHeaderWalletInfo && (
-            <div
-              className={`${styles.wallet_info_div} ${
-                isNightMode ? "bg-[#1c1f1d]" : "bg-white"
-              } `}
-            >
+            <div className={`${styles.wallet_info_div} ${isNightMode ? "bg-[#1c1f1d]" : "bg-white"} `}>
               {activeTab === "crypto" && <Crypto />}
               {activeTab === "swap" && <Swap />}
               {activeTab === "transactions" && <Transactions />}
               {activeTab === "settings" && <Setting />}
-              <div
-                className={`flex flex-col ${
-                  isNightMode ? "dark:bg-gray-900" : "bg-gray-200"
-                }`}
-              >
+              <div className={`flex flex-col ${isNightMode ? "dark:bg-gray-900" : "bg-gray-200"}`}>
                 <hr className="bg-white w-full border-white" />
                 <div className="flex flex-row justify-between p-3">
-                  <div
-                    onClick={() => setActiveTab("crypto")}
-                    id="bottom_nav"
-                    className={`flex active flex-col items-center cursor-pointer ${
-                      isNightMode
-                        ? `text-gray-400 ${
-                            activeTab === "crypto" && "text-white"
-                          }`
-                        : `text-[#66696b] ${
-                            activeTab === "crypto" && "text-black"
-                          }`
-                    }`}
-                  >
+                  <div onClick={() => setActiveTab("crypto")} id="bottom_nav" className={`flex active flex-col items-center cursor-pointer ${isNightMode ? `text-gray-400 ${activeTab === "crypto" && "text-white"}` : `text-[#66696b] ${activeTab === "crypto" && "text-black"}`}`}>
                     {activeTab === "crypto" ? <AiFillDollarCircle/> : <AiOutlineDollar />}
                     <p>Crypto</p>
                   </div>
-                  <div onClick={() => setActiveTab("swap")} id="bottom_nav" className={`flex flex-col items-center cursor-pointer ${isNightMode ? `text-gray-400 ${
-                            activeTab === "swap" && "text-white"
-                          }`
-                        : `text-[#66696b] ${
-                            activeTab === "swap" && "text-black"
-                          }`
-                    }`}
-                  >
+                  <div onClick={() => setActiveTab("swap")} id="bottom_nav" className={`flex flex-col items-center cursor-pointer ${isNightMode ? `text-gray-400 ${activeTab === "swap" && "text-white"}` : `text-[#66696b] ${activeTab === "swap" && "text-black"}`}`}>
                     {activeTab === "swap" ? <MdSwapHorizontalCircle/> : <MdOutlineSwapHorizontalCircle />}
                     <p>Swap</p>
                   </div>
@@ -118,32 +91,32 @@ const UserHeader = () => {
           <Image alt="user image" className="rounded-[20px] h-[30px] w-[30px]" src={"/images/bg1.jpg"} width={500} height={500}/>
           <div className={`group-hover:visible invisible duration-200 shadow-2xl absolute right-0 top-14 w-[250px] p-3 ${isNightMode ? "bg-[#1c1f1d]" : "bg-white"}`}>
             <ul>
-              <Link href={"/user/profile"}>
+              <Link href={"/account/profile"}>
                 <li className="items-center py-2 hover:bg-[#9e8c8c] cursor-pointer flex flex-row gap-3 font-bold rounded-md px-4">
                   <i className="bi bi-person"></i>
                   <p>Profile</p>
                 </li>
               </Link>
-              <Link href={"/user/watchlist"}>
+              <Link href={"/account/watchlist"}>
                 <li className="items-center py-2 hover:bg-[#9e8c8c] cursor-pointer flex flex-row gap-3 font-bold rounded-md px-4">
                   <i className="bi bi-eye"></i>
                   <p>WatchList</p>
                 </li>
               </Link>
-              <Link href={"/user/notification"}>
+              <Link href={"/account/notification"}>
                 <li className="items-center py-2 hover:bg-[#9e8c8c] cursor-pointer flex flex-row gap-3 font-bold rounded-md px-4">
                   <IoNotificationsSharp />
                   <p>Notification</p>
                 </li>
               </Link>
-              <Link href={"/user/create"}>
+              <Link href={"/account/create"}>
                 <li className="items-center py-2 hover:bg-[#9e8c8c] cursor-pointer flex flex-row gap-3 font-bold rounded-md px-4">
                   <IoIosCreate />
                   <p>Create NFT</p>
                 </li>
               </Link>
               <hr className="my-2" />
-              <Link href={"/user/settings"}>
+              <Link href={"/account/settings"}>
                 <li className="items-center py-2 hover:bg-[#9e8c8c] cursor-pointer flex flex-row gap-3 font-bold rounded-md px-4">
                   <i className="bi bi-gear"></i>
                   <p>Settings</p>

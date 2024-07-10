@@ -10,18 +10,14 @@ import Collections from "../../components/collections/Collections";
 import { useGlobal } from "../../context/GlobalContext";
 import UserHeader from "../../components/header/user_header/UserHeader";
 import Footer from "../../components/Footer";
-import Head from "next/head";
 
 const page = () => {
   const { isNightMode, isShowCart, isSearchBar, isShowLogin } = useGlobal();
   return (
     <main className={`min-h-screen gap-0 ${isNightMode ? "bg-[#252927]  text-white" : "bg-white text-black"} duration-300`}>
-      <Head>
-        <title>Crypto~Art</title>
-      </Head>
       <UserHeader/>
       {isShowLogin && <Login />}
-      {isShowCart && <Cart />}
+      {isShowCart && <Cart />} 
       {isSearchBar && <SearchBar />}
       <DashDisplay />
       <Dash />

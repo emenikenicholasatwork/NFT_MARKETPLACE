@@ -14,11 +14,7 @@ import Head from "next/head";
 export default function Home() {
   const { isNightMode, isShowLogin, isShowCart, isSearchBar } = useGlobal();
   return (
-    <main className={`min-h-screen gap-0  ${isNightMode ? "bg-[#252927]  text-white" : "bg-white text-black"} duration-300`}>
-      <Head>
-        <link rel="icon" href="/icon?<generated>" type="image/png" sizes="32x32" />
-        <title>Crypto Art</title>
-      </Head>
+    <div className={`min-h-screen gap-0  ${isNightMode ? "bg-[#252927]  text-white" : "bg-white text-black"} duration-300`}>
       <Header/>
       {isShowLogin && <Login />}
       {isShowCart && <Cart />}
@@ -28,6 +24,6 @@ export default function Home() {
       <Top />
       <Collections />
       <Footer/>
-    </main>
+    </div>
   );
 }

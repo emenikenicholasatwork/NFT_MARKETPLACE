@@ -11,19 +11,10 @@ const Crypto = () => {
       <div className="p-3 gap-5 flex flex-col">
         <div className="flex flex-row justify-between">
           <div className="flex flex-row gap-1 items-center cursor-pointer hover:bg-gray-400 p-2 rounded-md duration-100 hover:text-white">
-            <img
-              src="/icons/metamask.svg"
-              className=""
-              height={20}
-              width={30}
-              alt="MetaMask Icon"
-            />
+            <img src="/icons/metamask.svg" height={20} width={30} alt="MetaMask Icon"/>
             <p>{`${first_6}...${last_4}`}</p>
           </div>
-          <div
-            className="flex flex-row items-center cursor-pointer gap-2 text-lg hover:bg-gray-500 rounded-md p-2 hover:text-white duration-200"
-            onClick={() => setUserHeaderWalletInfo()}
-          >
+          <div className="flex flex-row items-center cursor-pointer gap-2 text-lg hover:bg-gray-500 rounded-md p-2 hover:text-white duration-200" onClick={() => setUserHeaderWalletInfo()}>
             <IoMdClose />
           </div>
         </div>
@@ -37,19 +28,9 @@ const Crypto = () => {
           </div>
         </div>
       </div>
-      <div
-        className={`${
-          isNightMode ? "bg[#192f37]" : "bg-gray-200"
-        } h-72 pt-5 rounded-t-3xl`}
-      >
+      <div className={`${isNightMode ? "bg[#192f37]" : "bg-gray-200"} h-72 pt-5 rounded-t-3xl`}>
         <div className="flex flex-col justify-center items-center gap-2">
-          <Image
-            alt="wallet icon"
-            className="w-24 h-24"
-            src={"/icons/wallet.png"}
-            height={500}
-            width={500}
-          />
+          <Image alt="wallet icon" className="w-24 h-24" src={"/icons/wallet.png"} height={500} width={500}/>
           <p className="w-36">Fund your wallet to purchase NFTs</p>
           <button className="bg-blue-500 hover:scale-105 duration-300 text-white p-3 rounded-md">
             Add funds with card
