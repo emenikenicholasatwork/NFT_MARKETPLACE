@@ -2,45 +2,44 @@ import { MdCopyAll } from "react-icons/md";
 import { SlGlobe } from "react-icons/sl";
 import { useGlobal } from "../../../context/GlobalContext";
 import { LuInfo } from "react-icons/lu";
+import { MoonLoader } from "react-spinners";
 import { useRef, useState } from "react";
 import { FaPencil } from "react-icons/fa6";
 
 const Profile: React.FC = () => {
-    const [image1, setImage1] = useState<string | ArrayBuffer | null>(null);
-    const [image2, setImage2] = useState<string | ArrayBuffer | null>(null);
-    const [image1Empty, setImage1Empty] = useState<boolean>(true);
-    const [image2Empty, setImage2Empty] = useState<boolean>(true);
+    const [image1, setImage1] = useState<string | null>(null);
+    const [image2, setImage2] = useState<string | null>(null);
+    const [image1Loading, setImage1Loading] = useState<boolean>(false);
+    const [image2Loading, setImage2Loading] = useState<boolean>(false);
     const image1Ref = useRef<HTMLInputElement>(null);
     const image2Ref = useRef<HTMLInputElement>(null);
     const { account } = useGlobal();
     const first_slice = account.slice(0, 6);
     const second_slice = account.slice(38, 42);
 
-    const handleImage1Change = () =>{
-        if(image1Ref.current && image1Ref.current.files){
-            const file = image1Ref.current.files[0];
-            if(file){
-                const reader = new FileReader();
-                reader.onload = () =>{
-                    setImage1(reader.result);
-                    setImage1Empty(false);
-                };
-                reader.readAsDataURL(file);
-            }
+    const handleImage1Change = (e: React.ChangeEvent<HTMLInputElement>) =>{
+        const file = e.target.files?.[0];
+        if (file) {
+            setImage1Loading(true);
+            const reader = new FileReader();
+            reader.onloadend =()=>{
+                setImage1(reader.result as string);
+                setImage1Loading(false);
+            };
+            reader.readAsDataURL(file);
         }
     }
 
-    const handleImage2Change =()=>{
-        if(image2Ref.current && image2Ref.current.files[0]){
-            const file = image2Ref.current.files[0];
-            if(file){
-                const reader = new FileReader();
-                reader.onload =()=>{
-                    setImage2(reader.result);
-                    setImage2Empty(false);
-                };
-                reader.readAsDataURL(file);
-            }
+    const handleImage2Change =(e: React.ChangeEvent<HTMLInputElement>)=>{
+        const file = e.target.files?.[0];
+        if(file){
+            setImage2Loading(true);
+            const reader = new FileReader();
+            reader.onloadend=()=>{
+                setImage2(reader.result as string);
+                setImage2Loading(false);
+            };
+            reader.readAsDataURL(file);
         }
     }
 
@@ -61,7 +60,7 @@ const Profile: React.FC = () => {
                     <p className="text-lg">Email Address</p>
                     <input type="text" placeholder="Enter email" className="bg-transparent border-gray-500 border p-3 rounded-xl" />
                 </div>
-                <div>
+                <div className="flex flex-col gap-2">
                     <p>Links</p>
                     <div className="flex flex-row items-center border  border-gray-500 p-3 rounded-xl gap-3">
                         <SlGlobe/>
@@ -76,31 +75,23 @@ const Profile: React.FC = () => {
                     </div>
                 </div>
             </div>
-            <div className="w-full flex flex-col gap-10">
-                <div className="flex flex-col gap-1">
-                    <p>Profile Image</p> 
-                    <div onClick={()=>{if(image1Ref){image1Ref.current.click();}}}>
-                        {
-                            image1Empty ? 
-                            <div className="bg-[#686666] flex items-center justify-center w-52 h-52 cursor-pointer rounded-full">
-                                <FaPencil/>
-                            </div> :
-                            <img src={typeof image1 === 'string' ? image1 : ''} className="w-52 h-52 rounded-full" height={100} width={100}/>
-                        }
-                        <input type="file" ref={image1Ref} className="hidden" onChange={handleImage1Change} />
+            <div className="w-full flex flex-col gap-16">
+                <div className="flex flex-col gap-3">
+                    <p className="text-center font-bold text-lg">Profile Image</p> 
+                    <div onClick={() => { if (image1Ref.current) image1Ref.current.click(); }} className="cursor-pointer relative w-52 h-52">
+                    <div className="z-10 flex items-center justify-center w-52 h-52 rounded-full">
+                        {image1Loading ? (<MoonLoader color="#e5cbcb" />) : (<img src={image1 || '/images/default-profile.png'} alt="Profile" className="w-52 h-52 rounded-full object-cover"/>)}
+                    </div>
+                    <input type="file" accept=".png, .svg, .gif, .jpg, .jpeg, image/png, image/svg+xml, image/gif, image/jpeg"  ref={image1Ref} className="hidden" onChange={handleImage1Change} />
                     </div>
                 </div>
-                <div className="flex flex-col gap-1">
-                    <p>Profile Banner</p>
-                    <div onClick={()=> {if(image2Ref){image2Ref.current.click();}}}>
-                        {
-                        image1Empty ? 
-                        <div className="bg-[#686666] flex items-center justify-center w-52 h-52 cursor-pointer rounded-full">
-                            <FaPencil/>
-                        </div> :
-                        <img src={typeof image2 === 'string' ? image2 : ''} className="w-52 h-52 rounded-full" height={100} width={100}/>
-                        }
-                        <input type="file" ref={image2Ref} className="hidden" onChange={handleImage2Change} />
+                <div className="flex flex-col gap-3">
+                    <p className="text-center font-bold text-lg">Profile Cover Banner</p> 
+                    <div onClick={() => { if (image2Ref.current) image2Ref.current.click(); }} className="cursor-pointer relative w-52 h-52">
+                    <div className="z-10 flex items-center justify-center w-52 h-52 rounded-full">
+                        {image2Loading ? (<MoonLoader color="#e5cbcb" />) : (<img src={image2 || '/images/default-profile.png'} alt="Profile" className="w-52 h-52 rounded-full object-cover"/>)}
+                    </div>
+                    <input type="file" accept=".png, .svg, .gif, .jpg, .jpeg, image/png, image/svg+xml, image/gif, image/jpeg"  ref={image2Ref} className="hidden" onChange={handleImage2Change} />
                     </div>
                 </div>
             </div>
