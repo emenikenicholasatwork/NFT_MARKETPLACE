@@ -1,10 +1,10 @@
 import { MdCopyAll } from "react-icons/md";
 import { SlGlobe } from "react-icons/sl";
 import { useGlobal } from "../../../context/GlobalContext";
-import { LuInfo } from "react-icons/lu";
 import { MoonLoader } from "react-spinners";
 import { useRef, useState } from "react";
-import { FaPencil } from "react-icons/fa6";
+import { Tooltip } from "react-tooltip";
+import toast from "react-hot-toast";
 
 const Profile: React.FC = () => {
     const [image1, setImage1] = useState<string | null>(null);
@@ -67,7 +67,12 @@ const Profile: React.FC = () => {
                         <input type="text" placeholder="yoursite.io" className="outline-none bg-transparent" />
                     </div>
                 </div>
-                <div>
+                <div data-tooltip-id="address-copy-tooltip" data-tooltip-content="Copy" onClick={()=>
+                    navigator.clipboard.writeText(account).then(()=>{
+                        toast.success("Copied")
+                    })
+                }>
+                    <Tooltip id="address-copy-tooltip"/>
                     <p className="text-lg">Wallet Address</p>
                     <div className="cursor-pointer flex flex-row items-center gap-1 text-lg">
                         <p>{`${first_slice}...${second_slice}`}</p>

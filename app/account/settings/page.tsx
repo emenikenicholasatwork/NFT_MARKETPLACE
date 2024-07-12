@@ -18,9 +18,12 @@ import Link from "next/link";
 import toast from "react-hot-toast";
 import { GiCheckedShield } from "react-icons/gi";
 import Profile from "../../../components/acc_comp/setting_comp/Profile";
+import Notification from "../../../components/acc_comp/setting_comp/Notification";
+import AccountSupport from "../../../components/acc_comp/setting_comp/AccountSupport";
 
 const UserHeader: React.FC = () => {
   const [activeTab, setActiveTab] = useState("crypto");
+  const [activeNav, setActiveNav] = useState("profile");
 
   const {
     setNightMode,
@@ -165,15 +168,15 @@ const UserHeader: React.FC = () => {
           <h1 className="font-bold text-2xl">Settings</h1>
           <nav className="pt-10">
             <ul className="w-60">
-              <li className="items-center py-2 text-lg hover:bg-[#3e3b3b] text-gray-400 duration-75 hover:text-white cursor-pointer flex flex-row gap-3 font-bold rounded-md px-4">
+              <li className={`items-center py-2 text-lg hover:bg-[#3e3b3b] text-gray-400 duration-75 ${activeNav === "profile" && "text-white"} hover:text-white cursor-pointer flex flex-row gap-3 font-bold rounded-md px-4`} onClick={()=>setActiveNav("profile")}>
                 <FaRegUserCircle/>
                 <p>Profile</p>
               </li>
-              <li className="items-center py-2 text-lg hover:bg-[#3e3b3b] text-gray-400 duration-75 hover:text-white cursor-pointer flex flex-row gap-3 font-bold rounded-md px-4">
+              <li className={`items-center py-2 text-lg hover:bg-[#3e3b3b] text-gray-400 duration-75 ${activeNav === "notification" && "text-white"} hover:text-white cursor-pointer flex flex-row gap-3 font-bold rounded-md px-4`} onClick={()=>setActiveNav("notification")}>
                 <IoNotifications/>
                 <p>Notification</p>
               </li>
-                <li className="items-center py-2 text-lg hover:bg-[#3e3b3b] text-gray-400 duration-75 hover:text-white cursor-pointer flex flex-row gap-3 font-bold rounded-md px-4">
+                <li className={`items-center py-2 text-lg hover:bg-[#3e3b3b] text-gray-400 duration-75 ${activeNav === "account_support" && "text-white"} hover:text-white cursor-pointer flex flex-row gap-3 font-bold rounded-md px-4`} onClick={()=>setActiveNav("account_support")}>
                   <GiCheckedShield/>
                   <p>Account Support</p>
                 </li>
@@ -182,7 +185,9 @@ const UserHeader: React.FC = () => {
         </div>
         <div className="bg-slate-600 w-[1px] h-full"></div>
         <div>
-          <Profile/>
+          {activeNav === "profile" && <Profile/>}
+          {activeNav === "notification" && <Notification/>}
+          {activeNav === "account_support" && <AccountSupport/>}
         </div>
       </section>
     </main>
