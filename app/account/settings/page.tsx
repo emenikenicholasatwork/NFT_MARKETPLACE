@@ -19,7 +19,6 @@ import toast from "react-hot-toast";
 import { GiCheckedShield } from "react-icons/gi";
 import Profile from "../../../components/acc_comp/setting_comp/Profile";
 import Notification from "../../../components/acc_comp/setting_comp/Notification";
-import AccountSupport from "../../../components/acc_comp/setting_comp/AccountSupport";
 
 const UserHeader: React.FC = () => {
   const [activeTab, setActiveTab] = useState("crypto");
@@ -176,10 +175,6 @@ const UserHeader: React.FC = () => {
                 <IoNotifications/>
                 <p>Notification</p>
               </li>
-                <li className={`items-center py-2 text-lg hover:bg-[#3e3b3b] text-gray-400 duration-75 ${activeNav === "account_support" && "text-white"} hover:text-white cursor-pointer flex flex-row gap-3 font-bold rounded-md px-4`} onClick={()=>setActiveNav("account_support")}>
-                  <GiCheckedShield/>
-                  <p>Account Support</p>
-                </li>
             </ul>
           </nav>
         </div>
@@ -187,7 +182,6 @@ const UserHeader: React.FC = () => {
         <div>
           {activeNav === "profile" && <Profile/>}
           {activeNav === "notification" && <Notification/>}
-          {activeNav === "account_support" && <AccountSupport/>}
         </div>
       </section>
     </main>

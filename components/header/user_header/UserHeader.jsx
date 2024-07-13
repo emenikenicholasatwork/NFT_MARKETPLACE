@@ -10,10 +10,10 @@ import { IoIosCreate } from "react-icons/io";
 import { AiFillDollarCircle, AiOutlineDollar } from "react-icons/ai";
 import { FaListUl } from "react-icons/fa6";
 import { FaListAlt } from "react-icons/fa";
-import Swap from "./user_header_quick_component/swap/Swap";
-import Crypto from "./user_header_quick_component/crypto/Crypto";
-import Transactions from "./user_header_quick_component/transactions/Transactions";
-import Setting from "./user_header_quick_component/settings/Setting";
+import Swap from "../../acc_comp/head_comp/swap/Swap";
+import Crypto from "../../acc_comp/head_comp/crypto/Crypto";
+import Transactions from "../../acc_comp/head_comp/transactions/Transactions";
+import Setting from "../../acc_comp/head_comp/settings/Setting";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import toast from "react-hot-toast";
@@ -97,18 +97,6 @@ const UserHeader = () => {
                   <p>Profile</p>
                 </li>
               </Link>
-              <Link href={"/account/watchlist"}>
-                <li className="items-center py-2 hover:bg-[#9e8c8c] cursor-pointer flex flex-row gap-3 font-bold rounded-md px-4">
-                  <i className="bi bi-eye"></i>
-                  <p>WatchList</p>
-                </li>
-              </Link>
-              <Link href={"/account/notification"}>
-                <li className="items-center py-2 hover:bg-[#9e8c8c] cursor-pointer flex flex-row gap-3 font-bold rounded-md px-4">
-                  <IoNotificationsSharp />
-                  <p>Notification</p>
-                </li>
-              </Link>
               <Link href={"/account/create"}>
                 <li className="items-center py-2 hover:bg-[#9e8c8c] cursor-pointer flex flex-row gap-3 font-bold rounded-md px-4">
                   <IoIosCreate />
@@ -126,15 +114,6 @@ const UserHeader = () => {
                 <i className="bi bi-moon"></i>
                 <p>Night Mode</p>
                 <i className={`bi ${isNightMode ? "bi-toggle-on" : "bi-toggle-off"} font-bold text-3xl text-blue-500 ms-3 hover:text-blue-700`}></i>
-              </li>
-              <hr className="my-2" />
-              <li className="items-center py-2 hover:bg-[#9e8c8c] cursor-pointer flex flex-row gap-3 font-bold rounded-md px-4">
-                <i className="bi bi-journals"></i>
-                <p>Learn</p>
-              </li>
-              <li className="items-center py-2 hover:bg-[#9e8c8c] cursor-pointer flex flex-row gap-3 font-bold rounded-md px-4">
-                <i className="bi bi-question-circle"></i>
-                <p>Help center</p>
               </li>
               <hr className="my-2" />
               <Link href={"/"} onClick={()=>activate_account(null)}>

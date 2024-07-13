@@ -149,32 +149,20 @@ const layout = ({ children }:{ children: React.ReactNode }) => {
               />
               <div className={`duration-200 absolute top-[45px] shadow-lg right-0 mt-2 w-60 p-2 ${isNightMode ? "bg-[#1c1f1d]" : "bg-white"} invisible rounded shadow group-hover:visible`}>
                 <ul>
-                  <Link href={"/user/profile"}>
+                  <Link href={"/account/profile"}>
                     <li className="items-center py-2 hover:bg-[#9e8c8c] cursor-pointer flex flex-row gap-3 font-bold rounded-md px-4">
                       <i className="bi bi-person"></i>
                       <p>Profile</p>
                     </li>
                   </Link>
-                  <Link href={"/user/watchlist"}>
-                    <li className="items-center py-2 hover:bg-[#9e8c8c] cursor-pointer flex flex-row gap-3 font-bold rounded-md px-4">
-                      <i className="bi bi-eye"></i>
-                      <p>WatchList</p>
-                    </li>
-                  </Link>
-                  <Link href={"/user/notification"}>
-                    <li className="items-center py-2 hover:bg-[#9e8c8c] cursor-pointer flex flex-row gap-3 font-bold rounded-md px-4">
-                      <IoNotificationsSharp />
-                      <p>Notification</p>
-                    </li>
-                  </Link>
-                  <Link href={"/user/create"}>
+                  <Link href={"/account/create"}>
                     <li className="items-center py-2 hover:bg-[#9e8c8c] cursor-pointer flex flex-row gap-3 font-bold rounded-md px-4">
                       <IoIosCreate />
                       <p>Create NFT</p>
                     </li>
                   </Link>
                   <hr className="my-2" />
-                  <Link href={"/user/settings"}>
+                  <Link href={"/account/settings"}>
                     <li className="items-center py-2 hover:bg-[#9e8c8c] cursor-pointer flex flex-row gap-3 font-bold rounded-md px-4">
                       <i className="bi bi-gear"></i>
                       <p>Settings</p>
@@ -189,15 +177,6 @@ const layout = ({ children }:{ children: React.ReactNode }) => {
                       } font-bold text-3xl text-blue-500 ms-3 hover:text-blue-700`}
                       onClick={() => setNightMode()}
                     ></i>
-                  </li>
-                  <hr className="my-2" />
-                  <li className="items-center py-2 hover:bg-[#9e8c8c] cursor-pointer flex flex-row gap-3 font-bold rounded-md px-4">
-                    <i className="bi bi-journals"></i>
-                    <p>Learn</p>
-                  </li>
-                  <li className="items-center py-2 hover:bg-[#9e8c8c] cursor-pointer flex flex-row gap-3 font-bold rounded-md px-4">
-                    <i className="bi bi-question-circle"></i>
-                    <p>Help center</p>
                   </li>
                   <hr className="my-2" />
                   <Link href={"/"} onClick={() => activate_account(null)}>

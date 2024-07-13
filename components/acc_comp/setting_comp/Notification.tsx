@@ -26,6 +26,14 @@ const Notification: React.FC = () => {
                         <p>when you successfully buy an item</p>
                     </div>
                 </div>
+                <hr />
+                <div className="flex flex-row w-full p-5 gap-5">
+                    <input type="checkbox" style={{width: '20px', height: '20px'}}/>
+                    <div className="flex flex-col items-start">
+                        <p className="font-bold text-lg">Successfull Mint</p>
+                        <p>when you successfully mint an item</p>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

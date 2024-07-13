@@ -46,21 +46,8 @@ const Header = () => {
         </div>
         <div className="user_dropdown_div">
           <i className="bi bi-person-circle"></i>
-          <div
-            className={`user_info_dropdown ${
-              isNightMode ? "bg-[#1c1f1d]" : "bg-white"
-            } `}
-          >
+          <div className={`user_info_dropdown ${isNightMode ? "bg-[#1c1f1d]" : "bg-white"} `}>
             <ul>
-              <li onClick={() => (setLogin())}>
-                <i className="bi bi-person"></i>
-                <p>Profile</p>
-              </li>
-              <li onClick={() => (setLogin())}>
-                <i className="bi bi-eye"></i>
-                <p>WatchList</p>
-              </li>
-              <hr className="my-2" />
               <li onClick={() => (setLogin())}>
                 <i className="bi bi-gear"></i>
                 <p>Settings</p>
@@ -69,15 +56,6 @@ const Header = () => {
                 <i className="bi bi-moon"></i>
                 <p>Night Mode</p>
                 <i className={`bi ${isNightMode ? "bi-toggle-on" : "bi-toggle-off"} font-bold text-3xl text-blue-500 ms-3 hover:text-blue-700`}></i>
-              </li>
-              <hr className="my-2" />
-              <li>
-                <i className="bi bi-journals"></i>
-                <p>Learn</p>
-              </li>
-              <li>
-                <i className="bi bi-question-circle"></i>
-                <p>Help center</p>
               </li>
             </ul>
           </div>
