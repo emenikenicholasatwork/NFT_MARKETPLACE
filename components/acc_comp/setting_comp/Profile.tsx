@@ -1,3 +1,4 @@
+"use client"
 import { MdCopyAll } from "react-icons/md";
 import { SlGlobe } from "react-icons/sl";
 import { useGlobal } from "../../../context/GlobalContext";
@@ -67,15 +68,15 @@ const Profile: React.FC = () => {
                         <input type="text" placeholder="yoursite.io" className="outline-none bg-transparent" />
                     </div>
                 </div>
-                <div data-tooltip-id="address-copy-tooltip" data-tooltip-content="Copy" onClick={()=>
+                <div onClick={()=>
                     navigator.clipboard.writeText(account).then(()=>{
                         toast.success("Copied")
                     })
                 }>
-                    <Tooltip id="address-copy-tooltip"/>
                     <p className="text-lg">Wallet Address</p>
                     <div className="cursor-pointer flex flex-row items-center gap-1 text-lg">
-                        <p>{`${first_slice}...${second_slice}`}</p>
+                        <Tooltip id="address-copy-tooltip"/>
+                        <p data-tooltip-id="address-copy-tooltip" data-tooltip-content="Copy" className="hover:text-gray-300" >{`${first_slice}...${second_slice}`}</p>
                         <MdCopyAll/>
                     </div>
                 </div>

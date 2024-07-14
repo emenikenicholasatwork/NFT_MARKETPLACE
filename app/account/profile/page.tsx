@@ -1,14 +1,14 @@
 "use client";
 import { useGlobal } from "../../../context/GlobalContext";
-import React, { useState } from "react";
-import { MdOutlineSwapHorizontalCircle, MdSwapHorizontalCircle, MdWallet } from "react-icons/md";
-import { IoNotificationsSharp, IoSettings, IoSettingsOutline } from "react-icons/io5";
+import React, { useRef, useState } from "react";
+import { MdOutlineSwapHorizontalCircle, MdSell, MdSwapHorizontalCircle, MdWallet } from "react-icons/md";
+import { IoCreateSharp, IoNotificationsSharp, IoSettings, IoSettingsOutline } from "react-icons/io5";
 import { BiLogOut } from "react-icons/bi";
 import Image from "next/image";
 import { IoIosCreate } from "react-icons/io";
 import { AiFillDollarCircle, AiOutlineDollar } from "react-icons/ai";
-import { FaListUl } from "react-icons/fa6";
-import { FaListAlt } from "react-icons/fa";
+import { FaDollarSign, FaListUl } from "react-icons/fa6";
+import { FaArrowAltCircleDown, FaListAlt } from "react-icons/fa";
 import Swap from "../../../components/acc_comp/head_comp/swap/Swap";
 import Crypto from "../../../components/acc_comp/head_comp/crypto/Crypto";
 import Transactions from "../../../components/acc_comp/head_comp/transactions/Transactions";
@@ -16,9 +16,21 @@ import Setting from "../../../components/acc_comp/head_comp/settings/Setting";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import toast from "react-hot-toast";
+import { FiSettings } from "react-icons/fi";
+import { Tooltip } from "react-tooltip";
+import data from "../../../components/collections/nft.json";
+import { MoonLoader } from "react-spinners";
 
 const page: React.FC = () => {
-  const [activeTab, setActiveTab] = useState("crypto");
+  const [activeTab, setActiveTab] = useState<string>("crypto");
+  const [activeNav, setActiveNav] = useState<string>("created");
+  const image1Ref = useRef<HTMLInputElement>(null);
+  const image2Ref = useRef<HTMLInputElement>(null);
+  const [image1Loading, setImage1Loading] = useState<boolean>(false);
+  const [image2Loading, setImage2Loading] = useState<boolean>(false);
+  const [image1, setImage1] = useState<string | null>(null);
+  const [image2, setImage2] = useState<string | null>(null);
+  let nfts = data;
 
   const {
     setNightMode,
@@ -27,6 +39,7 @@ const page: React.FC = () => {
     cartItems,
     changeSearchState,
     setLogin,
+    account,
     isShowLogin,
     isUserHeaderWalletInfo,
     setUserHeaderWalletInfo,
@@ -34,19 +47,45 @@ const page: React.FC = () => {
     activate_account
   } = useGlobal();
   const [inputValue, setInputValue] = useState("");
-  const handleInputChange = (e) => {
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setInputValue(e.target.value);
   };
   const clearInput = () => {
     setInputValue("");
   };
+  const first_slice = account.slice(0, 6);
+  const second_slice = account.slice(38, 42);
+  const handleImage1Change =(e: React.ChangeEvent<HTMLInputElement>)=>{
+    const file = e.target.files?.[0];
+    if(file){
+      const reader = new FileReader();
+      setImage1Loading(true);
+      reader.onloadend=()=>{
+        setImage1(reader.result as string);
+        setImage1Loading(false);
+      };
+      reader.readAsDataURL(file);
+    }
+  }
+  const handleImage2Change =(e: React.ChangeEvent<HTMLInputElement>)=>{
+    const file = e.target.files?.[0];
+    if(file){
+      const reader = new FileReader();
+      setImage2Loading(true);
+      reader.onloadend=()=>{
+        setImage2(reader.result as string);
+        setImage2Loading(false);
+      };
+      reader.readAsDataURL(file);
+    }
+  }
 
   return (
-    <main className="w-full h-screen">
-      <header>
+    <div className="w-full h-screen overflow-auto">
         <head>
           <title>Your profile | Crypto~Art</title>
         </head>
+      <header className={` h-20 p-5 left-0 right-0 fixed z-[2] items-center justify-between flex ${isNightMode ? "bg-[#252927] text-white" : "bg-white text-black"} duration-300`}>
         <div className="flex flex-row items-center gap-1">
         <i className="bi bi-currency-bitcoin text-lg bg-green-700 p-2 rounded-md"></i>
         <p className="text-2xl md:block font-bold font-serif hidden">Crypto~Art</p>
@@ -140,10 +179,80 @@ const page: React.FC = () => {
         </div>
       </div>
       </header>
-      <section className="">
-
+      <section className="flex flex-col gap-5">
+        <div className="relative h-[520px]">
+          <input type="file" accept=".png, .svg, .gif, .jpg, .jpeg, image/png, image/svg+xml, image/gif, image/jpeg"  ref={image1Ref} className="hidden" onChange={handleImage1Change} />
+          <input type="file" accept=".png, .svg, .gif, .jpg, .jpeg, image/png, image/svg+xml, image/gif, image/jpeg"  ref={image2Ref} className="hidden" onChange={handleImage2Change} />
+          {image1Loading ? (<MoonLoader color="#e5cbcb" />) : (<img src={image1 || '/images/default-profile.png'} alt="cover pics" className="w-full h-[500px] object-cover cursor-pointer" onClick={()=>image1Ref.current.click()}/>)}
+          {image1Loading ? (<MoonLoader color="#e5cbcb" />) : (<img src={image1 || '/images/default-profile.png'} alt="profile pics"  className="w-56 h-56 object-cover rounded-full absolute bottom-0 left-10 shadow-2xl cursor-pointer" onClick={()=>image2Ref.current.click()}/>)}
+        </div>
+        <div className="flex flex-row justify-between px-10">
+          <div className="flex flex-col">
+            <p className="font-bold text-xl">Unnamed</p>
+            <div className="flex flex-row items-center gap-5">
+              <Tooltip id="copy_address_tooltip"/>
+              <p data-tooltip-content="Copy" data-tooltip-id="copy_address_tooltip" className="cursor-pointer hover:text-gray-300" onClick={()=>navigator.clipboard.writeText(account).then(()=>{toast.success("Copied")})}>{first_slice+"..."+second_slice}</p>
+              <p className="text-gray-300">Joined july 2024</p>
+            </div>
+          </div>
+          <Link href={"/account/settings"} className="flex items-center">
+            <FiSettings className="cursor-pointer text-xl hover:text-gray-300"/>
+          </Link>
+        </div>
+        <div className="flex flex-col px-10 overflow-auto">
+          <nav>
+            <ul className="flex flex-row items-center">
+              <li className={`flex flex-row items-center p-5 cursor-pointer ${activeNav === "created" && "text-white"} text-gray-400 hover:text-white duration-200 gap-2`} onClick={()=>setActiveNav("created")}>
+                <IoCreateSharp/>
+                <p>Created</p>
+              </li>
+              <li className={`flex flex-row items-center p-5 cursor-pointer ${activeNav === "bought" && "text-white"} text-gray-400 hover:text-white duration-200 gap-2`} onClick={()=>setActiveNav("bought")}>
+                <FaDollarSign/>
+                <p>Bought</p>
+              </li>
+              <li className={`flex flex-row items-center p-5 cursor-pointer ${activeNav === "sold" && "text-white"} text-gray-400 hover:text-white duration-200 gap-2`} onClick={()=>setActiveNav("sold")}>
+                <MdSell/>
+                <p>Sold</p>
+              </li>
+              <li className={`flex flex-row items-center p-5 cursor-pointer ${activeNav === "owned" && "text-white"} text-gray-400 hover:text-white duration-200 gap-2`} onClick={()=>setActiveNav("owned")}>
+                <FaArrowAltCircleDown/>
+                <p>Own (Currently)</p>
+              </li>
+            </ul>
+          </nav>
+          <hr />
+          <div className="flex flex-wrap gap-3 overflow-auto border p-5 rounded-md w-full border-gray-300">
+          {nfts.map((nft) => (
+        <div key={nft.id} className="relative duration-200 min-w-fit group rounded-lg overflow-hidden shadow-md hover:shadow-2xl">
+          <Link
+            href={`/nft/${nft.id}`}
+            className={`block cursor-pointer  ${
+              isNightMode ? "bg-[#9e8c8c15]" : ""
+            }`}
+          >
+            <Image
+              src={nft.image}
+              alt={nft.name}
+              className="w-[200px] h-[200px] group-hover:scale-105 duration-200"
+              height={200}
+              width={200}
+            />
+            <div className="items-center flex flex-col">
+              <p className="p-3 text-sm">{nft.name}</p>
+              <div className="flex w-full justify-end p-3">
+                <div>
+                  <p className="font-light text-sm">Total price</p>
+                  <p className="text-sm">{nft.price} ETH</p>
+                </div>
+              </div>
+            </div>
+          </Link>
+        </div>
+      ))}
+          </div>
+        </div>
       </section>
-    </main>
+    </div>
   )
 }
 export default page
