@@ -184,7 +184,7 @@ const page: React.FC = () => {
           <input type="file" accept=".png, .svg, .gif, .jpg, .jpeg, image/png, image/svg+xml, image/gif, image/jpeg"  ref={image1Ref} className="hidden" onChange={handleImage1Change} />
           <input type="file" accept=".png, .svg, .gif, .jpg, .jpeg, image/png, image/svg+xml, image/gif, image/jpeg"  ref={image2Ref} className="hidden" onChange={handleImage2Change} />
           {image1Loading ? (<MoonLoader color="#e5cbcb" />) : (<img src={image1 || '/images/default-profile.png'} alt="cover pics" className="w-full h-[500px] object-cover cursor-pointer" onClick={()=>image1Ref.current.click()}/>)}
-          {image1Loading ? (<MoonLoader color="#e5cbcb" />) : (<img src={image1 || '/images/default-profile.png'} alt="profile pics"  className="w-56 h-56 object-cover rounded-full absolute bottom-0 left-10 shadow-2xl cursor-pointer" onClick={()=>image2Ref.current.click()}/>)}
+          {image1Loading ? (<MoonLoader color="#e5cbcb" />) : (<img src={image2 || '/images/default-profile.png'} alt="profile pics"  className="w-56 h-56 object-cover rounded-full absolute bottom-0 left-10 shadow-2xl cursor-pointer" onClick={()=>image2Ref.current.click()}/>)}
         </div>
         <div className="flex flex-row justify-between px-10">
           <div className="flex flex-col">
