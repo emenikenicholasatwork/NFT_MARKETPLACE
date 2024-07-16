@@ -7,7 +7,6 @@
   padding-left: 2rem;
   padding-right: 2rem;
   padding-bottom: 2rem;
-  /* justify-content: space-between; */
 }
 #title_div {
   flex: auto;
@@ -43,8 +42,6 @@
   width: 100%;
 }
 .first_images_div {
-  /* display: flex; */
-  /* flex-direction: col; */
   gap: 0.7rem;
 }
 #image1 {

@@ -2,20 +2,35 @@ import { useGlobal } from "../../context/GlobalContext";
 import React, { useState } from "react";
 import "./header.css";
 import Link from "next/link";
+import { IoOptions } from "react-icons/io5";
+import toast from "react-hot-toast";
 
 const Header = () => {
   const {
     setNightMode,
     isNightMode,
-    isLoggedIn,
     changeSearchState,
     cartItems,
-    setLogin,
     setShowCart,
+    activate_account
   } = useGlobal();
   const [inputValue, setInputValue] = useState("");
-  const handleInputChange = (e:React.ChangeEvent<HTMLInputElement>) => {
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setInputValue(e.target.value);
+  };
+
+  const connect_wallet = async () => {
+    try {
+      const { ethereum } = window;
+      if (ethereum) {
+        const account = await window.ethereum.request({ method: 'eth_requestAccounts' })
+        activate_account(account[0]);
+      } else {
+        toast.error("please install metamask wallet.")
+      }
+    } catch (error) {
+      console.log(`Error while connecting metamask: ${error}`)
+    }
   };
 
   const clearInput = () => {
@@ -32,7 +47,7 @@ const Header = () => {
       </Link>
       <div className="search_div">
         <i className="bi bi-search"></i>
-        <input onChange={handleInputChange} value={inputValue} type="text" placeholder="Search"/>
+        <input onChange={handleInputChange} value={inputValue} type="text" placeholder="Search" />
         {inputValue ? (
           <i className="search_input_icon_1 bi bi-x" onClick={clearInput}></i>
         ) : (
@@ -40,19 +55,15 @@ const Header = () => {
         )}
       </div>
       <div className="login_menu_div">
-        <div className="login_div" onClick={setLogin}>
+        <div className="login_div" onClick={connect_wallet}>
           <i className="bi bi-wallet text-lg"></i>
           <p className="text-lg">Login</p>
         </div>
         <div className="user_dropdown_div">
-          <i className="bi bi-person-circle"></i>
+          <IoOptions className="text-2xl" />
           <div className={`user_info_dropdown ${isNightMode ? "bg-[#1c1f1d]" : "bg-white"} `}>
             <ul>
-              <li onClick={() => (setLogin())}>
-                <i className="bi bi-gear"></i>
-                <p>Settings</p>
-              </li>
-              <li onClick={()=> setNightMode()}>
+              <li onClick={() => setNightMode()}>
                 <i className="bi bi-moon"></i>
                 <p>Night Mode</p>
                 <i className={`bi ${isNightMode ? "bi-toggle-on" : "bi-toggle-off"} font-bold text-3xl text-blue-500 ms-3 hover:text-blue-700`}></i>

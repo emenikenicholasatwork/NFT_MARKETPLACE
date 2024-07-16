@@ -4,10 +4,10 @@ import { MdArrowBackIosNew } from "react-icons/md";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { useGlobal } from "../../../context/GlobalContext";
-import Swap from "../../../components/header/user_header/user_header_quick_component/swap/Swap";
-import Crypto from "../../../components/header/user_header/user_header_quick_component/crypto/Crypto";
-import Setting from "../../../components/header/user_header/user_header_quick_component/settings/Setting";
-import Transactions from "../../../components/header/user_header/user_header_quick_component/transactions/Transactions";
+import Swap from "../../../components/acc_comp/head_comp/swap/Swap";
+import Crypto from "../../../components/acc_comp/head_comp/crypto/Crypto";
+import Setting from "../../../components/acc_comp/head_comp/settings/Setting";
+import Transactions from "../../../components/acc_comp/head_comp/transactions/Transactions";
 import { AiFillDollarCircle, AiOutlineDollar } from "react-icons/ai";
 import {
   MdOutlineSwapHorizontalCircle,

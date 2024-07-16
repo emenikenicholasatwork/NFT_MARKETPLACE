@@ -84,19 +84,8 @@ const page = ({ params }) => {
         <div className={styles.more_nft_container}>
         {nfts.map((nft) => (
         <div key={nft.id} className="relative duration-200 min-w-fit group rounded-lg overflow-hidden shadow-md hover:shadow-2xl">
-          <Link
-            href={`/nft/${nft.id}`}
-            className={`block cursor-pointer  ${
-              isNightMode ? "bg-[#9e8c8c15]" : ""
-            }`}
-          >
-            <Image
-              src={nft.image}
-              alt={nft.name}
-              className="w-[200px] h-[200px] group-hover:scale-105 duration-200"
-              height={200}
-              width={200}
-            />
+          <Link href={`/nft/${nft.id}`} className={`block cursor-pointer  ${isNightMode ? "bg-[#9e8c8c15]" : ""}`}>
+            <Image src={nft.image} alt={nft.name} className="w-[200px] h-[200px] group-hover:scale-105 duration-200" height={200} width={200}/>
             <div className="items-center flex flex-col">
               <p className="p-3 text-sm">{nft.name}</p>
               <div className="flex w-full justify-end p-3">

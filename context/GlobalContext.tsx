@@ -1,5 +1,4 @@
 "use client";
-
 import { useRouter } from "next/navigation";
 import React, {
   useContext,
@@ -13,6 +12,7 @@ import {
   saveNftChange,
   retrieveCookie,
   saveCookie,
+  deleteCookie,
 } from "../utils/Utils";
 import { toast } from "react-hot-toast";
 
@@ -21,19 +21,15 @@ interface GlobalContextProps {
   setShowCart: () => void;
   isNightMode: boolean;
   setNightMode: () => void;
-  isShowLogin: boolean;
-  setLogin: () => void;
   isSearchBar: boolean;
   changeSearchState: () => void;
-  isLoggedIn: boolean;
+  isWalletConnected: boolean;
   cartItems: string[];
   clearCartItems: () => void;
   account: string;
   activate_account: (account: string) => void;
   addToCartItems: (itemId: string) => void;
   removeFromCart: (itemId: string) => void;
-  isUserHeaderWalletInfo: boolean;
-  setUserHeaderWalletInfo: () => void;
 }
 
 const GlobalContext = createContext<GlobalContextProps | undefined>(undefined);
@@ -46,34 +42,31 @@ export const GlobalProvider: React.FC<GlobalProviderProps> = ({ children }) => {
   const notifyAdd = () => toast.success("Added to cart");
   const notifyRemove = () => toast.success("Removed from cart");
   const router = useRouter();
-  const [isUserHeaderWalletInfo, setIsUserHeaderWalletInfo] = useState(false);
   const [account, setAccount] = useState(
     "0x43Bea93563Ff08dC888bD3B0A152ef94F56D15ed"
   );
-  const [isShowLogin, setIsShowLogin] = useState(false);
   const [isShowCart, setIsShowCart] = useState(false);
   const [isSearchBar, setIsSearchBar] = useState(false);
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isWalletConnected, setIsWalletConnected] = useState(false);
   const [cartItems, setCartItems] = useState([]);
   const [cartPrice, setCartPrice] = useState(0);
   const [isNightMode, setIsNightMode] = useState(true);
 
   useEffect(() => {
-    const nightMode = retrieveCookie("nightMode");
+    const nightMode = retrieveCookie("crypto~art: dark theme");
     setIsNightMode(nightMode === "enabled");
+    const login = retrieveCookie("crypto~art: logout");
+    if (login) {
+      login === "true" ? setIsWalletConnected(true) : setIsWalletConnected(false);
+    }
+
   }, []);
 
   const activate_account = (account: string) => {
+    setIsWalletConnected(true);
     setAccount(account);
-    setIsLoggedIn(true);
-    setIsShowLogin(false);
-    router.push("/user");
-  };
-
-  const setUserHeaderWalletInfo = () => {
-    isUserHeaderWalletInfo
-      ? setIsUserHeaderWalletInfo(false)
-      : setIsUserHeaderWalletInfo(true);
+    saveCookie("crypto~art: logout", "true", 7);
+    router.push("/account");
   };
 
   const addToCartItems = (itemId: string) => {
@@ -130,11 +123,11 @@ export const GlobalProvider: React.FC<GlobalProviderProps> = ({ children }) => {
       });
     }
     setIsNightMode(newNightMode);
-    saveCookie("theme", newNightMode ? "enabled" : "disabled", 7);
-  };
-  const setLogin = () => {
-    isShowLogin ? setIsShowLogin(false) : setIsShowLogin(true);
-    saveCookie("crypto_art:logout", isShowLogin ? "false" : "true", 7);
+    const n: string | undefined = retrieveCookie("crypto~art: dark theme");
+    if (n) {
+      deleteCookie(n);
+    }
+    saveCookie("crypto~art: dark theme", newNightMode ? "enabled" : "disabled", 7);
   };
   const setShowCart = () => {
     isShowCart ? setIsShowCart(false) : setIsShowCart(true);
@@ -149,19 +142,15 @@ export const GlobalProvider: React.FC<GlobalProviderProps> = ({ children }) => {
         setShowCart,
         isNightMode,
         setNightMode,
-        isShowLogin,
-        setLogin,
         isSearchBar,
         changeSearchState,
-        isLoggedIn,
+        isWalletConnected,
         cartItems,
         account,
         activate_account,
         addToCartItems,
         removeFromCart,
         clearCartItems,
-        isUserHeaderWalletInfo,
-        setUserHeaderWalletInfo,
       }}
     >
       {children}

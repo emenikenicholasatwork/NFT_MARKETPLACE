@@ -37,6 +37,4 @@ export function findNftById(nftId: string): NFT | undefined {
   return nftMap[nftId];
 }
 
-const readJsonFile = () => {};
-
-export function saveNftChange(nft: NFT) {}
+export function saveNftChange(nft: NFT) { }

@@ -1,8 +1,10 @@
 import Image from 'next/image'
 import Typewriter from 'typewriter-effect'
 import styles from './DashDisplay.css'
+import { useGlobal } from '../../context/GlobalContext'
 
 const DashDisplay = () => {
+    const { setLogin } = useGlobal();
   return (
     <div className='div_container'>
         <div id='title_div'>
@@ -16,7 +18,7 @@ const DashDisplay = () => {
                     }}
                 />
             </div>
-            <button id='title_button'>Get Started</button>
+            <button onClick={()=>setLogin()} id='title_button'>Get Started</button>
         </div>
         <div id='image_row'>
             <div className='first_images_div'>
