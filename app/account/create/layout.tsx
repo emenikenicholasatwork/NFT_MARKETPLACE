@@ -14,7 +14,6 @@ const layout = ({ children }: { children: React.ReactNode }) => {
   const {
     isNightMode,
     setNightMode,
-    activate_account,
     logout
   } = useGlobal();
   const router = useRouter();

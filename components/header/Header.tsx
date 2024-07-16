@@ -12,25 +12,11 @@ const Header = () => {
     changeSearchState,
     cartItems,
     setShowCart,
-    activate_account
+    login
   } = useGlobal();
   const [inputValue, setInputValue] = useState("");
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setInputValue(e.target.value);
-  };
-
-  const connect_wallet = async () => {
-    try {
-      const { ethereum } = window;
-      if (ethereum) {
-        const account = await window.ethereum.request({ method: 'eth_requestAccounts' })
-        activate_account(account[0]);
-      } else {
-        toast.error("please install metamask wallet.")
-      }
-    } catch (error) {
-      console.log(`Error while connecting metamask: ${error}`)
-    }
   };
 
   const clearInput = () => {
@@ -55,7 +41,7 @@ const Header = () => {
         )}
       </div>
       <div className="login_menu_div">
-        <div className="login_div" onClick={connect_wallet}>
+        <div className="login_div" onClick={() => login()}>
           <i className="bi bi-wallet text-lg"></i>
           <p className="text-lg">Login</p>
         </div>

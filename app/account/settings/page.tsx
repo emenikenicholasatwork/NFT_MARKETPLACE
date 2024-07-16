@@ -8,7 +8,6 @@ import Image from "next/image";
 import { IoIosCreate } from "react-icons/io";
 import { FaRegUserCircle } from "react-icons/fa";
 import Link from "next/link";
-import toast from "react-hot-toast";
 import Profile from "../../../components/acc_comp/setting_comp/Profile";
 import Notification from "../../../components/acc_comp/setting_comp/Notification";
 
@@ -87,15 +86,6 @@ const UserHeader: React.FC = () => {
                   <i className="bi bi-moon"></i>
                   <p>Night Mode</p>
                   <i className={`bi ${isNightMode ? "bi-toggle-on" : "bi-toggle-off"} font-bold text-3xl text-blue-500 ms-3 hover:text-blue-700`}></i>
-                </li>
-                <hr className="my-2" />
-                <li className="items-center py-2 hover:bg-[#9e8c8c] cursor-pointer flex flex-row gap-3 font-bold rounded-md px-4">
-                  <i className="bi bi-journals"></i>
-                  <p>Learn</p>
-                </li>
-                <li className="items-center py-2 hover:bg-[#9e8c8c] cursor-pointer flex flex-row gap-3 font-bold rounded-md px-4">
-                  <i className="bi bi-question-circle"></i>
-                  <p>Help center</p>
                 </li>
                 <hr className="my-2" />
                 <li className="items-center py-2 hover:bg-[#9e8c8c] cursor-pointer flex flex-row gap-3 font-bold rounded-md px-4" onClick={() => logout()}>

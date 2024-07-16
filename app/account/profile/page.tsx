@@ -28,7 +28,6 @@ const page: React.FC = () => {
   const {
     setNightMode,
     isNightMode,
-    isWalletConnected,
     cartItems,
     changeSearchState,
     account,

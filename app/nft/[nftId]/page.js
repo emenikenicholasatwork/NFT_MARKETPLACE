@@ -5,19 +5,17 @@ import styles from "./page.module.css";
 import allNfts from "../../../components/collections/nft.json";
 import Link from "next/link";
 import Cart from "../../../components/cart/Cart";
-import Login from "../../../components/Login";
 import { GrCart } from "react-icons/gr";
 
 const page = ({ params }) => {
-  const { isNightMode, isShowCart, isShowLogin, addToCartItems } = useGlobal();
+  const { isNightMode, isShowCart, addToCartItems } = useGlobal();
   const id = params.nftId;
-  
+
   const nft = allNfts.find((n) => n.id.toString() === id);
   const nfts = allNfts.filter((n) => n.collection === nft.collection);
   return (
     <section className={styles.main_container}>
       {isShowCart && <Cart />}
-      {isShowLogin && <Login />}
       <div className={styles.container_div}>
         <div className={styles.details_div_left}>
           <Image
@@ -82,30 +80,30 @@ const page = ({ params }) => {
         </h2>
         <hr />
         <div className={styles.more_nft_container}>
-        {nfts.map((nft) => (
-        <div key={nft.id} className="relative duration-200 min-w-fit group rounded-lg overflow-hidden shadow-md hover:shadow-2xl">
-          <Link href={`/nft/${nft.id}`} className={`block cursor-pointer  ${isNightMode ? "bg-[#9e8c8c15]" : ""}`}>
-            <Image src={nft.image} alt={nft.name} className="w-[200px] h-[200px] group-hover:scale-105 duration-200" height={200} width={200}/>
-            <div className="items-center flex flex-col">
-              <p className="p-3 text-sm">{nft.name}</p>
-              <div className="flex w-full justify-end p-3">
-                <div>
-                  <p className="font-light text-sm">Total price</p>
-                  <p className="text-sm">{nft.price} ETH</p>
+          {nfts.map((nft) => (
+            <div key={nft.id} className="relative duration-200 min-w-fit group rounded-lg overflow-hidden shadow-md hover:shadow-2xl">
+              <Link href={`/nft/${nft.id}`} className={`block cursor-pointer  ${isNightMode ? "bg-[#9e8c8c15]" : ""}`}>
+                <Image src={nft.image} alt={nft.name} className="w-[200px] h-[200px] group-hover:scale-105 duration-200" height={200} width={200} />
+                <div className="items-center flex flex-col">
+                  <p className="p-3 text-sm">{nft.name}</p>
+                  <div className="flex w-full justify-end p-3">
+                    <div>
+                      <p className="font-light text-sm">Total price</p>
+                      <p className="text-sm">{nft.price} ETH</p>
+                    </div>
+                  </div>
+                </div>
+              </Link>
+              <div className="h-0 group-hover:h-8 duration-100 overflow-hidden bg-blue-700 absolute z-30 flex flex-row items-center right-0 left-0 bottom-0">
+                <button className="w-[75%] h-full border-r" onClick={(e) => e.stopPropagation()}>
+                  Buy now
+                </button>
+                <div className='w-[25%] h-full cursor-pointer flex items-center justify-center' onClick={() => addToCartItems(nft.id)}>
+                  <GrCart className="text-lg" />
                 </div>
               </div>
             </div>
-          </Link>
-          <div className="h-0 group-hover:h-8 duration-100 overflow-hidden bg-blue-700 absolute z-30 flex flex-row items-center right-0 left-0 bottom-0">
-            <button className="w-[75%] h-full border-r" onClick={(e) => e.stopPropagation()}>
-              Buy now
-            </button>
-            <div className='w-[25%] h-full cursor-pointer flex items-center justify-center' onClick={() => addToCartItems(nft.id)}>
-              <GrCart className="text-lg" />
-            </div>
-          </div>
-        </div>
-      ))}
+          ))}
         </div>
       </div>
     </section>

@@ -15,6 +15,7 @@ import {
   deleteCookie,
 } from "../utils/Utils";
 import { toast } from "react-hot-toast";
+import { BrowserProvider } from "ethers";
 
 interface GlobalContextProps {
   isShowCart: boolean;
@@ -31,6 +32,7 @@ interface GlobalContextProps {
   addToCartItems: (itemId: string) => void;
   removeFromCart: (itemId: string) => void;
   logout: () => void;
+  login: () => void;
 }
 
 const GlobalContext = createContext<GlobalContextProps | undefined>(undefined);
@@ -52,6 +54,7 @@ export const GlobalProvider: React.FC<GlobalProviderProps> = ({ children }) => {
   const [cartItems, setCartItems] = useState([]);
   const [cartPrice, setCartPrice] = useState(0);
   const [isNightMode, setIsNightMode] = useState(true);
+  const [signer, setSigner] = useState(null);
 
   useEffect(() => {
     const nightMode = retrieveCookie("crypto~art: dark theme");
@@ -66,6 +69,10 @@ export const GlobalProvider: React.FC<GlobalProviderProps> = ({ children }) => {
   const activate_account = (account: string) => {
     setIsWalletConnected(true);
     setAccount(account);
+    const n: string | undefined = retrieveCookie("crypto~art: logout");
+    if (n) {
+      deleteCookie(n);
+    }
     saveCookie("crypto~art: logout", "false", 7);
     router.push("/account");
   };
@@ -92,6 +99,29 @@ export const GlobalProvider: React.FC<GlobalProviderProps> = ({ children }) => {
     saveCookie("crypto~art: logout", "true", 7);
     toast.success("Succesfully Logged out.")
     router.push("/");
+  }
+
+  const login = async () => {
+    try {
+      const { ethereum } = window;
+      if (ethereum) {
+        const provider = new BrowserProvider(window.ethereum);
+        const signer = await provider.getSigner();
+        setSigner(signer);
+        const account = await provider.send("eth_requestAccounts", []);
+        activate_account(account[0]);
+        const network = await provider.getNetwork();
+        const chainId = network.chainId;
+        const sepoliaNetworkId = "1115511";
+        if (chainId.toString() !== sepoliaNetworkId) {
+          toast.error("Switch your metamask to Sepolia Network")
+        }
+      } else {
+        toast.error("Please install metamask wallet.")
+      }
+    } catch (error) {
+      console.log(`Error while connecting metamask: ${error}`)
+    }
   }
 
   const removeFromCart = (itemId: string) => {
@@ -159,6 +189,7 @@ export const GlobalProvider: React.FC<GlobalProviderProps> = ({ children }) => {
         removeFromCart,
         clearCartItems,
         logout,
+        login,
       }}
     >
       {children}
