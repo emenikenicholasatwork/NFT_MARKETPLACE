@@ -21,7 +21,7 @@ const UserHeader: React.FC = () => {
     cartItems,
     changeSearchState,
     setShowCart,
-    activate_account
+    logout
   } = useGlobal();
   const [inputValue, setInputValue] = useState("");
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -98,12 +98,10 @@ const UserHeader: React.FC = () => {
                   <p>Help center</p>
                 </li>
                 <hr className="my-2" />
-                <Link href={"/"} onClick={() => activate_account(null)}>
-                  <li className="items-center py-2 hover:bg-[#9e8c8c] cursor-pointer flex flex-row gap-3 font-bold rounded-md px-4" onClick={() => toast.success("successfully logged out")}>
-                    <BiLogOut />
-                    <p>Logout</p>
-                  </li>
-                </Link>
+                <li className="items-center py-2 hover:bg-[#9e8c8c] cursor-pointer flex flex-row gap-3 font-bold rounded-md px-4" onClick={() => logout()}>
+                  <BiLogOut />
+                  <p>Logout</p>
+                </li>
               </ul>
             </div>
           </div>

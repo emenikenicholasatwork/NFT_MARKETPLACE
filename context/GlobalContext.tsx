@@ -30,6 +30,7 @@ interface GlobalContextProps {
   activate_account: (account: string) => void;
   addToCartItems: (itemId: string) => void;
   removeFromCart: (itemId: string) => void;
+  logout: () => void;
 }
 
 const GlobalContext = createContext<GlobalContextProps | undefined>(undefined);
@@ -55,9 +56,9 @@ export const GlobalProvider: React.FC<GlobalProviderProps> = ({ children }) => {
   useEffect(() => {
     const nightMode = retrieveCookie("crypto~art: dark theme");
     setIsNightMode(nightMode === "enabled");
-    const login = retrieveCookie("crypto~art: logout");
-    if (login) {
-      login === "true" ? setIsWalletConnected(true) : setIsWalletConnected(false);
+    const logout = retrieveCookie("crypto~art: logout");
+    if (logout) {
+      logout === "true" ? setIsWalletConnected(false) : setIsWalletConnected(true);
     }
 
   }, []);
@@ -65,7 +66,7 @@ export const GlobalProvider: React.FC<GlobalProviderProps> = ({ children }) => {
   const activate_account = (account: string) => {
     setIsWalletConnected(true);
     setAccount(account);
-    saveCookie("crypto~art: logout", "true", 7);
+    saveCookie("crypto~art: logout", "false", 7);
     router.push("/account");
   };
 
@@ -86,6 +87,12 @@ export const GlobalProvider: React.FC<GlobalProviderProps> = ({ children }) => {
       console.log(error);
     }
   };
+
+  const logout = () => {
+    saveCookie("crypto~art: logout", "true", 7);
+    toast.success("Succesfully Logged out.")
+    router.push("/");
+  }
 
   const removeFromCart = (itemId: string) => {
     setCartItems(cartItems.filter((item) => item !== itemId));
@@ -151,6 +158,7 @@ export const GlobalProvider: React.FC<GlobalProviderProps> = ({ children }) => {
         addToCartItems,
         removeFromCart,
         clearCartItems,
+        logout,
       }}
     >
       {children}

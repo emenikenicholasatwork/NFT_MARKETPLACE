@@ -4,22 +4,10 @@ import { MdArrowBackIosNew } from "react-icons/md";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { useGlobal } from "../../../context/GlobalContext";
-import { AiFillDollarCircle, AiOutlineDollar } from "react-icons/ai";
-import {
-  MdOutlineSwapHorizontalCircle,
-  MdSwapHorizontalCircle,
-  MdWallet,
-} from "react-icons/md";
-import {
-  IoNotificationsSharp,
-  IoSettings,
-  IoSettingsOutline,
-} from "react-icons/io5";
+import { MdWallet } from "react-icons/md";
 import Image from "next/image";
-import { FaListUl } from "react-icons/fa6";
 import { BiLogOut } from "react-icons/bi";
 import { IoIosCreate } from "react-icons/io";
-import { FaListAlt } from "react-icons/fa";
 
 const layout = ({ children }: { children: React.ReactNode }) => {
   const [createClickable, setCreateClickable] = useState(false);
@@ -27,8 +15,8 @@ const layout = ({ children }: { children: React.ReactNode }) => {
     isNightMode,
     setNightMode,
     activate_account,
+    logout
   } = useGlobal();
-  const [activeTab, setActiveTab] = useState("crypto");
   const router = useRouter();
   const handleBack = () => {
     router.back();
@@ -84,12 +72,10 @@ const layout = ({ children }: { children: React.ReactNode }) => {
                   ></i>
                 </li>
                 <hr className="my-2" />
-                <Link href={"/"} onClick={() => activate_account(null)}>
-                  <li className="items-center py-2 hover:bg-[#9e8c8c] cursor-pointer flex flex-row gap-3 font-bold rounded-md px-4">
-                    <BiLogOut />
-                    <p>Logout</p>
-                  </li>
-                </Link>
+                <li className="items-center py-2 hover:bg-[#9e8c8c] cursor-pointer flex flex-row gap-3 font-bold rounded-md px-4" onClick={() => logout()}>
+                  <BiLogOut />
+                  <p>Logout</p>
+                </li>
               </ul>
             </div>
           </div>

@@ -11,7 +11,7 @@ import UserHeader from "../../components/header/user_header/UserHeader";
 import Footer from "../../components/Footer";
 
 const page = () => {
-  const { isNightMode, isShowCart, isSearchBar, isShowLogin } = useGlobal();
+  const { isNightMode, isShowCart, isSearchBar } = useGlobal();
   return (
     <main className={`min-h-screen gap-0 ${isNightMode ? "bg-[#252927]  text-white" : "bg-white text-black"} duration-300`}>
       <UserHeader />

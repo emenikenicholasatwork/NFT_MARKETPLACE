@@ -17,7 +17,7 @@ const UserHeader = () => {
     cartItems,
     changeSearchState,
     setShowCart,
-    activate_account
+    logout
   } = useGlobal();
   const [inputValue, setInputValue] = useState("");
   const handleInputChange = (e) => {
@@ -72,12 +72,10 @@ const UserHeader = () => {
                 <i className={`bi ${isNightMode ? "bi-toggle-on" : "bi-toggle-off"} font-bold text-3xl text-blue-500 ms-3 hover:text-blue-700`}></i>
               </li>
               <hr className="my-2" />
-              <Link href={"/"} onClick={() => activate_account(null)}>
-                <li className="items-center py-2 hover:bg-[#9e8c8c] cursor-pointer flex flex-row gap-3 font-bold rounded-md px-4" onClick={() => toast.success("successfully logged out")}>
-                  <BiLogOut />
-                  <p>Logout</p>
-                </li>
-              </Link>
+              <li className="items-center py-2 hover:bg-[#9e8c8c] cursor-pointer flex flex-row gap-3 font-bold rounded-md px-4" onClick={() => logout()}>
+                <BiLogOut />
+                <p>Logout</p>
+              </li>
             </ul>
           </div>
         </div>
