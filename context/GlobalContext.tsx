@@ -96,6 +96,10 @@ export const GlobalProvider: React.FC<GlobalProviderProps> = ({ children }) => {
   };
 
   const logout = () => {
+    const n: string | undefined = retrieveCookie("crypto~art: logout");
+    if (n) {
+      deleteCookie(n);
+    }
     saveCookie("crypto~art: logout", "true", 7);
     toast.success("Succesfully Logged out.")
     router.push("/");
