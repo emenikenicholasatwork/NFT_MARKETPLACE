@@ -17,9 +17,6 @@ const UserHeader: React.FC = () => {
   const {
     setNightMode,
     isNightMode,
-    cartItems,
-    changeSearchState,
-    setShowCart,
     logout
   } = useGlobal();
   const [inputValue, setInputValue] = useState("");
@@ -94,13 +91,6 @@ const UserHeader: React.FC = () => {
                 </li>
               </ul>
             </div>
-          </div>
-          <div className="py-2 flex relative px-3 bg-[#9e8c8c25] hover:bg-[#9e8c8c75] duration-200 cursor-pointer rounded-md" onClick={setShowCart}>
-            <p className="absolute bg-blue-600 font-bold p-2 rounded-full items-center flex justify-center text-xs top-0 right-0 m-0 h-1 text-white">{cartItems.length}</p>
-            <i className="bi bi-cart3 text-lg font-bold"></i>
-          </div>
-          <div className="lg:hidden bg-[#9e8c8c25] hover:bg-[#9e8c8c75] duration-200 cursor-pointer rounded-md" onClick={changeSearchState}>
-            <i className="bi bi-search"></i>
           </div>
           <div className="lg:hidden bg-[#9e8c8c25] hover:bg-[#9e8c8c75] duration-200 cursor-pointer rounded-md">
             <i className="bi bi-list"></i>

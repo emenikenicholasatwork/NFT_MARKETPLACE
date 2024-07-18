@@ -9,9 +9,6 @@ const Header = () => {
   const {
     setNightMode,
     isNightMode,
-    changeSearchState,
-    cartItems,
-    setShowCart,
     login
   } = useGlobal();
   const [inputValue, setInputValue] = useState("");
@@ -56,16 +53,6 @@ const Header = () => {
               </li>
             </ul>
           </div>
-        </div>
-        <div className="shopping_cart_div style_share" onClick={setShowCart}>
-          <p>{cartItems.length}</p>
-          <i className="bi bi-cart3"></i>
-        </div>
-        <div className="search style_share" onClick={changeSearchState}>
-          <i className="bi bi-search"></i>
-        </div>
-        <div className="menu style_share" >
-          <i className="bi bi-list"></i>
         </div>
       </div>
     </header>

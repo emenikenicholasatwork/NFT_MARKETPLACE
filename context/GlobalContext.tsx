@@ -18,19 +18,11 @@ import { toast } from "react-hot-toast";
 import { BrowserProvider } from "ethers";
 
 interface GlobalContextProps {
-  isShowCart: boolean;
-  setShowCart: () => void;
   isNightMode: boolean;
   setNightMode: () => void;
-  isSearchBar: boolean;
-  changeSearchState: () => void;
   isWalletConnected: boolean;
-  cartItems: string[];
-  clearCartItems: () => void;
   account: string;
   activate_account: (account: string) => void;
-  addToCartItems: (itemId: string) => void;
-  removeFromCart: (itemId: string) => void;
   logout: () => void;
   login: () => void;
 }
@@ -48,11 +40,8 @@ export const GlobalProvider: React.FC<GlobalProviderProps> = ({ children }) => {
   const [account, setAccount] = useState(
     "0x43Bea93563Ff08dC888bD3B0A152ef94F56D15ed"
   );
-  const [isShowCart, setIsShowCart] = useState(false);
   const [isSearchBar, setIsSearchBar] = useState(false);
   const [isWalletConnected, setIsWalletConnected] = useState(false);
-  const [cartItems, setCartItems] = useState([]);
-  const [cartPrice, setCartPrice] = useState(0);
   const [isNightMode, setIsNightMode] = useState(true);
   const [signer, setSigner] = useState(null);
 
@@ -75,24 +64,6 @@ export const GlobalProvider: React.FC<GlobalProviderProps> = ({ children }) => {
     }
     saveCookie("crypto~art: logout", "false", 7);
     router.push("/account");
-  };
-
-  const addToCartItems = (itemId: string) => {
-    try {
-      for (const id of cartItems) {
-        if (itemId === id) {
-          removeFromCart(itemId);
-          return;
-        }
-      }
-      setCartItems((prevItems) => [...prevItems, itemId]);
-      notifyAdd();
-      const nft = findNftById(itemId);
-      nft.inCart = true;
-      saveNftChange(nft);
-    } catch (error) {
-      console.log(error);
-    }
   };
 
   const logout = () => {
@@ -128,18 +99,6 @@ export const GlobalProvider: React.FC<GlobalProviderProps> = ({ children }) => {
     }
   }
 
-  const removeFromCart = (itemId: string) => {
-    setCartItems(cartItems.filter((item) => item !== itemId));
-    notifyRemove();
-    const nft = findNftById(itemId);
-    nft.inCart = false;
-    saveNftChange(nft);
-  };
-
-  const clearCartItems = () => {
-    setCartItems([]);
-  };
-
   const setNightMode = () => {
     let newNightMode: boolean;
     if (isNightMode) {
@@ -170,28 +129,18 @@ export const GlobalProvider: React.FC<GlobalProviderProps> = ({ children }) => {
     }
     saveCookie("crypto~art: dark theme", newNightMode ? "enabled" : "disabled", 7);
   };
-  const setShowCart = () => {
-    isShowCart ? setIsShowCart(false) : setIsShowCart(true);
-  };
+
   const changeSearchState = () => {
     isSearchBar ? setIsSearchBar(false) : setIsSearchBar(true);
   };
   return (
     <GlobalContext.Provider
       value={{
-        isShowCart,
-        setShowCart,
         isNightMode,
         setNightMode,
-        isSearchBar,
-        changeSearchState,
         isWalletConnected,
-        cartItems,
         account,
         activate_account,
-        addToCartItems,
-        removeFromCart,
-        clearCartItems,
         logout,
         login,
       }}

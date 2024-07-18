@@ -15,9 +15,7 @@ const UserHeader = () => {
   const {
     setNightMode,
     isNightMode,
-    cartItems,
     changeSearchState,
-    setShowCart,
     logout
   } = useGlobal();
   const [inputValue, setInputValue] = useState("");
@@ -43,23 +41,6 @@ const UserHeader = () => {
         <div className="flex flex-row items-center content-center p-2 px-3 justify-items-center gap-1 bg-[#9e8c8c25] duration-200 rounded-md font-bold ">
           <MdWallet className="text-2xl" />
           <p className="text-lg">0 ETH</p>
-        </div>
-        <div className="flex relative py-2 px-3 group hover:bg-[#9e8c8c75] bg-[#9e8c8c25] duration-200 rounded-md">
-          <p className="absolute bg-blue-600 font-bold p-2 rounded-full items-center flex justify-center text-xs top-0 right-0 m-0 h-1 text-white">0</p>
-          <IoNotificationsOutline className="text-2xl font-bold" />
-          <div className={`group-hover:visible invisible duration-200 shadow-2xl absolute rounded-md right-0 top-14 w-[550px] p-3 ${isNightMode ? "bg-[#1c1f1d]" : "bg-white"}`}>
-            <p className="text-3xl font-bold">Notifications.</p>
-            <ul className="pt-10">
-              <li className="flex flex-row items-center justify-between">
-                <div className="flex flex-col items-center">
-                  <Image src={"/images/notable1.jpg"} width={50} height={10} className="object-cover rounded-full h-20 w-20" />
-                  <p>0x43Be...15ed</p>
-                </div>
-                <p>Bought your NFT</p>
-                <p>1 hr ago.</p>
-              </li>
-            </ul>
-          </div>
         </div>
         <div className="bg-[#9e8c8c25] px-3 py-2 hover:bg-[#9e8c8c75] duration-200 cursor-pointer rounded-md relative group">
           <Image alt="user image" className="rounded-[20px] h-[30px] w-[30px]" src={"/images/bg1.jpg"} width={500} height={500} />
@@ -96,16 +77,6 @@ const UserHeader = () => {
               </li>
             </ul>
           </div>
-        </div>
-        <div className="py-2 flex relative px-3 bg-[#9e8c8c25] hover:bg-[#9e8c8c75] duration-200 cursor-pointer rounded-md" onClick={setShowCart}>
-          <p className="absolute bg-blue-600 font-bold p-2 rounded-full items-center flex justify-center text-xs top-0 right-0 m-0 h-1 text-white">{cartItems.length}</p>
-          <i className="bi bi-cart3 text-lg font-bold"></i>
-        </div>
-        <div className="lg:hidden bg-[#9e8c8c25] hover:bg-[#9e8c8c75] duration-200 cursor-pointer rounded-md" onClick={changeSearchState}>
-          <i className="bi bi-search"></i>
-        </div>
-        <div className="lg:hidden bg-[#9e8c8c25] hover:bg-[#9e8c8c75] duration-200 cursor-pointer rounded-md" onClick={() => setIsOpenMenu(true)}>
-          <i className="bi bi-list"></i>
         </div>
       </div>
     </header>

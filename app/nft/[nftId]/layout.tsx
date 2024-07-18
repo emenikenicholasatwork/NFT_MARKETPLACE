@@ -14,8 +14,6 @@ const layout = ({ children }: { children: React.ReactNode }) => {
   const {
     isNightMode,
     setNightMode,
-    setShowCart,
-    cartItems,
     logout,
   } = useGlobal();
   const router = useRouter();
@@ -72,10 +70,6 @@ const layout = ({ children }: { children: React.ReactNode }) => {
                 </li>
               </ul>
             </div>
-          </div>
-          <div className="py-2 flex relative px-3 bg-[#9e8c8c25] hover:bg-[#9e8c8c75] duration-200 cursor-pointer rounded-md" onClick={setShowCart}>
-            <p className="absolute bg-blue-600 font-bold p-2 rounded-full items-center flex justify-center text-xs top-0 right-0 m-0 h-1 text-white">{cartItems.length}</p>
-            <i className="bi bi-cart3 text-lg font-bold"></i>
           </div>
         </div>
       </header>

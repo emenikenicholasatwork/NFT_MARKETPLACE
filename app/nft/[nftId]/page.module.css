@@ -1,38 +1,42 @@
-.main_container{
+.main_container {
     padding: 10px;
 }
-.container_div{
-    display: flex;
-    flex-direction: row;
+
+.container_div {
     justify-content: space-between;
     padding-top: 100px;
     height: 100vh;
     gap: 10px;
     padding-bottom: 50px;
 }
-.owner_name{
+
+.owner_name {
     color: blue;
 }
-.nft_name{
+
+.nft_name {
     font-weight: bold;
 }
-.details_div_left{
+
+.details_div_left {
     display: flex;
     justify-content: center;
-    width: 80%;
+    width: 100%;
     height: 100%;
     overflow: hidden;
     align-items: center;
     border-radius: 20px;
 }
-.details_div_right{
+
+.details_div_right {
     display: flex;
     flex-direction: column;
     width: 100%;
     align-content: start;
     gap: 10px;
 }
-.best_offer_div_right{
+
+.best_offer_div_right {
     display: flex;
     flex-direction: column;
     border-radius: 10px;
@@ -40,28 +44,33 @@
     border-width: 1px;
     gap: 5px;
 }
-.nft_item_image{
+
+.nft_item_image {
     width: 80%;
     height: 100%;
     border-radius: 20px;
     cursor: pointer;
     transition-duration: 300ms;
 }
-.nft_item_image:hover{
+
+.nft_item_image:hover {
     scale: 1.03;
 }
-.make_offer_button{
+
+.make_offer_button {
     padding: 15px;
-    width: 30rem;
+    width: 100%;
     border-radius: 10px;
     background-color: gray;
     transition-duration: 200ms;
 }
-.make_offer_button:hover{
+
+.make_offer_button:hover {
     background-color: rgb(65, 65, 65);
     color: white;
 }
-.subject_description_div{
+
+.subject_description_div {
     border-width: 1px;
     border-radius: 10px;
     display: flex;
@@ -69,28 +78,28 @@
     padding: 10px;
     gap: 10px;
 }
-.subject_description_title{
+
+.subject_description_title {
     font-weight: bold;
 }
-.by_title{
+
+.by_title {
     font-weight: 100;
     font-size: 16px;
 }
-.offer_button_div{
-    display: flex;
-    flex-direction: row;
-    gap: 5px;
-}
-.more_from_collection_container{
+
+.more_from_collection_container {
     padding: 10px;
     border-radius: 10px;
     border-width: 1px;
 }
-.more_from_collection_title{
+
+.more_from_collection_title {
     font-weight: bold;
     font-size: large;
 }
-.more_nft_container{
+
+.more_nft_container {
     padding-top: 30px;
     display: flex;
     flex-wrap: wrap;
@@ -99,7 +108,8 @@
     padding-right: 10px;
     padding-bottom: 10px;
 }
-.collection_name{
+
+.collection_name {
     font-size: large;
     font-weight: bold;
 }
