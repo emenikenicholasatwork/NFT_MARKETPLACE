@@ -19,7 +19,7 @@ const Page: React.FC = () => {
     description: "",
     image: "",
     collection: "",
-    price: ""
+    price: "",
   })
 
   const onInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
