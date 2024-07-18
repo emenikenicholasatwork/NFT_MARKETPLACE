@@ -7,15 +7,12 @@ import { MdWallet } from "react-icons/md";
 import Image from "next/image";
 import { IoIosCreate } from "react-icons/io";
 import Link from "next/link";
-import toast from "react-hot-toast";
-import { IoNotificationsOutline } from "react-icons/io5";
 
 const UserHeader = () => {
 
   const {
     setNightMode,
     isNightMode,
-    changeSearchState,
     logout
   } = useGlobal();
   const [inputValue, setInputValue] = useState("");
@@ -59,12 +56,6 @@ const UserHeader = () => {
                 </li>
               </Link>
               <hr className="my-2" />
-              <Link href={"/account/settings"}>
-                <li className="items-center py-2 hover:bg-[#9e8c8c] cursor-pointer flex flex-row gap-3 font-bold rounded-md px-4">
-                  <i className="bi bi-gear"></i>
-                  <p>Settings</p>
-                </li>
-              </Link>
               <li className="items-center py-2 hover:bg-[#9e8c8c] cursor-pointer flex flex-row gap-3 font-bold rounded-md px-4" onClick={() => setNightMode()}>
                 <i className="bi bi-moon"></i>
                 <p>Night Mode</p>

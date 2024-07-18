@@ -2,7 +2,7 @@
 import * as React from "react";
 import Top from "../../components/Top";
 import Dash from "../../components/Dash";
-import UserDashDisplay from "../../components/dashDisplay/UserDashDisplay";
+import DashDisplay from "../../components/dashDisplay/DashDisplay";
 import Collections from "../../components/collections/Collections";
 import { useGlobal } from "../../context/GlobalContext";
 import UserHeader from "../../components/header/user_header/UserHeader";
@@ -13,7 +13,7 @@ const page = () => {
   return (
     <main className={`min-h-screen gap-0 ${isNightMode ? "bg-[#252927]  text-white" : "bg-white text-black"} duration-300`}>
       <UserHeader />
-      <UserDashDisplay />
+      <DashDisplay />
       <Dash />
       <Top />
       <Collections />

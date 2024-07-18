@@ -5,7 +5,6 @@ import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { useGlobal } from "../../../context/GlobalContext";
 import { MdWallet } from "react-icons/md";
-import { IoNotificationsSharp } from "react-icons/io5";
 import Image from "next/image";
 import { BiLogOut } from "react-icons/bi";
 import { IoIosCreate } from "react-icons/io";
@@ -22,7 +21,7 @@ const layout = ({ children }: { children: React.ReactNode }) => {
   };
   return (
     <section className={`min-h-screen min-w-full  ${isNightMode ? "bg-[#252927] text-white" : "bg-white text-black"} duration-300`}>
-      <header className={` h-20 py-10 left-0 right-0 fixed z-[2] ${isNightMode ? "bg-[#252927] text-white" : "bg-white text-black"} duration-300 items-center justify-between px-20 flex `}>
+      <header className={` h-20 py-10 left-0 right-0 fixed z-[2] ${isNightMode ? "bg-[#252927] text-white" : "bg-white text-black"} duration-300 items-center justify-between px-2 lg:px-20 flex `}>
         <MdArrowBackIosNew className="cursor-pointer text-2xl" onClick={handleBack} />
         <div className="flex flex-row items-center gap-2">
           <div className="flex flex-row items-center content-center p-2 px-3 justify-items-center gap-1 bg-[#9e8c8c25] hover:bg-[#9e8c8c75] duration-200 rounded-md font-bold cursor-pointer ">
@@ -39,12 +38,6 @@ const layout = ({ children }: { children: React.ReactNode }) => {
                     <p>Profile</p>
                   </li>
                 </Link>
-                <Link href={"/account/notification"}>
-                  <li className="items-center py-2 hover:bg-[#9e8c8c] cursor-pointer flex flex-row gap-3 font-bold rounded-md px-4">
-                    <IoNotificationsSharp />
-                    <p>Notification</p>
-                  </li>
-                </Link>
                 <Link href={"/account/create"}>
                   <li className="items-center py-2 hover:bg-[#9e8c8c] cursor-pointer flex flex-row gap-3 font-bold rounded-md px-4">
                     <IoIosCreate />
@@ -52,12 +45,6 @@ const layout = ({ children }: { children: React.ReactNode }) => {
                   </li>
                 </Link>
                 <hr className="my-2" />
-                <Link href={"/account/settings"}>
-                  <li className="items-center py-2 hover:bg-[#9e8c8c] cursor-pointer flex flex-row gap-3 font-bold rounded-md px-4">
-                    <i className="bi bi-gear"></i>
-                    <p>Settings</p>
-                  </li>
-                </Link>
                 <li className="items-center py-2 hover:bg-[#9e8c8c] cursor-pointer flex flex-row gap-3 font-bold rounded-md px-4">
                   <i className="bi bi-moon"></i>
                   <p>Night Mode</p>

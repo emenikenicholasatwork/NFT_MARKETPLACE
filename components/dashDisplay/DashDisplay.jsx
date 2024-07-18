@@ -1,15 +1,12 @@
 import Image from 'next/image'
 import Typewriter from 'typewriter-effect'
-import styles from './DashDisplay.css'
-import { useGlobal } from '../../context/GlobalContext'
 
 const DashDisplay = () => {
-    const { setLogin } = useGlobal();
     return (
-        <div className='div_container'>
-            <div id='title_div'>
-                <p id='title1'>Discover, Buy and Sell NFTs..</p>
-                <div className={styles.typewriterContainer}>
+        <div className='w-[100%] h-fit flex flex-row pt-[90px] px-[2rem] pb-[2rem] '>
+            <div className='flex-auto w-[100%] h-[100%] items-center justify-center text-center p-[2%] '>
+                <p className=' font-bold text-7xl '>Discover, Buy and Sell NFTs..</p>
+                <div>
                     <Typewriter
                         options={{
                             strings: ['Discover the stunning power of WEB3', 'Join lets take Trading to a different level..'],
@@ -19,13 +16,13 @@ const DashDisplay = () => {
                     />
                 </div>
             </div>
-            <div id='image_row'>
-                <div className='first_images_div'>
-                    <Image id='image1' src={'/images/bg1.jpg'} width={500} height={500} />
-                    <Image id='image2' src={'/images/bg2.jpg'} width={500} height={500} />
+            <div className=' pt-20 hidden lg:flex flex-row flex-auto gap-3 w-full '>
+                <div className=' gap-3 '>
+                    <Image className=' w-[300px] h-[200px] ' src={'/images/bg1.jpg'} width={500} height={500} alt={''} />
+                    <Image className=' pt-3 w-[300px] h-[500px] ' src={'/images/bg2.jpg'} width={500} height={500} alt={''} />
                 </div>
-                <div id='last_image_div'>
-                    <Image id='image3' src={'/images/bg3.jpg'} width={500} height={500} />
+                <div className=' flex items-baseline justify-[baseline] '>
+                    <Image className=' pt-20 w-[300px] h-[600px] ' src={'/images/bg3.jpg'} width={500} height={500} alt={''} />
                 </div>
             </div>
         </div>

@@ -3,7 +3,7 @@ import { useGlobal } from "../../../context/GlobalContext";
 import React, { useRef, useState } from "react";
 import { MdSell, MdWallet } from "react-icons/md";
 import { IoCreateSharp } from "react-icons/io5";
-import { BiLogOut } from "react-icons/bi";
+import { BiCopy, BiLogOut } from "react-icons/bi";
 import Image from "next/image";
 import { IoIosCreate } from "react-icons/io";
 import { FaDollarSign } from "react-icons/fa6";
@@ -71,10 +71,10 @@ const page: React.FC = () => {
         <title>Your profile | Crypto~Art</title>
       </head>
       <header className={` h-20 p-5 left-0 right-0 fixed z-[2] items-center justify-between flex ${isNightMode ? "bg-[#252927] text-white" : "bg-white text-black"} duration-300`}>
-        <div className="flex flex-row items-center gap-1">
+        <Link href={"/account"} className="flex flex-row items-center gap-1 cursor-pointer">
           <i className="bi bi-currency-bitcoin text-lg bg-green-700 p-2 rounded-md"></i>
           <p className="text-2xl md:block font-bold font-serif hidden">Crypto~Art</p>
-        </div>
+        </Link>
         <div className="items-center lg:flex hidden focus:border-2 focus:border-white hover:bg-[#9e8c8c75] justify-center flex-row p-2 w-96 overflow-hidden rounded-md bg-[#9e8c8c25] duration-200">
           <i className="bi bi-search"></i>
           <input className=" outline-none p-2 bg-transparent w-80" onChange={handleInputChange} value={inputValue} type="text" placeholder="Search" />
@@ -102,12 +102,6 @@ const page: React.FC = () => {
                   </li>
                 </Link>
                 <hr className="my-2" />
-                <Link href={"/account/settings"}>
-                  <li className="items-center py-2 hover:bg-[#9e8c8c] cursor-pointer flex flex-row gap-3 font-bold rounded-md px-4">
-                    <i className="bi bi-gear"></i>
-                    <p>Settings</p>
-                  </li>
-                </Link>
                 <li className="items-center py-2 hover:bg-[#9e8c8c] cursor-pointer flex flex-row gap-3 font-bold rounded-md px-4" onClick={() => setNightMode()}>
                   <i className="bi bi-moon"></i>
                   <p>Night Mode</p>
@@ -121,9 +115,6 @@ const page: React.FC = () => {
               </ul>
             </div>
           </div>
-          <div className="lg:hidden bg-[#9e8c8c25] hover:bg-[#9e8c8c75] duration-200 cursor-pointer rounded-md">
-            <i className="bi bi-list"></i>
-          </div>
         </div>
       </header>
       <section className="flex flex-col gap-5">
@@ -133,35 +124,31 @@ const page: React.FC = () => {
           {image1Loading ? (<MoonLoader color="#e5cbcb" />) : (<img src={image1 || '/images/default-profile.png'} alt="cover pics" className="w-full h-[500px] object-cover cursor-pointer" onClick={() => image1Ref.current.click()} />)}
           {image1Loading ? (<MoonLoader color="#e5cbcb" />) : (<img src={image2 || '/images/default-profile.png'} alt="profile pics" className="w-56 h-56 object-cover rounded-full absolute bottom-0 left-10 shadow-2xl cursor-pointer" onClick={() => image2Ref.current.click()} />)}
         </div>
-        <div className="flex flex-row justify-between px-10">
+        <div className="flex flex-row justify-between px-1 lg:px-10">
           <div className="flex flex-col">
-            <p className="font-bold text-xl">Unnamed</p>
-            <div className="flex flex-row items-center gap-5">
+            <div className="flex flex-row items-center gap-2 cursor-pointer hover:text-gray-300 text-sm lg:text-lg" data-tooltip-content="Copy" data-tooltip-id="copy_address_tooltip" onClick={() => navigator.clipboard.writeText(account).then(() => { toast.success("Copied") })}>
               <Tooltip id="copy_address_tooltip" />
-              <p data-tooltip-content="Copy" data-tooltip-id="copy_address_tooltip" className="cursor-pointer hover:text-gray-300" onClick={() => navigator.clipboard.writeText(account).then(() => { toast.success("Copied") })}>{first_slice + "..." + second_slice}</p>
-              <p className="text-gray-300">Joined july 2024</p>
+              <p>{first_slice + "..." + second_slice}</p>
+              <BiCopy />
             </div>
           </div>
-          <Link href={"/account/settings"} className="flex items-center">
-            <FiSettings className="cursor-pointer text-xl hover:text-gray-300" />
-          </Link>
         </div>
-        <div className="flex flex-col px-10 overflow-auto">
+        <div className="flex flex-col px-1 lg:px-10 overflow-auto">
           <nav>
-            <ul className="flex flex-row items-center">
-              <li className={`flex flex-row items-center p-5 cursor-pointer ${activeNav === "created" && "text-white"} text-gray-400 hover:text-white duration-200 gap-2`} onClick={() => setActiveNav("created")}>
+            <ul className="flex flex-row items-center text-sm lg:text-lg">
+              <li className={`flex flex-row items-center p-3 lg:p-5 cursor-pointer ${activeNav === "created" && "text-white"} text-gray-400 hover:text-white duration-200 gap-2`} onClick={() => setActiveNav("created")}>
                 <IoCreateSharp />
                 <p>Created</p>
               </li>
-              <li className={`flex flex-row items-center p-5 cursor-pointer ${activeNav === "bought" && "text-white"} text-gray-400 hover:text-white duration-200 gap-2`} onClick={() => setActiveNav("bought")}>
+              <li className={`flex flex-row items-center p-3 lg:p-5 cursor-pointer ${activeNav === "bought" && "text-white"} text-gray-400 hover:text-white duration-200 gap-2`} onClick={() => setActiveNav("bought")}>
                 <FaDollarSign />
                 <p>Bought</p>
               </li>
-              <li className={`flex flex-row items-center p-5 cursor-pointer ${activeNav === "sold" && "text-white"} text-gray-400 hover:text-white duration-200 gap-2`} onClick={() => setActiveNav("sold")}>
+              <li className={`flex flex-row items-center p-3 lg:p-5 cursor-pointer ${activeNav === "sold" && "text-white"} text-gray-400 hover:text-white duration-200 gap-2`} onClick={() => setActiveNav("sold")}>
                 <MdSell />
                 <p>Sold</p>
               </li>
-              <li className={`flex flex-row items-center p-5 cursor-pointer ${activeNav === "owned" && "text-white"} text-gray-400 hover:text-white duration-200 gap-2`} onClick={() => setActiveNav("owned")}>
+              <li className={`flex flex-row items-center p-3 lg:p-5 cursor-pointer ${activeNav === "owned" && "text-white"} text-gray-400 hover:text-white duration-200 gap-2`} onClick={() => setActiveNav("owned")}>
                 <FaArrowAltCircleDown />
                 <p>Own (Currently)</p>
               </li>
@@ -179,7 +166,7 @@ const page: React.FC = () => {
                   <Image
                     src={nft.image}
                     alt={nft.name}
-                    className="w-[200px] h-[200px] group-hover:scale-105 duration-200"
+                    className="w-[100px] h-[100px] lg:h-[200px] lg:w-[200px] group-hover:scale-105 duration-200"
                     height={200}
                     width={200}
                   />

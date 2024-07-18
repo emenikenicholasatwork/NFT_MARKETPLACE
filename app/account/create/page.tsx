@@ -42,16 +42,16 @@ const Page: React.FC = () => {
   }, [imagePreview]);
 
   return (
-    <main className={`min-h-screen pt-32 w-screen flex flex-col py-5 justify-center items-center relative`}>
-      <div className="flex flex-col flex-1">
-        <h1 className="text-4xl">Create an NFT</h1>
-        <h4>Once your item is minted you will not be able to change any of its information.</h4>
-        <div className="flex flex-row items-center gap-32 justify-center">
+    <main className={`min-h-screen overflow-auto pt-20 w-full flex flex-col py-5 justify-center items-center`}>
+      <div className="overflow-auto px-2 pb-28">
+        <h1 className="text-lg lg:text-4xl">Create an NFT</h1>
+        <h4 className="text-sm lg:text-lg">Once your item is minted you will not be able to change any of its information.</h4>
+        <div className="flex flex-col lg:flex-row items-center gap-10 lg:gap-32 overflow-auto justify-center">
           <div onClick={imageButton}>
-            <div className="flex flex-row justify-between gap-10 mt-5">
+            <div className="flex flex-row justify-between gap-1 lg:gap-10 mt-5">
               {
                 imageEmpty ?
-                  <div className={`flex flex-col items-center justify-center w-[600px] h-[600px] duration-100 rounded-md border-dotted border-2 ${isNightMode ? "border-white hover:bg-[#0d0e0e]" : "hover:bg-[#eaf9fb]"} border-black cursor-pointer`}>
+                  <div className={`flex flex-col items-center justify-center  md:w-[600px] md:h-[600px] w-[350px] h-[350px] duration-100 rounded-md border-dotted border-2 ${isNightMode ? "border-white hover:bg-[#0d0e0e]" : "hover:bg-[#eaf9fb]"} border-black cursor-pointer`}>
                     <p className="text-4xl py-3">Upload</p>
                     <p>Drag and drop Image</p>
                     <p className="text-blue-700" onClick={imageButton}>Browse file</p>
@@ -59,14 +59,14 @@ const Page: React.FC = () => {
                     <p className="font-thin">JPG, PNG, GIF, SVG</p>
                   </div>
                   :
-                  <div className="w-[600px] h-[600px] rounded-md">
+                  <div className="w-[400px] h-[400px]  lg:w-[600px] lg:h-[600px] rounded-md">
                     <img alt="nft image" src={typeof imagePreview === 'string' ? imagePreview : ''} onClick={imageButton} className="w-[600px] h-[600px] hover:scale-[1.01] duration-300 rounded-lg shadow-lg cursor-pointer" />
                   </div>
               }
               <input className="hidden" type="file" accept=".png, .svg, .gif, .jpg, .jpeg, image/png, image/svg+xml, image/gif, image/jpeg" onChange={handleImageChange} ref={imageRef} />
             </div>
           </div>
-          <div className="flex flex-col flex-1 w-[600px] gap-3">
+          <div className="flex flex-col flex-1 w-[330px] md:w-[600px] gap-3">
             <div className="flex flex-col w-full gap-2">
               <p>Collection *</p>
               <div className={`flex flex-row items-center gap-3 border border-slate-600 duration-200 w-full p-5 rounded-md cursor-pointer `}>
