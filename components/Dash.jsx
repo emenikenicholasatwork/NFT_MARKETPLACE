@@ -7,71 +7,71 @@ const Dash = () => {
             id: 1,
             floor: '0.11',
             name: 'Crypto Alien',
-            image: '/images/notable3.jpg'            
-        },{
+            image: '/images/notable3.jpg'
+        }, {
             id: 2,
             floor: '0.11',
             name: 'Crypto Alien',
-            image: '/images/notable2.jpg'            
-        },{
+            image: '/images/notable2.jpg'
+        }, {
             id: 3,
             floor: '0.11',
             name: 'Crypto Alien',
-            image: '/images/notable1.jpg'            
-        },{
+            image: '/images/notable1.jpg'
+        }, {
             id: 4,
             floor: '0.11',
             name: 'Crypto Alien',
-            image: '/images/notable2.jpg'            
-        },{
+            image: '/images/notable2.jpg'
+        }, {
             id: 5,
             floor: '0.11',
             name: 'Crypto Alien',
-            image: '/images/notable1.jpg'            
-        },{
+            image: '/images/notable1.jpg'
+        }, {
             id: 6,
             floor: '0.11',
             name: 'Crypto Alien',
-            image: '/images/notable3.jpg'            
-        },{
+            image: '/images/notable3.jpg'
+        }, {
             id: 7,
             floor: '0.11',
             name: 'Crypto Alien',
-            image: '/images/notable1.jpg'            
-        },{
+            image: '/images/notable1.jpg'
+        }, {
             id: 8,
             floor: '0.11',
             name: 'Crypto Alien',
-            image: '/images/notable2.jpg'            
-        },{
+            image: '/images/notable2.jpg'
+        }, {
             id: 9,
             floor: '0.11',
             name: 'Crypto Alien',
-            image: '/images/notable3.jpg'            
+            image: '/images/notable3.jpg'
         },
     ]
-  return (
-    <div className=' my-8 gap-8 flex flex-col px-2 lg:px-5'>
-        <div className='flex flex-col justify-between '>
-            <p className='font-extrabold text-3xl'>Trending</p>
+    return (
+        <div className=' my-8 gap-8 flex flex-col px-2 lg:px-5'>
+            <div className='flex flex-col justify-between '>
+                <p className='font-extrabold text-3xl'>Trending</p>
+            </div>
+            <div className='flex flex-row items-center gap-3 overflow-x-auto px-2 lg:px-5'>
+                {
+                    nfts.map(nft => (
+                        <div className='relative rounded-lg shadow-lg duration-300 overflow-hidden min-w-[200px] md:min-w-[400px] lg:min-w-[600px]' key={nft.id}>
+                            <div className='text-white absolute bottom-2 left-3'>
+                                <p className='font-bold text-sm'>{nft.name}</p>
+                                <p className='font-light text-sm'>Floor: {nft.floor} ETH</p>
+                            </div>
+                            <div className="lg:min-w-[500px]">
+                                <Image src={nft.image} className=' h-[600px] w-[600px] cursor-pointer shadow-md hover:scale-110 duration-300 object-contain' height={100} width={600} alt='NFT dash image' />
+                            </div>
+                        </div>
+                    ))
+                }
+            </div>
         </div>
-        <div className='flex flex-row items-center gap-3 overflow-x-auto px-2 lg:px-5'>
-            {
-                nfts.map(nft => (
-                <div className='relative rounded-lg shadow-lg duration-300 overflow-hidden ' key={nft.id} style={{ minWidth: '600px' }}>
-                    <div className='text-white absolute bottom-2 left-3'>
-                        <p className='font-bold text-sm'>{nft.name}</p>
-                        <p className='font-light text-sm'>Floor: {nft.floor} ETH</p>
-                    </div>
-                    <div style={{ minWidth: '500px' }}>
-                        <Image src={nft.image} className='h-[600px] cursor-pointer shadow-md hover:scale-110 duration-300' height={100} width={600} alt='NFT dash image'/>
-                    </div>                
-                </div>
-                ))
-            }
-        </div>
-    </div>
-  )
+    )
 }
 
 export default Dash
