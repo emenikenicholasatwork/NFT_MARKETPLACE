@@ -10,7 +10,6 @@ import { BiLogOut } from "react-icons/bi";
 import { IoIosCreate } from "react-icons/io";
 
 const layout = ({ children }: { children: React.ReactNode }) => {
-  const [createClickable, setCreateClickable] = useState(false);
   const {
     isNightMode,
     setNightMode,
@@ -77,12 +76,6 @@ const layout = ({ children }: { children: React.ReactNode }) => {
       <main>
         {children}
       </main>
-      <footer className="bg-transparent fixed bottom-0 left-0 right-0 flex flex-col gap-3 h-20 px-2">
-        <hr />
-        <div className="flex w-full justify-end pe-10">
-          <button className={`h-10 w-36 justify-center items-center duration-200 ${createClickable ? "bg-blue-600 hover:scale-110 text-white" : "bg-blue-900 text-gray-400 cursor-default"} flex rounded`}>Create</button>
-        </div>
-      </footer>
     </section>
   );
 };

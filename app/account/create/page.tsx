@@ -4,10 +4,12 @@ import * as React from "react";
 import { useEffect, useRef, useState } from "react";
 import nftData from "../../../components/collections/nft.json";
 import { BsCollection } from "react-icons/bs";
+import toast from "react-hot-toast";
 
 const Page: React.FC = () => {
+  const [createClickable, setCreateClickable] = useState(false);
   const { isNightMode } = useGlobal();
-  const [imagePreview, setImagePreview] = useState<string | ArrayBuffer | null>(null);
+  const [imagePreview, setImagePreview] = useState<string | Blob | ArrayBuffer>(null);
   const imageRef = useRef<HTMLInputElement>(null);
   const [imageEmpty, setImageEmpty] = useState(true);
   const [showAllCollections, setShowAllCollections] = useState(false);
@@ -17,19 +19,51 @@ const Page: React.FC = () => {
   const [nftToMintData, setNftToMintData] = useState({
     name: "",
     description: "",
-    image: "",
-    collection: "",
+    image: null,
     price: "",
   })
 
-  const onInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const onInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     setNftToMintData((prevData) => ({
       ...prevData,
-      name: value,
+      [name]: value,
     }));
-    console.log(nftToMintData)
   };
+
+  const checkCreateClickable = () => {
+    const isCreateClickable =
+      nftToMintData.name !== "" &&
+      nftToMintData.description !== "" &&
+      newCollName !== "" &&
+      newCollName !== "Select a collection" &&
+      nftToMintData.price !== "" &&
+      imagePreview !== null;
+    setCreateClickable(isCreateClickable);
+  };
+
+  const mintButton = (e: React.FormEvent) => {
+    e.preventDefault();
+    const formData = new FormData();
+    Object.entries(nftToMintData).forEach(([key, value]) => {
+      if (key !== "image") {
+        formData.append(key, value as string)
+      }
+    });
+    if (nftToMintData.image) {
+      formData.append("image", nftToMintData.image);
+    }
+    formData.append("collection", newCollName)
+    for (let pair of formData.entries()) {
+      console.log(pair[0] + " : " + pair[1])
+    }
+    checkCreateClickable()
+    if (createClickable) {
+      toast.success("minting your nft")
+    } else {
+      toast.error("details not properly filled")
+    }
+  }
 
   interface NFT {
     id: number;
@@ -47,6 +81,10 @@ const Page: React.FC = () => {
     if (imageRef.current && imageRef.current.files) {
       const file = imageRef.current.files[0];
       if (file) {
+        setNftToMintData((prevData) => ({
+          ...prevData,
+          image: file
+        }))
         const validTypes = ['image/png', 'image/svg+xml', 'image/gif', 'image/jpeg'];
         if (validTypes.includes(file.type)) {
           const reader = new FileReader();
@@ -129,23 +167,29 @@ const Page: React.FC = () => {
             </div>
             <div className="flex flex-col gap-1">
               <p>Name *</p>
-              <input className="rounded-md bg-transparent border p-2 border-slate-600" type="text" placeholder="Name your NFT" name="name" />
+              <input name="name" className="rounded-md bg-transparent border p-2 border-slate-600" type="text" placeholder="Name your NFT" onChange={(e) => onInputChange(e)} />
             </div>
             <div className={`duration-700 ease-in-out ${(openNewCollection && !showAllCollections) ? "h-[80px] " : "h-0"} flex flex-col gap-1 overflow-hidden`}>
               <p>Collections *</p>
-              <input className="rounded-md bg-transparent border p-2 border-slate-600" type="text" placeholder="Name your Collection" onChange={(e: React.ChangeEvent<HTMLInputElement>) => setNewCollName(e.target.value)} />
+              <input name="collection" className="rounded-md bg-transparent border p-2 border-slate-600" type="text" placeholder="Name your Collection" onChange={(e: React.ChangeEvent<HTMLInputElement>) => { setNewCollName(e.target.value); onInputChange(e) }} />
             </div>
             <div className="flex flex-col gap-1">
               <p>Description *</p>
-              <textarea className="rounded-md border border-slate-600 bg-transparent resize-none p-2 h-28" placeholder="Enter a description" onChange={() => onInputChange}></textarea>
+              <textarea name="description" className="rounded-md border border-slate-600 bg-transparent resize-none p-2 h-28" placeholder="Enter a description" onChange={(e) => onInputChange(e)}></textarea>
             </div>
             <div className="flex flex-col gap-1">
               <p>Price (in ETH)</p>
-              <input className="rounded-md bg-transparent border p-2 border-slate-600" type="text" placeholder="0.0001 ETH" />
+              <input name="price" className="rounded-md bg-transparent border p-2 border-slate-600" type="number" onChange={(e) => onInputChange(e)} placeholder="0.0001 ETH" />
             </div>
           </div>
         </div>
       </div>
+      <footer className={`fixed bottom-0 left-0 right-0 flex flex-col gap-3 h-20 px-2 ${isNightMode ? "bg-[#252927] text-white" : "bg-white text-black"} duration-300 `}>
+        <hr />
+        <div className="flex w-full justify-end pe-10">
+          <button onClick={(e) => mintButton(e)} className={`h-10 w-36 justify-center items-center duration-200 ${createClickable ? "bg-blue-600 hover:scale-110 text-white" : "bg-blue-900 text-gray-400 cursor-default"} flex rounded`}>Create</button>
+        </div>
+      </footer>
     </main>
   );
 };
