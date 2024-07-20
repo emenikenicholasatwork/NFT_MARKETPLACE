@@ -4,19 +4,27 @@ config();
 import { useGlobal } from "../../../context/GlobalContext";
 import React, { useEffect, useRef, useState } from "react";
 import nftData from "../../../components/collections/nft.json";
+import NftMarketplace from "../../../bin/contracts/NFTMarketplace.json";
 import { BsCollection } from "react-icons/bs";
 import toast from "react-hot-toast";
 import axios from "axios";
 import Loadingtoast from "../../../components/loading_toast/Loadingtoast";
+import { BrowserProvider, ethers } from "ethers";
+import { headers } from "next/headers";
 const pinata_api_key = process.env.PINATA_API_KEY;
 const pinata_secret_api_key = process.env.PINATA_SECRET_KEY;
+const contract_address = process.env.CONTRACT_ADDRESS;
 
 interface NFT {
   collection: string
 }
 
 const Page: React.FC = () => {
+  const [openLoader, setOpenLoader] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [ipfs_image_loading, set_ipfs_image_loading] = useState(false);
+  const [ipfs_metadata_loading, set_ipfs_metadata_loading] = useState(false);
+  const [blockchain_loading, set_blockchain_loading] = useState(false);
   const [createClickable, setCreateClickable] = useState<boolean>(false);
   const { isNightMode } = useGlobal();
   const [imagePreview, setImagePreview] = useState<string | ArrayBuffer | null>(null);
@@ -144,15 +152,17 @@ const Page: React.FC = () => {
 
   const mintButton = async (e: React.FormEvent) => {
     e.preventDefault();
+    setOpenLoader(true);
     if (createClickable) {
-      setLoading(true);
+      set_ipfs_image_loading(true);
       const imageResponse = await uploadImageToIpfs(nftToMintData.image);
       if (!imageResponse) {
-        setLoading(false);
+        setOpenLoader(false);
         toast.error("Failed to upload to IPFS");
         return;
       }
-
+      set_ipfs_image_loading(false);
+      set_ipfs_metadata_loading(true);
       const metadata = {
         name: nftToMintData.name,
         description: nftToMintData.description,
@@ -161,14 +171,48 @@ const Page: React.FC = () => {
         price: nftToMintData.price,
       };
       const metadataResponse = await uploadNftToIpfs(metadata);
+      const tokenURI = `ipfs://${metadataResponse.IpfsHash}`
       if (!metadataResponse) {
+        setOpenLoader(false);
         toast.error("Failed to upload metadata to IPFS");
-        setLoading(false);
         return;
       }
-      setLoading(false);
-      toast.success("Succesfull")
-      console.log(metadataResponse)
+      set_ipfs_metadata_loading(false);
+      try {
+        setLoading(true);
+        const provider = new BrowserProvider(window.ethereum);
+        const signer = await provider.getSigner();
+        setLoading(false);
+        set_blockchain_loading(true);
+        let contract = new ethers.Contract(NftMarketplace.address, NftMarketplace.abi, signer);
+        const price = ethers.parseEther(nftToMintData.price);
+        const creationPrice = await contract.getCreationPrice();
+        let createTokenTrns = await contract.createToken(tokenURI, price, {
+          value: creationPrice,
+        });
+        await createTokenTrns.wait();
+        set_blockchain_loading(false);
+        setLoading(true);
+        const transactions = await contract.getAllItems();
+        for (const i of transactions) {
+          const tokenId = parseInt(i.tokenId);
+          const tokenURI = await contract.tokenURI(tokenId);
+          const metadata = await axios.get(tokenURI, {
+            headers: {
+              pinata_api_key: pinata_api_key,
+              pinata_secret_api_key: pinata_secret_api_key,
+            }
+          });
+          const price = ethers.formatEther(i.price);
+          console.log(metadata, price);
+        }
+        setLoading(false);
+        setOpenLoader(false);
+        toast.success("NFT succesfully Listed");
+      } catch (error) {
+        setOpenLoader(false);
+        toast.error("Error while connecting to wallet: " + error);
+      }
     } else {
       toast.error("Details not properly filled");
     }
@@ -182,7 +226,7 @@ const Page: React.FC = () => {
 
   return (
     <main className={`min-h-screen overflow-auto pt-20 w-full flex flex-col py-5 justify-center items-center`}>
-      {loading && <Loadingtoast />}
+      {openLoader && <Loadingtoast ipfs_image_loading={ipfs_image_loading} ipfs_metadata_loading={ipfs_metadata_loading} blockchain_loading={blockchain_loading} loading={loading} />}
       <div className="overflow-auto px-2 pb-28">
         <h1 className="text-lg lg:text-4xl">Create an NFT</h1>
         <h4 className="text-sm lg:text-lg">Once your item is minted you will not be able to change any of its information.</h4>

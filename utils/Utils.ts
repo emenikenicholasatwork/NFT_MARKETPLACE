@@ -11,7 +11,7 @@ interface NFT {
   price: number;
 }
 
-export function saveCookie(name: string, value: string, days: number) {
+export function saveCookie(name: string, value: any, days: number) {
   setCookie(name, value, { expires: days });
 }
 

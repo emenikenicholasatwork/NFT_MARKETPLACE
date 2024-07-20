@@ -1,5 +1,7 @@
 "use client";
 import { useRouter } from "next/navigation";
+import * as dotenv from "dotenv";
+dotenv.config();
 import React, {
   useContext,
   createContext,
@@ -8,14 +10,12 @@ import React, {
   useEffect,
 } from "react";
 import {
-  findNftById,
-  saveNftChange,
   retrieveCookie,
   saveCookie,
   deleteCookie,
 } from "../utils/Utils";
 import { toast } from "react-hot-toast";
-import { BrowserProvider } from "ethers";
+import { BrowserProvider, ethers } from "ethers";
 
 interface GlobalContextProps {
   isNightMode: boolean;
@@ -25,6 +25,7 @@ interface GlobalContextProps {
   activate_account: (account: string) => void;
   logout: () => void;
   login: () => void;
+  signer: any
 }
 
 const GlobalContext = createContext<GlobalContextProps | undefined>(undefined);
@@ -34,20 +35,18 @@ interface GlobalProviderProps {
 }
 
 export const GlobalProvider: React.FC<GlobalProviderProps> = ({ children }) => {
-  const notifyAdd = () => toast.success("Added to cart");
-  const notifyRemove = () => toast.success("Removed from cart");
   const router = useRouter();
-  const [account, setAccount] = useState(
-    "0x43Bea93563Ff08dC888bD3B0A152ef94F56D15ed"
-  );
+  const [account, setAccount] = useState("0x43Bea93563Ff08dC888bD3B0A152ef94F56D15ed");
   const [isSearchBar, setIsSearchBar] = useState(false);
   const [isWalletConnected, setIsWalletConnected] = useState(false);
   const [isNightMode, setIsNightMode] = useState(true);
   const [signer, setSigner] = useState(null);
+  const [nfts, setNfts] = useState([]);
 
   useEffect(() => {
     const nightMode = retrieveCookie("crypto~art: dark theme");
     setIsNightMode(nightMode === "enabled");
+    setSigner(retrieveCookie("crypto~art: signer"));
     const logout = retrieveCookie("crypto~art: logout");
     if (logout) {
       logout === "true" ? setIsWalletConnected(false) : setIsWalletConnected(true);
@@ -82,9 +81,9 @@ export const GlobalProvider: React.FC<GlobalProviderProps> = ({ children }) => {
       if (ethereum) {
         const provider = new BrowserProvider(window.ethereum);
         const signer = await provider.getSigner();
+        saveCookie("crypto~art: signer", signer, 7);
         setSigner(signer);
         const account = await provider.send("eth_requestAccounts", []);
-        console.log(account)
         activate_account(account[0]);
         const network = await provider.getNetwork();
         const chainId = network.chainId;
@@ -144,6 +143,7 @@ export const GlobalProvider: React.FC<GlobalProviderProps> = ({ children }) => {
         activate_account,
         logout,
         login,
+        signer
       }}
     >
       {children}
