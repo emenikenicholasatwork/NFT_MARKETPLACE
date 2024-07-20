@@ -2,8 +2,10 @@
 import { useGlobal } from "../../context/GlobalContext";
 import React, { useEffect, useState } from "react";
 import nftData from "./nft.json";
-import Link from "next/link";
+import { useRouter } from "next/navigation";
 import Image from "next/image";
+import { retrieveCookie } from "../../utils/Utils";
+import toast from "react-hot-toast";
 
 interface NFT {
   id: number;
@@ -15,6 +17,7 @@ interface NFT {
 }
 
 const Collections: React.FC = () => {
+  const router = useRouter();
   const { isNightMode } = useGlobal();
   const [groupedNfts, setGroupedNfts] = useState<{ [key: string]: NFT[] }>({});
 
@@ -46,12 +49,18 @@ const Collections: React.FC = () => {
           </div>
           <div className="flex gap-3 flex-row items-center overflow-x-auto p-3">
             {groupedNfts[collectionName].map((nft) => (
-              <Link
-                href={`/nft/${nft.id}`}
+              <div
+                onClick={() => {
+                  const logout = retrieveCookie("crypto~art: logout");
+                  if (logout === "true") {
+                    toast("you need to connect wallet to see this page")
+                  } else {
+                    router.push(`account/nft/${nft.id}`)
+                  }
+                }}
                 key={nft.id}
-                className={`rounded-lg overflow-hidden hover:-translate-y-1 min-w-fit cursor-pointer duration-200 shadow-md hover:shadow-2xl ${
-                  isNightMode ? "bg-[#9e8c8c15]" : ""
-                } `}
+                className={`rounded-lg overflow-hidden hover:-translate-y-1 min-w-fit cursor-pointer duration-200 shadow-md hover:shadow-2xl ${isNightMode ? "bg-[#9e8c8c15]" : ""
+                  } `}
               >
                 <Image
                   alt={nft.name}
@@ -69,7 +78,7 @@ const Collections: React.FC = () => {
                     </div>
                   </div>
                 </div>
-              </Link>
+              </div>
             ))}
           </div>
         </div>

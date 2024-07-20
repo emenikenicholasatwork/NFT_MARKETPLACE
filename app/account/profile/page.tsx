@@ -134,32 +134,13 @@ const page: React.FC = () => {
           </div>
         </div>
         <div className="flex flex-col px-1 lg:px-10 overflow-auto">
-          <nav>
-            <ul className="flex flex-row items-center text-sm lg:text-lg">
-              <li className={`flex flex-row items-center p-3 lg:p-5 cursor-pointer ${activeNav === "created" && "text-white"} text-gray-400 hover:text-white duration-200 gap-2`} onClick={() => setActiveNav("created")}>
-                <IoCreateSharp />
-                <p>Created</p>
-              </li>
-              <li className={`flex flex-row items-center p-3 lg:p-5 cursor-pointer ${activeNav === "bought" && "text-white"} text-gray-400 hover:text-white duration-200 gap-2`} onClick={() => setActiveNav("bought")}>
-                <FaDollarSign />
-                <p>Bought</p>
-              </li>
-              <li className={`flex flex-row items-center p-3 lg:p-5 cursor-pointer ${activeNav === "sold" && "text-white"} text-gray-400 hover:text-white duration-200 gap-2`} onClick={() => setActiveNav("sold")}>
-                <MdSell />
-                <p>Sold</p>
-              </li>
-              <li className={`flex flex-row items-center p-3 lg:p-5 cursor-pointer ${activeNav === "owned" && "text-white"} text-gray-400 hover:text-white duration-200 gap-2`} onClick={() => setActiveNav("owned")}>
-                <FaArrowAltCircleDown />
-                <p>Own (Currently)</p>
-              </li>
-            </ul>
-          </nav>
+          <p className="md:text-lg md:font-bold">Owned NFTs</p>
           <hr />
           <div className="flex flex-wrap gap-3 overflow-auto border p-5 rounded-md w-full border-gray-300">
             {nfts.map((nft) => (
               <div key={nft.id} className="relative duration-200 min-w-fit group rounded-lg overflow-hidden shadow-md hover:shadow-2xl">
                 <Link
-                  href={`/nft/${nft.id}`}
+                  href={`/account/nft/${nft.id}`}
                   className={`block cursor-pointer  ${isNightMode ? "bg-[#9e8c8c15]" : ""
                     }`}
                 >

@@ -2,472 +2,528 @@
     {
         "id": 1,
         "price": 0.11,
-        "inCart": false,
+        "owner": "0x43Bea93563Ff08dC888bD3B0A152ef94F56D15ed",
         "name": "Crypto Alien",
         "description": "This is just the best NFT you can get in the market right now.. with adequete customisations..",
         "collection": "Azuki",
-        "image": "/images/nft/anime1.jpeg"            
-    },{
+        "image": "/images/nft/anime1.jpeg"
+    },
+    {
         "id": 2,
         "price": 0.11,
-        "inCart": false,
+        "owner": "0x43Bea93563Ff08dC888bD3B0A152ef94F56D15ed",
         "name": "Crypto Alien",
         "description": "This is just the best NFT you can get in the market right now.. with adequete customisations..",
         "collection": "Azuki",
-        "image": "/images/nft/anime2.jpeg"            
-    },{
+        "image": "/images/nft/anime2.jpeg"
+    },
+    {
         "id": 3,
         "price": 0.11,
-        "inCart": false,
+        "owner": "0x43Bea93563Ff08dC888bD3B0A152ef94F56D15ed",
         "name": "Crypto Alien",
         "description": "This is just the best NFT you can get in the market right now.. with adequete customisations..",
         "collection": "Azuki",
-        "image": "/images/nft/anime3.jpeg"            
-    },{
+        "image": "/images/nft/anime3.jpeg"
+    },
+    {
         "id": 4,
         "price": 0.11,
-        "inCart": false,
+        "owner": "0x43Bea93563Ff08dC888bD3B0A152ef94F56D15ed",
         "name": "Crypto Alien",
         "description": "This is just the best NFT you can get in the market right now.. with adequete customisations..",
         "collection": "Azuki",
-        "image": "/images/nft/anime4.jpeg"            
-    },{
+        "image": "/images/nft/anime4.jpeg"
+    },
+    {
         "id": 5,
         "price": 0.11,
-        "inCart": false,
+        "owner": "0x43Bea93563Ff08dC888bD3B0A152ef94F56D15ed",
         "name": "Crypto Alien",
         "description": "This is just the best NFT you can get in the market right now.. with adequete customisations..",
         "collection": "Azuki",
-        "image": "/images/nft/anime5.jpeg"            
-    },{
+        "image": "/images/nft/anime5.jpeg"
+    },
+    {
         "id": 6,
         "price": 0.11,
-        "inCart": false,
+        "owner": "0x43Bea93563Ff08dC888bD3B0A152ef94F56D15ed",
         "name": "Crypto Alien",
         "description": "This is just the best NFT you can get in the market right now.. with adequete customisations..",
         "collection": "Azuki",
-        "image": "/images/nft/anime6.jpeg"            
-    },{
+        "image": "/images/nft/anime6.jpeg"
+    },
+    {
         "id": 7,
         "price": 0.11,
-        "inCart": false,
+        "owner": "0x43Bea93563Ff08dC888bD3B0A152ef94F56D15ed",
         "name": "Crypto Alien",
         "description": "This is just the best NFT you can get in the market right now.. with adequete customisations..",
         "collection": "Azuki",
-        "image": "/images/nft/anime7.jpeg"            
-    },{
+        "image": "/images/nft/anime7.jpeg"
+    },
+    {
         "id": 8,
         "price": 0.11,
-        "inCart": false,
+        "owner": "0x43Bea93563Ff08dC888bD3B0A152ef94F56D15ed",
         "name": "Crypto Alien",
         "description": "This is just the best NFT you can get in the market right now.. with adequete customisations..",
         "collection": "Azuki",
-        "image": "/images/nft/anime8.jpeg"            
-    },{
+        "image": "/images/nft/anime8.jpeg"
+    },
+    {
         "id": 9,
         "price": 0.11,
-        "inCart": false,
+        "owner": "0x43Bea93563Ff08dC888bD3B0A152ef94F56D15ed",
         "name": "Crypto Alien",
         "description": "This is just the best NFT you can get in the market right now.. with adequete customisations..",
         "collection": "Azuki",
-        "image": "/images/nft/anime9.jpeg"            
-    },{
+        "image": "/images/nft/anime9.jpeg"
+    },
+    {
         "id": 10,
         "price": 0.11,
-        "inCart": false,
+        "owner": "0x43Bea93563Ff08dC888bD3B0A152ef94F56D15ed",
         "name": "Crypto Alien",
         "description": "This is just the best NFT you can get in the market right now.. with adequete customisations..",
         "collection": "Azuki",
-        "image": "/images/nft/anime10.jpeg"            
-    },{
+        "image": "/images/nft/anime10.jpeg"
+    },
+    {
         "id": 11,
         "price": 0.11,
-        "inCart": false,
+        "owner": "0x43Bea93563Ff08dC888bD3B0A152ef94F56D15ed",
         "name": "Crypto Alien",
         "description": "This is just the best NFT you can get in the market right now.. with adequete customisations..",
         "collection": "Azuki",
-        "image": "/images/nft/anime11.jpeg"         
-    },{
+        "image": "/images/nft/anime11.jpeg"
+    },
+    {
         "id": 12,
         "price": 0.11,
-        "inCart": false,
+        "owner": "0x43Bea93563Ff08dC888bD3B0A152ef94F56D15ed",
         "name": "Crypto Alien",
         "description": "This is just the best NFT you can get in the market right now.. with adequete customisations..",
         "collection": "Azuki",
-        "image": "/images/nft/anime12.jpeg"            
-    },{
+        "image": "/images/nft/anime12.jpeg"
+    },
+    {
         "id": 13,
         "price": 0.11,
-        "inCart": false,
+        "owner": "0x43Bea93563Ff08dC888bD3B0A152ef94F56D15ed",
         "name": "Crypto Alien",
         "description": "This is just the best NFT you can get in the market right now.. with adequete customisations..",
         "collection": "Azuki",
-        "image": "/images/nft/anime13.jpeg"            
-    },{
+        "image": "/images/nft/anime13.jpeg"
+    },
+    {
         "id": 14,
         "price": 0.11,
-        "inCart": false,
+        "owner": "0x43Bea93563Ff08dC888bD3B0A152ef94F56D15ed",
         "name": "Crypto Alien",
         "description": "This is just the best NFT you can get in the market right now.. with adequete customisations..",
         "collection": "Bored Ape Yacht Club (BACY)",
         "image": "/images/nft/ape1.jpg"
-    },{
+    },
+    {
         "id": 15,
         "price": 0.11,
-        "inCart": false,
+        "owner": "0x43Bea93563Ff08dC888bD3B0A152ef94F56D15ed",
         "name": "Crypto Alien",
         "description": "This is just the best NFT you can get in the market right now.. with adequete customisations..",
         "collection": "Bored Ape Yacht Club (BACY)",
-        "image": "/images/nft/ape2.jpg"            
-    },{
+        "image": "/images/nft/ape2.jpg"
+    },
+    {
         "id": 16,
         "price": 0.11,
-        "inCart": false,
+        "owner": "0x43Bea93563Ff08dC888bD3B0A152ef94F56D15ed",
         "name": "Crypto Alien",
         "description": "This is just the best NFT you can get in the market right now.. with adequete customisations..",
         "collection": "Bored Ape Yacht Club (BACY)",
-        "image": "/images/nft/ape3.jpg"            
-    },{
+        "image": "/images/nft/ape3.jpg"
+    },
+    {
         "id": 17,
         "price": 0.11,
-        "inCart": false,
+        "owner": "0x43Bea93563Ff08dC888bD3B0A152ef94F56D15ed",
         "name": "Crypto Alien",
         "description": "This is just the best NFT you can get in the market right now.. with adequete customisations..",
         "collection": "Bored Ape Yacht Club (BACY)",
-        "image": "/images/nft/ape4.jpg"            
-    },{
+        "image": "/images/nft/ape4.jpg"
+    },
+    {
         "id": 18,
         "price": 0.11,
-        "inCart": false,
+        "owner": "0x43Bea93563Ff08dC888bD3B0A152ef94F56D15ed",
         "name": "Crypto Alien",
         "description": "This is just the best NFT you can get in the market right now.. with adequete customisations..",
         "collection": "Bored Ape Yacht Club (BACY)",
-        "image": "/images/nft/ape5.jpg"            
-    },{
+        "image": "/images/nft/ape5.jpg"
+    },
+    {
         "id": 19,
         "price": 0.11,
-        "inCart": false,
+        "owner": "0x43Bea93563Ff08dC888bD3B0A152ef94F56D15ed",
         "name": "Crypto Alien",
         "description": "This is just the best NFT you can get in the market right now.. with adequete customisations..",
         "collection": "Bored Ape Yacht Club (BACY)",
-        "image": "/images/nft/ape6.jpg"         
-    },{
+        "image": "/images/nft/ape6.jpg"
+    },
+    {
         "id": 20,
         "price": 0.11,
-        "inCart": false,
+        "owner": "0x43Bea93563Ff08dC888bD3B0A152ef94F56D15ed",
         "name": "Crypto Alien",
         "description": "This is just the best NFT you can get in the market right now.. with adequete customisations..",
         "collection": "Bored Ape Yacht Club (BACY)",
-        "image": "/images/nft/ape7.jpg",            
-        "volume": 2778                     
-    },{
+        "image": "/images/nft/ape7.jpg",
+        "volume": 2778
+    },
+    {
         "id": 21,
         "price": 0.11,
-        "inCart": false,
+        "owner": "0x43Bea93563Ff08dC888bD3B0A152ef94F56D15ed",
         "name": "Crypto Alien",
         "description": "This is just the best NFT you can get in the market right now.. with adequete customisations..",
         "collection": "Bored Ape Yacht Club (BACY)",
-        "image": "/images/nft/ape8.jpg"            
-    },{
+        "image": "/images/nft/ape8.jpg"
+    },
+    {
         "id": 22,
         "price": 0.11,
-        "inCart": false,
+        "owner": "0x43Bea93563Ff08dC888bD3B0A152ef94F56D15ed",
         "name": "Crypto Alien",
         "description": "This is just the best NFT you can get in the market right now.. with adequete customisations..",
         "collection": "Bored Ape Yacht Club (BACY)",
-        "image": "/images/nft/ape9.jpg"            
-    },{
+        "image": "/images/nft/ape9.jpg"
+    },
+    {
         "id": 23,
         "price": 0.11,
-        "inCart": false,
+        "owner": "0x43Bea93563Ff08dC888bD3B0A152ef94F56D15ed",
         "name": "Crypto Alien",
         "description": "This is just the best NFT you can get in the market right now.. with adequete customisations..",
         "collection": "Bored Ape Yacht Club (BACY)",
-        "image": "/images/nft/ape10.jpg"            
-    },{
+        "image": "/images/nft/ape10.jpg"
+    },
+    {
         "id": 24,
         "price": 0.11,
-        "inCart": false,
+        "owner": "0x43Bea93563Ff08dC888bD3B0A152ef94F56D15ed",
         "name": "Crypto Alien",
         "description": "This is just the best NFT you can get in the market right now.. with adequete customisations..",
         "collection": "Bored Ape Yacht Club (BACY)",
-        "image": "/images/nft/ape11.jpg"            
-    },{
+        "image": "/images/nft/ape11.jpg"
+    },
+    {
         "id": 25,
         "price": 0.11,
-        "inCart": false,
+        "owner": "0x43Bea93563Ff08dC888bD3B0A152ef94F56D15ed",
         "name": "Crypto Alien",
         "description": "This is just the best NFT you can get in the market right now.. with adequete customisations..",
         "collection": "Bored Ape Yacht Club (BACY)",
-        "image": "/images/nft/ape12.jpg"            
-    },{
+        "image": "/images/nft/ape12.jpg"
+    },
+    {
         "id": 26,
         "price": 0.11,
-        "inCart": false,
+        "owner": "0x43Bea93563Ff08dC888bD3B0A152ef94F56D15ed",
         "name": "Crypto Alien",
         "description": "This is just the best NFT you can get in the market right now.. with adequete customisations..",
         "collection": "Bored Ape Yacht Club (BACY)",
-        "image": "/images/nft/ape13.jpg"            
-    },{
+        "image": "/images/nft/ape13.jpg"
+    },
+    {
         "id": 27,
         "price": 0.11,
-        "inCart": false,
+        "owner": "0x43Bea93563Ff08dC888bD3B0A152ef94F56D15ed",
         "views": 0,
         "name": "Crypto Alien",
         "description": "This is just the best NFT you can get in the market right now.. with adequete customisations..",
         "collection": "Classic Shady",
         "image": "/images/nft/classic1.jpeg"
-    },{
+    },
+    {
         "id": 28,
         "price": 0.11,
-        "inCart": false,
+        "owner": "0x43Bea93563Ff08dC888bD3B0A152ef94F56D15ed",
         "views": 6,
         "name": "Crypto Alien",
         "description": "This is just the best NFT you can get in the market right now.. with adequete customisations..",
         "collection": "Classic Shady",
         "image": "/images/nft/classic2.jpeg"
-    },{
+    },
+    {
         "id": 29,
         "price": 0.11,
-        "inCart": false,
+        "owner": "0x43Bea93563Ff08dC888bD3B0A152ef94F56D15ed",
         "views": 8,
         "name": "Crypto Alien",
         "description": "This is just the best NFT you can get in the market right now.. with adequete customisations..",
         "collection": "Classic Shady",
         "image": "/images/nft/classic3.jpeg"
-    },{
+    },
+    {
         "id": 30,
         "price": 0.11,
-        "inCart": false,
+        "owner": "0x43Bea93563Ff08dC888bD3B0A152ef94F56D15ed",
         "views": 9,
         "name": "Crypto Alien",
         "description": "This is just the best NFT you can get in the market right now.. with adequete customisations..",
         "collection": "Classic Shady",
         "image": "/images/nft/classic4.jpeg"
-    },{
+    },
+    {
         "id": 31,
         "price": 0.11,
-        "inCart": false,
+        "owner": "0x43Bea93563Ff08dC888bD3B0A152ef94F56D15ed",
         "views": 0,
         "name": "Crypto Alien",
         "description": "This is just the best NFT you can get in the market right now.. with adequete customisations..",
         "collection": "Classic Shady",
         "image": "/images/nft/classic5.jpeg"
-    },{
+    },
+    {
         "id": 32,
         "price": 0.11,
-        "inCart": false,
+        "owner": "0x43Bea93563Ff08dC888bD3B0A152ef94F56D15ed",
         "views": 21,
         "name": "Crypto Alien",
         "description": "This is just the best NFT you can get in the market right now.. with adequete customisations..",
         "collection": "Classic Shady",
         "image": "/images/nft/classic6.jpeg"
-    },{
+    },
+    {
         "id": 33,
         "price": 0.11,
-        "inCart": false,
-
+        "owner": "0x43Bea93563Ff08dC888bD3B0A152ef94F56D15ed",
         "name": "Crypto Alien",
         "description": "This is just the best NFT you can get in the market right now.. with adequete customisations..",
         "collection": "Classic Shady",
         "image": "/images/nft/classic7.jpeg",
-        "volume": 2778                     
-    },{
+        "volume": 2778
+    },
+    {
         "id": 34,
         "price": 0.11,
-        "inCart": false,
+        "owner": "0x43Bea93563Ff08dC888bD3B0A152ef94F56D15ed",
         "name": "Crypto Alien",
         "description": "This is just the best NFT you can get in the market right now.. with adequete customisations..",
         "collection": "Classic Shady",
         "image": "/images/nft/classic8.jpeg"
-    },{
+    },
+    {
         "id": 35,
         "price": 0.11,
-        "inCart": false,
+        "owner": "0x43Bea93563Ff08dC888bD3B0A152ef94F56D15ed",
         "name": "Crypto Alien",
         "description": "This is just the best NFT you can get in the market right now.. with adequete customisations..",
         "collection": "Classic Shady",
         "image": "/images/nft/classic9.jpeg"
-    },{
+    },
+    {
         "id": 36,
         "price": 0.11,
-        "inCart": false,
+        "owner": "0x43Bea93563Ff08dC888bD3B0A152ef94F56D15ed",
         "name": "Crypto Alien",
         "description": "This is just the best NFT you can get in the market right now.. with adequete customisations..",
         "collection": "Classic Shady",
         "image": "/images/nft/classic10.jpeg"
-    },{
+    },
+    {
         "id": 37,
         "price": 0.11,
-        "inCart": false,
+        "owner": "0x43Bea93563Ff08dC888bD3B0A152ef94F56D15ed",
         "name": "Crypto Alien",
         "description": "This is just the best NFT you can get in the market right now.. with adequete customisations..",
         "collection": "Classic Shady",
         "image": "/images/nft/classic11.jpeg"
-    },{
+    },
+    {
         "id": 38,
         "price": 0.11,
-        "inCart": false,
+        "owner": "0x43Bea93563Ff08dC888bD3B0A152ef94F56D15ed",
         "name": "Crypto Alien",
         "description": "This is just the best NFT you can get in the market right now.. with adequete customisations..",
         "collection": "Classic Shady",
         "image": "/images/nft/classic12.jpeg"
-    },{
+    },
+    {
         "id": 39,
         "price": 0.11,
-        "inCart": false,
+        "owner": "0x43Bea93563Ff08dC888bD3B0A152ef94F56D15ed",
         "name": "Crypto Alien",
         "description": "This is just the best NFT you can get in the market right now.. with adequete customisations..",
         "collection": "Classic Shady",
         "image": "/images/nft/classic13.jpeg"
-    },{
+    },
+    {
         "id": 40,
         "price": 0.11,
-        "inCart": false,
+        "owner": "0x43Bea93563Ff08dC888bD3B0A152ef94F56D15ed",
         "name": "Crypto Alien",
         "description": "This is just the best NFT you can get in the market right now.. with adequete customisations..",
         "collection": "Classic Shady",
         "image": "/images/nft/classic14.jpeg"
-    },{
+    },
+    {
         "id": 41,
         "price": 0.11,
-        "inCart": false,
+        "owner": "0x43Bea93563Ff08dC888bD3B0A152ef94F56D15ed",
         "name": "Crypto Alien",
         "description": "This is just the best NFT you can get in the market right now.. with adequete customisations..",
         "collection": "Classic Shady",
         "image": "/images/nft/classic15.jpeg"
-    },{
+    },
+    {
         "id": 42,
         "price": 0.11,
-        "inCart": false,
+        "owner": "0x43Bea93563Ff08dC888bD3B0A152ef94F56D15ed",
         "name": "Crypto Alien",
         "description": "This is just the best NFT you can get in the market right now.. with adequete customisations..",
         "collection": "Great Art",
         "image": "/images/nft/art1.jpeg"
-    },{
+    },
+    {
         "id": 43,
         "price": 0.11,
-        "inCart": false,
+        "owner": "0x43Bea93563Ff08dC888bD3B0A152ef94F56D15ed",
         "name": "Crypto Alien",
         "description": "This is just the best NFT you can get in the market right now.. with adequete customisations..",
         "collection": "Great Art",
         "image": "/images/nft/art2.jpeg"
-    },{
+    },
+    {
         "id": 44,
         "price": 0.11,
-        "inCart": false,
+        "owner": "0x43Bea93563Ff08dC888bD3B0A152ef94F56D15ed",
         "name": "Crypto Alien",
         "description": "This is just the best NFT you can get in the market right now.. with adequete customisations..",
         "collection": "Great Art",
         "image": "/images/nft/art3.jpeg"
-    },{
+    },
+    {
         "id": 45,
         "price": 0.11,
-        "inCart": false,
+        "owner": "0x43Bea93563Ff08dC888bD3B0A152ef94F56D15ed",
         "name": "Crypto Alien",
         "description": "This is just the best NFT you can get in the market right now.. with adequete customisations..",
         "collection": "Great Art",
         "image": "/images/nft/art4.jpeg"
-    },{
+    },
+    {
         "id": 46,
         "price": 0.11,
-        "inCart": false,
+        "owner": "0x43Bea93563Ff08dC888bD3B0A152ef94F56D15ed",
         "name": "Crypto Alien",
         "description": "This is just the best NFT you can get in the market right now.. with adequete customisations..",
         "collection": "Great Art",
         "image": "/images/nft/art5.jpeg"
-    },{
+    },
+    {
         "id": 47,
         "price": 0.11,
-        "inCart": false,
+        "owner": "0x43Bea93563Ff08dC888bD3B0A152ef94F56D15ed",
         "name": "Crypto Alien",
         "description": "This is just the best NFT you can get in the market right now.. with adequete customisations..",
         "collection": "Great Art",
         "image": "/images/nft/art6.jpeg"
-    },{
+    },
+    {
         "id": 48,
         "price": 0.11,
-        "inCart": false,
+        "owner": "0x43Bea93563Ff08dC888bD3B0A152ef94F56D15ed",
         "name": "Crypto Alien",
         "description": "This is just the best NFT you can get in the market right now.. with adequete customisations..",
         "collection": "Great Art",
         "image": "/images/nft/art7.jpeg"
-    },{
+    },
+    {
         "id": 49,
         "price": 0.11,
-        "inCart": false,
+        "owner": "0x43Bea93563Ff08dC888bD3B0A152ef94F56D15ed",
         "name": "Crypto Alien",
         "description": "This is just the best NFT you can get in the market right now.. with adequete customisations..",
         "collection": "Great Art",
         "image": "/images/nft/art8.jpeg"
-    },{
+    },
+    {
         "id": 50,
         "price": 0.11,
-        "inCart": false,
+        "owner": "0x43Bea93563Ff08dC888bD3B0A152ef94F56D15ed",
         "name": "Crypto Alien",
         "description": "This is just the best NFT you can get in the market right now.. with adequete customisations..",
         "collection": "Great Art",
         "image": "/images/nft/art9.jpeg"
-    },{
+    },
+    {
         "id": 51,
         "price": 0.11,
-        "inCart": false,
+        "owner": "0x43Bea93563Ff08dC888bD3B0A152ef94F56D15ed",
         "name": "Crypto Alien",
         "description": "This is just the best NFT you can get in the market right now.. with adequete customisations..",
         "collection": "Great Art",
         "image": "/images/nft/art10.jpeg"
-    },{
+    },
+    {
         "id": 52,
         "price": 0.11,
-        "inCart": false,
+        "owner": "0x43Bea93563Ff08dC888bD3B0A152ef94F56D15ed",
         "name": "Crypto Alien",
         "description": "This is just the best NFT you can get in the market right now.. with adequete customisations..",
         "collection": "Great Art",
         "image": "/images/nft/art11.jpeg"
-    },{
+    },
+    {
         "id": 53,
         "price": 0.11,
-        "inCart": false,
+        "owner": "0x43Bea93563Ff08dC888bD3B0A152ef94F56D15ed",
         "name": "Crypto Alien",
         "description": "This is just the best NFT you can get in the market right now.. with adequete customisations..",
         "collection": "Great Art",
         "image": "/images/nft/art12.jpeg"
-    },{
+    },
+    {
         "id": 54,
         "price": 0.11,
-        "inCart": false,
+        "owner": "0x43Bea93563Ff08dC888bD3B0A152ef94F56D15ed",
         "name": "Crypto Alien",
         "description": "This is just the best NFT you can get in the market right now.. with adequete customisations..",
         "collection": "Great Art",
         "image": "/images/nft/art13.jpeg"
-    },{
+    },
+    {
         "id": 55,
         "price": 0.11,
-        "inCart": false,
+        "owner": "0x43Bea93563Ff08dC888bD3B0A152ef94F56D15ed",
         "name": "Crypto Alien",
         "description": "This is just the best NFT you can get in the market right now.. with adequete customisations..",
         "collection": "Great Art",
         "image": "/images/nft/art14.jpeg"
-    },{
+    },
+    {
         "id": 56,
         "price": 0.11,
-        "inCart": false,
+        "owner": "0x43Bea93563Ff08dC888bD3B0A152ef94F56D15ed",
         "name": "Crypto Alien",
         "description": "This is just the best NFT you can get in the market right now.. with adequete customisations..",
         "collection": "Great Art",
         "image": "/images/nft/art15.jpeg"
-    },{
+    },
+    {
         "id": 57,
         "price": 0.11,
-        "inCart": false,
+        "owner": "0x43Bea93563Ff08dC888bD3B0A152ef94F56D15ed",
         "name": "Crypto Alien",
         "description": "This is just the best NFT you can get in the market right now.. with adequete customisations..",
         "collection": "Great Art",
         "image": "/images/nft/art16.jpeg"
-    },{
+    },
+    {
         "id": 58,
         "price": 0.11,
-        "inCart": false,
+        "owner": "0x43Bea93563Ff08dC888bD3B0A152ef94F56D15ed",
         "name": "Crypto Alien",
         "description": "This is just the best NFT you can get in the market right now.. with adequete customisations..",
         "collection": "Great Art",

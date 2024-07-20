@@ -7,14 +7,16 @@ import nftData from "../../../components/collections/nft.json";
 import { BsCollection } from "react-icons/bs";
 import toast from "react-hot-toast";
 import axios from "axios";
-const pinata_api_key = process.env.API_Key;
-const pinata_secret_api_key = process.env.API_Secret;
+import Loadingtoast from "../../../components/loading_toast/Loadingtoast";
+const pinata_api_key = process.env.PINATA_API_KEY;
+const pinata_secret_api_key = process.env.PINATA_SECRET_KEY;
 
 interface NFT {
   collection: string
 }
 
 const Page: React.FC = () => {
+  const [loading, setLoading] = useState(false);
   const [createClickable, setCreateClickable] = useState<boolean>(false);
   const { isNightMode } = useGlobal();
   const [imagePreview, setImagePreview] = useState<string | ArrayBuffer | null>(null);
@@ -143,20 +145,10 @@ const Page: React.FC = () => {
   const mintButton = async (e: React.FormEvent) => {
     e.preventDefault();
     if (createClickable) {
-      // const formData = new FormData();
-      // Object.entries(nftToMintData).forEach(([key, value]) => {
-      //   if (key !== "image") {
-      //     formData.append(key, value as string);
-      //   }
-      // });
-      // if (nftToMintData.image) {
-      //   formData.append("image", nftToMintData.image);
-      // }
-      // formData.append("collection", newCollName);
-      // toast.success("NFT minted successfully");
-      // // Here you can handle the form submission, e.g., send formData to an API
+      setLoading(true);
       const imageResponse = await uploadImageToIpfs(nftToMintData.image);
       if (!imageResponse) {
+        setLoading(false);
         toast.error("Failed to upload to IPFS");
         return;
       }
@@ -171,8 +163,12 @@ const Page: React.FC = () => {
       const metadataResponse = await uploadNftToIpfs(metadata);
       if (!metadataResponse) {
         toast.error("Failed to upload metadata to IPFS");
+        setLoading(false);
         return;
       }
+      setLoading(false);
+      toast.success("Succesfull")
+      console.log(metadataResponse)
     } else {
       toast.error("Details not properly filled");
     }
@@ -186,6 +182,7 @@ const Page: React.FC = () => {
 
   return (
     <main className={`min-h-screen overflow-auto pt-20 w-full flex flex-col py-5 justify-center items-center`}>
+      {loading && <Loadingtoast />}
       <div className="overflow-auto px-2 pb-28">
         <h1 className="text-lg lg:text-4xl">Create an NFT</h1>
         <h4 className="text-sm lg:text-lg">Once your item is minted you will not be able to change any of its information.</h4>
@@ -254,7 +251,12 @@ const Page: React.FC = () => {
       <footer className={`fixed bottom-0 left-0 right-0 flex flex-col gap-3 h-20 px-2 ${isNightMode ? "bg-[#252927] text-white" : "bg-white text-black"} duration-300`}>
         <hr />
         <div className="flex w-full justify-end pe-10">
-          <button onClick={mintButton} className={`h-10 w-36 justify-center items-center duration-200 ${createClickable ? "bg-blue-600 hover:scale-110 text-white cursor-pointer" : "bg-blue-900 text-gray-400 cursor-default"} flex rounded`}>Create</button>
+          {
+            loading ?
+              <button className={`h-10 w-36 justify-center items-center duration-200 bg-blue-900 text-gray-400 cursor-not-allowed flex rounded`}>Create</button>
+              :
+              <button onClick={mintButton} className={`h-10 w-36 justify-center items-center duration-200 ${createClickable ? "bg-blue-600 hover:scale-110 text-white cursor-pointer" : "bg-blue-900 text-gray-400 cursor-default"} flex rounded`}>Create</button>
+          }
         </div>
       </footer>
     </main>
@@ -262,3 +264,7 @@ const Page: React.FC = () => {
 };
 
 export default Page;
+function saveSettings(settings: any): Promise<unknown> {
+  throw new Error("Function not implemented.");
+}
+

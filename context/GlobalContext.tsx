@@ -84,6 +84,7 @@ export const GlobalProvider: React.FC<GlobalProviderProps> = ({ children }) => {
         const signer = await provider.getSigner();
         setSigner(signer);
         const account = await provider.send("eth_requestAccounts", []);
+        console.log(account)
         activate_account(account[0]);
         const network = await provider.getNetwork();
         const chainId = network.chainId;
