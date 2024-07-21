@@ -9,7 +9,6 @@ import { JsonRpcProvider, Contract, ethers, BrowserProvider } from 'ethers';
 import { abi } from 'web3/lib/commonjs/eth.exports';
 import NftMarketplace from "../../../../bin/contracts/NFTMarketplace.json";
 import toast from "react-hot-toast";
-const INFURA_API_KEY = process.env.INFURA_API_KEY;
 
 const Page = ({ params }) => {
   const { isNightMode } = useGlobal();
