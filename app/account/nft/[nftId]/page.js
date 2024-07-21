@@ -3,22 +3,15 @@ import { useGlobal } from '../../../../context/GlobalContext';
 import Image from "next/image";
 import styles from "./page.module.css";
 import Link from "next/link";
-import { useEffect, useState } from 'react';
 
-const page = ({ params }) => {
-  const { isNightMode, account } = useGlobal();
-  const [nfts, setNfts] = useState([]);
-  useEffect(() => {
-    const n = localStorage.getItem("nfts");
-    const u = JSON.parse(n);
-    setNfts(u);
-  })
+const Page = ({ params }) => {
+  const { isNightMode } = useGlobal();
+  const account = localStorage.getItem("user_address");
+  const nfts = JSON.parse(localStorage.getItem("nfts"));
   const id = params.nftId;
-  console.log(account);
-
-
-  const nftItem = nfts.find((n) => n.id.toString() === id);
+  const nftItem = nfts.find(n => n.id.toString() === id);
   const nftItems = nfts.filter((n) => n.collection === nftItem.collection);
+
   return (
     <section className={styles.main_container}>
       <div className={`flex flex-col lg:flex-row ${styles.container_div}`}>
@@ -28,6 +21,7 @@ const page = ({ params }) => {
             src={nftItem.image}
             width={500}
             height={500}
+            alt={nftItem.name}
           />
         </div>
         <div className={styles.details_div_right}>
@@ -47,20 +41,18 @@ const page = ({ params }) => {
           </div>
           <div className={styles.best_offer_div_right}>
             <p>Best offer</p>
-            <p>
-              {nftItem.price} ETH{" "}
-            </p>
-            {
-              nftItem.owner === account ? <button className={styles.make_offer_button}>You own this nft</button> : <button className={styles.make_offer_button}>Buy now</button>
-            }
+            <p>{nftItem.price} ETH{" "}</p>
+            {nftItem.owner.toString().toLowerCase() === account.toLowerCase() ? (
+              <button className={styles.make_offer_button}>You own this NFT</button>
+            ) : (
+              <button className="p-[15px] w-full rounded-lg bg-gray-500 duration-200 ">Buy now</button>
+            )}
           </div>
           <div className={styles.subject_description_div}>
             <h2 className={styles.subject_description_title}>
               Subject Description
             </h2>
-            <p>
-              <br />{nftItem.description}
-            </p>
+            <p><br />{nftItem.description}</p>
           </div>
         </div>
       </div>
@@ -96,4 +88,5 @@ const page = ({ params }) => {
     </section>
   );
 };
-export default page;
+
+export default Page;

@@ -2,6 +2,8 @@
 import { useRouter } from "next/navigation";
 import * as dotenv from "dotenv";
 dotenv.config();
+import pLimit from "p-limit";
+const limit = pLimit(5);
 import React, {
   useContext,
   createContext,
@@ -18,20 +20,8 @@ import { toast } from "react-hot-toast";
 import { BrowserProvider, ethers } from "ethers";
 import NftMarketplace from "../bin/contracts/NFTMarketplace.json";
 import axios from "axios";
-const INFURA_API_KEY = process.env.INFURA_API_KEY;
 
-interface GlobalContextProps {
-  isNightMode: boolean;
-  setNightMode: () => void;
-  isWalletConnected: boolean;
-  account: string;
-  activate_account: (account: string) => void;
-  logout: () => void;
-  login: () => void;
-  signer: any;
-  nfts: NFT[];
-  setAllNft: (nft: NFT[]) => void;
-}
+const INFURA_API_KEY = process.env.NEXT_PUBLIC_INFURA_API_KEY;
 
 interface NFT {
   price: any;
@@ -42,6 +32,19 @@ interface NFT {
   name: any;
   collection: any;
   description: any;
+}
+
+interface GlobalContextProps {
+  isNightMode: boolean;
+  setNightMode: () => void;
+  isWalletConnected: boolean;
+  account: string;
+  activate_account: (account: string) => void;
+  logout: () => void;
+  login: () => void;
+  nfts: NFT[];
+  setAllNft: (nft: NFT[]) => void;
+  fetchAllNft: () => void;
 }
 
 const GlobalContext = createContext<GlobalContextProps | undefined>(undefined);
@@ -55,10 +58,26 @@ export const GlobalProvider: React.FC<GlobalProviderProps> = ({ children }) => {
   const [account, setAccount] = useState("");
   const [isWalletConnected, setIsWalletConnected] = useState(false);
   const [isNightMode, setIsNightMode] = useState(true);
-  const [signer, setSigner] = useState(null);
   const [nfts, setNfts] = useState<NFT[]>([]);
 
-  const fetchAllNft = async () => {
+  const delay = (ms: number) => new Promise(res => setTimeout(res, ms));
+
+  const fetchWithRetry = async (url: string, retries = 3): Promise<any> => {
+    for (let i = 0; i < retries; i++) {
+      try {
+        const response = await axios.get(url);
+        return response.data;
+      } catch (error) {
+        if (i < retries - 1) {
+          await delay(Math.pow(2, i) * 1000); // Exponential backoff
+        } else {
+          throw error;
+        }
+      }
+    }
+  };
+
+  const fetchAllNft = async (): Promise<NFT[]> => {
     const provider = new ethers.JsonRpcProvider(`https://sepolia.infura.io/v3/${INFURA_API_KEY}`);
     const contract = new ethers.Contract(NftMarketplace.address, NftMarketplace.abi, provider);
     const transactions = await contract.getAllItems();
@@ -66,7 +85,7 @@ export const GlobalProvider: React.FC<GlobalProviderProps> = ({ children }) => {
     for (const i of transactions) {
       const tokenId = parseInt(i.tokenId);
       const tokenURI = await contract.tokenURI(tokenId);
-      const metadata = (await axios.get(`https://gateway.pinata.cloud/ipfs/${tokenURI}`)).data;
+      const metadata = await limit(() => fetchWithRetry(`https://gateway.pinata.cloud/ipfs/${tokenURI}`));
       const price = ethers.formatEther(i.price);
       const item: NFT = {
         price,
@@ -77,22 +96,35 @@ export const GlobalProvider: React.FC<GlobalProviderProps> = ({ children }) => {
         name: metadata.name,
         collection: metadata.collection,
         description: metadata.description
-      }
+      };
       list.push(item);
     }
-    setNfts(list);
+    return list;
   };
 
   useEffect(() => {
-    const nightMode = retrieveCookie("crypto~art: dark theme");
-    setIsNightMode(nightMode === "enabled");
-    const logout = retrieveCookie("crypto~art: logout");
-    const acc = retrieveCookie("crypto~art: account");
-    setAccount(acc);
-    if (logout) {
-      logout === "true" ? setIsWalletConnected(false) : setIsWalletConnected(true);
-    }
-    fetchAllNft();
+    const initialize = async () => {
+      const nightMode = retrieveCookie("crypto~art: dark theme");
+      setIsNightMode(nightMode === "enabled");
+
+      const logout = retrieveCookie("crypto~art: logout");
+      const acc = retrieveCookie("crypto~art: account");
+      setAccount(acc);
+      if (logout) {
+        setIsWalletConnected(logout !== "true");
+      }
+
+      const cachedNfts = localStorage.getItem("nfts");
+      if (cachedNfts) {
+        setNfts(JSON.parse(cachedNfts));
+      } else {
+        const nfts = await fetchAllNft();
+        setNfts(nfts);
+        localStorage.setItem("nfts", JSON.stringify(nfts));
+      }
+    };
+
+    initialize();
   }, []);
 
   const setAllNft = (nfts: []) => {
@@ -102,12 +134,12 @@ export const GlobalProvider: React.FC<GlobalProviderProps> = ({ children }) => {
 
   const activate_account = (account: string) => {
     setIsWalletConnected(true);
-    setAccount(account.toString().toUpperCase());
-    const u: string | undefined = retrieveCookie("crypto~art: account");
+    setAccount(account);
+    const u: string | undefined = localStorage.getItem("user_address");
     if (u) {
       deleteCookie(u);
     }
-    saveCookie("crypto~art: account", account, 7);
+    localStorage.setItem("user_address", account);
     const n: string | undefined = retrieveCookie("crypto~art: logout");
     if (n) {
       deleteCookie(n);
@@ -131,9 +163,6 @@ export const GlobalProvider: React.FC<GlobalProviderProps> = ({ children }) => {
       const { ethereum } = window;
       if (ethereum) {
         const provider = new BrowserProvider(window.ethereum);
-        const signer = await provider.getSigner();
-        saveCookie("crypto~art: signer", signer, 7);
-        setSigner(signer);
         const account = await provider.send("eth_requestAccounts", []);
         activate_account(account);
         const network = await provider.getNetwork();
@@ -190,9 +219,9 @@ export const GlobalProvider: React.FC<GlobalProviderProps> = ({ children }) => {
         activate_account,
         logout,
         login,
-        signer,
         nfts,
-        setAllNft
+        setAllNft,
+        fetchAllNft,
       }}
     >
       {children}
