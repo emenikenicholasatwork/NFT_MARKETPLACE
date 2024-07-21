@@ -15,11 +15,11 @@ const page: React.FC = () => {
   const {
     setNightMode,
     isNightMode,
-    account,
     logout,
-    nfts,
   } = useGlobal();
-  const userNFT = nfts.filter((n) => n.owner === account);
+  const nfts = JSON.parse(localStorage.getItem("nfts"));
+  const account = localStorage.getItem("user_address");
+  const userNFT = nfts.filter((n) => n.owner.toString().toLowerCase() === account.toString().toLowerCase());
   const [inputValue, setInputValue] = useState("");
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setInputValue(e.target.value);
