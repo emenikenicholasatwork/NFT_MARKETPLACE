@@ -5,7 +5,7 @@ import '../globals.css'
 const loading = () => {
   return (
     <div className="flex justify-center items-center h-screen">
-        <RotatingTriangles
+      <RotatingTriangles
         visible={true}
         height="200"
         width="200"
@@ -13,7 +13,7 @@ const loading = () => {
         ariaLabel="rotating-triangles-loading"
         wrapperStyle={{}}
         wrapperClass=""
-        />
+      />
     </div>
   )
 }

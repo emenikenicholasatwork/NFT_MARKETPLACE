@@ -12,7 +12,6 @@ import { BrowserProvider, ethers } from "ethers";
 const pinata_api_key = process.env.PINATA_API_KEY;
 const pinata_secret_api_key = process.env.PINATA_SECRET_KEY;
 
-
 interface NFT {
   collection: string
 }

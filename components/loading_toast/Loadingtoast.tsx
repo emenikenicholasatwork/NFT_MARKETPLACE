@@ -18,10 +18,8 @@ const Loadingtoast: React.FC<LoadingProps> = ({ buyingLoad, ipfs_image_loading, 
                         visible={true}
                         height="50"
                         width="50"
-                        color="#4fa94d"
                         ariaLabel="rotating-triangles-loading"
                         wrapperStyle={{}}
-                        wrapperClass=""
                     />
                     {buyingLoad && <p className='font-bold lg:text-lg text-sm text-black'>Buying NFT</p>}
                     {ipfs_image_loading && <p className='font-bold lg:text-lg text-sm text-black'>Posting Image to IPFS</p>}
