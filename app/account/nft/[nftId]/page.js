@@ -16,6 +16,7 @@ const page = ({ params }) => {
   const id = params.nftId;
   console.log(account);
 
+
   const nftItem = nfts.find((n) => n.id.toString() === id);
   const nftItems = nfts.filter((n) => n.collection === nftItem.collection);
   return (
