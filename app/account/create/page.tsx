@@ -239,7 +239,7 @@ const Page: React.FC = () => {
 
   return (
     <main className={`min-h-screen overflow-auto pt-20 w-full flex flex-col py-5 justify-center items-center`}>
-      {openLoader && <Loadingtoast ipfs_image_loading={ipfs_image_loading} ipfs_metadata_loading={ipfs_metadata_loading} blockchain_loading={blockchain_loading} loading={loading} />}
+      {openLoader && <Loadingtoast ipfs_image_loading={ipfs_image_loading} ipfs_metadata_loading={ipfs_metadata_loading} blockchain_loading={blockchain_loading} loading={loading} buyingLoad={false} />}
       <div className="overflow-auto px-2 pb-28">
         <h1 className="text-lg lg:text-4xl">Create an NFT</h1>
         <h4 className="text-sm lg:text-lg">Once your item is minted you will not be able to change any of its information.</h4>
