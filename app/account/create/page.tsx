@@ -220,7 +220,11 @@ const Page: React.FC = () => {
         window.location.reload();
       } catch (error) {
         setOpenLoader(false);
-        toast.error("Error while connecting to wallet: " + error);
+        if (error.message.includes("insufficient funds")) {
+          toast.error("Insufficient fund")
+        } else {
+          toast.error("error while buying NFT: ", error);
+        }
       }
     } else {
       toast.error("Details not properly filled");
