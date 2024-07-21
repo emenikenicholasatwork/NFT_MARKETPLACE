@@ -1,7 +1,5 @@
 "use client";
 import { useRouter } from "next/navigation";
-import * as dotenv from "dotenv";
-dotenv.config();
 import pLimit from "p-limit";
 const limit = pLimit(5);
 import React, {

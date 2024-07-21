@@ -1,6 +1,4 @@
 "use client";
-import { config } from "dotenv";
-config();
 import { useGlobal } from "../../../context/GlobalContext";
 import React, { useEffect, useRef, useState } from "react";
 import NftMarketplace from "../../../bin/contracts/NFTMarketplace.json";

@@ -1,6 +1,4 @@
 "use client";
-import * as dotenv from "dotenv";
-dotenv.config();
 import { useGlobal } from "../../../context/GlobalContext";
 import React, { useState } from "react";
 import { BiCopy, BiLogOut } from "react-icons/bi";

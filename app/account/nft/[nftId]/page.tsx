@@ -1,6 +1,4 @@
 "use client";
-import * as dotenv from "dotenv";
-dotenv.config();
 import { useGlobal } from '../../../../context/GlobalContext';
 import Image from "next/image";
 import styles from "./page.module.css";
