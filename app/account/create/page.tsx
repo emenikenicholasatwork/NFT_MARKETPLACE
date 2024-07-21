@@ -3,17 +3,15 @@ import { config } from "dotenv";
 config();
 import { useGlobal } from "../../../context/GlobalContext";
 import React, { useEffect, useRef, useState } from "react";
-import nftData from "../../../components/collections/nft.json";
 import NftMarketplace from "../../../bin/contracts/NFTMarketplace.json";
 import { BsCollection } from "react-icons/bs";
 import toast from "react-hot-toast";
 import axios from "axios";
 import Loadingtoast from "../../../components/loading_toast/Loadingtoast";
 import { BrowserProvider, ethers } from "ethers";
-import { headers } from "next/headers";
 const pinata_api_key = process.env.PINATA_API_KEY;
 const pinata_secret_api_key = process.env.PINATA_SECRET_KEY;
-const contract_address = process.env.CONTRACT_ADDRESS;
+
 
 interface NFT {
   collection: string
@@ -26,7 +24,8 @@ const Page: React.FC = () => {
   const [ipfs_metadata_loading, set_ipfs_metadata_loading] = useState(false);
   const [blockchain_loading, set_blockchain_loading] = useState(false);
   const [createClickable, setCreateClickable] = useState<boolean>(false);
-  const { isNightMode } = useGlobal();
+  const { isNightMode, setAllNft, nfts } = useGlobal();
+  const [list, setList] = useState([]);
   const [imagePreview, setImagePreview] = useState<string | ArrayBuffer | null>(null);
   const imageRef = useRef<HTMLInputElement>(null);
   const [showAllCollections, setShowAllCollections] = useState(false);
@@ -101,7 +100,7 @@ const Page: React.FC = () => {
         return acc;
       }, {} as { [key: string]: NFT[] });
     };
-    setGroupedNfts(groupByCollection(nftData));
+    setGroupedNfts(groupByCollection(nfts));
   }, []);
 
   useEffect(() => {
@@ -150,6 +149,8 @@ const Page: React.FC = () => {
     }
   };
 
+
+
   const mintButton = async (e: React.FormEvent) => {
     e.preventDefault();
     setOpenLoader(true);
@@ -166,12 +167,12 @@ const Page: React.FC = () => {
       const metadata = {
         name: nftToMintData.name,
         description: nftToMintData.description,
-        image: `ipfs://${imageResponse.IpfsHash}`,
+        image: imageResponse.IpfsHash,
         collection: newCollName,
         price: nftToMintData.price,
       };
       const metadataResponse = await uploadNftToIpfs(metadata);
-      const tokenURI = `ipfs://${metadataResponse.IpfsHash}`
+      const tokenURI = metadataResponse.IpfsHash
       if (!metadataResponse) {
         setOpenLoader(false);
         toast.error("Failed to upload metadata to IPFS");
@@ -184,7 +185,7 @@ const Page: React.FC = () => {
         const signer = await provider.getSigner();
         setLoading(false);
         set_blockchain_loading(true);
-        let contract = new ethers.Contract(NftMarketplace.address, NftMarketplace.abi, signer);
+        const contract = new ethers.Contract(NftMarketplace.address, NftMarketplace.abi, signer);
         const price = ethers.parseEther(nftToMintData.price);
         const creationPrice = await contract.getCreationPrice();
         let createTokenTrns = await contract.createToken(tokenURI, price, {
@@ -197,18 +198,26 @@ const Page: React.FC = () => {
         for (const i of transactions) {
           const tokenId = parseInt(i.tokenId);
           const tokenURI = await contract.tokenURI(tokenId);
-          const metadata = await axios.get(tokenURI, {
-            headers: {
-              pinata_api_key: pinata_api_key,
-              pinata_secret_api_key: pinata_secret_api_key,
-            }
-          });
+          const metadata = (await axios.get(`https://gateway.pinata.cloud/ipfs/${tokenURI}`)).data;
           const price = ethers.formatEther(i.price);
-          console.log(metadata, price);
+          const item = {
+            price,
+            id: tokenId,
+            seller: i.seller,
+            owner: i.owner,
+            image: `https://gateway.pinata.cloud/ipfs/${metadata.image}`,
+            name: metadata.name,
+            collection: metadata.collection,
+            description: metadata.description
+          }
+          list.push(item);
         }
+        localStorage.setItem("nfts", JSON.stringify(list));
+        setAllNft(list);
         setLoading(false);
         setOpenLoader(false);
         toast.success("NFT succesfully Listed");
+        window.location.reload();
       } catch (error) {
         setOpenLoader(false);
         toast.error("Error while connecting to wallet: " + error);

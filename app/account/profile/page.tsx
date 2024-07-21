@@ -1,36 +1,25 @@
 "use client";
+import * as dotenv from "dotenv";
+dotenv.config();
 import { useGlobal } from "../../../context/GlobalContext";
-import React, { useRef, useState } from "react";
-import { MdSell, MdWallet } from "react-icons/md";
-import { IoCreateSharp } from "react-icons/io5";
+import React, { useEffect, useRef, useState } from "react";
 import { BiCopy, BiLogOut } from "react-icons/bi";
 import Image from "next/image";
 import { IoIosCreate } from "react-icons/io";
-import { FaDollarSign } from "react-icons/fa6";
-import { FaArrowAltCircleDown } from "react-icons/fa";
 import Link from "next/link";
 import toast from "react-hot-toast";
-import { FiSettings } from "react-icons/fi";
 import { Tooltip } from "react-tooltip";
-import data from "../../../components/collections/nft.json";
-import { MoonLoader } from "react-spinners";
+import { MdWallet } from "react-icons/md";
 
 const page: React.FC = () => {
-  const [activeNav, setActiveNav] = useState<string>("created");
-  const image1Ref = useRef<HTMLInputElement>(null);
-  const image2Ref = useRef<HTMLInputElement>(null);
-  const [image1Loading, setImage1Loading] = useState<boolean>(false);
-  const [image2Loading, setImage2Loading] = useState<boolean>(false);
-  const [image1, setImage1] = useState<string | null>(null);
-  const [image2, setImage2] = useState<string | null>(null);
-  let nfts = data;
-
   const {
     setNightMode,
     isNightMode,
     account,
-    logout
+    logout,
+    nfts,
   } = useGlobal();
+  const userNFT = nfts.filter((n) => n.owner === account);
   const [inputValue, setInputValue] = useState("");
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setInputValue(e.target.value);
@@ -40,30 +29,6 @@ const page: React.FC = () => {
   };
   const first_slice = account.slice(0, 6);
   const second_slice = account.slice(38, 42);
-  const handleImage1Change = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0];
-    if (file) {
-      const reader = new FileReader();
-      setImage1Loading(true);
-      reader.onloadend = () => {
-        setImage1(reader.result as string);
-        setImage1Loading(false);
-      };
-      reader.readAsDataURL(file);
-    }
-  }
-  const handleImage2Change = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0];
-    if (file) {
-      const reader = new FileReader();
-      setImage2Loading(true);
-      reader.onloadend = () => {
-        setImage2(reader.result as string);
-        setImage2Loading(false);
-      };
-      reader.readAsDataURL(file);
-    }
-  }
 
   return (
     <div className="w-full h-screen overflow-auto">
@@ -117,13 +82,7 @@ const page: React.FC = () => {
           </div>
         </div>
       </header>
-      <section className="flex flex-col gap-5">
-        <div className="relative h-[520px]">
-          <input type="file" accept=".png, .svg, .gif, .jpg, .jpeg, image/png, image/svg+xml, image/gif, image/jpeg" ref={image1Ref} className="hidden" onChange={handleImage1Change} />
-          <input type="file" accept=".png, .svg, .gif, .jpg, .jpeg, image/png, image/svg+xml, image/gif, image/jpeg" ref={image2Ref} className="hidden" onChange={handleImage2Change} />
-          {image1Loading ? (<MoonLoader color="#e5cbcb" />) : (<img src={image1 || '/images/default-profile.png'} alt="cover pics" className="w-full h-[500px] object-cover cursor-pointer" onClick={() => image1Ref.current.click()} />)}
-          {image1Loading ? (<MoonLoader color="#e5cbcb" />) : (<img src={image2 || '/images/default-profile.png'} alt="profile pics" className="w-56 h-56 object-cover rounded-full absolute bottom-0 left-10 shadow-2xl cursor-pointer" onClick={() => image2Ref.current.click()} />)}
-        </div>
+      <section className="flex flex-col gap-5 pt-10">
         <div className="flex flex-row justify-between px-1 lg:px-10">
           <div className="flex flex-col">
             <div className="flex flex-row items-center gap-2 cursor-pointer hover:text-gray-300 text-sm lg:text-lg" data-tooltip-content="Copy" data-tooltip-id="copy_address_tooltip" onClick={() => navigator.clipboard.writeText(account).then(() => { toast.success("Copied") })}>
@@ -137,7 +96,7 @@ const page: React.FC = () => {
           <p className="md:text-lg md:font-bold">Owned NFTs</p>
           <hr />
           <div className="flex flex-wrap gap-3 overflow-auto border p-5 rounded-md w-full border-gray-300">
-            {nfts.map((nft) => (
+            {userNFT.map((nft) => (
               <div key={nft.id} className="relative duration-200 min-w-fit group rounded-lg overflow-hidden shadow-md hover:shadow-2xl">
                 <Link
                   href={`/account/nft/${nft.id}`}

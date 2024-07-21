@@ -2,52 +2,55 @@
 import { useGlobal } from '../../../../context/GlobalContext';
 import Image from "next/image";
 import styles from "./page.module.css";
-import allNfts from "../../../../components/collections/nft.json";
 import Link from "next/link";
-import { GrCart } from "react-icons/gr";
+import { useEffect, useState } from 'react';
 
 const page = ({ params }) => {
   const { isNightMode, account } = useGlobal();
+  const [nfts, setNfts] = useState([]);
+  useEffect(() => {
+    const n = localStorage.getItem("nfts");
+    const u = JSON.parse(n);
+    setNfts(u);
+  })
   const id = params.nftId;
+  console.log(account);
 
-  const nft = allNfts.find((n) => n.id.toString() === id);
-  const nfts = allNfts.filter((n) => n.collection === nft.collection);
+  const nftItem = nfts.find((n) => n.id.toString() === id);
+  const nftItems = nfts.filter((n) => n.collection === nftItem.collection);
   return (
     <section className={styles.main_container}>
       <div className={`flex flex-col lg:flex-row ${styles.container_div}`}>
         <div className={styles.details_div_left}>
           <Image
             className={styles.nft_item_image}
-            src={nft.image}
+            src={nftItem.image}
             width={500}
             height={500}
           />
         </div>
         <div className={styles.details_div_right}>
           <div>
-            <h3 className={styles.nft_name}>Notable #330</h3>
+            <h3 className={styles.nft_name}>{nftItem.name}</h3>
             <p>
               Owned by{" "}
               <a href="#" className={styles.owner_name}>
-                WisdomWaves
+                {nftItem.owner}
               </a>
             </p>
           </div>
           <div>
             <p className={styles.collection_name}>
-              {nft.collection} Collection
+              {nftItem.collection} Collection
             </p>
-          </div>
-          <div>
-            <p>views<span></span></p>
           </div>
           <div className={styles.best_offer_div_right}>
             <p>Best offer</p>
             <p>
-              {nft.price} ETH{" "}
+              {nftItem.price} ETH{" "}
             </p>
             {
-              nft.owner === account ? <button className={styles.make_offer_button}>You own this nft</button> : <button className={styles.make_offer_button}>Buy now</button>
+              nftItem.owner === account ? <button className={styles.make_offer_button}>You own this nft</button> : <button className={styles.make_offer_button}>Buy now</button>
             }
           </div>
           <div className={styles.subject_description_div}>
@@ -55,10 +58,7 @@ const page = ({ params }) => {
               Subject Description
             </h2>
             <p>
-              <span className={styles.by_title}>By </span>
-              MissKaina <br />A distinctive and vibrant collection representing
-              the rise of the divine feminine. Power, Love, and Beauty portrayed
-              through the creativity of fashion, photography, and NFT.
+              <br />{nftItem.description}
             </p>
           </div>
         </div>
@@ -69,7 +69,7 @@ const page = ({ params }) => {
         </h2>
         <hr />
         <div className={styles.more_nft_container}>
-          {nfts.map((nft) => (
+          {nftItems.map((nft) => (
             <div key={nft.id} className="relative duration-200 group rounded-lg overflow-hidden shadow-md hover:shadow-2xl">
               <Link href={`account/nft/${nft.id}`} className={`block cursor-pointer  ${isNightMode ? "bg-[#9e8c8c15]" : ""}`}>
                 <Image src={nft.image} alt={nft.name} className="w-[100px] h-[100px] lg:w-[200px] lg:h-[200px] group-hover:scale-105 duration-200" height={200} width={200} />

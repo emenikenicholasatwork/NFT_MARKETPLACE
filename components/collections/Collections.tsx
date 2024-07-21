@@ -1,7 +1,6 @@
 "use client";
 import { useGlobal } from "../../context/GlobalContext";
 import React, { useEffect, useState } from "react";
-import nftData from "./nft.json";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
 import { retrieveCookie } from "../../utils/Utils";
@@ -18,7 +17,7 @@ interface NFT {
 
 const Collections: React.FC = () => {
   const router = useRouter();
-  const { isNightMode } = useGlobal();
+  const { isNightMode, nfts } = useGlobal();
   const [groupedNfts, setGroupedNfts] = useState<{ [key: string]: NFT[] }>({});
 
   useEffect(() => {
@@ -32,7 +31,7 @@ const Collections: React.FC = () => {
         return acc;
       }, {} as { [key: string]: NFT[] });
     };
-    setGroupedNfts(groupByCollection(nftData));
+    setGroupedNfts(groupByCollection(nfts));
   }, []);
   return (
     <section className="pb-32">

@@ -1,5 +1,9 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+    reactStrictMode: true,
+    images: {
+        domains: ['gateway.pinata.cloud'],
+    },
     env: {
         PINATA_API_KEY: process.env.API_Key,
         PINATA_SECRET_KEY: process.env.API_Secret,

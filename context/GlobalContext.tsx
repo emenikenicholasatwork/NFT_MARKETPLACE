@@ -16,6 +16,9 @@ import {
 } from "../utils/Utils";
 import { toast } from "react-hot-toast";
 import { BrowserProvider, ethers } from "ethers";
+import NftMarketplace from "../bin/contracts/NFTMarketplace.json";
+import axios from "axios";
+const INFURA_API_KEY = process.env.INFURA_API_KEY;
 
 interface GlobalContextProps {
   isNightMode: boolean;
@@ -25,7 +28,20 @@ interface GlobalContextProps {
   activate_account: (account: string) => void;
   logout: () => void;
   login: () => void;
-  signer: any
+  signer: any;
+  nfts: NFT[];
+  setAllNft: (nft: NFT[]) => void;
+}
+
+interface NFT {
+  price: any;
+  id: any;
+  seller: any;
+  owner: any;
+  image: any;
+  name: any;
+  collection: any;
+  description: any;
 }
 
 const GlobalContext = createContext<GlobalContextProps | undefined>(undefined);
@@ -36,27 +52,62 @@ interface GlobalProviderProps {
 
 export const GlobalProvider: React.FC<GlobalProviderProps> = ({ children }) => {
   const router = useRouter();
-  const [account, setAccount] = useState("0x43Bea93563Ff08dC888bD3B0A152ef94F56D15ed");
-  const [isSearchBar, setIsSearchBar] = useState(false);
+  const [account, setAccount] = useState("");
   const [isWalletConnected, setIsWalletConnected] = useState(false);
   const [isNightMode, setIsNightMode] = useState(true);
   const [signer, setSigner] = useState(null);
-  const [nfts, setNfts] = useState([]);
+  const [nfts, setNfts] = useState<NFT[]>([]);
+
+  const fetchAllNft = async () => {
+    const provider = new ethers.JsonRpcProvider(`https://sepolia.infura.io/v3/${INFURA_API_KEY}`);
+    const contract = new ethers.Contract(NftMarketplace.address, NftMarketplace.abi, provider);
+    const transactions = await contract.getAllItems();
+    const list: NFT[] = [];
+    for (const i of transactions) {
+      const tokenId = parseInt(i.tokenId);
+      const tokenURI = await contract.tokenURI(tokenId);
+      const metadata = (await axios.get(`https://gateway.pinata.cloud/ipfs/${tokenURI}`)).data;
+      const price = ethers.formatEther(i.price);
+      const item: NFT = {
+        price,
+        id: tokenId,
+        seller: i.seller,
+        owner: i.owner,
+        image: `https://gateway.pinata.cloud/ipfs/${metadata.image}`,
+        name: metadata.name,
+        collection: metadata.collection,
+        description: metadata.description
+      }
+      list.push(item);
+    }
+    setNfts(list);
+  };
 
   useEffect(() => {
     const nightMode = retrieveCookie("crypto~art: dark theme");
     setIsNightMode(nightMode === "enabled");
-    setSigner(retrieveCookie("crypto~art: signer"));
     const logout = retrieveCookie("crypto~art: logout");
+    const acc = retrieveCookie("crypto~art: account");
+    setAccount(acc);
     if (logout) {
       logout === "true" ? setIsWalletConnected(false) : setIsWalletConnected(true);
     }
-
+    fetchAllNft();
   }, []);
+
+  const setAllNft = (nfts: []) => {
+    localStorage.setItem("nfts", JSON.stringify(nfts));
+    setNfts(nfts);
+  }
 
   const activate_account = (account: string) => {
     setIsWalletConnected(true);
-    setAccount(account);
+    setAccount(account.toString().toUpperCase());
+    const u: string | undefined = retrieveCookie("crypto~art: account");
+    if (u) {
+      deleteCookie(u);
+    }
+    saveCookie("crypto~art: account", account, 7);
     const n: string | undefined = retrieveCookie("crypto~art: logout");
     if (n) {
       deleteCookie(n);
@@ -84,7 +135,7 @@ export const GlobalProvider: React.FC<GlobalProviderProps> = ({ children }) => {
         saveCookie("crypto~art: signer", signer, 7);
         setSigner(signer);
         const account = await provider.send("eth_requestAccounts", []);
-        activate_account(account[0]);
+        activate_account(account);
         const network = await provider.getNetwork();
         const chainId = network.chainId;
         const sepoliaNetworkId = "1115511";
@@ -129,10 +180,6 @@ export const GlobalProvider: React.FC<GlobalProviderProps> = ({ children }) => {
     }
     saveCookie("crypto~art: dark theme", newNightMode ? "enabled" : "disabled", 7);
   };
-
-  const changeSearchState = () => {
-    isSearchBar ? setIsSearchBar(false) : setIsSearchBar(true);
-  };
   return (
     <GlobalContext.Provider
       value={{
@@ -143,7 +190,9 @@ export const GlobalProvider: React.FC<GlobalProviderProps> = ({ children }) => {
         activate_account,
         logout,
         login,
-        signer
+        signer,
+        nfts,
+        setAllNft
       }}
     >
       {children}
