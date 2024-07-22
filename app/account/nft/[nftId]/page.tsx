@@ -26,7 +26,8 @@ const Page = ({ params }) => {
       const provider = new BrowserProvider(window.ethereum);
       const signer = await provider.getSigner();
       const contract = new ethers.Contract(NftMarketplace.address, NftMarketplace.abi, signer);
-      const value = ethers.parseEther(price.toString());
+      let price1 = price.toString();
+      const value = ethers.parseEther(price1);
       const trnx = await contract.buyToken(tokenId, { value: value });
       await trnx.wait();
       setOpenLoader(false);
