@@ -1,6 +1,4 @@
 "use client";
-import dotenv from "dotenv";
-dotenv.config();
 import { useGlobal } from "../../../context/GlobalContext";
 import React, { useEffect, useRef, useState } from "react";
 import NftMarketplace from "../../../bin/contracts/NFTMarketplace.json";
@@ -9,8 +7,8 @@ import toast from "react-hot-toast";
 import axios from "axios";
 import Loadingtoast from "../../../components/loading_toast/Loadingtoast";
 import { BrowserProvider, ethers } from "ethers";
-const pinata_api_key = process.env.PINATA_API_KEY;
-const pinata_secret_api_key = process.env.PINATA_SECRET_KEY;
+const NEXT_PUBLIC_PINATA_API_KEY = process.env.NEXT_PUBLIC_PINATA_API_KEY;
+const NEXT_PUBLIC_PINATA_SECRET_KEY = process.env.NEXT_PUBLIC_PINATA_SECRET_KEY;
 
 interface NFT {
   collection: string
@@ -60,8 +58,8 @@ const Page: React.FC = () => {
         maxBodyLength: Infinity,
         headers: {
           'Content-Type': 'multipart/form-data',
-          pinata_api_key: pinata_api_key,
-          pinata_secret_api_key: pinata_secret_api_key,
+          pinata_api_key: NEXT_PUBLIC_PINATA_API_KEY,
+          pinata_secret_api_key: NEXT_PUBLIC_PINATA_SECRET_KEY,
         },
       });
       return res.data;
@@ -77,8 +75,8 @@ const Page: React.FC = () => {
       const res = await axios.post(url, nft, {
         headers: {
           'Content-Type': 'application/json',
-          pinata_api_key: pinata_api_key,
-          pinata_secret_api_key: pinata_secret_api_key,
+          pinata_api_key: NEXT_PUBLIC_PINATA_API_KEY,
+          pinata_secret_api_key: NEXT_PUBLIC_PINATA_SECRET_KEY,
         },
       });
       return res.data;

@@ -5,8 +5,7 @@ import styles from "./page.module.css";
 import Link from "next/link";
 import Loadingtoast from '../../../../components/loading_toast/Loadingtoast';
 import { useState } from 'react';
-import { JsonRpcProvider, Contract, ethers, BrowserProvider } from 'ethers';
-import { abi } from 'web3/lib/commonjs/eth.exports';
+import { ethers, BrowserProvider } from 'ethers';
 import NftMarketplace from "../../../../bin/contracts/NFTMarketplace.json";
 import toast from "react-hot-toast";
 

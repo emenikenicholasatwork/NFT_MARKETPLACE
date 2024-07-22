@@ -1,6 +1,4 @@
 "use client";
-import dotenv from "dotenv";
-dotenv.config();
 import { useRouter } from "next/navigation";
 import pLimit from "p-limit";
 const limit = pLimit(5);
