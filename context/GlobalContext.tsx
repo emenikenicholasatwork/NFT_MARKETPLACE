@@ -77,6 +77,7 @@ export const GlobalProvider: React.FC<GlobalProviderProps> = ({ children }) => {
 
   const fetchAllNft = async (): Promise<NFT[]> => {
     const provider = new ethers.JsonRpcProvider(`https://sepolia.infura.io/v3/${INFURA_API_KEY}`);
+    console.log(provider);
     const contract = new ethers.Contract(NftMarketplace.address, NftMarketplace.abi, provider);
     const transactions = await contract.getAllItems();
     const list: NFT[] = [];

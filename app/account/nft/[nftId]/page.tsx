@@ -41,6 +41,7 @@ const Page = ({ params }) => {
       } else {
         setOpenLoader(false);
         setBuyingLoad(false);
+        console.log(error)
         toast.error("error while buying NFT: ", error);
       }
     }
@@ -99,7 +100,7 @@ const Page = ({ params }) => {
         <div className={styles.more_nft_container}>
           {nftItems.map((nft) => (
             <div key={nft.id} className="relative duration-200 group rounded-lg overflow-hidden shadow-md hover:shadow-2xl">
-              <Link href={`account/nft/${nft.id}`} className={`block cursor-pointer  ${isNightMode ? "bg-[#9e8c8c15]" : ""}`}>
+              <Link href={`/account/nft/${nft.id}`} className={`block cursor-pointer  ${isNightMode ? "bg-[#9e8c8c15]" : ""}`}>
                 <Image src={nft.image} alt={nft.name} className="w-[100px] h-[100px] lg:w-[200px] lg:h-[200px] group-hover:scale-105 duration-200" height={200} width={200} />
                 <div className="items-center flex flex-col">
                   <p className="p-3 text-sm">{nft.name}</p>

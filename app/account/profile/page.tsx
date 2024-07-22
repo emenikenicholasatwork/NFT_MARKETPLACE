@@ -14,17 +14,14 @@ const page: React.FC = () => {
     setNightMode,
     isNightMode,
     logout,
+    nfts
   } = useGlobal();
-  const nfts = JSON.parse(localStorage.getItem("nfts"));
+  let nftss = JSON.parse(localStorage.getItem("nfts"));
+  if (nfts === undefined) {
+    nftss = nfts;
+  }
   const account = localStorage.getItem("user_address");
-  const userNFT = nfts.filter((n) => n.owner.toString().toLowerCase() === account.toString().toLowerCase());
-  const [inputValue, setInputValue] = useState("");
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setInputValue(e.target.value);
-  };
-  const clearInput = () => {
-    setInputValue("");
-  };
+  const userNFT = nftss.filter((n) => n.owner.toString().toLowerCase() === account.toString().toLowerCase());
   const first_slice = account.slice(0, 6);
   const second_slice = account.slice(38, 42);
 
@@ -38,11 +35,6 @@ const page: React.FC = () => {
           <i className="bi bi-currency-bitcoin text-lg bg-green-700 p-2 rounded-md"></i>
           <p className="text-2xl md:block font-bold font-serif hidden">Crypto~Art</p>
         </Link>
-        <div className="items-center lg:flex hidden focus:border-2 focus:border-white hover:bg-[#9e8c8c75] justify-center flex-row p-2 w-96 overflow-hidden rounded-md bg-[#9e8c8c25] duration-200">
-          <i className="bi bi-search"></i>
-          <input className=" outline-none p-2 bg-transparent w-80" onChange={handleInputChange} value={inputValue} type="text" placeholder="Search" />
-          {inputValue ? (<i className="rounded-md text-lg px-2 cursor-pointer bg-[#cfc3c322] shadow-lg bi bi-x" onClick={clearInput}></i>) : (<i className="rounded-md bg-[##cfc3c322] text-lg px-1 shadow-lg">/</i>)}
-        </div>
         <div className="relative flex flex-row items-center gap-2">
           <div className="flex flex-row items-center content-center p-2 px-3 justify-items-center gap-1 bg-[#9e8c8c25] duration-200 rounded-md font-bold ">
             <MdWallet className="text-2xl" />
