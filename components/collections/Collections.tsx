@@ -24,10 +24,10 @@ const Collections: React.FC = () => {
   const router = useRouter();
   const { isNightMode, nfts } = useGlobal();
   const [groupedNfts, setGroupedNfts] = useState<{ [key: string]: NFT[] }>({});
-  setLoading(true);
-
+  
   useEffect(() => {
     const initailiser = async () => {
+      setLoading(true);
       const groupByCollection = (nfts: NFT[]): { [key: string]: NFT[] } => {
         return nfts.reduce((acc, nft) => {
           const { collection } = nft;
@@ -39,9 +39,9 @@ const Collections: React.FC = () => {
         }, {} as { [key: string]: NFT[] });
       };
       setGroupedNfts(groupByCollection((nfts)));
+      setLoading(false);
     }
     initailiser();
-    setLoading(false);
   }, []);
   return (
     <section className="pb-32">
