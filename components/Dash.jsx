@@ -5,49 +5,49 @@ const Dash = () => {
     const nfts = [
         {
             id: 1,
-            floor: '0.11',
-            name: 'Crypto Alien',
+            floor: '0.011',
+            name: 'Classic Tiger',
             image: '/images/notable3.jpg'
         }, {
             id: 2,
-            floor: '0.11',
-            name: 'Crypto Alien',
-            image: '/images/notable2.jpg'
+            floor: '0.41',
+            name: 'Swag Ape',
+            image: '/images/nft/ape1.jpg'
         }, {
             id: 3,
-            floor: '0.11',
-            name: 'Crypto Alien',
-            image: '/images/notable1.jpg'
+            floor: '0.0511',
+            name: 'Soldier Boy',
+            image: '/images/nft/anime1.jpeg'
         }, {
             id: 4,
-            floor: '0.11',
-            name: 'Crypto Alien',
-            image: '/images/notable2.jpg'
+            floor: '0.0011',
+            name: 'Lone Girl',
+            image: '/images/nft/anime10.jpeg'
         }, {
             id: 5,
-            floor: '0.11',
-            name: 'Crypto Alien',
-            image: '/images/notable1.jpg'
+            floor: '0.67',
+            name: 'Glass Rose',
+            image: '/images/nft/classic10.jpeg'
         }, {
             id: 6,
-            floor: '0.11',
-            name: 'Crypto Alien',
-            image: '/images/notable3.jpg'
+            floor: '0.77',
+            name: 'Classic Car',
+            image: '/images/nft/classic6.jpeg'
         }, {
             id: 7,
-            floor: '0.11',
-            name: 'Crypto Alien',
-            image: '/images/notable1.jpg'
+            floor: '0.0007',
+            name: 'Art Clown',
+            image: '/images/nft/art1.jpeg'
         }, {
             id: 8,
-            floor: '0.11',
-            name: 'Crypto Alien',
-            image: '/images/notable2.jpg'
+            floor: '0.00040',
+            name: 'Azuki Boy',
+            image: '/images/nft/art12.jpeg'
         }, {
             id: 9,
-            floor: '0.11',
-            name: 'Crypto Alien',
-            image: '/images/notable3.jpg'
+            floor: '0.0007',
+            name: 'Angry Ape',
+            image: '/images/nft/ape5.jpg'
         },
     ]
     return (

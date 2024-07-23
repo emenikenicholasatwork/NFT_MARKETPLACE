@@ -11,7 +11,7 @@ import toast from "react-hot-toast";
 
 const Page = ({ params }) => {
   const nfts: any = JSON.parse(localStorage.getItem("nfts"));
-  const { isNightMode } = useGlobal();
+  const { isNightMode, connectToSmartContract } = useGlobal();
   const account = localStorage.getItem("user_address");
   const [openLoader, setOpenLoader] = useState(false);
   const [buyingLoad, setBuyingLoad] = useState(false);
@@ -23,31 +23,38 @@ const Page = ({ params }) => {
     setBuyingLoad(true);
     setOpenLoader(true);
     try {
-      const provider = new BrowserProvider(window.ethereum);
-      const signer = await provider.getSigner();
-      console.log(signer)
-      const contract = new ethers.Contract(NftMarketplace.address, NftMarketplace.abi, signer);
-      let price1 = price.toString();
-      const value = ethers.parseEther(price1);
+      if (!window.ethereum) {
+        toast.error("MetaMask is not installed.");
+        setOpenLoader(false);
+        setBuyingLoad(false);
+        return;
+      }
+      const contract = await connectToSmartContract();
+      const value = ethers.parseEther(price.toString());
       const trnx = await contract.buyToken(tokenId, { value: value });
       await trnx.wait();
+
       setOpenLoader(false);
       setBuyingLoad(false);
       toast.success("NFT purchased successfully!");
       window.location.reload();
     } catch (error) {
+      setOpenLoader(false);
+      setBuyingLoad(false);
+
       if (error.message.includes("insufficient funds")) {
-        setOpenLoader(false);
-        setBuyingLoad(false);
-        toast.error("Insufficient funds");
+        toast.error("Insufficient funds.");
+      } else if (error.code === -32002) {
+        toast.error("MetaMask request already in process. Please check your MetaMask extension.");
+      } else if (error.message.includes("user rejected transaction")) {
+        toast.error("Transaction rejected by user.");
       } else {
-        setOpenLoader(false);
-        setBuyingLoad(false);
-        console.error(error);
-        toast.error("Error while buying NFT");
+        console.error("Error while buying NFT:", error);
+        toast.error("Error while buying NFT.");
       }
     }
-  };
+  }
+
 
   return (
     <section className={styles.main_container}>

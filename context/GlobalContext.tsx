@@ -38,6 +38,7 @@ interface GlobalContextProps {
   logout: () => void;
   login: () => void;
   nfts: NFT[];
+  connectToSmartContract:()=> any;
 }
 
 const GlobalContext = createContext<GlobalContextProps | undefined>(undefined);
@@ -105,6 +106,13 @@ export const GlobalProvider: React.FC<GlobalProviderProps> = ({ children }) => {
     } catch (error) {
       toast.error("Error fetching NFTs:", error);
     }
+  }
+
+  const connectToSmartContract= async ()=>{
+    const provider = new BrowserProvider(window.ethereum);
+    const signer = await provider.getSigner();
+    const contract = new ethers.Contract(NftMarketplace.address, NftMarketplace.abi, signer);
+    return contract;
   }
 
   useEffect(() => {
@@ -213,6 +221,7 @@ export const GlobalProvider: React.FC<GlobalProviderProps> = ({ children }) => {
         logout,
         login,
         nfts,
+        connectToSmartContract
       }}
     >
       {children}
