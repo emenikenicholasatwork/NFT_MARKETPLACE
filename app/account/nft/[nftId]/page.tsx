@@ -10,7 +10,7 @@ import NftMarketplace from "../../../../bin/contracts/NFTMarketplace.json";
 import toast from "react-hot-toast";
 
 const Page = ({ params }) => {
-  const nfts: any = localStorage.getItem("nfts");
+  const nfts: any = JSON.parse(localStorage.getItem("nfts"));
   const { isNightMode } = useGlobal();
   const account = localStorage.getItem("user_address");
   const [openLoader, setOpenLoader] = useState(false);
@@ -25,6 +25,7 @@ const Page = ({ params }) => {
     try {
       const provider = new BrowserProvider(window.ethereum);
       const signer = await provider.getSigner();
+      console.log(signer)
       const contract = new ethers.Contract(NftMarketplace.address, NftMarketplace.abi, signer);
       let price1 = price.toString();
       const value = ethers.parseEther(price1);

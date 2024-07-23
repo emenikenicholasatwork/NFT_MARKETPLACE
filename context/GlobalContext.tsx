@@ -117,6 +117,8 @@ export const GlobalProvider: React.FC<GlobalProviderProps> = ({ children }) => {
       setAccount(acc);
       if (logout) {
         setIsWalletConnected(logout !== "true");
+      }else{
+        saveCookie("crypto~art: logout", true, 7);
       }
       setNfts(await fetchAllNft());
     };

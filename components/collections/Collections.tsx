@@ -5,7 +5,11 @@ import { useRouter } from "next/navigation";
 import Image from "next/image";
 import { retrieveCookie } from "../../utils/Utils";
 import toast from "react-hot-toast";
+import NftMarketplace from "../../bin/contracts/NFTMarketplace.json";
 import { RotatingTriangles } from "react-loader-spinner";
+import axios from "axios";
+import { ethers } from "ethers";
+const ALCHEMY_API_KEY = process.env.NEXT_PUBLIC_ALCHEMY_API_KEY;
 
 interface NFT {
   id: number;
@@ -22,12 +26,66 @@ interface NFT {
 const Collections: React.FC = () => {
   const [loading, setLoading] = useState(false);
   const router = useRouter();
-  const { isNightMode, nfts } = useGlobal();
+  const { isNightMode } = useGlobal();
+  const [nfts, setNfts] = useState([]);
   const [groupedNfts, setGroupedNfts] = useState<{ [key: string]: NFT[] }>({});
   
+  const fetchAllNft = async () => {
+    setLoading(true);
+    try {
+      const provider = new ethers.JsonRpcProvider(`https://eth-sepolia.g.alchemy.com/v2/${ALCHEMY_API_KEY}`);
+      const contract = new ethers.Contract(NftMarketplace.address, NftMarketplace.abi, provider);
+      const transactions = await contract.getAllItems();
+      const uniqueTokenURIs = new Set<number>();
+      const list: NFT[] = [];
+      transactions.forEach((i: any) => {
+        uniqueTokenURIs.add(parseInt(i.tokenId));
+      })
+      const metadataResponses = await Promise.all(
+        Array.from(uniqueTokenURIs).map(async (uri) => {
+          try {
+            const tokenURI = await contract.tokenURI(uri);
+            return await axios.get(`https://gateway.pinata.cloud/ipfs/${tokenURI}`);
+          } catch (error) {
+            toast.error(`Failed to fetch metadata for URI: ${uri}`, error);
+            return null;
+          }
+        })
+      );
+      const metadataMap = new Map<number, any>();
+      Array.from(uniqueTokenURIs).forEach((uri, index) => {
+        if (metadataResponses[index]) {
+          metadataMap.set(uri, metadataResponses[index].data);
+        }
+      });
+      transactions.forEach((i: any) => {
+        const tokenId = parseInt(i.tokenId);
+        const metadata = metadataMap.get(tokenId);
+        if (metadata) {
+          const price = ethers.formatEther(i.price);
+          const item: NFT = {
+            price,
+            id: tokenId,
+            seller: i.seller,
+            owner: i.owner,
+            image: `https://gateway.pinata.cloud/ipfs/${metadata.image}`,
+            name: metadata.name,
+            collection: metadata.collection,
+            description: metadata.description,
+          };
+          list.push(item);
+        }
+      });
+      setNfts(list);
+      localStorage.setItem("nfts", JSON.stringify(list));
+    } catch (error) {
+      toast.error("Error fetching NFTs:", error);
+    }
+  }
+
   useEffect(() => {
     const initailiser = async () => {
-      setLoading(true);
+      fetchAllNft();
       const groupByCollection = (nfts: NFT[]): { [key: string]: NFT[] } => {
         return nfts.reduce((acc, nft) => {
           const { collection } = nft;
@@ -39,10 +97,10 @@ const Collections: React.FC = () => {
         }, {} as { [key: string]: NFT[] });
       };
       setGroupedNfts(groupByCollection((nfts)));
-      setLoading(false);
     }
     initailiser();
-  }, []);
+    setLoading(false);
+  }, [nfts]);
   return (
     <section className="pb-32">
       <div className=" min-h-fit flex justify-center py-5 px-5">
