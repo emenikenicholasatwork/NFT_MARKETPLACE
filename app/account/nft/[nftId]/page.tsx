@@ -10,9 +10,9 @@ import NftMarketplace from "../../../../bin/contracts/NFTMarketplace.json";
 import toast from "react-hot-toast";
 
 const Page = ({ params }) => {
+  const nfts: any = localStorage.getItem("nfts");
   const { isNightMode } = useGlobal();
   const account = localStorage.getItem("user_address");
-  const nfts = JSON.parse(localStorage.getItem("nfts"));
   const [openLoader, setOpenLoader] = useState(false);
   const [buyingLoad, setBuyingLoad] = useState(false);
   const id = params.nftId;
@@ -38,59 +38,65 @@ const Page = ({ params }) => {
       if (error.message.includes("insufficient funds")) {
         setOpenLoader(false);
         setBuyingLoad(false);
-        toast.error("Insufficient fund")
+        toast.error("Insufficient funds");
       } else {
         setOpenLoader(false);
         setBuyingLoad(false);
-        console.log(error)
-        toast.error("error while buying NFT: ", error);
+        console.error(error);
+        toast.error("Error while buying NFT");
       }
     }
-  }
+  };
 
   return (
     <section className={styles.main_container}>
       {openLoader && <Loadingtoast buyingLoad={buyingLoad} ipfs_image_loading={false} ipfs_metadata_loading={false} blockchain_loading={false} loading={false} />}
       <div className={`flex flex-col lg:flex-row ${styles.container_div}`}>
         <div className={styles.details_div_left}>
-          <Image
-            className={styles.nft_item_image}
-            src={nftItem.image}
-            width={500}
-            height={500}
-            alt={nftItem.name}
-          />
+          {nftItem && (
+            <Image
+              className={styles.nft_item_image}
+              src={nftItem.image}
+              width={500}
+              height={500}
+              alt={nftItem.name}
+            />
+          )}
         </div>
         <div className={styles.details_div_right}>
-          <div>
-            <h3 className={styles.nft_name}>{nftItem.name}</h3>
-            <p>
-              Owned by{" "}
-              <a href="#" className={styles.owner_name}>
-                {nftItem.owner}
-              </a>
-            </p>
-          </div>
-          <div>
-            <p className={styles.collection_name}>
-              {nftItem.collection} Collection
-            </p>
-          </div>
-          <div className={styles.best_offer_div_right}>
-            <p>Best offer</p>
-            <p>{nftItem.price} ETH{" "}</p>
-            {nftItem.owner.toString().toLowerCase() === account.toLowerCase() ? (
-              <button className={styles.make_offer_button}>You own this NFT</button>
-            ) : (
-              <button onClick={() => buyNft(nftItem.id, nftItem.price)} className="p-[15px] w-full rounded-lg bg-gray-500 duration-200 ">Buy now</button>
-            )}
-          </div>
-          <div className={styles.subject_description_div}>
-            <h2 className={styles.subject_description_title}>
-              Subject Description
-            </h2>
-            <p><br />{nftItem.description}</p>
-          </div>
+          {nftItem && (
+            <>
+              <div>
+                <h3 className={styles.nft_name}>{nftItem.name}</h3>
+                <p>
+                  Owned by{" "}
+                  <a href="#" className={styles.owner_name}>
+                    {nftItem.owner}
+                  </a>
+                </p>
+              </div>
+              <div>
+                <p className={styles.collection_name}>
+                  {nftItem.collection} Collection
+                </p>
+              </div>
+              <div className={styles.best_offer_div_right}>
+                <p>Best offer</p>
+                <p>{nftItem.price} ETH{" "}</p>
+                {nftItem.owner.toString().toLowerCase() === account.toLowerCase() ? (
+                  <button className={styles.make_offer_button}>You own this NFT</button>
+                ) : (
+                  <button onClick={() => buyNft(nftItem.id, nftItem.price)} className="p-[15px] w-full rounded-lg bg-gray-500 duration-200 ">Buy now</button>
+                )}
+              </div>
+              <div className={styles.subject_description_div}>
+                <h2 className={styles.subject_description_title}>
+                  Subject Description
+                </h2>
+                <p><br />{nftItem.description}</p>
+              </div>
+            </>
+          )}
         </div>
       </div>
       <div className={styles.more_from_collection_container}>

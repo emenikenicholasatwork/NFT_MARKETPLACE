@@ -3,13 +3,9 @@ import { useGlobal } from "../../context/GlobalContext";
 import React, { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
-import NftMarketplace from "../../bin/contracts/NFTMarketplace.json";
 import { retrieveCookie } from "../../utils/Utils";
 import toast from "react-hot-toast";
-import axios from "axios";
-import { ethers } from "ethers";
 import { RotatingTriangles } from "react-loader-spinner";
-const INFURA_API_KEY = process.env.NEXT_PUBLIC_INFURA_API_KEY;
 
 interface NFT {
   id: number;
@@ -23,42 +19,12 @@ interface NFT {
 }
 
 
-
 const Collections: React.FC = () => {
-  const [nfts, setNft] = useState([]);
   const [loading, setLoading] = useState(false);
-  setLoading(true);
-
-  const fetchAllNft = async () => {
-    const provider = new ethers.JsonRpcProvider(`https://sepolia.infura.io/v3/${INFURA_API_KEY}`);
-    const contract = new ethers.Contract(NftMarketplace.address, NftMarketplace.abi, provider);
-    const transactions = await contract.getAllItems();
-    const list: NFT[] = [];
-    for (const i of transactions) {
-      const tokenId = parseInt(i.tokenId);
-      const tokenURI = await contract.tokenURI(tokenId);
-      const metadata: any = await axios.get(`https://gateway.pinata.cloud/ipfs/${tokenURI}`);
-      const price = ethers.formatEther(i.price);
-      const item: NFT = {
-        price,
-        id: tokenId,
-        seller: i.seller,
-        owner: i.owner,
-        image: `https://gateway.pinata.cloud/ipfs/${metadata.image}`,
-        name: metadata.name,
-        collection: metadata.collection,
-        description: metadata.description
-      };
-      list.push(item);
-    }
-    localStorage.setItem("nfts", JSON.stringify(list));
-    setNft(list);
-  };
-  fetchAllNft();
-
   const router = useRouter();
-  const { isNightMode } = useGlobal();
+  const { isNightMode, nfts } = useGlobal();
   const [groupedNfts, setGroupedNfts] = useState<{ [key: string]: NFT[] }>({});
+  setLoading(true);
 
   useEffect(() => {
     const initailiser = async () => {
@@ -72,11 +38,11 @@ const Collections: React.FC = () => {
           return acc;
         }, {} as { [key: string]: NFT[] });
       };
-      setGroupedNfts(groupByCollection((await nfts)));
+      setGroupedNfts(groupByCollection((nfts)));
     }
     initailiser();
     setLoading(false);
-  }, [nfts]);
+  }, []);
   return (
     <section className="pb-32">
       <div className=" min-h-fit flex justify-center py-5 px-5">

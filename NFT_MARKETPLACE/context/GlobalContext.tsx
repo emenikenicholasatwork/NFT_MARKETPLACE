@@ -1,5 +1,7 @@
 "use client";
 import { useRouter } from "next/navigation";
+import pLimit from "p-limit";
+const limit = pLimit(5);
 import React, {
   useContext,
   createContext,
@@ -16,7 +18,8 @@ import { toast } from "react-hot-toast";
 import { BrowserProvider, ethers } from "ethers";
 import NftMarketplace from "../bin/contracts/NFTMarketplace.json";
 import axios from "axios";
-const ALCHEMY_API_KEY = process.env.NEXT_PUBLIC_ALCHEMY_API_KEY;
+
+const INFURA_API_KEY = process.env.NEXT_PUBLIC_ALCHEMY_API_KEY;
 
 interface NFT {
   price: any;
@@ -38,6 +41,8 @@ interface GlobalContextProps {
   logout: () => void;
   login: () => void;
   nfts: NFT[];
+  setAllNft: (nft: NFT[]) => void;
+  fetchAllNft: () => void;
 }
 
 const GlobalContext = createContext<GlobalContextProps | undefined>(undefined);
@@ -53,59 +58,48 @@ export const GlobalProvider: React.FC<GlobalProviderProps> = ({ children }) => {
   const [isNightMode, setIsNightMode] = useState(true);
   const [nfts, setNfts] = useState<NFT[]>([]);
 
+  const delay = (ms: number) => new Promise(res => setTimeout(res, ms));
 
-  const fetchAllNft = async () => {
-    try {
-      const provider = new ethers.JsonRpcProvider(`https://eth-sepolia.g.alchemy.com/v2/${ALCHEMY_API_KEY}`);
-      const contract = new ethers.Contract(NftMarketplace.address, NftMarketplace.abi, provider);
-      const transactions = await contract.getAllItems();
-      const uniqueTokenURIs = new Set<number>();
-      const list: NFT[] = [];
-      transactions.forEach((i: any) => {
-        uniqueTokenURIs.add(parseInt(i.tokenId));
-      })
-      const metadataResponses = await Promise.all(
-        Array.from(uniqueTokenURIs).map(async (uri) => {
-          try {
-            const tokenURI = await contract.tokenURI(uri);
-            return await axios.get(`https://gateway.pinata.cloud/ipfs/${tokenURI}`);
-          } catch (error) {
-            toast.error(`Failed to fetch metadata for URI: ${uri}`, error);
-            return null;
-          }
-        })
-      );
-      const metadataMap = new Map<number, any>();
-      Array.from(uniqueTokenURIs).forEach((uri, index) => {
-        if (metadataResponses[index]) {
-          metadataMap.set(uri, metadataResponses[index].data);
+  const fetchWithRetry = async (url: string, retries = 3): Promise<any> => {
+    for (let i = 0; i < retries; i++) {
+      try {
+        const response = await axios.get(url);
+        return response.data;
+      } catch (error) {
+        if (i < retries - 1) {
+          await delay(Math.pow(2, i) * 1000); // Exponential backoff
+        } else {
+          throw error;
         }
-      });
-      transactions.forEach((i: any) => {
-        const tokenId = parseInt(i.tokenId);
-        const metadata = metadataMap.get(tokenId);
-        if (metadata) {
-          const price = ethers.formatEther(i.price);
-          const item: NFT = {
-            price,
-            id: tokenId,
-            seller: i.seller,
-            owner: i.owner,
-            image: `https://gateway.pinata.cloud/ipfs/${metadata.image}`,
-            name: metadata.name,
-            collection: metadata.collection,
-            description: metadata.description,
-          };
-          list.push(item);
-        }
-      });
-      setNfts(list);
-      localStorage.setItem("nfts", JSON.stringify(list));
-      return list;
-    } catch (error) {
-      toast.error("Error fetching NFTs:", error);
+      }
     }
-  }
+  };
+
+  const fetchAllNft = async (): Promise<NFT[]> => {
+    const provider = new ethers.JsonRpcProvider(`https://eth-sepolia.g.alchemy.com/v2/${INFURA_API_KEY}`);
+    const contract = new ethers.Contract(NftMarketplace.address, NftMarketplace.abi, provider);
+    const transactions = await contract.getAllItems();
+    const list: NFT[] = [];
+    for (const i of transactions) {
+      const tokenId = parseInt(i.tokenId);
+      const tokenURI = await contract.tokenURI(tokenId);
+      const metadata = await limit(() => fetchWithRetry(`https://gateway.pinata.cloud/ipfs/${tokenURI}`));
+      const price = ethers.formatEther(i.price);
+      const item: NFT = {
+        price,
+        id: tokenId,
+        seller: i.seller,
+        owner: i.owner,
+        image: `https://gateway.pinata.cloud/ipfs/${metadata.image}`,
+        name: metadata.name,
+        collection: metadata.collection,
+        description: metadata.description
+      };
+      list.push(item);
+    }
+    localStorage.setItem("nfts", JSON.stringify(list));
+    return list;
+  };
 
   useEffect(() => {
     const initialize = async () => {
@@ -118,15 +112,29 @@ export const GlobalProvider: React.FC<GlobalProviderProps> = ({ children }) => {
       if (logout) {
         setIsWalletConnected(logout !== "true");
       }
-      setNfts(await fetchAllNft());
+
+      const cachedNfts = localStorage.getItem("nfts");
+      if (cachedNfts) {
+        setNfts(JSON.parse(cachedNfts));
+      } else {
+        const nfts = await fetchAllNft();
+        setNfts(nfts);
+        localStorage.setItem("nfts", JSON.stringify(nfts));
+      }
     };
+
     initialize();
   }, []);
+
+  const setAllNft = (nfts: []) => {
+    localStorage.setItem("nfts", JSON.stringify(nfts));
+    setNfts(nfts);
+  }
 
   const activate_account = (account: string) => {
     setIsWalletConnected(true);
     setAccount(account);
-    const u: string | undefined = localStorage.getItem("user_address");
+    const https://sepolia.infura.io/v3/u: string | undefined = localStorage.getItem("user_address");
     if (u) {
       deleteCookie(u);
     }
@@ -211,6 +219,8 @@ export const GlobalProvider: React.FC<GlobalProviderProps> = ({ children }) => {
         logout,
         login,
         nfts,
+        setAllNft,
+        fetchAllNft,
       }}
     >
       {children}

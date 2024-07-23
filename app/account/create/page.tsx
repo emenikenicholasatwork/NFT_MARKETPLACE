@@ -21,8 +21,8 @@ const Page: React.FC = () => {
   const [ipfs_metadata_loading, set_ipfs_metadata_loading] = useState(false);
   const [blockchain_loading, set_blockchain_loading] = useState(false);
   const [createClickable, setCreateClickable] = useState<boolean>(false);
-  const { isNightMode, setAllNft, nfts } = useGlobal();
-  const [list, setList] = useState([]);
+  const { isNightMode } = useGlobal();
+  const nfts: any = localStorage.getItem("nfts");
   const [imagePreview, setImagePreview] = useState<string | ArrayBuffer | null>(null);
   const imageRef = useRef<HTMLInputElement>(null);
   const [showAllCollections, setShowAllCollections] = useState(false);
@@ -191,26 +191,6 @@ const Page: React.FC = () => {
         await createTokenTrns.wait();
         set_blockchain_loading(false);
         setLoading(true);
-        const transactions = await contract.getAllItems();
-        for (const i of transactions) {
-          const tokenId = parseInt(i.tokenId);
-          const tokenURI = await contract.tokenURI(tokenId);
-          const metadata = (await axios.get(`https://gateway.pinata.cloud/ipfs/${tokenURI}`)).data;
-          const price = ethers.formatEther(i.price);
-          const item = {
-            price,
-            id: tokenId,
-            seller: i.seller,
-            owner: i.owner,
-            image: `https://gateway.pinata.cloud/ipfs/${metadata.image}`,
-            name: metadata.name,
-            collection: metadata.collection,
-            description: metadata.description
-          }
-          list.push(item);
-        }
-        localStorage.setItem("nfts", JSON.stringify(list));
-        setAllNft(list);
         setLoading(false);
         setOpenLoader(false);
         toast.success("NFT succesfully Listed");
