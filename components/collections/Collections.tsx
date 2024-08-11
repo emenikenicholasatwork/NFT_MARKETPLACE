@@ -1,11 +1,11 @@
 "use client";
-import { useGlobal } from "../../context/GlobalContext";
+import { useGlobal } from "@/context/GlobalContext";
 import React, { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
-import { retrieveCookie } from "../../utils/Utils";
+import { retrieveCookie } from "@/utils/Utils";
 import toast from "react-hot-toast";
-import NftMarketplace from "../../bin/contracts/NFTMarketplace.json";
+import NftMarketplace from "@/bin/contracts/NFTMarketplace.json";
 import { RotatingTriangles } from "react-loader-spinner";
 import axios from "axios";
 import { ethers } from "ethers";

@@ -1,7 +1,7 @@
 import { ReactNode, useEffect } from "react";
 import { useGlobal } from "./GlobalContext";
 import { useRouter } from "next/navigation";
-import { retrieveCookie } from "../utils/Utils";
+import { retrieveCookie } from "@/utils/Utils";
 
 
 interface ProtectedRouteProps {

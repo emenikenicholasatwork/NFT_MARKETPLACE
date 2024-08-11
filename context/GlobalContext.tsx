@@ -11,10 +11,10 @@ import {
   retrieveCookie,
   saveCookie,
   deleteCookie,
-} from "../utils/Utils";
+} from '@/utils/Utils';
 import { toast } from "react-hot-toast";
 import { BrowserProvider, ethers } from "ethers";
-import NftMarketplace from "../bin/contracts/NFTMarketplace.json";
+import NftMarketplace from "@/bin/contracts/NFTMarketplace.json";
 import axios from "axios";
 const ALCHEMY_API_KEY = process.env.NEXT_PUBLIC_ALCHEMY_API_KEY;
 
