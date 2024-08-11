@@ -8,20 +8,18 @@ import { useGlobal } from "../../context/GlobalContext";
 import React from "react";
 import Collections from "../../components/collections/Collections";
 
-
-
 const page = () => {
   const { isNightMode } = useGlobal();
 
   return (
-    <main className={`min-h-screen gap-0 ${isNightMode ? "bg-[#252927]  text-white" : "bg-white text-black"} duration-300`}>
+    <div className={`min-h-screen ${isNightMode ? "bg-[#252927]  text-white" : "bg-white text-black"} duration-100`}>
       <UserHeader />
       <DashDisplay />
       <Dash />
       <Top />
       <Collections />
       <Footer />
-    </main>
+    </div>
   );
 };
 export default page;

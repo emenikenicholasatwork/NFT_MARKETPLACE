@@ -22,7 +22,7 @@ const Page: React.FC = () => {
   const [blockchain_loading, set_blockchain_loading] = useState(false);
   const [createClickable, setCreateClickable] = useState<boolean>(false);
   const { isNightMode } = useGlobal();
-  const nfts: any = localStorage.getItem("nfts");
+  const nfts: any = JSON.parse(localStorage.getItem("nfts"));
   const [imagePreview, setImagePreview] = useState<string | ArrayBuffer | null>(null);
   const imageRef = useRef<HTMLInputElement>(null);
   const [showAllCollections, setShowAllCollections] = useState(false);

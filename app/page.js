@@ -8,24 +8,22 @@ import Footer from '../components/Footer';
 import Header from "../components/header/Header";
 import { useRouter } from "next/navigation";
 import { retrieveCookie } from "../utils/Utils";
+import { Toaster } from "react-hot-toast";
 
 export default function Home() {
   const { isNightMode } = useGlobal();
   const logout = retrieveCookie("crypto~art: logout");
   const router = useRouter();
   return (
-    <>
-      {
-        logout === "false" ? router.push("/account") :
-          <div className={`min-h-screen gap-0  ${isNightMode ? "bg-[#252927]  text-white" : "bg-white text-black"} duration-300`}>
-            <Header />
-            <DashDisplay />
-            <Dash />
-            <Top />
-            <Collections />
-            <Footer />
-          </div>
-      }
-    </>
+    logout === "false" ? router.push("/account") :
+      <main className={`flex flex-col gap-3 duration-100 ${isNightMode ? "bg-[#252927] text-white" : "bg-white text-black"}`}>
+        <Toaster position="bottom-right" reverseOrder={false} />
+        <Header />
+        <DashDisplay />
+        <Dash />
+        <Top />
+        <Collections />
+        <Footer />
+      </main>
   );
 }

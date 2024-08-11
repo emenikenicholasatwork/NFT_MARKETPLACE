@@ -29,7 +29,7 @@ const Collections: React.FC = () => {
   const { isNightMode } = useGlobal();
   const [nfts, setNfts] = useState([]);
   const [groupedNfts, setGroupedNfts] = useState<{ [key: string]: NFT[] }>({});
-  
+
   const fetchAllNft = async () => {
     try {
       const provider = new ethers.JsonRpcProvider(`https://eth-sepolia.g.alchemy.com/v2/${ALCHEMY_API_KEY}`);
@@ -83,8 +83,11 @@ const Collections: React.FC = () => {
   }
 
   useEffect(() => {
+    fetchAllNft()
+  }, [])
+
+  useEffect(() => {
     const initailiser = async () => {
-      fetchAllNft();
       const groupByCollection = (nfts: NFT[]): { [key: string]: NFT[] } => {
         return nfts.reduce((acc, nft) => {
           const { collection } = nft;
@@ -101,21 +104,21 @@ const Collections: React.FC = () => {
     setLoading(false);
   }, [nfts]);
   return (
-    <section className="flex flex-col pb-32">
-      <div className=" min-h-fit flex justify-center py-5 px-5">
+    <section className=" h-fit w-fit flex flex-col pb-32">
+      <div className=" flex justify-center py-5 px-5">
         <p className="text-4xl font-extrabold">Collections......</p>
       </div>
       {
         loading ?
           <div className="h-full w-full flex items-center justify-center">
             <RotatingTriangles
-        visible={true}
-        height="200"
-        width="200"
-        ariaLabel="rotating-triangles-loading"
-        wrapperStyle={{}}
-        wrapperClass=""
-        />       </div> :
+              visible={true}
+              height="200"
+              width="200"
+              ariaLabel="rotating-triangles-loading"
+              wrapperStyle={{}}
+              wrapperClass=""
+            />       </div> :
           Object.keys(groupedNfts).map((collectionName) => (
             <div
               key={collectionName}

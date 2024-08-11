@@ -3,7 +3,7 @@ import Typewriter from 'typewriter-effect'
 
 const DashDisplay = () => {
     return (
-        <div className='w-[100%] h-fit flex flex-row pt-[90px] px-[2rem] pb-[2rem] '>
+        <div className='w-full flex flex-row pt-[90px] px-[2rem] pb-[2rem] '>
             <div className='flex-auto w-[100%] h-[100%] items-center justify-center text-center p-[2%] '>
                 <p className=' font-bold text-7xl '>Discover, Buy and Sell NFTs..</p>
                 <div>

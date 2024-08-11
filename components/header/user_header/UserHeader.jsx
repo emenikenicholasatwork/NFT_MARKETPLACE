@@ -1,7 +1,6 @@
 "use client";
 import { useGlobal } from "../../../context/GlobalContext";
 import React, { useState } from "react";
-import styles from "./userHeader.module.css";
 import { BiLogOut } from "react-icons/bi";
 import { MdWallet } from "react-icons/md";
 import Image from "next/image";

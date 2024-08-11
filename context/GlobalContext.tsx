@@ -38,7 +38,7 @@ interface GlobalContextProps {
   logout: () => void;
   login: () => void;
   nfts: NFT[];
-  connectToSmartContract:()=> any;
+  connectToSmartContract: () => any;
 }
 
 const GlobalContext = createContext<GlobalContextProps | undefined>(undefined);
@@ -108,7 +108,7 @@ export const GlobalProvider: React.FC<GlobalProviderProps> = ({ children }) => {
     }
   }
 
-  const connectToSmartContract= async ()=>{
+  const connectToSmartContract = async () => {
     const provider = new BrowserProvider(window.ethereum);
     const signer = await provider.getSigner();
     const contract = new ethers.Contract(NftMarketplace.address, NftMarketplace.abi, signer);
@@ -125,7 +125,7 @@ export const GlobalProvider: React.FC<GlobalProviderProps> = ({ children }) => {
       setAccount(acc);
       if (logout) {
         setIsWalletConnected(logout !== "true");
-      }else{
+      } else {
         saveCookie("crypto~art: logout", true, 7);
       }
       setNfts(await fetchAllNft());

@@ -4,10 +4,21 @@ import Image from "next/image";
 import styles from "./page.module.css";
 import Link from "next/link";
 import Loadingtoast from '../../../../components/loading_toast/Loadingtoast';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { ethers, BrowserProvider } from 'ethers';
 import NftMarketplace from "../../../../bin/contracts/NFTMarketplace.json";
 import toast from "react-hot-toast";
+
+interface NFT {
+  id: number;
+  name: string;
+  description: string;
+  image: string;
+  collection: string;
+  price: any;
+  seller: any;
+  owner: any;
+}
 
 const Page = ({ params }) => {
   const nfts: any = JSON.parse(localStorage.getItem("nfts"));
@@ -16,8 +27,24 @@ const Page = ({ params }) => {
   const [openLoader, setOpenLoader] = useState(false);
   const [buyingLoad, setBuyingLoad] = useState(false);
   const id = params.nftId;
-  const nftItem = nfts.find(n => n.id.toString() === id);
-  const nftItems = nfts.filter((n) => n.collection === nftItem.collection);
+  const nftItem = nfts.find((n: { id: { toString: () => NFT; }; }) => n.id.toString() === id);
+  const nftItems = nfts.filter((n: { collection: NFT }) => n.collection === nftItem.collection);
+
+  // useEffect(() => {
+  //   const initialiser = async () => {
+  //     const groupByCollection=(nfts: NFT[]): {[key: string]: NFT[]}=>{
+  //       return nfts.reduce((acc, nft)=>{
+  //         const { collection } = nfts;
+  //         if(!acc[collection]){
+  //           acc[collection] = [];
+  //         }
+  //         acc[collection].push(nfts);
+  //         return acc;
+  //       })
+  //     }
+  //   }
+  //   initialiser()
+  // }, [nfts])
 
   const buyNft = async (tokenId: number, price: number) => {
     setBuyingLoad(true);

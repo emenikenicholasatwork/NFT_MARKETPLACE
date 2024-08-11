@@ -1,42 +1,24 @@
 import { useGlobal } from "../../context/GlobalContext";
-import React, { useState } from "react";
+import React from "react";
 import "./header.css";
 import Link from "next/link";
 import { IoOptions } from "react-icons/io5";
-import toast from "react-hot-toast";
 
-const Header = () => {
+const Header: React.FC = () => {
   const {
     setNightMode,
     isNightMode,
     login
   } = useGlobal();
-  const [inputValue, setInputValue] = useState("");
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setInputValue(e.target.value);
-  };
-
-  const clearInput = () => {
-    setInputValue("");
-  };
 
   return (
-    <header className={` h-20 p-5 left-0 right-0 fixed z-[2] items-center justify-between flex ${isNightMode ? "bg-[#252927] text-white" : "bg-white text-black"} duration-300`}>
+    <header className={` h-20 p-5 w-full fixed z-[2] top-0 items-center justify-between flex ${isNightMode ? "bg-[#252927] text-white" : "bg-white text-black"} duration-100`}>
       <Link href={"/"}>
         <div className="logo_div">
           <i className="bi bi-currency-bitcoin"></i>
           <p>Crypto~Art</p>
         </div>
       </Link>
-      <div className="search_div">
-        <i className="bi bi-search"></i>
-        <input onChange={handleInputChange} value={inputValue} type="text" placeholder="Search" />
-        {inputValue ? (
-          <i className="search_input_icon_1 bi bi-x" onClick={clearInput}></i>
-        ) : (
-          <i className="search_input_icon_2">/</i>
-        )}
-      </div>
       <div className="login_menu_div">
         <div className="login_div" onClick={() => login()}>
           <i className="bi bi-wallet text-lg"></i>
